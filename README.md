@@ -1,17 +1,5 @@
-# Heimdall
-Heimdall - A simple password manager built with C++17. 
-
-## Features
-
-Features listed here are not done yet, it's just in idea stage:
-
-- Login/Create account
-- List password entries in ASC/DESC based on settings (gmail, protonvpn, kryptokrona_wallet)
-- Update settings (select cryptographic method to store passwords, burn stored passwords after given time)
-- Add/Edit password entries
-- Export passwords entries to csv/xml/txt
-- Send password entries with a transaction in the Kryptokrona blockchain to a specific Hugin Tx Hash
-    - Construct a Kryptokrona transaction (kryptokrona-service gamla hugin messenger exempel hur man gör det).
+# Hugin CLI
+Hugin CLI - A Hugin client built with C++17. 
 
 ## Setup and run
 
@@ -19,7 +7,7 @@ Features listed here are not done yet, it's just in idea stage:
 2. Run `cmake .` to initialize CMake project
 3. Run `cmake -B ./build -S .`
 4. Go to build directory and run `make`
-5. Run executable `./Heimdall`
+5. Run executable `./Hugin`
 
 ### Unit tests
 
