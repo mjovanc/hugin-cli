@@ -19,15 +19,16 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(
-    test
-    test/crypto_test.cpp
-    test/daemon_test.cpp
-)
+add_executable(crypto_test test/crypto_test.cpp)
+add_executable(daemon_test test/daemon_test.cpp)
 
 include(GoogleTest)
-gtest_discover_tests(test)
-target_link_libraries(test GTest::GTest GTest::Main)
+gtest_discover_tests(
+  crypto_test 
+  daemon_test
+)
+target_link_libraries(crypto_test gtest_main)
+target_link_libraries(daemon_test gtest_main)
 
 # directories to be included
 include_directories(${PROJECT_SOURCE_DIR})
@@ -46,6 +47,7 @@ target_include_directories(
   ${PROJECT_NAME}
   PUBLIC
   crypto
+  daemon
 )
 
 # link libraries
@@ -53,10 +55,12 @@ target_link_directories(
   ${PROJECT_NAME}
   PRIVATE
   crypto
+  daemon
 )
 target_link_libraries(
   ${PROJECT_NAME}
   crypto
+  daemon
 )
 
 # boost configuration
