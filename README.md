@@ -27,7 +27,7 @@ If we want to do a cleanup of generated files during build we can run:
 
 ### Pull request
 
-I appreciate all contributions whether it be small changes such as documentation of source code to major improvement of code. The easiest way is to make a fork and then make a pull request into our develop branch. 
+I appreciate all contributions whether it be small changes such as documentation of source code to major improvement of code. The easiest way is to make a fork and then make a pull request into our master branch. 
 
 ## License
 
