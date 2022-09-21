@@ -11,6 +11,7 @@ Features listed here are not done yet, it's just in idea stage:
 - Add/Edit password entries
 - Export passwords entries to csv/xml/txt
 - Send password entries with a transaction in the Kryptokrona blockchain to a specific Hugin Tx Hash
+    - Construct a Kryptokrona transaction (kryptokrona-service gamla hugin messenger exempel hur man gör det).
 
 ## Setup and run
 
