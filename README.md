@@ -1,5 +1,16 @@
 # Heimdall
-Heimdall - A simple password manager
+Heimdall - A simple password manager built with C++17. 
+
+## Features
+
+Features listed here are not done yet, it's just in idea stage:
+
+- Login/Create account
+- List password entries in ASC/DESC based on settings (gmail, protonvpn, kryptokrona_wallet)
+- Update settings (select cryptographic method to store passwords, burn stored passwords after given time)
+- Add/Edit password entries
+- Export passwords entries to csv/xml/txt
+- Send password entries with a transaction in the Kryptokrona blockchain to a specific Hugin Tx Hash
 
 ## Setup and run
 
