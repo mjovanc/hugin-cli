@@ -65,10 +65,9 @@ include_directories(${PROJECT_SOURCE_DIR})
 add_executable(${PROJECT_NAME} main.cpp)
 
 # add the subdirectories
-add_subdirectory(
-    crypto
-    daemon
-)
+add_subdirectory(crypto)
+add_subdirectory(daemon)
+add_subdirectory(db)
 
 # include directories
 target_include_directories(
@@ -76,6 +75,7 @@ target_include_directories(
   PUBLIC
   crypto
   daemon
+  db
 )
 
 # link libraries
@@ -89,6 +89,7 @@ target_link_libraries(
   ${PROJECT_NAME}
   crypto
   daemon
+  db
 )
 
 # boost configuration
