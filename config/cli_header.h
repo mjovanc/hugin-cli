@@ -27,7 +27,7 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <sstream>
-#include <config/kryptokrona_config.h>
+#include <config/hugin_config.h>
 #include <config/ascii.h>
 #include <version.h>
 
