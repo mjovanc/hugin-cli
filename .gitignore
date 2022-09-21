@@ -1,3 +1,4 @@
+### C++ ###
 # Prerequisites
 *.d
 
@@ -30,3 +31,34 @@
 *.exe
 *.out
 *.app
+
+### CMake ###
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+build/
+
+### CMake Patch ###
+# External projects
+*-prefix/
+
+# ignore executablegit
+BlockchainCPP
+
+# VS Code
+.vscode
+
+# drawio
+*.bkp
+
+# idea
+.idea
+cmake-build-debug
