@@ -11,9 +11,9 @@ Hugin CLI - A Hugin client built with C++17.
 
 ### Unit tests
 
-To run the test cases in **routing_table_test.cpp** that comes along we need (after we have built) to run:
+To run the test cases in **daemon_test.cpp** that comes along we need (after we have built) to run:
 
-`./build/routing_table_test`
+`./build/daemon_test`
 
 We need in the future to link all test files so we can run all unit tests at once.
 
