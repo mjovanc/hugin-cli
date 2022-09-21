@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # set the project name
-project(Reci)
+project(Heimdall)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -20,13 +20,13 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(
-  routing_table_test
-  ./test/routing_table_test.cpp
+    crypto_test
+  ./test/crypto_test.cpp
 )
 
 include(GoogleTest)
-gtest_discover_tests(routing_table_test)
-target_link_libraries(routing_table_test gtest_main)
+gtest_discover_tests(crypto_test)
+target_link_libraries(crypto_test gtest_main)
 
 # directories to be included
 include_directories(${PROJECT_SOURCE_DIR})
@@ -41,29 +41,16 @@ add_subdirectory(peer)
 target_include_directories(
   ${PROJECT_NAME}
   PUBLIC
-  peer
+  crypto
 )
 
 # link libraries
 target_link_directories(
   ${PROJECT_NAME}
   PRIVATE
-  peer
+  crypto
 )
 target_link_libraries(
   ${PROJECT_NAME}
-  peer
+  crypto
 )
-
-# boost
-set(Boost_NO_BOOST_CMAKE ON)
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_STATIC_RUNTIME ON)
-find_package(Boost REQUIRED COMPONENTS system filesystem thread date_time chrono regex serialization program_options)
-message(STATUS "Boost Found: ${Boost_INCLUDE_DIRS}")
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-if(APPLE)
-  set(Boost_LIBRARIES "${Boost_LIBRARIES}")
-elseif(NOT MSVC)
-  set(Boost_LIBRARIES "${Boost_LIBRARIES};rt")
-endif()
