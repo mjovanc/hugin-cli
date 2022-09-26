@@ -1,5 +1,5 @@
 
-<style>
+<style type="text/css" rel="stylesheet">
 .markdown-body img[align=left] {
     padding-right: 20px;
 }
