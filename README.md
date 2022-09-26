@@ -1,3 +1,10 @@
+
+<style>
+.markdown-body img[align=left] {
+    padding-right: 20px;
+}
+</style>
+
 # <img align="left" height="43" src="hugin-api-icon.png"> Hugin CLI
 Hugin CLI - A Hugin client built with C++17. 
 
