@@ -34,16 +34,17 @@ const std::string windowsAsciiArt =
         "          <___'|_|                                      \n";
 
 const std::string nonWindowsAsciiArt =
-      "\n                                                                            \n"
-        "oooo                                            .             oooo     \n"
-        "`888                                          .o8             `888                                                 \n"
-        " 888  oooo  oooo d8b oooo    ooo oo.ooooo.  .o888oo  .ooooo.   888  oooo  oooo d8b  .ooooo.  ooo. .oo.    .oooo.   \n"
-        " 888 .8P'   `888\"\"8P  `88.  .8'   888' `88b   888   d88' `88b  888 .8P'   `888\"\"8P d88' `88b `888P\"Y88b  `P  )88b  \n"
-        " 888888.     888       `88..8'    888   888   888   888   888  888888.     888     888   888  888   888   .oP\"888  \n"
-        " 888 `88b.   888        `888'     888   888   888 . 888   888  888 `88b.   888     888   888  888   888  d8(  888  \n"
-        "o888o o888o d888b        .8'      888bod8P'   \"888\" `Y8bod8P' o888o o888o d888b    `Y8bod8P' o888o o888o `Y888\"\"8o \n"
-        "                     .o..P'       888                                                                              \n"
-        "                     `Y8P'       o888o                                                                             \n";
+      "     .---.        .-----------
+     /     \\  __  /    ------
+    / /     \\(  )/    -----
+   //////   ' \\/ `   ---
+  //// / // :    : ---
+ // /   /  /`    '--
+//          //..\\
+       ====UU====UU====
+           '//||\\`
+             ''``
+          Hugin CLI";
 
 /* windows has some characters it won't display in a terminal. If your ascii
    art works fine on windows and linux terminals, just replace 'asciiArt' with
