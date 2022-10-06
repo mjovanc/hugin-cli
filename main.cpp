@@ -29,9 +29,9 @@
 #include <iostream>
 #include <iterator>
 #include <algorithm>
-#include <daemon.h>
 
-#include "config/cli_header.h"
+#include <daemon.h>
+#include <config/cli_header.h>
 
 using namespace daemon;
 using namespace hugin;

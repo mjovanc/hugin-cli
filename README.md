@@ -1,4 +1,5 @@
-# <img align="left" height="43" src="hugin-api-icon.png" style="padding-right: 10px;"> Hugin CLI
+<img height="80" src="hugin-cli-logo.png">
+
 Hugin CLI - A Hugin client built with C++17. 
 
 ## Setup and run
