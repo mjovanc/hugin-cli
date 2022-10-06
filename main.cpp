@@ -31,6 +31,8 @@
 #include <algorithm>
 #include <daemon.h>
 
+using namespace daemon;
+
 int main()
 {
     Daemon daemon;
