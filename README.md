@@ -1,5 +1,23 @@
 <img height="80" src="hugin-cli-logo.png">
 
+<p>
+<a href="https://github.com/mjovanc/hugin-cli/actions">
+    <img src="https://github.com/mjovanc/hugin-cli/actions/workflows/main-ci.yml/badge.svg">
+</a>
+<a href="https://github.com/mjovanc/hugin-cli/issues">
+    <img src="https://img.shields.io/github/issues/mjovanc/hugin-cli">
+</a>
+<a href="https://github.com/mjovanc/hugin-cli/pulls">
+    <img src="https://img.shields.io/github/issues-pr/mjovanc/hugin-cli">
+</a>
+<a href="https://github.com/mjovanc/hugin-cli/commits/main">
+    <img src="https://img.shields.io/github/commit-activity/m/mjovanc/hugin-cli">
+</a>
+<a href="https://github.com/mjovanc/hugin-cli/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/mjovanc/hugin-cli">
+</a>
+</p>
+
 Hugin CLI - A Hugin client built with C++17. 
 
 ## Setup and run
