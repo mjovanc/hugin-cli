@@ -36,6 +36,10 @@ class Daemon
 {
     public: 
         Daemon();
+
+        void start();
+
+        void stop();
 };
 
 #endif
