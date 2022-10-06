@@ -32,14 +32,19 @@
 #include <cstdint>
 #include <iostream>
 
-class Daemon
+namespace daemon 
 {
-    public: 
+    class Daemon
+    {
+    public:
         Daemon();
 
         void start();
 
         void stop();
-};
+    };
+}
+
+
 
 #endif

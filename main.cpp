@@ -29,8 +29,10 @@
 #include <iostream>
 #include <iterator>
 #include <algorithm>
+#include <daemon.h>
 
 int main()
 {
-    std::cout << "Hello!" << std::endl;
+    Daemon daemon;
+    daemon.start();
 }
