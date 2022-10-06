@@ -31,7 +31,6 @@
 #include <string>
 #include <limits>
 #include <initializer_list>
-#include <boost/uuid/uuid.hpp>
 
 namespace hugin
 {

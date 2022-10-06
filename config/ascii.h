@@ -33,18 +33,7 @@ const std::string windowsAsciiArt =
         "|_\\_\\|_|  `_. ||  _/ |_| \\___/|_\\_\\|_|  \\___/|_|_|<___| \n"
         "          <___'|_|                                      \n";
 
-const std::string nonWindowsAsciiArt =
-      "     .---.        .-----------
-     /     \\  __  /    ------
-    / /     \\(  )/    -----
-   //////   ' \\/ `   ---
-  //// / // :    : ---
- // /   /  /`    '--
-//          //..\\
-       ====UU====UU====
-           '//||\\`
-             ''``
-          Hugin CLI";
+const std::string nonWindowsAsciiArt = "Hej";
 
 /* windows has some characters it won't display in a terminal. If your ascii
    art works fine on windows and linux terminals, just replace 'asciiArt' with

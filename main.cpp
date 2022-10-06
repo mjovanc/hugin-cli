@@ -40,7 +40,8 @@ int main(int argc, char* argv[])
 {
     // will use the program arguments above for --help
 
-    
+    hugin::getProjectCLIHeader();
+
     Daemon daemon;
     daemon.start();
 }

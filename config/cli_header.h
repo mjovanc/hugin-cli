@@ -29,7 +29,7 @@
 #include <sstream>
 #include <config/hugin_config.h>
 #include <config/ascii.h>
-#include <version.h>
+#include "version.h"
 
 namespace hugin
 {
@@ -38,14 +38,14 @@ namespace hugin
     std::stringstream programHeader;
     programHeader << std::endl
       << asciiArt << std::endl
-      << " " << hugin::HUGIN_NAME << " v" << PROJECT_VERSION_LONG << std::endl
+      << " " << hugin::parameters::HUGIN_NAME << " v" << PROJECT_VERSION_LONG << std::endl
       << " This software is distributed under the General Public License v3.0"
       << std::endl << std::endl
       << " " << PROJECT_COPYRIGHT
       << std::endl << std::endl
       << " Additional Copyright(s) may apply, please see the included LICENSE file for more information." << std::endl
       << " If you did not receive a copy of the LICENSE, please visit:" << std::endl
-      << " " << hugin::LICENSE_URL
+      << " " << hugin::parameters::LICENSE_URL
       << std::endl << std::endl;
 
     return programHeader.str();
