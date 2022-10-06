@@ -31,10 +31,16 @@
 #include <algorithm>
 #include <daemon.h>
 
-using namespace daemon;
+#include "config/cli_header.h"
 
-int main()
+using namespace daemon;
+using namespace hugin;
+
+int main(int argc, char* argv[])
 {
+    // will use the program arguments above for --help
+
+    
     Daemon daemon;
     daemon.start();
 }
