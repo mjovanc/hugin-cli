@@ -91,16 +91,3 @@ target_link_libraries(
   daemon
   db
 )
-
-# boost configuration
-set(Boost_NO_BOOST_CMAKE ON)
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_STATIC_RUNTIME ON)
-find_package(Boost REQUIRED COMPONENTS system filesystem thread date_time chrono regex serialization program_options)
-message(STATUS "Boost Found: ${Boost_INCLUDE_DIRS}")
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-if(APPLE)
-  set(Boost_LIBRARIES "${Boost_LIBRARIES}")
-elseif(NOT MSVC)
-  set(Boost_LIBRARIES "${Boost_LIBRARIES};rt")
-endif()

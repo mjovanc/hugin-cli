@@ -62,3 +62,4 @@ BlockchainCPP
 # idea
 .idea
 cmake-build-debug
+.vs/
