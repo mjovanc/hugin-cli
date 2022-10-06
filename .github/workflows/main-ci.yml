@@ -1,0 +1,34 @@
+name: Hugin CLI Main Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        config:
+          - {
+            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+            os: ubuntu-22.04,
+            cc: "gcc", cxx: "g++"
+          }
+    steps:
+      - uses: actions/checkout@v2
+
+      # Ubuntu 22.04
+      - name: mkdir build
+        if: matrix.config.os == 'ubuntu-22.04'
+        run: mkdir build
+
+      - name: Build Ubuntu Target
+        if: matrix.config.os == 'ubuntu-22.04'
+        run: |
+          cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
+          make
+        working-directory: build

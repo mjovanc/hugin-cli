@@ -44,4 +44,5 @@ int main(int argc, char* argv[])
 
     Daemon daemon;
     daemon.start();
+    daemon.stop();
 }
