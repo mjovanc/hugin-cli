@@ -18,7 +18,28 @@
 </a>
 </p>
 
-Hugin CLI - A Hugin client built with C++17. 
+Hugin CLI - A Hugin Messenger client built with C++17. 
+
+# Table of Contents
+
+- [Development Resources](#development-resources)
+- [Setup and run](#setup-and-run)
+    - [Clean](#clean)
+- [Testing](#testing)
+    - [Unit Testing](#unit-testing)
+- [Contribute](#contribute)
+    - [Pull request](#pull-request)
+- [Contributors](#contributors)
+- [License](#license)
+
+# Development Resources
+
+- Web: https://kryptokrona.org
+- Docs: https://docs.kryptokrona.org
+- Mail: mjovanc@icloud.com
+- GitHub: https://github.com/mjovanc/hugin-cli
+- Hugin: hugincli board on Hugin Messenger (currently only GUI version)
+- It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
 
 # Setup and run
 
@@ -28,7 +49,15 @@ Hugin CLI - A Hugin client built with C++17.
 4. Go to build directory and run `make`
 5. Run executable `./Hugin`
 
-## Unit tests
+## Clean 
+
+If we want to do a cleanup of generated files during build we can run:
+
+`git clean -xfd`
+
+# Testing 
+
+## Unit testing
 
 To run the test cases in **daemon_test.cpp** that comes along we need (after we have built) to run:
 
@@ -36,17 +65,13 @@ To run the test cases in **daemon_test.cpp** that comes along we need (after we 
 
 We need in the future to link all test files so we can run all unit tests at once.
 
-## Clean 
 
-If we want to do a cleanup of generated files during build we can run:
-
-`git clean -xfd`
 
 # Contribute
 
 ## Pull request
 
-I appreciate all contributions whether it be small changes such as documentation of source code to major improvement of code. The easiest way is to make a fork and then make a pull request into our master branch. 
+We appreciate all contributions whether it be small changes such as documentation of source code to major improvement of code. The easiest way is to make a fork and then make a pull request into our master branch. 
 
 # Contributors
 
