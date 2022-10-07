@@ -26,12 +26,7 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const std::string windowsAsciiArt =
-      "\n _                    _        _      \n"
-        "| |__ _ _  _ _  ___ _| |_ ___ | |__ _ _  ___ ._ _  ___  \n"
-        "| / /| '_>| | || . \\ | | / . \\| / /| '_>/ . \\| ' |<_> | \n"
-        "|_\\_\\|_|  `_. ||  _/ |_| \\___/|_\\_\\|_|  \\___/|_|_|<___| \n"
-        "          <___'|_|                                      \n";
+const std::string windowsAsciiArt = "Hej";
 
 const std::string nonWindowsAsciiArt = "Hej";
 
