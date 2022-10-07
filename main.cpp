@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
         case QUIT:
             std::cout << "Good Bye!" << std::endl;
             run = false;
-            
+            break;
         default:
             std::cout << "Wrong input!" << std::endl;
             break;
