@@ -76,7 +76,7 @@ We need in the future to link all test files so we can run all unit tests at onc
 
 # Screenshots
 
-<img height="80" src="resources/screenshot.png">
+<img src="resources/screenshot.png">
 
 # Contribute
 
