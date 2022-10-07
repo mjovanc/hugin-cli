@@ -32,6 +32,7 @@
 
 #include <daemon.h>
 #include <config/cli_header.h>
+#include <boards.h>
 
 using namespace daemon;
 using namespace hugin;
@@ -45,8 +46,10 @@ int main(int argc, char* argv[])
     // Daemon daemon;
     // daemon.start();
 
-    // go directly to table view with left sidebar of opened boards and main chat window with timestamps
-
-
     // start sync
+
+    // go directly to table view with left sidebar of opened boards and main chat window with timestamps
+    Boards boards;
+
+    
 }
