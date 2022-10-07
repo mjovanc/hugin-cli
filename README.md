@@ -54,9 +54,9 @@ Hugin CLI - A Hugin Messenger client built with C++17.
 
 - /register (you will be prompted to enter more information)
 - /login (you will be prompted to enter password)
-- /join <board name>
-- /pm <wallet address here>
-- /pgm <group key>
+- /join `<board name>`
+- /pm `<wallet address here>`
+- /pgm `<group key>`
 
 ## Clean 
 
