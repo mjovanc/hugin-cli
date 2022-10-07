@@ -64,32 +64,37 @@ int main(int argc, char* argv[])
     // daemon.start();
     // start sync
 
-    std::string option;
+    bool run = true;
 
-    std::cout << "> ";
-    std::cin >> option;
+    while (run)
+    {
+        std::string option;
 
-    MenuOption menuOption = resolveOption(option);
+        std::cout << "> ";
+        std::cin >> option;
 
-    switch (menuOption)
-    { 
-    case REGISTER: 
-        std::cout << "Register was selected" << std::endl;
-        break;
-    case LOGIN:
-        std::cout << "Login was selected" << std::endl;
-        break;
-    case JOIN:
-        std::cout << "Join was selected" << std::endl;
-        break;
-    case QUIT:
-        std::cout << "Good Bye!" << std::endl;
-        return 0;
-    default:
-        std::cout << "Wrong input!" << std::endl;
-        break;
+        MenuOption menuOption = resolveOption(option);
+
+        switch (menuOption)
+        {
+        case REGISTER:
+            std::cout << "Register was selected" << std::endl;
+            break;
+        case LOGIN:
+            std::cout << "Login was selected" << std::endl;
+            break;
+        case JOIN:
+            std::cout << "Join was selected" << std::endl;
+            break;
+        case QUIT:
+            std::cout << "Good Bye!" << std::endl;
+            run = false;
+            
+        default:
+            std::cout << "Wrong input!" << std::endl;
+            break;
+        }
     }
 
-    // go directly to table view with left sidebar of opened boards and main chat window with timestamps
-    // Boards boards;
+    return 0;
 }
