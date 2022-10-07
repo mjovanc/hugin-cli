@@ -32,3 +32,13 @@
 Account::Account()
 {
 }
+
+void Account::create()
+{
+
+}
+
+void Account::login()
+{
+
+}

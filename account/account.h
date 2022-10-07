@@ -37,7 +37,7 @@ class Account
 public:
     Account();
 
-    void registerAccount();
+    void create();
     void login();
 };
 
