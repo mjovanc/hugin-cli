@@ -62,14 +62,14 @@ int main(int argc, char* argv[])
     std::cout << "> ";
     std::cin >> option;
 
-    switch (option) 
-    { }
+    MenuOption mo;
 
-    if (option == "/register")
-    {
-
+    switch (mo)
+    { 
+    case REGISTER: 
+        std::cout << "Register was selected" << std::endl;
+        break;
     }
-    
 
     // go directly to table view with left sidebar of opened boards and main chat window with timestamps
     // Boards boards;
