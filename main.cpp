@@ -45,8 +45,13 @@ int main(int argc, char* argv[])
 
     // Daemon daemon;
     // daemon.start();
-
     // start sync
+
+    std::string option;
+
+    std::cout << "> ";
+    std::cin >> option;
+    
 
     // go directly to table view with left sidebar of opened boards and main chat window with timestamps
     // Boards boards;
