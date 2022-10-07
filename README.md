@@ -24,6 +24,7 @@ Hugin CLI - A Hugin Messenger client built with C++17.
 
 - [Development Resources](#development-resources)
 - [Setup and run](#setup-and-run)
+    - [Commands](#commands)
     - [Clean](#clean)
 - [Testing](#testing)
     - [Unit Testing](#unit-testing)
@@ -48,6 +49,14 @@ Hugin CLI - A Hugin Messenger client built with C++17.
 3. Run `cmake -B ./build -S .`
 4. Go to build directory and run `make`
 5. Run executable `./Hugin`
+
+## Commands
+
+- /register (you will be prompted to enter more information)
+- /login (you will be prompted to enter password)
+- /join <board name>
+- /pm <wallet address here>
+- /pgm <group key>
 
 ## Clean 
 
