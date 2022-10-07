@@ -34,7 +34,6 @@
 
 #include <daemon.h>
 #include <config/cli_header.h>
-#include <boards.h>
 
 using namespace daemon;
 using namespace hugin;
@@ -43,14 +42,12 @@ using namespace hugin;
 enum MenuOption {
     REGISTER,
     LOGIN,
-    JOIN,
     QUIT
 };
 
 MenuOption resolveOption(std::string input) {
-    if (input == "/r") return REGISTER;
-    if (input == "/l") return LOGIN;
-    if (input == "/j") return JOIN;
+    if (input == "/register") return REGISTER;
+    if (input == "/login") return LOGIN;
     if (input == "/q") return QUIT;
 }
 
@@ -59,7 +56,7 @@ int main(int argc, char* argv[])
     // will use the program arguments above for --help
 
     std::cout << hugin::getProjectCLIHeader();
-
+        
     // Daemon daemon;
     // daemon.start();
     // start sync
@@ -77,22 +74,31 @@ int main(int argc, char* argv[])
 
         switch (menuOption)
         {
-        case REGISTER:
-            std::cout << "Register was selected" << std::endl;
-            break;
-        case LOGIN:
-            std::cout << "Login was selected" << std::endl;
-            break;
-        case JOIN:
-            std::cout << "Join was selected" << std::endl;
-            break;
-        case QUIT:
-            std::cout << "Good Bye!" << std::endl;
-            run = false;
-            break;
-        default:
-            std::cout << "Wrong input!" << std::endl;
-            break;
+            case REGISTER:
+            {
+                std::cout << "Register was selected" << std::endl;
+                break;
+            }
+            case LOGIN:
+            {
+                std::string password;
+
+                std::cout << "Enter password: ";
+                std::cin >> password;
+
+                break;
+            }
+            case QUIT:
+            {
+                std::cout << "Good Bye!" << std::endl;
+                run = false;
+                break;
+            }
+            default:
+            {
+                std::cout << "Wrong input!" << std::endl;
+                break;
+            }
         }
     }
 

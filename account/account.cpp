@@ -35,10 +35,12 @@ Account::Account()
 
 void Account::create()
 {
-
+	std::cout << "Creating account" << std::endl;
 }
 
 void Account::login()
 {
-
+	std::string password;
+	std::cout << "Enter password: ";
+	std::cin >> password;
 }

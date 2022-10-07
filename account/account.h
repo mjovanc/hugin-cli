@@ -34,6 +34,9 @@
 
 class Account
 {
+private:
+    std::string password;
+
 public:
     Account();
 
