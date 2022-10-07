@@ -83,8 +83,8 @@ int main(int argc, char* argv[])
         std::cout << "Join was selected" << std::endl;
         break;
     case QUIT:
-        std::cout << "Quit was selected" << std::endl;
-        break;
+        std::cout << "Good Bye!" << std::endl;
+        return 0;
     default:
         std::cout << "Wrong input!" << std::endl;
         break;
