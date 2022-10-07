@@ -32,13 +32,19 @@
 #include <cstdint>
 #include <iostream>
 
+#include "account.h"
+#include "wallet.h"
+
 class AccountService
 {
 public:
     AccountService();
 
     void createAccount(); // create a new account
-    void openAccount(); // this will load the existing account from database and it's conversation history (if we have the setting for that)
+    
+    void openAccount(); // this will try load the existing account from database and it's conversation history (if we have the setting for that)
+    
+    Wallet openWallet(Account &account);
 };
 
 #endif
