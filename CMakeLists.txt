@@ -62,12 +62,13 @@ target_link_libraries(daemon_test gtest_main)
 include_directories(${PROJECT_SOURCE_DIR})
 
 # add the executable
-add_executable(${PROJECT_NAME} main.cpp "boards/boards.cpp")
+add_executable(${PROJECT_NAME} main.cpp)
 
 # add the subdirectories
 add_subdirectory(crypto)
 add_subdirectory(daemon)
 add_subdirectory(db)
+add_subdirectory(boards)
 
 # include directories
 target_include_directories(
@@ -76,6 +77,7 @@ target_include_directories(
   crypto
   daemon
   db
+  boards
 )
 
 # link libraries
@@ -90,4 +92,5 @@ target_link_libraries(
   crypto
   daemon
   db
+  boards
 )
