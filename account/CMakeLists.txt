@@ -29,4 +29,6 @@
 add_library(
     account 
     account.cpp
+    account_service.cpp
+    wallet.cpp
 )

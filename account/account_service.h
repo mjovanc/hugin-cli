@@ -26,75 +26,19 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#ifndef ACCOUNT_SERVICE_H
+#define ACCOUNT_SERVICE_H
+
+#include <cstdint>
 #include <iostream>
-#include <iterator>
-#include <algorithm>
-#include <iostream>
-#include <stdexcept>
 
-#include <daemon.h>
-#include <config/cli_header.h>
+class AccountService
+{
+public:
+    AccountService();
 
-using namespace daemon;
-using namespace hugin;
-
-// we should perhaps move this later
-enum MenuOption {
-    REGISTER,
-    LOGIN,
-    QUIT
+    void createAccount(); // create a new account
+    void openAccount(); // this will load the existing account from database and it's conversation history (if we have the setting for that)
 };
 
-MenuOption resolveOption(std::string input) {
-    if (input == "/register") return REGISTER;
-    if (input == "/login") return LOGIN;
-    if (input == "/q") return QUIT;
-}
-
-int main(int argc, char* argv[])
-{
-    // will use the program arguments above for --help
-
-    std::cout << hugin::getProjectCLIHeader();
-        
-    // Daemon daemon;
-    // daemon.start();
-    // start sync
-
-    std::string option;
-
-    std::cout << "> ";
-    std::cin >> option;
-
-    MenuOption menuOption = resolveOption(option);
-
-    switch (menuOption)
-    {
-        case REGISTER:
-        {
-            std::cout << "Register was selected" << std::endl;
-            break;
-        }
-        case LOGIN:
-        {
-            std::string password;
-
-            std::cout << "Enter password: ";
-            std::cin >> password;
-
-            break;
-        }
-        case QUIT:
-        {
-            std::cout << "Good Bye!" << std::endl;
-            break;
-        }
-        default:
-        {
-            std::cout << "Wrong input!" << std::endl;
-            break;
-        }
-    }
-
-    return 0;
-}
+#endif
