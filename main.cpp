@@ -29,6 +29,8 @@
 #include <iostream>
 #include <iterator>
 #include <algorithm>
+#include <iostream>
+#include <stdexcept>
 
 #include <daemon.h>
 #include <config/cli_header.h>
@@ -36,6 +38,25 @@
 
 using namespace daemon;
 using namespace hugin;
+
+// we should perhaps move this later
+enum MenuOption {
+    REGISTER,
+    LOGIN,
+    JOIN,
+    PM,
+    PGM,
+    QUIT
+};
+
+MenuOption resolveOption(std::string input) {
+    if (input == "/register") return REGISTER;
+    if (input == "/login") return LOGIN;
+    if (input == "/join") return JOIN;
+    if (input == "/pm") return PM;
+    if (input == "/pgm") return PGM;
+    if (input == "/q") return QUIT;
+}
 
 int main(int argc, char* argv[])
 {
@@ -47,32 +68,38 @@ int main(int argc, char* argv[])
     // daemon.start();
     // start sync
 
-    // we should perhaps move this later
-    enum MenuOption {
-        REGISTER,
-        LOGIN,
-        JOIN,
-        PM,
-        PGM
-    };
-
-
     std::string option;
 
     std::cout << "> ";
     std::cin >> option;
 
-    MenuOption mo;
+    MenuOption menuOption = resolveOption(option);
 
-    switch (mo)
+    switch (menuOption)
     { 
     case REGISTER: 
         std::cout << "Register was selected" << std::endl;
+        break;
+    case LOGIN:
+        std::cout << "Login was selected" << std::endl;
+        break;
+    case JOIN:
+        std::cout << "Join was selected" << std::endl;
+        break;
+    case PM:
+        std::cout << "Pm was selected" << std::endl;
+        break;
+    case PGM:
+        std::cout << "Pgm was selected" << std::endl;
+        break;
+    case QUIT:
+        std::cout << "Quit was selected" << std::endl;
+        break;
+    default:
+        std::cout << "Wrong input!" << std::endl;
         break;
     }
 
     // go directly to table view with left sidebar of opened boards and main chat window with timestamps
     // Boards boards;
-
-    
 }
