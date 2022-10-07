@@ -38,7 +38,7 @@ namespace hugin
     std::stringstream ss;
     ss << std::endl
       << asciiArt << std::endl
-      << " " << parameters::HUGIN_NAME << " v" << PROJECT_VERSION_LONG << std::endl
+      << " " << parameters::HUGIN_NAME << " v" << PROJECT_VERSION << std::endl
       << " This software is distributed under the General Public License v3.0"
       << std::endl << std::endl
       << " " << PROJECT_COPYRIGHT

@@ -36,7 +36,7 @@ namespace hugin
 {
   namespace parameters
   {
-    const char HUGIN_NAME[] = "Hugin";
+    const char HUGIN_NAME[] = "Hugin CLI";
     const char LATEST_VERSION_URL[] = "https://github.com/kryptokrona/hugin-cli";
     const std::string LICENSE_URL = "https://github.com/kryptokrona/hugin-cli/blob/master/LICENSE";
   }
