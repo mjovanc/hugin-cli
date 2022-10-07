@@ -42,8 +42,11 @@ int main(int argc, char* argv[])
 
     std::cout << hugin::getProjectCLIHeader();
 
-    Daemon daemon;
-    daemon.start();
+    // Daemon daemon;
+    // daemon.start();
+
+    // go directly to table view with left sidebar of opened boards and main chat window with timestamps
+
 
     // start sync
 }
