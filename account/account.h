@@ -36,6 +36,9 @@ class Account
 {
 public:
     Account();
+
+    void registerAccount();
+    void login();
 };
 
 #endif
