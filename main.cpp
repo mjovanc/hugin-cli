@@ -48,9 +48,9 @@ enum MenuOption {
 };
 
 MenuOption resolveOption(std::string input) {
-    if (input == "/register") return REGISTER;
-    if (input == "/login") return LOGIN;
-    if (input == "/join") return JOIN;
+    if (input == "/r") return REGISTER;
+    if (input == "/l") return LOGIN;
+    if (input == "/j") return JOIN;
     if (input == "/q") return QUIT;
 }
 
