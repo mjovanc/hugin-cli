@@ -38,14 +38,14 @@ namespace hugin
     std::stringstream ss;
     ss << std::endl
       << asciiArt << std::endl
-      << parameters::HUGIN_NAME << " v" << PROJECT_VERSION << std::endl
-      << "This software is distributed under the General Public License v3.0"
+      << "  " << parameters::HUGIN_NAME << " v" << PROJECT_VERSION << std::endl
+      << "  This software is distributed under the General Public License v3.0"
       << std::endl << std::endl
-      << PROJECT_COPYRIGHT
+      << "  " << PROJECT_COPYRIGHT
       << std::endl << std::endl
-      << "Additional Copyright(s) may apply, please see the included LICENSE file for more information." << std::endl
-      << "If you did not receive a copy of the LICENSE, please visit:" << std::endl
-      << parameters::LICENSE_URL
+      << "  Additional Copyright(s) may apply, please see the included LICENSE file for more information." << std::endl
+      << "  If you did not receive a copy of the LICENSE, please visit:" << std::endl
+      << "  " << parameters::LICENSE_URL
       << std::endl << std::endl;
 
     return ss.str();

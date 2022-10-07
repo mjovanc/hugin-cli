@@ -27,15 +27,22 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 const std::string windowsAsciiArt = R""""(
-     __  __            _          ________    ____
-    / / / __  ______ _(_____     / ____/ /   /  _/
-   / /_/ / / / / __ `/ / __ \   / /   / /    / /  
-  / __  / /_/ / /_/ / / / / /  / /___/ /____/ /   
- /_/ /_/\__,_/\__, /_/_/ /_/   \____/_____/___/   
-             /____/                               
+      __  __            _          ________    ____
+     / / / __  ______ _(_____     / ____/ /   /  _/
+    / /_/ / / / / __ `/ / __ \   / /   / /    / /  
+   / __  / /_/ / /_/ / / / / /  / /___/ /____/ /   
+  /_/ /_/\__,_/\__, /_/_/ /_/   \____/_____/___/   
+              /____/                               
 )"""";
 
-const std::string nonWindowsAsciiArt = "Hej";
+const std::string nonWindowsAsciiArt = R""""(
+      __  __            _          ________    ____
+     / / / __  ______ _(_____     / ____/ /   /  _/
+    / /_/ / / / / __ `/ / __ \   / /   / /    / /  
+   / __  / /_/ / /_/ / / / / /  / /___/ /____/ /   
+  /_/ /_/\__,_/\__, /_/_/ /_/   \____/_____/___/   
+              /____/                               
+)"""";
 
 /* windows has some characters it won't display in a terminal. If your ascii
    art works fine on windows and linux terminals, just replace 'asciiArt' with

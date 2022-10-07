@@ -31,7 +31,7 @@
 
 Boards::Boards()
 {
-	// clear the screen on initialize
+	// clear the screen on init
 	system("CLS");
 
 }
