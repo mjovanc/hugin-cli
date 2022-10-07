@@ -44,8 +44,6 @@ enum MenuOption {
     REGISTER,
     LOGIN,
     JOIN,
-    /*PM,
-    PGM,*/
     QUIT
 };
 
@@ -53,8 +51,6 @@ MenuOption resolveOption(std::string input) {
     if (input == "/register") return REGISTER;
     if (input == "/login") return LOGIN;
     if (input == "/join") return JOIN;
-    //if (input == "/pm") return PM;
-    //if (input == "/pgm") return PGM;
     if (input == "/q") return QUIT;
 }
 
@@ -86,12 +82,6 @@ int main(int argc, char* argv[])
     case JOIN:
         std::cout << "Join was selected" << std::endl;
         break;
-    /*case PM:
-        std::cout << "Pm was selected" << std::endl;
-        break;
-    case PGM:
-        std::cout << "Pgm was selected" << std::endl;
-        break;*/
     case QUIT:
         std::cout << "Quit was selected" << std::endl;
         break;
