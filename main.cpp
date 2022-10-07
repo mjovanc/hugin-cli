@@ -47,10 +47,28 @@ int main(int argc, char* argv[])
     // daemon.start();
     // start sync
 
+    // we should perhaps move this later
+    enum MenuOption {
+        REGISTER,
+        LOGIN,
+        JOIN,
+        PM,
+        PGM
+    };
+
+
     std::string option;
 
     std::cout << "> ";
     std::cin >> option;
+
+    switch (option) 
+    { }
+
+    if (option == "/register")
+    {
+
+    }
     
 
     // go directly to table view with left sidebar of opened boards and main chat window with timestamps
