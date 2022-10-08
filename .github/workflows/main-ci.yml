@@ -1,5 +1,10 @@
 name: Hugin CLI Main Pipeline
 
+env:
+  GITHUB_REGISTRY: 'ghcr.io'
+  GITHUB_OWNER: 'kryptokrona'
+  GITHUB_DOCKER_IMAGE: 'hugin-cli'
+
 on:
   push:
     branches:
@@ -83,3 +88,25 @@ jobs:
           cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
           make
         working-directory: build
+
+  docker:
+    name: Build and Publish Docker Image
+    runs-on: ubuntu-22.04
+    needs: [ build ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: benjlevesque/short-sha@v1.2
+
+      - name: Log into registry ghcr.io
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
+
+      - name: Build Docker
+        run: |
+          docker build -t $GITHUB_REGISTRY/$GITHUB_OWNER/$GITHUB_DOCKER_IMAGE:${{ env.SHA }} .
+      - name: Publish Docker
+        run: |
+          docker push $GITHUB_REGISTRY/$GITHUB_OWNER/$GITHUB_DOCKER_IMAGE:${{ env.SHA }}
