@@ -32,7 +32,7 @@
 #include <cstdint>
 #include <iostream>
 
-namespace daemon 
+namespace daemonx
 {
     class Daemon
     {
