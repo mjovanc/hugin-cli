@@ -35,7 +35,7 @@
 #include <daemon.h>
 #include <config/cli_header.h>
 
-using namespace daemon;
+using namespace daemonx;
 using namespace hugin;
 
 // we should perhaps move this later
