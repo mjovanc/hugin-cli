@@ -28,7 +28,7 @@
 
 #include "daemon.h"
 
-namespace daemonx
+namespace daemonx //TODO: change this namespace name
 {
 	Daemon::Daemon()
 	{
