@@ -22,7 +22,7 @@ WORKDIR /usr/src/hugin/build
 # build and install
 RUN cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17" .. && make -j$(nproc) --ignore-errors
 
-WORKDIR /usr/src/hugin/build/src
+WORKDIR /usr/src/hugin/build
 
 # set executable permission on kryptokrona deamon
 RUN chmod +x Hugin
