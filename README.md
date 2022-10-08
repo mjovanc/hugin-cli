@@ -1,4 +1,4 @@
-# Hugin CLI [![Hugin CLI Main Pipeline](https://github.com/mjovanc/hugin-cli/actions/workflows/main-ci.yml/badge.svg)](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml) 
+# Hugin CLI [![Hugin CLI Main Pipeline](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml/badge.svg)](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml) 
 
 Hugin CLI - A Hugin Messenger client built with C++17. 
 
@@ -20,7 +20,7 @@ Hugin CLI - A Hugin Messenger client built with C++17.
 - Web: https://kryptokrona.org
 - Docs: https://docs.kryptokrona.org
 - Mail: mjovanc@icloud.com
-- GitHub: https://github.com/mjovanc/hugin-cli
+- GitHub: https://github.com/kryptokrona/hugin-cli
 - Hugin: hugincli board on Hugin Messenger (currently only GUI version). It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
 - Twitter: @mjovanc
 
