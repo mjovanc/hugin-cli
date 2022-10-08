@@ -68,6 +68,10 @@ jobs:
           ninja --version
           cmake --version
 
+      - name: mkdir build
+        if: matrix.config.os == 'macos-latest'
+        run: mkdir build
+
       - name: Build macOS Target
         if: matrix.config.os == 'macos-latest'
         run: |
