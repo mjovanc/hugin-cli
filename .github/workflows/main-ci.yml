@@ -24,6 +24,11 @@ jobs:
             os: ubuntu-22.04,
             cc: "gcc", cxx: "g++"
           }
+          - {
+             name: "macOS Latest Clang", artifact: "macOS.7z",
+             os: macos-latest,
+             cc: "clang", cxx: "clang++"
+           }
     steps:
       - uses: actions/checkout@v2
 
@@ -51,6 +56,20 @@ jobs:
 
       - name: Build Ubuntu Target
         if: matrix.config.os == 'ubuntu-22.04'
+        run: |
+          cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
+          make
+        working-directory: build
+
+      - name: Install dependencies on macOS
+        if: matrix.config.os == 'macos-latest'
+        run: |
+          brew install cmake ninja
+          ninja --version
+          cmake --version
+
+      - name: Build macOS Target
+        if: matrix.config.os == 'macos-latest'
         run: |
           cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
           make
