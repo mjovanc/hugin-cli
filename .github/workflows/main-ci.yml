@@ -60,6 +60,7 @@ jobs:
          cmake -G "Visual Studio 17 2022" -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17" ..
 
       - name: Upload MSVC Artifact
+        if: matrix.config.os == 'windows-latest'
         uses: actions/upload-artifact@v3
         with:
           name: msvc-x64-build
@@ -79,6 +80,7 @@ jobs:
         working-directory: build
 
       - name: Upload Ubuntu Artifact
+        if: matrix.config.os == 'ubuntu-22.04'
         uses: actions/upload-artifact@v3
         with:
           name: ubuntu-x64-build
@@ -105,6 +107,7 @@ jobs:
         working-directory: build
 
       - name: Upload macOS Artifact
+        if: matrix.config.os == 'macos-latest'
         uses: actions/upload-artifact@v3
         with:
           name: macos-x64-build
