@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-       # Windows MSVC
+      # Windows MSVC
       - name: Install Dependencies
         if: matrix.config.os == 'windows-latest'
         uses: microsoft/setup-msbuild@v1.1
@@ -58,6 +58,13 @@ jobs:
         working-directory: build
         run: |
          cmake -G "Visual Studio 17 2022" -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17" ..
+
+      - name: Upload MSVC Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: msvc-x64-build
+          path: |
+            build/Hugin
       
       # Ubuntu 22.04
       - name: mkdir build
@@ -71,6 +78,14 @@ jobs:
           make
         working-directory: build
 
+      - name: Upload Ubuntu Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ubuntu-x64-build
+          path: |
+            build/Hugin
+
+      # macOS
       - name: Install dependencies on macOS
         if: matrix.config.os == 'macos-latest'
         run: |
@@ -88,6 +103,13 @@ jobs:
           cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
           make
         working-directory: build
+
+      - name: Upload macOS Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-x64-build
+          path: |
+            build/Hugin
 
   docker:
     name: Build and Publish Docker Image
