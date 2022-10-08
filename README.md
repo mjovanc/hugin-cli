@@ -10,6 +10,8 @@ Hugin CLI - A Hugin Messenger client built with C++17.
     - [Clean](#clean)
 - [Testing](#testing)
     - [Unit Testing](#unit-testing)
+- [CI/CD](#cicd)
+- [Screenshots](#screenshots)
 - [Contribute](#contribute)
     - [Pull request](#pull-request)
 - [Contributors](#contributors)
@@ -56,6 +58,18 @@ To run the test cases in **daemon_test.cpp** that comes along we need (after we 
 `./build/daemon_test`
 
 We need in the future to link all test files so we can run all unit tests at once.
+
+# CI/CD
+
+This project is automatically built, tested and deployed using GitHub Actions. We have two pipelines:
+
+- **Main Pipeline** - This is the pipeline that runs the code merged into our master branch.
+- **Pull Request Pipeline** - This is the pipeline that runs each time a pull request come in so the reviewer has some help evaluating if the code is good enough to be merged.
+
+The Main Pipeline do everything the Pull Request Pipeline does in addition to building and publishing a Docker Image to
+the project tagged by the project name, owner, repository and short form of commit SHA value. We also setup continuous deployment so if all the steps succeed it will upload a new Docker image to GitHub Packages.
+
+To learn how we deploy to our VPS read the documentation here: [Ansible Documentation](ansible/README.md)
 
 # Screenshots
 
