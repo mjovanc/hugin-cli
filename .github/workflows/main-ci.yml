@@ -65,7 +65,7 @@ jobs:
         with:
           name: msvc-x64
           path: |
-            build/Hugin
+            out/build/x64-Debug/Hugin
 
       - name: Upload MinGW Artifact
         if: matrix.config.artifact == 'Windows-MinGW-x64'
