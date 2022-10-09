@@ -31,6 +31,8 @@
 #include "wallet.h"
 #include "db/database.h"
 
+using namespace db;
+
 namespace account
 {
     AccountService::AccountService()
