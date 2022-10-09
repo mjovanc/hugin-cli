@@ -63,9 +63,8 @@ jobs:
 
       - name: test
         if: matrix.config.os == 'windows-latest'
-        working-directory: build
+        working-directory: build/x64
         run: ls 
-
          
       - name: Upload MSVC Artifact
         if: matrix.config.artifact == 'Windows-MSVC-x64'
