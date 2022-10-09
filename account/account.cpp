@@ -29,21 +29,24 @@
 #include <stdlib.h>
 #include "account.h"
 
-Account::Account()
+namespace account
 {
-}
+	Account::Account()
+	{
+	}
 
-std::string Account::getUsername()
-{
-	return username;
-}
+	std::string Account::getUsername()
+	{
+		return username;
+	}
 
-void Account::setUsername(std::string username)
-{
-	username = username;
-}
+	void Account::setUsername(std::string username)
+	{
+		username = username;
+	}
 
-void Account::setPassword(std::string password)
-{
-	password = password;
+	void Account::setPassword(std::string password)
+	{
+		password = password;
+	}
 }

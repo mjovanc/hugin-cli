@@ -32,10 +32,15 @@
 #include <cstdint>
 #include <iostream>
 
-class Wallet
+namespace account
 {
-public:
-    Wallet();
-};
+    class Wallet
+    {
+    public:
+        Wallet();
+    };
+}
+
+
 
 #endif

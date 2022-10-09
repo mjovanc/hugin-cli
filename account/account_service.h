@@ -35,16 +35,20 @@
 #include "account.h"
 #include "wallet.h"
 
-class AccountService
+namespace account 
 {
-public:
-    AccountService();
+    class AccountService
+    {
+    public:
+        AccountService();
 
-    void createAccount(std::string &username, std::string &password); // create a new account (might want to change this name to create and loginAccount to login)
-    
-    void loginAccount(std::string &username, std::string &password); // this will try load the existing account from database and it's conversation history (if we have the setting for that)
-    
-    Wallet openWallet(Account &account);
-};
+        void createAccount(std::string &username, std::string &password); // create a new account (might want to change this name to create and loginAccount to login)
+        
+        void loginAccount(std::string &username, std::string &password); // this will try load the existing account from database and it's conversation history (if we have the setting for that)
+        
+        Wallet openWallet(Account &account);
+    };
+}
+
 
 #endif

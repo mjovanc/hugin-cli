@@ -30,39 +30,43 @@
 #include "account_service.h"
 #include "wallet.h"
 
-AccountService::AccountService()
+namespace account
 {
+    AccountService::AccountService()
+    {
+    }
+
+    void AccountService::createAccount(std::string &username, std::string &password)
+    {
+        // create SQLite3 database with username and password
+
+        // start the daemon  
+
+        // create a new wallet
+
+        std::cout << "You have successfully created an account!" << std::endl;
+
+        // if it already exists just login the user (and login either way)
+        loginAccount(username, password);
+    }
+
+    void AccountService::loginAccount(std::string &username, std::string &password)
+    {
+        // login to SQLite3 database
+
+        // start the daemon  
+
+        // open existing wallet
+
+        std::cout << "You have successfully logged in!" << std::endl;
+
+        // we should start displaying incoming board posts after this
+    }
+
+    Wallet openWallet(Account &account)
+    {
+        Wallet w;
+        return w;
+    }
 }
 
-void AccountService::createAccount(std::string &username, std::string &password)
-{
-    // create SQLite3 database with username and password
-
-     // start the daemon  
-
-    // create a new wallet
-
-    std::cout << "You have successfully created an account!" << std::endl;
-
-    // if it already exists just login the user (and login either way)
-    loginAccount(username, password);
-}
-
-void AccountService::loginAccount(std::string &username, std::string &password)
-{
-    // login to SQLite3 database
-
-    // start the daemon  
-
-    // open existing wallet
-
-    std::cout << "You have successfully logged in!" << std::endl;
-
-    // we should start displaying incoming board posts after this
-}
-
-Wallet openWallet(Account &account)
-{
-    Wallet w;
-    return w;
-}

@@ -29,6 +29,10 @@
 #include <stdlib.h>
 #include "wallet.h"
 
-Wallet::Wallet()
+namespace account
 {
+    Wallet::Wallet()
+    {
+    }
 }
+

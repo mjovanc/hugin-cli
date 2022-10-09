@@ -34,20 +34,23 @@
 
 // #include "wallet.h"
 
-class Account
+namespace account
 {
-private:
-    std::string username;
-    std::string password;
-    // Wallet wallet;
+    class Account
+    {
+    private:
+        std::string username;
+        std::string password;
+        // Wallet wallet;
 
-public:
-    Account();
+    public:
+        Account();
 
-    std::string getUsername();
-    void setUsername(std::string);
-    void setPassword(std::string);
+        std::string getUsername();
+        void setUsername(std::string);
+        void setPassword(std::string);
 
-};
+    };
+}
 
 #endif
