@@ -45,6 +45,9 @@ void AccountService::createAccount()
     std::cout << "Enter password: ";
     std::cin >> password;
 
+    // create SQLite3 database with username and password
+    // if it already exists, login the user
+
     // start the daemon  
 
     // create a new wallet
@@ -62,6 +65,8 @@ void AccountService::loginAccount()
 
     std::cout << "Enter password: ";
     std::cin >> password;
+
+    // login to SQLite3 database
 
     // start the daemon  
 
