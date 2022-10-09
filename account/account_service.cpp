@@ -31,8 +31,6 @@
 #include "wallet.h"
 #include "db/database.h"
 
-using namespace db;
-
 namespace account
 {
     AccountService::AccountService()
@@ -44,10 +42,10 @@ namespace account
         // question: should we move this to the constructor or initialize here and
         // pass this object as a parameter to loginAccount since we need to call the
         // database in that method as well?
-        db::Database db;
+        db::Database database;
 
         // we use the username as the database name 
-        db.open(username);
+        database.open(username);
         // create SQLite3 database with username and password
 
         // start the daemon  
