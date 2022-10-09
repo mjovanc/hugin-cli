@@ -29,9 +29,11 @@
 #include <stdlib.h>
 #include "boards.h"
 
-Boards::Boards()
+namespace boards
 {
-	// clear the screen on init
-	system("CLS");
-
+	Boards::Boards()
+	{
+		// clear the screen on init
+		system("CLS");
+	}
 }

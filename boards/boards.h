@@ -32,10 +32,13 @@
 #include <cstdint>
 #include <iostream>
 
-class Boards
+namespace boards
 {
-public:
-    Boards();
-};
+    class Boards
+    {
+    public:
+        Boards();
+    };
+}
 
 #endif
