@@ -36,9 +36,6 @@
 #include <config/cli_header.h>
 #include <account/account_service.h>
 
-using namespace daemonx;
-using namespace hugin;
-
 // we should perhaps move this later
 enum MenuOption {
     REGISTER,
@@ -58,7 +55,7 @@ int main(int argc, char* argv[])
 
     std::cout << hugin::getProjectCLIHeader();
         
-    AccountService as;
+    account::AccountService as;
 
     bool running = true;
 
