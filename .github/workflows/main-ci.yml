@@ -63,7 +63,7 @@ jobs:
 
       - name: test
         if: matrix.config.os == 'windows-latest'
-        working-directory: build/x64/Debug/ALL_BUILD
+        working-directory: build
         run: ls 
          
       - name: Upload MSVC Artifact
