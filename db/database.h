@@ -38,6 +38,8 @@ namespace db
     {
     public:
         Database();
+
+        int open();
     };
 }
 

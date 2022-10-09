@@ -27,6 +27,8 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <stdlib.h>
+#include <iostream> 
+#include <db/sqlite3.h>
 #include "database.h"
 
 namespace db
@@ -34,4 +36,29 @@ namespace db
 	Database::Database()
 	{
 	}
+
+    int Database::open()
+    {
+        // pointer to SQLite connection
+        sqlite3* db; 
+        
+        // save the connection result
+        int exit = 0;
+        exit = sqlite3_open("example.db", &db); 
+    
+        // test if there was an error
+        if (exit) { 
+            
+            std::cout << "DB Open Error: " << sqlite3_errmsg(db) << std::endl; 
+            
+        } else {
+
+            std::cout << "Opened Database Successfully!" << std::endl; 
+        }
+        
+        // close the connection
+        sqlite3_close(db); 
+        
+        return (0); 
+    }
 }
