@@ -28,6 +28,9 @@
 
 #include "sqlite3.h"
 
-Sqlite3::Sqlite3()
+namespace db
 {
+    Sqlite3::Sqlite3()
+    {
+    }
 }

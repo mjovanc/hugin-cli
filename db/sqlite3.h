@@ -32,10 +32,13 @@
 #include <cstdint>
 #include <iostream>
 
-class Sqlite3
+namespace db
 {
-    public: 
-        Sqlite3();
-};
+    class Sqlite3
+    {
+        public: 
+            Sqlite3();
+    };
+}
 
 #endif
