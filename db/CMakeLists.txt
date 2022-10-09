@@ -28,5 +28,5 @@
 
 add_library(
     db 
-    sqlite3.cpp
+    sqlite3.c
 )
