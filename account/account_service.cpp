@@ -28,6 +28,7 @@
 
 #include <stdlib.h>
 #include "account_service.h"
+#include "wallet.h"
 
 AccountService::AccountService()
 {
@@ -42,7 +43,13 @@ void AccountService::createAccount()
     std::cin >> username;
 
     std::cout << "Enter password: ";
-    std::cin >> password;   
+    std::cin >> password;
+
+    // start the daemon  
+
+    // create a new wallet
+
+    std::cout << "You have successfully created an account!" << std::endl;
 }
 
 void AccountService::loginAccount()
@@ -55,4 +62,16 @@ void AccountService::loginAccount()
 
     std::cout << "Enter password: ";
     std::cin >> password;
+
+    // start the daemon  
+
+    // open existing wallet
+
+    std::cout << "You have successfully logged in!" << std::endl;
+}
+
+Wallet openWallet(Account &account)
+{
+    Wallet w;
+    return w;
 }

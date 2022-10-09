@@ -54,7 +54,7 @@ MenuOption resolveOption(std::string input) {
 
 int main(int argc, char* argv[])
 {
-    // will use the program arguments above for --help
+    // will use the program arguments above for --help (--version etc)
 
     std::cout << hugin::getProjectCLIHeader();
         
