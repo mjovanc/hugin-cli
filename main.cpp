@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 
                 std::cout << "Enter password: ";
                 std::cin >> password;
-                as.createAccount(username, password);
+                as.createAccount(&username, &password);
                 break;
             }
             case LOGIN:
@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
 
                 std::cout << "Enter password: ";
                 std::cin >> password;
-                as.loginAccount(username, password);
+                as.loginAccount(&username, &password);
                 break;
             }
             case QUIT:

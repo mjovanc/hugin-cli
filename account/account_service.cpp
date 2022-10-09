@@ -37,7 +37,7 @@ namespace account
     {
     }
 
-    void AccountService::createAccount(std::string &username, std::string &password)
+    void AccountService::createAccount(std::string *username, std::string *password)
     {
         // question: should we move this to the constructor or initialize here and
         // pass this object as a parameter to loginAccount since we need to call the
@@ -58,7 +58,7 @@ namespace account
         loginAccount(username, password);
     }
 
-    void AccountService::loginAccount(std::string &username, std::string &password)
+    void AccountService::loginAccount(std::string *username, std::string *password)
     {
         // login to SQLite3 database
 
@@ -71,7 +71,7 @@ namespace account
         // we should start displaying incoming board posts after this
     }
 
-    Wallet openWallet(Account &account)
+    Wallet openWallet(Account *account)
     {
         Wallet w;
         return w;
