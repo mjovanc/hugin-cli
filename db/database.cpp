@@ -37,7 +37,7 @@ namespace db
 	{
 	}
 
-    int Database::open()
+    int Database::open(std::string dbName)
     {
         // pointer to SQLite connection
         sqlite3* db; 
@@ -48,11 +48,8 @@ namespace db
     
         // test if there was an error
         if (exit) { 
-            
             std::cout << "DB Open Error: " << sqlite3_errmsg(db) << std::endl; 
-            
         } else {
-
             std::cout << "Opened Database Successfully!" << std::endl; 
         }
         
