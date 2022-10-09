@@ -31,6 +31,7 @@
 #include <config/ascii.h>
 #include "version.h"
 
+//TODO: should we change this namespace name to config?
 namespace hugin
 {
   inline std::string getProjectCLIHeader()
