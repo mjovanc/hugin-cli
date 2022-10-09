@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include "account_service.h"
 #include "wallet.h"
+#include "db/database.h"
 
 namespace account
 {
@@ -38,6 +39,8 @@ namespace account
 
     void AccountService::createAccount(std::string &username, std::string &password)
     {
+        db::Database db;
+        db.open();
         // create SQLite3 database with username and password
 
         // start the daemon  
