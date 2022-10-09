@@ -28,6 +28,9 @@
 
 #include "crypto.h"
 
-Crypto::Crypto()
+namespace crypto
 {
+    Crypto::Crypto()
+    {
+    }
 }

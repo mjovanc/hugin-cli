@@ -32,10 +32,13 @@
 #include <cstdint>
 #include <iostream>
 
-class Crypto
+namespace crypto
 {
-    public: 
-        Crypto();
-};
+    class Crypto
+    {
+        public: 
+            Crypto();
+    };
+}
 
 #endif
