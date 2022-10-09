@@ -59,7 +59,8 @@ jobs:
         working-directory: build
         run: |
          cmake -G "Visual Studio 17 2022" -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17" ..
-
+         MSBuild.exe Hugin.sln
+         
       - name: Upload MSVC Artifact
         if: matrix.config.artifact == 'Windows-MSVC-x64'
         uses: actions/upload-artifact@v3
