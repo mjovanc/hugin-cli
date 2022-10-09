@@ -19,41 +19,33 @@ jobs:
       matrix:
         config:
           - {
-             name: "Windows Latest MSVC / x64", 
-             artifact: "Windows-MSVC-x64.7z",
-             build_type: "Release",
+             name: "Windows Latest MSVC / x64",
+             artifact: "Windows-MSVC-x64",
              os: windows-latest,
-             cc: "cl", cxx: "cl",
-             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
-             archiver: "7z a",
-             generators: "Visual Studio 17 2022",
+             cc: "cl", 
+             cxx: "cl",
+             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
            }
           - {
-            name: "Windows Latest MinGW / x64",
-            artifact: "Windows-MinGW-x64.7z",
-            build_type: "Release",
+            name: "Windows Latest MinGW / x64", 
+            artifact: "Windows-MinGW-x64",
             os: windows-latest,
-            cc: "gcc", cxx: "g++",
-            archiver: "7z a",
-            generators: "Ninja"
+            cc: "gcc", 
+            cxx: "g++"
           }
           - {
-            name: "Ubuntu Latest GCC / x64",
-            artifact: "Linux-x64.7z",
-            build_type: "Release",
+            name: "Ubuntu Latest GCC / x64", 
+            artifact: "Linux-x64",
             os: ubuntu-22.04,
-            cc: "gcc", cxx: "g++",
-            archiver: "7z a",
-            generators: "Ninja"
+            cc: "gcc", 
+            cxx: "g++"
           }
           - {
-            name: "macOS Latest Clang / x64",
-            artifact: "macOS-x64.7z",
-            build_type: "Release",
-            os: macos-latest,
-            cc: "clang", cxx: "clang++",
-            archiver: "7z a",
-            generators: "Ninja"
+             name: "macOS Latest Clang / x64", 
+             artifact: "macOS-x64",
+             os: macos-latest,
+             cc: "clang", 
+             cxx: "clang++"
           }
     steps:
       - uses: actions/checkout@v2
@@ -81,7 +73,15 @@ jobs:
         with:
           name: msvc-x64
           path: |
-            out/build/x64-Debug/Hugin
+            build/Hugin
+
+      - name: Upload MinGW Artifact
+        if: matrix.config.artifact == 'Windows-MinGW-x64'
+        uses: actions/upload-artifact@v3
+        with:
+          name: mingw-x64
+          path: |
+            build/Hugin
       
       # Ubuntu 22.04
       - name: mkdir build
@@ -94,6 +94,14 @@ jobs:
           cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
           make
         working-directory: build
+
+      - name: Upload Ubuntu Artifact
+        if: matrix.config.artifact == 'Linux-x64'
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-x64
+          path: |
+            build/Hugin
 
       # macOS
       - name: Install dependencies on macOS
@@ -114,47 +122,13 @@ jobs:
           make
         working-directory: build
 
-      - name: Configure
-        shell: bash
-        run: |
-          mkdir build
-          mkdir instdir
-          cmake \
-            -S . \
-            -B . \
-            -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
-            -G "${{ matrix.config.generators }}" \
-            -DCMAKE_INSTALL_PREFIX:PATH=instdir
-      - name: Build
-        shell: bash
-        run: cmake --build . --config ${{ matrix.config.build_type }}
-
-      - name: Install Strip
-        shell: bash
-        run: cmake --install . --strip
-
-      - name: Pack
-        shell: bash
-        working-directory: instdir
-        run: |
-          ls -laR
-          ${{ matrix.config.archiver }} ../${{ matrix.config.artifact }} .
-      - name: Upload
-        uses: actions/upload-artifact@v1
+      - name: Upload macOS Artifact
+        if: matrix.config.artifact == 'macOS-x64'
+        uses: actions/upload-artifact@v3
         with:
-          path: ./${{ matrix.config.artifact }}
-          name: ${{ matrix.config.artifact }}
-
-      - name: Upload release asset
-        if: github.event_name == 'release' && (github.event.action == 'published' || github.event.action == 'created')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./${{ matrix.config.artifact }}
-          asset_name: ${{ matrix.config.artifact }}.zip
-          asset_content_type: application/zip
+          name: macos-x64
+          path: |
+            build/Hugin
 
   docker:
     name: Build and Publish Docker Image
