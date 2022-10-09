@@ -34,6 +34,7 @@
 
 #include <daemon.h>
 #include <config/cli_header.h>
+#include <account/account_service.h>
 
 using namespace daemonx;
 using namespace hugin;
@@ -57,49 +58,45 @@ int main(int argc, char* argv[])
 
     std::cout << hugin::getProjectCLIHeader();
         
-    // Daemon daemon;
-    // daemon.start();
-    // start sync
+    AccountService as;
 
-    std::string option;
+    bool running = true;
 
-    std::cout << "> ";
-    std::cin >> option;
-
-    MenuOption menuOption = resolveOption(option);
-
-    switch (menuOption)
+    while (running) 
     {
-        case REGISTER:
-        {
-            // it should be possible to register for a new account in any time even if it already exists
-            std::cout << "Register was selected" << std::endl;
-            break;
-        }
-        case LOGIN:
-        {
-            std::string username;
-            std::string password;
+        std::string option;
 
-            std::cout << "Enter username: ";
-            std::cin >> username;
+        std::cout << "> ";
+        std::cin >> option;
 
-            std::cout << "Enter password: ";
-            std::cin >> password;
+        MenuOption menuOption = resolveOption(option);
 
-            break;
-        }
-        case QUIT:
+        switch (menuOption)
         {
-            std::cout << "Good Bye!" << std::endl;
-            break;
-        }
-        default:
-        {
-            std::cout << "Wrong input!" << std::endl;
-            break;
+            case REGISTER:
+            {
+                // it should be possible to register for a new account in any time even if it already exists
+                as.createAccount();
+                break;
+            }
+            case LOGIN:
+            {
+                as.loginAccount();
+                break;
+            }
+            case QUIT:
+            {
+                std::cout << "Good Bye!" << std::endl;
+                running = false;
+                break;
+            }
+            default:
+            {
+                std::cout << "Wrong input!" << std::endl;
+                break;
+            }
         }
     }
-
+    
     return 0;
 }

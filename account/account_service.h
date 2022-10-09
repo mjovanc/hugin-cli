@@ -40,7 +40,7 @@ class AccountService
 public:
     AccountService();
 
-    void createAccount(); // create a new account
+    void createAccount(); // create a new account (might want to change this name to create and loginAccount to login)
     
     void loginAccount(); // this will try load the existing account from database and it's conversation history (if we have the setting for that)
     
