@@ -38,6 +38,7 @@ namespace db
     {
     public:
         Database();
+        ~Database();
 
         int open(std::string dbName);
     };

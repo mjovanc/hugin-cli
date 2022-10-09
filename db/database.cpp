@@ -38,6 +38,10 @@ namespace db
 	{
 	}
 
+    Database::~Database()
+    {
+    }
+
     int Database::open(std::string dbName)
     {
         // pointer to SQLite connection
