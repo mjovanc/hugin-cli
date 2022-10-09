@@ -19,7 +19,9 @@ jobs:
       matrix:
         config:
           - {
-             name: "Windows Latest MSVC / x64", artifact: "Windows-MSVC-x64.7z",
+             name: "Windows Latest MSVC / x64", 
+             artifact: "Windows-MSVC-x64.7z",
+             build_type: "Release",
              os: windows-latest,
              cc: "cl", cxx: "cl",
              environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
@@ -27,21 +29,27 @@ jobs:
              generators: "Visual Studio 17 2022",
            }
           - {
-            name: "Windows Latest MinGW / x64", artifact: "Windows-MinGW-x64.7z",
+            name: "Windows Latest MinGW / x64",
+            artifact: "Windows-MinGW-x64.7z",
+            build_type: "Release",
             os: windows-latest,
             cc: "gcc", cxx: "g++",
             archiver: "7z a",
             generators: "Ninja"
           }
           - {
-            name: "Ubuntu Latest GCC / x64", artifact: "Linux-x64.7z",
+            name: "Ubuntu Latest GCC / x64",
+            artifact: "Linux-x64.7z",
+            build_type: "Release",
             os: ubuntu-22.04,
             cc: "gcc", cxx: "g++",
             archiver: "7z a",
             generators: "Ninja"
           }
           - {
-            name: "macOS Latest Clang / x64", artifact: "macOS-x64.7z",
+            name: "macOS Latest Clang / x64",
+            artifact: "macOS-x64.7z",
+            build_type: "Release",
             os: macos-latest,
             cc: "clang", cxx: "clang++",
             archiver: "7z a",
@@ -106,8 +114,33 @@ jobs:
           make
         working-directory: build
 
+      - name: Configure
+        shell: bash
+        run: |
+          mkdir build
+          mkdir instdir
+          cmake \
+            -S . \
+            -B . \
+            -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
+            -G "${{ matrix.config.generators }}" \
+            -DCMAKE_INSTALL_PREFIX:PATH=instdir
+      - name: Build
+        shell: bash
+        run: cmake --build . --config ${{ matrix.config.build_type }}
+
+      - name: Install Strip
+        shell: bash
+        run: cmake --install . --strip
+
+      - name: Pack
+        shell: bash
+        working-directory: instdir
+        run: |
+          ls -laR
+          ${{ matrix.config.archiver }} ../${{ matrix.config.artifact }} .
       - name: Upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v1
         with:
           path: ./${{ matrix.config.artifact }}
           name: ${{ matrix.config.artifact }}
