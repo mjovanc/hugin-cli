@@ -71,17 +71,29 @@ int main(int argc, char* argv[])
 
         MenuOption menuOption = resolveOption(option);
 
+        std::string username;
+        std::string password;
+
         switch (menuOption)
         {
             case REGISTER:
             {
-                // it should be possible to register for a new account in any time even if it already exists
-                as.createAccount();
+                std::cout << "Enter username: ";
+                std::cin >> username;
+
+                std::cout << "Enter password: ";
+                std::cin >> password;
+                as.createAccount(username, password);
                 break;
             }
             case LOGIN:
             {
-                as.loginAccount();
+                std::cout << "Enter username: ";
+                std::cin >> username;
+
+                std::cout << "Enter password: ";
+                std::cin >> password;
+                as.loginAccount(username, password);
                 break;
             }
             case QUIT:

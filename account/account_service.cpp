@@ -34,38 +34,22 @@ AccountService::AccountService()
 {
 }
 
-void AccountService::createAccount()
+void AccountService::createAccount(std::string &username, std::string &password)
 {
-    std::string username;
-    std::string password;
-
-    std::cout << "Enter username: ";
-    std::cin >> username;
-
-    std::cout << "Enter password: ";
-    std::cin >> password;
-
     // create SQLite3 database with username and password
-    // if it already exists, login the user
 
-    // start the daemon  
+     // start the daemon  
 
     // create a new wallet
 
     std::cout << "You have successfully created an account!" << std::endl;
+
+    // if it already exists just login the user (and login either way)
+    loginAccount(username, password);
 }
 
-void AccountService::loginAccount()
+void AccountService::loginAccount(std::string &username, std::string &password)
 {
-    std::string username;
-    std::string password;
-
-    std::cout << "Enter username: ";
-    std::cin >> username;
-
-    std::cout << "Enter password: ";
-    std::cin >> password;
-
     // login to SQLite3 database
 
     // start the daemon  
@@ -73,6 +57,8 @@ void AccountService::loginAccount()
     // open existing wallet
 
     std::cout << "You have successfully logged in!" << std::endl;
+
+    // we should start displaying incoming board posts after this
 }
 
 Wallet openWallet(Account &account)
