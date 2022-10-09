@@ -67,7 +67,7 @@ jobs:
         with:
           name: msvc-x64
           path: |
-            out/build/x64-Debug/Hugin.exe
+            x64-Debug/Hugin.exe
       
       # Ubuntu 22.04
       - name: mkdir build
