@@ -110,7 +110,7 @@ jobs:
           ${{ matrix.config.archiver }} ../${{ matrix.config.artifact }} .
 
       - name: Upload
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           path: ./${{ matrix.config.artifact }}
           name: ${{ matrix.config.artifact }}
