@@ -22,23 +22,31 @@ jobs:
              name: "Windows Latest MSVC / x64", artifact: "Windows-MSVC-x64.7z",
              os: windows-latest,
              cc: "cl", cxx: "cl",
-             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+             archiver: "7z a",
+             generators: "Visual Studio 17 2022",
            }
           - {
             name: "Windows Latest MinGW / x64", artifact: "Windows-MinGW-x64.7z",
             os: windows-latest,
-            cc: "gcc", cxx: "g++"
+            cc: "gcc", cxx: "g++",
+            archiver: "7z a",
+            generators: "Ninja"
           }
           - {
             name: "Ubuntu Latest GCC / x64", artifact: "Linux-x64.7z",
             os: ubuntu-22.04,
-            cc: "gcc", cxx: "g++"
+            cc: "gcc", cxx: "g++",
+            archiver: "7z a",
+            generators: "Ninja"
           }
           - {
-             name: "macOS Latest Clang / x64", artifact: "macOS-x64.7z",
-             os: macos-latest,
-             cc: "clang", cxx: "clang++"
-           }
+            name: "macOS Latest Clang / x64", artifact: "macOS-x64.7z",
+            os: macos-latest,
+            cc: "clang", cxx: "clang++",
+            archiver: "7z a",
+            generators: "Ninja"
+          }
     steps:
       - uses: actions/checkout@v2
 
@@ -97,10 +105,6 @@ jobs:
           cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
           make
         working-directory: build
-
-      - name: Install Strip
-        shell: bash
-        run: cmake --install . --strip
 
       - name: Pack
         shell: bash
