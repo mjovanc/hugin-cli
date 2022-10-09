@@ -32,16 +32,22 @@
 #include <cstdint>
 #include <iostream>
 
+// #include "wallet.h"
+
 class Account
 {
 private:
+    std::string username;
     std::string password;
+    // Wallet wallet;
 
 public:
     Account();
 
-    void create();
-    void login();
+    std::string getUsername();
+    void setUsername(std::string);
+    void setPassword(std::string);
+
 };
 
 #endif

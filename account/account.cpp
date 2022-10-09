@@ -33,14 +33,17 @@ Account::Account()
 {
 }
 
-void Account::create()
+std::string Account::getUsername()
 {
-	std::cout << "Creating account" << std::endl;
+	return username;
 }
 
-void Account::login()
+void Account::setUsername(std::string username)
 {
-	std::string password;
-	std::cout << "Enter password: ";
-	std::cin >> password;
+	username = username;
+}
+
+void Account::setPassword(std::string password)
+{
+	password = password;
 }
