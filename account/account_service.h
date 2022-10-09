@@ -42,7 +42,7 @@ public:
 
     void createAccount(); // create a new account
     
-    void openAccount(); // this will try load the existing account from database and it's conversation history (if we have the setting for that)
+    void loginAccount(); // this will try load the existing account from database and it's conversation history (if we have the setting for that)
     
     Wallet openWallet(Account &account);
 };
