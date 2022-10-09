@@ -89,6 +89,7 @@ target_link_directories(
   crypto
   daemon
 )
+
 target_link_libraries(
   ${PROJECT_NAME}
   crypto
