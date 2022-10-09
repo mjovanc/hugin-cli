@@ -39,7 +39,7 @@ namespace db
     public:
         Database();
 
-        int open(std::string* dbName);
+        int open(std::string dbName);
     };
 }
 
