@@ -28,6 +28,7 @@
 
 #include <stdlib.h>
 #include <iostream> 
+#include <sstream>
 #include <db/sqlite3.h>
 #include "database.h"
 
@@ -41,12 +42,20 @@ namespace db
     {
         // pointer to SQLite connection
         sqlite3* db; 
+
+        // this didn't work properly (it didn't save a database before)
+        // std::stringstream ss;
+        // ss << dbName << ".db";
+        // std::string fileName = ss.str();
+
+        // const char* fileNameArr = new char[fileName.length()+1];
         
         // save the connection result
         int exit = 0;
-        exit = sqlite3_open("example.db", &db); 
+        exit = sqlite3_open("change_this_later.db", &db); 
     
         // test if there was an error
+        // we should probably use a logging framework instead so the user will not see these
         if (exit) { 
             std::cout << "DB Open Error: " << sqlite3_errmsg(db) << std::endl; 
         } else {

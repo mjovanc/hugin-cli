@@ -43,7 +43,9 @@ namespace account
         // pass this object as a parameter to loginAccount since we need to call the
         // database in that method as well?
         db::Database db;
-        db.open();
+
+        // we use the username as the database name
+        db.open(username);
         // create SQLite3 database with username and password
 
         // start the daemon  
