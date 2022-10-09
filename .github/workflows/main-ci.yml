@@ -58,12 +58,12 @@ jobs:
         if: matrix.config.os == 'windows-latest'
         working-directory: build
         run: |
-         cmake -G "Visual Studio 17 2022" -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17" ..
+         cmake -G "Visual Studio 17 2022" ..
          MSBuild.exe Hugin.sln
 
       - name: test
         if: matrix.config.os == 'windows-latest'
-        working-directory: build
+        working-directory: build/Debug
         run: ls 
          
       - name: Upload MSVC Artifact
@@ -72,7 +72,7 @@ jobs:
         with:
           name: msvc-x64
           path: |
-            x64-Debug/Hugin.exe
+            Debug/Hugin.exe
       
       # Ubuntu 22.04
       - name: mkdir build
