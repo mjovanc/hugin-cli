@@ -45,7 +45,7 @@ namespace db
     int Database::open()
     {
         // pointer to SQLite connection
-        sqlite3* db; 
+        sqlite3* db;
 
         // this didn't work properly (it didn't save a database before)
         // std::stringstream ss;

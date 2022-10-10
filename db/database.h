@@ -41,7 +41,14 @@ namespace db
         
         ~Database();
 
+        // we should probably change the method name to a more specific use case
+        // such as createDB or createUser
+        // we should probably also create up the other tables needed such as user, settings, posts
         int open();
+
+        // not decided if the name of the method 
+        // should populate data such as settings or posts (need to create two overloading methods)
+        int populate(); 
     };
 }
 
