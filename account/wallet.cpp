@@ -34,5 +34,9 @@ namespace account
     Wallet::Wallet()
     {
     }
+
+    Wallet::~Wallet()
+    {
+    }
 }
 

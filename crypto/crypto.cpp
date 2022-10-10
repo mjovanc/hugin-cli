@@ -33,4 +33,8 @@ namespace crypto
     Crypto::Crypto()
     {
     }
+
+    Crypto::~Crypto()
+    {
+    }
 }

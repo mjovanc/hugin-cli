@@ -35,6 +35,10 @@ namespace account
 	{
 	}
 
+	Account::~Account()
+	{
+	}
+
 	std::string Account::getUsername()
 	{
 		return username;

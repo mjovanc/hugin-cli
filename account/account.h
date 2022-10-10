@@ -45,6 +45,8 @@ namespace account
 
     public:
         Account();
+        
+        ~Account();
 
         std::string getUsername();
         void setUsername(std::string);

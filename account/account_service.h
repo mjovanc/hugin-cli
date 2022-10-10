@@ -41,6 +41,8 @@ namespace account
     {
     public:
         AccountService();
+        
+        ~AccountService();
 
         void createAccount(std::string &username, std::string &password); // create a new account (might want to change this name to create and loginAccount to login)
         

@@ -36,4 +36,8 @@ namespace boards
 		// clear the screen on init
 		system("CLS");
 	}
+	
+	Boards::~Boards()
+	{
+	}
 }

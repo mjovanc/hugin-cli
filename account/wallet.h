@@ -38,6 +38,8 @@ namespace account
     {
     public:
         Wallet();
+
+        ~Wallet();
     };
 }
 

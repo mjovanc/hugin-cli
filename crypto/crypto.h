@@ -38,6 +38,8 @@ namespace crypto
     {
         public: 
             Crypto();
+
+            ~Crypto();
     };
 }
 
