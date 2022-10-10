@@ -17,11 +17,6 @@ jobs:
              environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
            }
           - {
-            name: "Windows Latest MinGW / x64", artifact: "Windows-MinGW.7z",
-            os: windows-latest,
-            cc: "gcc", cxx: "g++"
-          }
-          - {
             name: "Ubuntu Latest GCC / x64", artifact: "Linux.7z",
             os: ubuntu-22.04,
             cc: "gcc", cxx: "g++"
@@ -49,7 +44,7 @@ jobs:
         if: matrix.config.os == 'windows-latest'
         working-directory: build
         run: |
-         cmake -G "Visual Studio 17 2022" -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17" ..
+         cmake -G "Visual Studio 17 2022" ..
       
       # Ubuntu 22.04
       - name: mkdir build
@@ -59,7 +54,7 @@ jobs:
       - name: Build Ubuntu Target
         if: matrix.config.os == 'ubuntu-22.04'
         run: |
-          cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
+          cmake ..
           make
         working-directory: build
 
@@ -77,6 +72,6 @@ jobs:
       - name: Build macOS Target
         if: matrix.config.os == 'macos-latest'
         run: |
-          cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
+          cmake ..
           make
         working-directory: build
