@@ -29,7 +29,7 @@
 #include <stdlib.h>
 #include <iostream> 
 #include <sstream>
-#include <db/sqlite3.h>
+#include "db/sqlite3.h"
 #include "database.h"
 
 namespace db

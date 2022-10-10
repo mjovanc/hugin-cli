@@ -32,9 +32,9 @@
 #include <iostream>
 #include <stdexcept>
 
-#include <daemon.h>
-#include <config/cli_header.h>
-#include <account/account_service.h>
+#include "daemon.h"
+#include "config/cli_header.h"
+#include "account/account_service.h"
 
 // we should perhaps move this later
 enum MenuOption {
