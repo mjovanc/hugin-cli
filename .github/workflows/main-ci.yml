@@ -77,7 +77,7 @@ jobs:
       - name: Build Ubuntu Target
         if: matrix.config.os == 'ubuntu-22.04'
         run: |
-          cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
+          cmake  ..
           make
         working-directory: build
 
@@ -104,7 +104,7 @@ jobs:
       - name: Build macOS Target
         if: matrix.config.os == 'macos-latest'
         run: |
-          cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++17"  ..
+          cmake  ..
           make
         working-directory: build
 
