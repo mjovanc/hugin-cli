@@ -41,7 +41,7 @@ namespace db
         
         ~Database();
 
-        int open(std::string dbName);
+        int open();
     };
 }
 

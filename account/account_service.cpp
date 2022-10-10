@@ -37,6 +37,10 @@ namespace account
     {
     }
 
+    AccountService::~AccountService()
+    {
+    }
+
     void AccountService::createAccount(std::string &username, std::string &password)
     {
         // question: should we move this to the constructor or initialize here and
@@ -45,7 +49,7 @@ namespace account
         db::Database database;
 
         // we use the username as the database name 
-        database.open(username);
+        database.open();
         // create SQLite3 database with username and password
 
         // start the daemon  
