@@ -27,8 +27,6 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 add_library(
-    db 
-    sqlite3.c
-    shell.c
+    db
     database.cpp
 )
