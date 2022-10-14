@@ -27,8 +27,7 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 add_library(
-    account 
-    account.cpp
-    account_service.cpp
-    wallet.cpp
+        service
+        account_service.cpp
+        wallet_service.cpp
 )

@@ -69,7 +69,7 @@ add_subdirectory(crypto)
 add_subdirectory(daemon)
 add_subdirectory(db)
 add_subdirectory(boards)
-add_subdirectory(account)
+add_subdirectory(service)
 
 # include directories
 target_include_directories(
@@ -79,7 +79,7 @@ target_include_directories(
   daemon
   db
   boards
-  account
+        service
 )
 
 # link libraries
@@ -96,5 +96,5 @@ target_link_libraries(
   daemon
   db
   boards
-  account
+        service
 )

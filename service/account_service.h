@@ -26,18 +26,28 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdlib.h>
+#ifndef ACCOUNT_SERVICE_H
+#define ACCOUNT_SERVICE_H
 
-#include "wallet.h"
+#include <cstdint>
+#include <iostream>
 
-namespace account
+#include "wallet_service.h"
+
+namespace service
 {
-    Wallet::Wallet()
+    class AccountService
     {
-    }
+    public:
+        AccountService();
+        
+        ~AccountService();
 
-    Wallet::~Wallet()
-    {
-    }
+        void createAccount(std::string &username, std::string &password); // create a new service (might want to change this name to create and loginAccount to login)
+        
+        void loginAccount(std::string &username, std::string &password); // this will try load the existing service from database and it's conversation history (if we have the setting for that)
+    };
 }
 
+
+#endif

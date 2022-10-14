@@ -36,7 +36,7 @@
 
 #include "daemon/daemon.h"
 #include "config/cli_header.h"
-#include "account/account_service.h"
+#include "service/account_service.h"
 
 // we should perhaps move this later
 enum MenuOption {
@@ -45,7 +45,7 @@ enum MenuOption {
     QUIT
 };
 
-MenuOption resolveOption(std::string input) {
+MenuOption resolveOption(const std::string& input) {
     if (input == "/register") return REGISTER;
     if (input == "/login") return LOGIN;
     if (input == "/q") return QUIT;
@@ -71,7 +71,7 @@ int main(int argc, char* argv[])
 
     std::cout << hugin::getProjectCLIHeader();
         
-    account::AccountService as;
+    service::AccountService as;
 
     bool running = true;
 

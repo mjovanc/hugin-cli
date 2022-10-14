@@ -26,23 +26,18 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef WALLET_H
-#define WALLET_H
+#include <stdlib.h>
 
-#include <cstdint>
-#include <iostream>
+#include "wallet_service.h"
 
-namespace account
+namespace service
 {
-    class Wallet
+    Wallet::Wallet()
     {
-    public:
-        Wallet();
+    }
 
-        ~Wallet();
-    };
+    Wallet::~Wallet()
+    {
+    }
 }
 
-
-
-#endif
