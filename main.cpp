@@ -31,6 +31,8 @@
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
+#include <string.h>
+#include <sstream>
 
 #include "daemon/daemon.h"
 #include "config/cli_header.h"
