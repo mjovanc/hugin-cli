@@ -44,18 +44,11 @@ namespace account
 
     void AccountService::createAccount(std::string &username, std::string &password)
     {
-        // question: should we move this to the constructor or initialize here and
-        // pass this object as a parameter to loginAccount since we need to call the
-        // database in that method as well?
-        db::Database database;
-
-        // we use the username as the database name 
-        database.open();
-        // create SQLite3 database with username and password
-
         // start the daemon  
 
         // create a new wallet
+
+        // create encrypted file to store account info
 
         std::cout << "You have successfully created an account!" << std::endl;
 
