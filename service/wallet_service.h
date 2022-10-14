@@ -34,12 +34,12 @@
 
 namespace service
 {
-    class Wallet
+    class WalletService
     {
     public:
-        Wallet();
+        WalletService();
 
-        ~Wallet();
+        ~WalletService();
     };
 }
 
