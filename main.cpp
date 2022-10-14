@@ -32,7 +32,7 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "daemon.h"
+#include "daemon/daemon.h"
 #include "config/cli_header.h"
 #include "account/account_service.h"
 

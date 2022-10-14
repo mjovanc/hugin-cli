@@ -32,6 +32,7 @@
 #include <cstdint>
 #include <iostream>
 
+// probably should change the namespace name to avoid conflict
 namespace crypto
 {
     class Crypto

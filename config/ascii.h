@@ -26,6 +26,9 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#include <iostream>
+#include <string>
+
 const std::string windowsAsciiArt = R""""(
       __  __            _          ________    ____
      / / / __  ______ _(_____     / ____/ /   /  _/

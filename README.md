@@ -69,8 +69,6 @@ This project is automatically built, tested and deployed using GitHub Actions. W
 The Main Pipeline do everything the Pull Request Pipeline does in addition to building and publishing a Docker Image to
 the project tagged by the project name, owner, repository and short form of commit SHA value. We also setup continuous deployment so if all the steps succeed it will upload a new Docker image to GitHub Packages.
 
-To learn how we deploy to our VPS read the documentation here: [Ansible Documentation](ansible/README.md)
-
 # Screenshots
 
 <img src="resources/screenshot.png">
