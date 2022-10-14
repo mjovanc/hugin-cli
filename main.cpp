@@ -53,6 +53,20 @@ int main(int argc, char* argv[])
 {
     // will use the program arguments above for --help (--version etc)
 
+    if (argc == 2 && strcmp(argv[1], "--help") == 0)
+    {
+        std::stringstream ss;
+        ss << std::endl 
+        << "--version"
+        << std::endl;
+
+        std::cout << ss.str();
+
+        // closing app
+        return 0;
+    }
+
+
     std::cout << hugin::getProjectCLIHeader();
         
     account::AccountService as;
