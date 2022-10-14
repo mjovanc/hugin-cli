@@ -30,7 +30,7 @@
 
 #include "account_service.h"
 #include "wallet.h"
-#include "../db/database.h"
+#include "db/database.h"
 
 namespace account
 {
