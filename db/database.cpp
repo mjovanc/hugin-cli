@@ -39,9 +39,4 @@ namespace db
     Database::~Database()
     {
     }
-
-    int Database::open()
-    {
-        // open file basically
-    }
 }
