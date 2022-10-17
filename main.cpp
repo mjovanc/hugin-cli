@@ -68,7 +68,6 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-
     std::cout << hugin::getProjectCLIHeader();
         
     service::AccountService as;
@@ -113,11 +112,6 @@ int main(int argc, char* argv[])
             {
                 std::cout << "Good Bye!" << std::endl;
                 running = false;
-                break;
-            }
-            default:
-            {
-                std::cout << "Wrong input!" << std::endl;
                 break;
             }
         }
