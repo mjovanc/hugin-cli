@@ -1,6 +1,6 @@
-# Hugin CLI [![Hugin CLI Main Pipeline](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml/badge.svg)](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml) 
+# Hugin CLI [![Hugin CLI Main Pipeline](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml/badge.svg)](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml)
 
-Hugin CLI - A Hugin Messenger client built with C++17. 
+Hugin CLI - A Hugin Messenger client built with C++17.
 
 # Table of Contents
 
@@ -22,7 +22,8 @@ Hugin CLI - A Hugin Messenger client built with C++17.
 - Web: https://kryptokrona.org
 - Docs: https://docs.kryptokrona.org
 - GitHub: https://github.com/kryptokrona/hugin-cli
-- Hugin: hugincli board on Hugin Messenger (currently only GUI version). It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
+- Hugin: hugincli board on Hugin Messenger (currently only GUI version). It is HIGHLY recommended to join our board on
+  Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
 - Twitter: @mjovanc
 
 # Setup and run
@@ -42,13 +43,13 @@ Hugin CLI - A Hugin Messenger client built with C++17.
 - /pgm `<group key>` (not implemented yet)
 - /info (not implemented yet)
 
-## Clean 
+## Clean
 
 If we want to do a cleanup of generated files during build we can run:
 
 `git clean -xfd`
 
-# Testing 
+# Testing
 
 ## Unit testing
 
@@ -63,10 +64,12 @@ We need in the future to link all test files so we can run all unit tests at onc
 This project is automatically built, tested and deployed using GitHub Actions. We have two pipelines:
 
 - **Main Pipeline** - This is the pipeline that runs the code merged into our master branch.
-- **Pull Request Pipeline** - This is the pipeline that runs each time a pull request come in so the reviewer has some help evaluating if the code is good enough to be merged.
+- **Pull Request Pipeline** - This is the pipeline that runs each time a pull request come in so the reviewer has some
+  help evaluating if the code is good enough to be merged.
 
 The Main Pipeline do everything the Pull Request Pipeline does in addition to building and publishing a Docker Image to
-the project tagged by the project name, owner, repository and short form of commit SHA value. We also setup continuous deployment so if all the steps succeed it will upload a new Docker image to GitHub Packages.
+the project tagged by the project name, owner, repository and short form of commit SHA value. We also setup continuous
+deployment so if all the steps succeed it will upload a new Docker image to GitHub Packages.
 
 # Screenshots
 
@@ -76,7 +79,8 @@ the project tagged by the project name, owner, repository and short form of comm
 
 ## Pull request
 
-We appreciate all contributions whether it be small changes such as documentation of source code to major improvement of code. The easiest way is to make a fork and then make a pull request into our master branch. 
+We appreciate all contributions whether it be small changes such as documentation of source code to major improvement of
+code. The easiest way is to make a fork and then make a pull request into our master branch.
 
 # Contributors
 
