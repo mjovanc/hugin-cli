@@ -32,13 +32,13 @@
 
 namespace boards
 {
-	Boards::Boards()
-	{
-		// clear the screen on init
-		system("CLS");
-	}
-	
-	Boards::~Boards()
-	{
-	}
+    Boards::Boards()
+    {
+        // clear the screen on init
+        system("CLS");
+    }
+
+    Boards::~Boards()
+    {
+    }
 }

@@ -1,5 +1,6 @@
 # Hugin CLI Scripts
-Useful scripts for the Hugin API. 
+
+Useful scripts for the Hugin API.
 
 ## Setup Testnet
 
