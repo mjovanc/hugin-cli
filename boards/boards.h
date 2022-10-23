@@ -29,18 +29,4 @@
 #ifndef BOARDS_H
 #define BOARDS_H
 
-#include <cstdint>
-#include <iostream>
-
-namespace boards
-{
-    class Boards
-    {
-    public:
-        Boards();
-
-        ~Boards();
-    };
-}
-
 #endif

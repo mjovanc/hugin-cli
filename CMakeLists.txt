@@ -47,8 +47,8 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(crypto_test test/crypto_test.cpp)
-add_executable(daemon_test test/daemon_test.cpp)
+add_executable(crypto_test test/crypto_test.c)
+add_executable(daemon_test test/daemon_test.c)
 
 include(GoogleTest)
 gtest_discover_tests(
