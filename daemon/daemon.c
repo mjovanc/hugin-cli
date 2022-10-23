@@ -27,20 +27,3 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "daemon.h"
-
-namespace daemonx //TODO: change this namespace name
-{
-    Daemon::Daemon()
-    {
-    }
-
-    void Daemon::start()
-    {
-        std::cout << "Starting Daemon." << std::endl;
-    }
-
-    void Daemon::stop()
-    {
-        std::cout << "Stopping Daemon." << std::endl;
-    }
-}
