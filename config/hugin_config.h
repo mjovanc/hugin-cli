@@ -25,19 +25,3 @@
 // INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-#include <cstddef>
-#include <cstdint>
-#include <string>
-#include <limits>
-#include <initializer_list>
-
-namespace hugin
-{
-    namespace parameters
-    {
-        const char HUGIN_NAME[] = "Hugin CLI";
-        const char LATEST_VERSION_URL[] = "https://github.com/kryptokrona/hugin-cli";
-        const std::string LICENSE_URL = "https://github.com/kryptokrona/hugin-cli/blob/master/LICENSE";
-    }
-}

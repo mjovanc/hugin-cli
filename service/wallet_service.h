@@ -29,19 +29,5 @@
 #ifndef WALLET_H
 #define WALLET_H
 
-#include <cstdint>
-#include <iostream>
-
-namespace service
-{
-    class WalletService
-    {
-    public:
-        WalletService();
-
-        ~WalletService();
-    };
-}
-
 
 #endif
