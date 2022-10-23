@@ -37,10 +37,10 @@ namespace crypto
 {
     class Crypto
     {
-        public: 
-            Crypto();
+    public:
+        Crypto();
 
-            ~Crypto();
+        ~Crypto();
     };
 }
 

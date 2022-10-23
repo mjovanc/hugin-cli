@@ -31,9 +31,9 @@
 
 class CryptoTest : public testing::Test
 {
-  public:
+public:
     CryptoTest()
     {
-      
+
     }
 };
