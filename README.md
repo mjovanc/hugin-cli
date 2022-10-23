@@ -1,6 +1,6 @@
 # Hugin CLI [![Hugin CLI Main Pipeline](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml/badge.svg)](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml)
 
-Hugin CLI - A Hugin Messenger client built with C++17.
+Hugin CLI - A Hugin Messenger client built with C17.
 
 # Table of Contents
 
