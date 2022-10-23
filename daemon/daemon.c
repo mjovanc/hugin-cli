@@ -30,17 +30,17 @@
 
 namespace daemonx //TODO: change this namespace name
 {
-	Daemon::Daemon()
-	{
-	}
+    Daemon::Daemon()
+    {
+    }
 
-	void Daemon::start()
-	{
-		std::cout << "Starting Daemon." << std::endl;
-	}
+    void Daemon::start()
+    {
+        std::cout << "Starting Daemon." << std::endl;
+    }
 
-	void Daemon::stop()
-	{
-		std::cout << "Stopping Daemon." << std::endl;
-	}
+    void Daemon::stop()
+    {
+        std::cout << "Stopping Daemon." << std::endl;
+    }
 }

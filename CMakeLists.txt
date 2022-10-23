@@ -38,8 +38,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # google tests
 include(FetchContent)
 FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+        googletest
+        URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
 )
 # for windows: prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
@@ -52,8 +52,8 @@ add_executable(daemon_test test/daemon_test.cpp)
 
 include(GoogleTest)
 gtest_discover_tests(
-  crypto_test 
-  daemon_test
+        crypto_test
+        daemon_test
 )
 target_link_libraries(crypto_test gtest_main)
 target_link_libraries(daemon_test gtest_main)
@@ -62,7 +62,7 @@ target_link_libraries(daemon_test gtest_main)
 include_directories(${PROJECT_SOURCE_DIR})
 
 # add the executable
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.c)
 
 # add the subdirectories
 add_subdirectory(crypto)
@@ -73,28 +73,28 @@ add_subdirectory(service)
 
 # include directories
 target_include_directories(
-  ${PROJECT_NAME}
-  PUBLIC
-  crypto
-  daemon
-  db
-  boards
+        ${PROJECT_NAME}
+        PUBLIC
+        crypto
+        daemon
+        db
+        boards
         service
 )
 
 # link libraries
 target_link_directories(
-  ${PROJECT_NAME}
-  PRIVATE
-  crypto
-  daemon
+        ${PROJECT_NAME}
+        PRIVATE
+        crypto
+        daemon
 )
 
 target_link_libraries(
-  ${PROJECT_NAME}
-  crypto
-  daemon
-  db
-  boards
+        ${PROJECT_NAME}
+        crypto
+        daemon
+        db
+        boards
         service
 )

@@ -31,9 +31,9 @@
 
 class DaemonTest : public testing::Test
 {
-  public:
+public:
     DaemonTest()
     {
-      
+
     }
 };
