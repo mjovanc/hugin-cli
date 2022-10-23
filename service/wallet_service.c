@@ -27,15 +27,3 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "wallet_service.h"
-
-namespace service
-{
-    WalletService::WalletService()
-    {
-    }
-
-    WalletService::~WalletService()
-    {
-    }
-}
-

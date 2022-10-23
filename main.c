@@ -26,98 +26,9 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <iostream>
-#include <iterator>
-#include <algorithm>
-#include <iostream>
-#include <stdexcept>
-#include <string.h>
-#include <sstream>
-
-#include "daemon/daemon.h"
-#include "config/cli_header.h"
-#include "service/account_service.h"
-
-// we should perhaps move this later
-enum MenuOption
-{
-    REGISTER,
-    LOGIN,
-    QUIT
-};
-
-MenuOption resolveOption(const std::string &input)
-{
-    if (input == "/register") return REGISTER;
-    if (input == "/login") return LOGIN;
-    if (input == "/q") return QUIT;
-}
-
 int main(int argc, char *argv[])
 {
-    // will use the program arguments above for --help (--version etc)
 
-    if (argc == 2 && strcmp(argv[1], "--help") == 0)
-    {
-        std::stringstream ss;
-        ss << std::endl
-           << "--version"
-           << std::endl;
-
-        std::cout << ss.str();
-
-        // closing app
-        return 0;
-    }
-
-    std::cout << hugin::getProjectCLIHeader();
-
-    service::AccountService as;
-
-    bool running = true;
-
-    while (running)
-    {
-        std::string option;
-
-        std::cout << "> ";
-        std::cin >> option;
-
-        MenuOption menuOption = resolveOption(option);
-
-        std::string username;
-        std::string password;
-
-        switch (menuOption)
-        {
-            case REGISTER:
-            {
-                std::cout << "Enter username: ";
-                std::cin >> username;
-
-                std::cout << "Enter password: ";
-                std::cin >> password;
-                as.createAccount(username, password);
-                break;
-            }
-            case LOGIN:
-            {
-                std::cout << "Enter username: ";
-                std::cin >> username;
-
-                std::cout << "Enter password: ";
-                std::cin >> password;
-                as.loginAccount(username, password);
-                break;
-            }
-            case QUIT:
-            {
-                std::cout << "Good Bye!" << std::endl;
-                running = false;
-                break;
-            }
-        }
-    }
 
     return 0;
 }
