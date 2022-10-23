@@ -35,22 +35,23 @@
 //TODO: should we change this namespace name to config?
 namespace hugin
 {
-  inline std::string getProjectCLIHeader()
-  {
-    std::stringstream ss;
-    ss << std::endl
-      << asciiArt << std::endl
-      << "  " << parameters::HUGIN_NAME << " v" << PROJECT_VERSION << std::endl
-      << "  This software is distributed under the General Public License v3.0"
-      << std::endl << std::endl
-      << "  " << PROJECT_COPYRIGHT << std::endl
-      << "  Created by: Marcus Cvjeticanin"
-      << std::endl << std::endl
-      << "  Additional Copyright(s) may apply, please see the included LICENSE file for more information." << std::endl
-      << "  If you did not receive a copy of the LICENSE, please visit:" << std::endl
-      << "  " << parameters::LICENSE_URL
-      << std::endl << std::endl;
+    inline std::string getProjectCLIHeader()
+    {
+        std::stringstream ss;
+        ss << std::endl
+           << asciiArt << std::endl
+           << "  " << parameters::HUGIN_NAME << " v" << PROJECT_VERSION << std::endl
+           << "  This software is distributed under the General Public License v3.0"
+           << std::endl << std::endl
+           << "  " << PROJECT_COPYRIGHT << std::endl
+           << "  Created by: Marcus Cvjeticanin"
+           << std::endl << std::endl
+           << "  Additional Copyright(s) may apply, please see the included LICENSE file for more information."
+           << std::endl
+           << "  If you did not receive a copy of the LICENSE, please visit:" << std::endl
+           << "  " << parameters::LICENSE_URL
+           << std::endl << std::endl;
 
-    return ss.str();
-  }
+        return ss.str();
+    }
 }
