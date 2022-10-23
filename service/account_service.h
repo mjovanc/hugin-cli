@@ -29,27 +29,5 @@
 #ifndef ACCOUNT_SERVICE_H
 #define ACCOUNT_SERVICE_H
 
-#include <cstdint>
-#include <iostream>
-
-#include "wallet_service.h"
-
-namespace service
-{
-    class AccountService
-    {
-    public:
-        AccountService();
-
-        ~AccountService();
-
-        void createAccount(std::string &username,
-                           std::string &password); // create a new service (might want to change this name to create and loginAccount to login)
-
-        void loginAccount(std::string &username,
-                          std::string &password); // this will try load the existing service from database and it's conversation history (if we have the setting for that)
-    };
-}
-
 
 #endif

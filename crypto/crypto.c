@@ -28,13 +28,3 @@
 
 #include "crypto.h"
 
-namespace crypto
-{
-    Crypto::Crypto()
-    {
-    }
-
-    Crypto::~Crypto()
-    {
-    }
-}
