@@ -28,6 +28,6 @@
 
 add_library(
         service
-        account_service.cpp
-        wallet_service.cpp
+        account_service.c
+        wallet_service.c
 )
