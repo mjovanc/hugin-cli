@@ -29,19 +29,4 @@
 #ifndef CRYPTO_H
 #define CRYPTO_H
 
-#include <cstdint>
-#include <iostream>
-
-// probably should change the namespace name to avoid conflict
-namespace crypto
-{
-    class Crypto
-    {
-    public:
-        Crypto();
-
-        ~Crypto();
-    };
-}
-
 #endif
