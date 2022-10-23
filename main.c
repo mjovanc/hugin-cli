@@ -39,28 +39,30 @@
 #include "service/account_service.h"
 
 // we should perhaps move this later
-enum MenuOption {
+enum MenuOption
+{
     REGISTER,
     LOGIN,
     QUIT
 };
 
-MenuOption resolveOption(const std::string& input) {
+MenuOption resolveOption(const std::string &input)
+{
     if (input == "/register") return REGISTER;
     if (input == "/login") return LOGIN;
     if (input == "/q") return QUIT;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     // will use the program arguments above for --help (--version etc)
 
     if (argc == 2 && strcmp(argv[1], "--help") == 0)
     {
         std::stringstream ss;
-        ss << std::endl 
-        << "--version"
-        << std::endl;
+        ss << std::endl
+           << "--version"
+           << std::endl;
 
         std::cout << ss.str();
 
@@ -69,12 +71,12 @@ int main(int argc, char* argv[])
     }
 
     std::cout << hugin::getProjectCLIHeader();
-        
+
     service::AccountService as;
 
     bool running = true;
 
-    while (running) 
+    while (running)
     {
         std::string option;
 
@@ -116,6 +118,6 @@ int main(int argc, char* argv[])
             }
         }
     }
-    
+
     return 0;
 }
