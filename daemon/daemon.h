@@ -29,21 +29,5 @@
 #ifndef DAEMON_H
 #define DAEMON_H
 
-#include <cstdint>
-#include <iostream>
-
-namespace daemonx
-{
-    class Daemon
-    {
-    public:
-        Daemon();
-
-        void start();
-
-        void stop();
-    };
-}
-
 
 #endif
