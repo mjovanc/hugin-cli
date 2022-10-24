@@ -33,5 +33,18 @@
 int main(int argc, char *argv[])
 {
     printf("argc = %d\n", argc);
+
+    int logo = puts(
+    "      __  __            _          ________    ____\n"
+    "     / / / __  ______ _(_____     / ____/ /   /  _/\n"
+    "    / /_/ / / / / __ `/ / __ \   / /   / /    / /\n"
+    "   / __  / /_/ / /_/ / / / / /  / /___/ /____/ /\n"
+    "  /_/ /_/\__,_/\__, /_/_/ /_/   \____/_____/___/\n"
+    "              /____/\n"
+    );
+
+    if (logo == EOF)
+        perror("puts()"); // required by POSIX that errno is set
+
     return 0;
 }
