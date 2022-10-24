@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
         printf("> ");
         scanf("%s", &input);
 
+        // change so that we can take inputs such as /login /register etc instead of single characters
         switch (input)
         {
             case 'l':
