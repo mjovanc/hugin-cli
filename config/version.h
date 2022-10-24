@@ -32,9 +32,11 @@
 #define STR_HELPER(x) #x
 #define STR(x) STR_HELPER(x)
 
-#define PROJECT_NAME "Hugin"
+#define PROJECT_NAME "Hugin CLI"
 #define PROJECT_SITE "https://www.kryptokrona.org"
 #define PROJECT_COPYRIGHT "Copyright 2022, Kryptokrona"
+#define PROJECT_AUTHOR "Marcus Cvjeticanin"
+#define PROJECT_LICENSE_URL "https://github.com/kryptokrona/hugin-cli/blob/master/LICENSE"
 #define APP_VER_MAJOR 0
 #define APP_VER_MINOR 1
 #define APP_VER_REV 0

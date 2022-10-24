@@ -30,6 +30,8 @@
 
 #include <stdio.h>
 
+#include "config/cli_header.h"
+
 int main(int argc, char *argv[])
 {
     printf("argc = %d\n", argc);
@@ -45,6 +47,8 @@ int main(int argc, char *argv[])
 
     if (logo == EOF)
         perror("puts()"); // required by POSIX that errno is set
+
+    print_header();
 
     return 0;
 }
