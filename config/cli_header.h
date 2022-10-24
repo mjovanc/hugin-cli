@@ -28,3 +28,17 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#include <stdio.h>
+
+#include "version.h"
+
+void print_header()
+{
+    printf("  %s v%s\n", PROJECT_NAME, PROJECT_VERSION);
+    printf("  This software is licensed under BSD-3 License.\n\n");
+    printf("  %s\n", PROJECT_COPYRIGHT);
+    printf("  Created by %s\n\n", PROJECT_AUTHOR);
+    printf("  Additional Copyright(s) may apply, please see the included LICENSE file for more information.\n");
+    printf("  If you did not receive a copy of the LICENSE, please visit:\n");
+    printf("  %s\n\n", PROJECT_LICENSE_URL);
+}
