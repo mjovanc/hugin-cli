@@ -48,28 +48,31 @@ int main(int argc, char *argv[])
 
     print_header();
 
-    // wait for user input
-    //
-    //
-    
     char input;
 
-    printf("> ");
-    scanf("%s", &input);
+    do
+    {
+        printf("> ");
+        scanf("%s", &input);
 
-    switch (input)
-    {  
-        case 'l':
-            printf("Selected first\n");
-            break;
-        case 'r':
-            printf("Selected second\n");
-            break;
-        default:
-            printf("Selected wrong\n");
-            break;
+        switch (input)
+        {
+            case 'l':
+                printf("Selected first\n");
+                break;
+            case 'r':
+                printf("Selected second\n");
+                break;
+            default:
+                printf("Selected wrong\n");
+                break;
+        }
     }
-    getchar();
+    while (input != 'q');
+    {
+        getchar();
+    }
+    
 
     return 0;
 }
