@@ -11,7 +11,6 @@ RUN apt-get update && \
       libffi-dev \
       python3-dev \
       gcc-11 \
-      g++-11 \
       git \
       cmake
 
