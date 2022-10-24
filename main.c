@@ -34,8 +34,6 @@
 
 int main(int argc, char *argv[])
 {
-    printf("argc = %d\n", argc);
-
     int logo = puts(
     "      __  __            _          ________    ____\n"
     "     / / / __  ______ _(_____     / ____/ /   /  _/\n"
@@ -49,6 +47,29 @@ int main(int argc, char *argv[])
         perror("puts()"); // required by POSIX that errno is set
 
     print_header();
+
+    // wait for user input
+    //
+    //
+    
+    char input;
+
+    printf("> ");
+    scanf("%s", &input);
+
+    switch (input)
+    {  
+        case 'l':
+            printf("Selected first\n");
+            break;
+        case 'r':
+            printf("Selected second\n");
+            break;
+        default:
+            printf("Selected wrong\n");
+            break;
+    }
+    getchar();
 
     return 0;
 }
