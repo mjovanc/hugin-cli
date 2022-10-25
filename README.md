@@ -1,19 +1,21 @@
 # Hugin CLI [![Hugin CLI Main Pipeline](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml/badge.svg)](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml)
 
-Hugin CLI - A Hugin Messenger client built with C23.
+Hugin CLI - A Hugin Messenger client built with C11.
 
 # Table of Contents
 
+- [Hugin CLI ![Hugin CLI Main Pipeline](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml)](#hugin-cli-)
+- [Table of Contents](#table-of-contents)
 - [Development Resources](#development-resources)
 - [Setup and run](#setup-and-run)
-    - [Commands](#commands)
-    - [Clean](#clean)
+  - [Commands](#commands)
+  - [Clean](#clean)
 - [Testing](#testing)
-    - [Unit Testing](#unit-testing)
+  - [Unit testing](#unit-testing)
 - [CI/CD](#cicd)
 - [Screenshots](#screenshots)
 - [Contribute](#contribute)
-    - [Pull request](#pull-request)
+  - [Pull request](#pull-request)
 - [Contributors](#contributors)
 - [License](#license)
 
@@ -22,9 +24,8 @@ Hugin CLI - A Hugin Messenger client built with C23.
 - Web: https://kryptokrona.org
 - Docs: https://docs.kryptokrona.org
 - GitHub: https://github.com/kryptokrona/hugin-cli
-- Hugin: hugincli board on Hugin Messenger (currently only GUI version). It is HIGHLY recommended to join our board on
-  Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
-- Twitter: @mjovanc
+- Hugin: hugincli board on Hugin Messenger (currently only GUI version). It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
+- Twitter: @sysc4l
 
 # Setup and run
 
@@ -88,7 +89,7 @@ The following contributors have either helped to start this project, have contri
 code, are actively maintaining it (including documentation), or in other ways
 being awesome contributors to this project. **We'd like to take a moment to recognize them.**
 
-[<img src="https://github.com/c1phx.png?size=72" alt="c1phx" width="72">](https://github.com/c1phx)
+[<img src="https://github.com/mjovanc.png?size=72" alt="mjovanc" width="72">](https://github.com/mjovanc)
 
 # License
 
