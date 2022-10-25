@@ -1,6 +1,6 @@
 // Copyright (c) 2022-2022, The Kryptokrona Project
 //
-// Created by Marcus Cvjeticanin
+// Created by sysc4l
 //
 // All rights reserved.
 // 
