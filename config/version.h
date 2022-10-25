@@ -1,6 +1,6 @@
 // Copyright (c) 2022-2022, The Kryptokrona Project
 //
-// Created by Marcus Cvjeticanin
+// Created by sysc4l
 //
 // All rights reserved.
 // 
@@ -35,7 +35,7 @@
 #define PROJECT_NAME "Hugin CLI"
 #define PROJECT_SITE "https://www.kryptokrona.org"
 #define PROJECT_COPYRIGHT "Copyright 2022, Kryptokrona"
-#define PROJECT_AUTHOR "Marcus Cvjeticanin"
+#define PROJECT_AUTHOR "sysc4l"
 #define PROJECT_LICENSE_URL "https://github.com/kryptokrona/hugin-cli/blob/master/LICENSE"
 #define APP_VER_MAJOR 0
 #define APP_VER_MINOR 1
