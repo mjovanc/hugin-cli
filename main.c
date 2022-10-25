@@ -29,6 +29,7 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <stdio.h>
+#include <string.h>
 
 #include "config/cli_header.h"
 
@@ -48,28 +49,27 @@ int main(int argc, char *argv[])
 
     print_header();
 
-    char input;
+    char input[10];
 
     do
     {
         printf("> ");
-        scanf("%s", &input);
+        scanf("%9s", input);
 
-        // change so that we can take inputs such as /login /register etc instead of single characters
-        switch (input)
+        if (strcmp(input, "/login") == 0)
         {
-            case 'l':
-                printf("Selected first\n");
-                break;
-            case 'r':
-                printf("Selected second\n");
-                break;
-            default:
-                printf("Selected wrong\n");
-                break;
+            printf("Selected login\n");
+        }
+        else if (strcmp(input, "/register") == 0)
+        {
+            printf("Selected register\n");
+        }
+        else if (strcmp(input, "/quit") == 0)
+        {
+            printf("Selected quit\n");
         }
     }
-    while (input != 'q');
+    while (strcmp(input, "/quit")    != 0);
     {
         getchar();
     }
