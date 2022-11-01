@@ -21,7 +21,6 @@ Hugin CLI - A Hugin Messenger client built with C++17.
 
 - Web: https://kryptokrona.org
 - Docs: https://docs.kryptokrona.org
-- Mail: mjovanc@icloud.com
 - GitHub: https://github.com/kryptokrona/hugin-cli
 - Hugin: hugincli board on Hugin Messenger (currently only GUI version). It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
 - Twitter: @mjovanc
@@ -85,7 +84,7 @@ The following contributors have either helped to start this project, have contri
 code, are actively maintaining it (including documentation), or in other ways
 being awesome contributors to this project. **We'd like to take a moment to recognize them.**
 
-[<img src="https://github.com/mjovanc.png?size=72" alt="mjovanc" width="72">](https://github.com/mjovanc)
+[<img src="https://github.com/c1phx.png?size=72" alt="c1phx" width="72">](https://github.com/c1phx)
 
 # License
 
