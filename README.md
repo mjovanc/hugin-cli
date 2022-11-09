@@ -72,10 +72,6 @@ The Main Pipeline do everything the Pull Request Pipeline does in addition to bu
 the project tagged by the project name, owner, repository and short form of commit SHA value. We also setup continuous
 deployment so if all the steps succeed it will upload a new Docker image to GitHub Packages.
 
-# Screenshots
-
-<img src="resources/screenshot.png">
-
 # Contribute
 
 ## Pull request
