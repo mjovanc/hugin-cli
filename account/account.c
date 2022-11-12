@@ -132,7 +132,7 @@ int account_register(char *username, char *password)
     // should we save into DB?
     wallet_create(username, password);
 
-    // then login here
+    account_login(username, password);
 
     return 0;
 }
