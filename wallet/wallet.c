@@ -46,9 +46,11 @@ int wallet_create(char *wallet_name, char *wallet_password)
     printf("Creating wallet...\n");
 
     // if the wallet name exists append _n (n as in number) to the name
-    if (access(wallet_name, F_OK) == 0) {
+    if (access(wallet_name, F_OK) == 0)
+    {
         printf("File exists.\n");
-    } else {
+    } else
+    {
         printf("File does not exists.\n");
     }
 
@@ -58,10 +60,13 @@ int wallet_create(char *wallet_name, char *wallet_password)
 
     rc = sqlite3_open("test.db", &db);
 
-    if (rc) {
+    if (rc)
+    {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         return 1;
-    } else {
+    }
+    else
+    {
         printf("Opened database successfully\n");
     }
     sqlite3_close(db);
