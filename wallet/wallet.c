@@ -38,10 +38,6 @@ int wallet_create(char *wallet_name, char *wallet_password)
 
     // if the wallet name exists append _n (n as in number) to the name
 
-    // free memory of wallet_name
-    // free memory of wallet_password
-
-
     return 0;
 }
 
