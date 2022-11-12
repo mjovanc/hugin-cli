@@ -28,10 +28,11 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <sqlite3.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "database.h"
+#include "sqlite3.h"
 
 int database_create(char *database_name)
 {
@@ -39,7 +40,8 @@ int database_create(char *database_name)
     char *zErrMsg = 0;
     int rc;
 
-    rc = sqlite3_open("test.db", &db);
+    char *extension = ".db";
+    rc = sqlite3_open(strcat(database_name, extension), &db);
 
     if (rc)
     {
@@ -52,5 +54,10 @@ int database_create(char *database_name)
     }
     sqlite3_close(db);
 
+    return 0;
+}
+
+int database_delete(char *database_name)
+{
     return 0;
 }
