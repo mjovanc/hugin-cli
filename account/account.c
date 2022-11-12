@@ -49,7 +49,7 @@ int account_login_prompt()
         // check for blank
         if (strlen(username_input) > 49)
         {
-            printf("%s\n", H00001);
+            printf("%s\n", A00001);
             return 1;
         }
 
@@ -58,7 +58,7 @@ int account_login_prompt()
 
         if (strlen(password_input) > 19)
         {
-            printf("%s\n", H00002);
+            printf("%s\n", A00002);
             return 1;
         }
 
@@ -89,14 +89,14 @@ int account_register_prompt()
         // check for blank input
         if (strlen(username_input) > 49)
         {
-            printf("%s\n", H00001);
+            printf("%s\n", A00001);
             return 1;
         }
 
         // check for blank input
         if (strlen(password_input) > 19)
         {
-            printf("%s\n", H00002);
+            printf("%s\n", A00002);
             return 1;
         }
 
@@ -134,7 +134,7 @@ int account_register(char *username, char *password)
 
     if (wallet_created != 0)
     {
-        printf("%s\n", H00007);
+        printf("%s\n", W00001);
         return 1;
     }
 
