@@ -1,5 +1,8 @@
 name: Hugin CLI Pull Request Pipeline
 
+env:
+  BUILD_TYPE: Debug
+
 on: [ pull_request ]
 
 jobs:
