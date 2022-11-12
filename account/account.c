@@ -30,6 +30,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 #include "account.h"
 #include "wallet/wallet.h"
@@ -114,6 +115,8 @@ int account_login(char *username, char *password)
 {
     printf("Logging in...\n");
 
+    printf("Logged in...\n");
+
     return 0;
 }
 
@@ -127,14 +130,14 @@ int account_register(char *username, char *password)
 
     // create wallet with the wallet name of the username
     // should we save into DB?
-    wallet_create(username);
+    wallet_create(username, password);
 
     // then login here
 
     return 0;
 }
 
-int account_logout()
+int account_logout(bool *logged_in)
 {
     // check if we are logged in first before logging out
 

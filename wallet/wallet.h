@@ -31,7 +31,7 @@
 #ifndef WALLET_H
 #define WALLET_H
 
-int wallet_create(char *wallet_name);
+int wallet_create(char *wallet_name, char *wallet_password);
 int wallet_open();
 
 #endif
