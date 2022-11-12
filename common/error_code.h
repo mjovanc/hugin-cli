@@ -31,13 +31,15 @@
 #ifndef HUGIN_ERROR_CODE_H
 #define HUGIN_ERROR_CODE_H
 
-#define H00001 "H00001: Username cannot be blank or longer than 50 characters!"
-#define H00002 "H00002: Password cannot be blank or longer than 20 characters!"
-#define H00003 "H00003: Failed to login!"
-#define H00004 "H00004: Failed to register!"
-#define H00005 "H00005: Already logged in!"
-#define H00006 "H00006: Could not recognize the specified command."
+// account error codes
+#define A00001 "A00001: Username cannot be blank or longer than 50 characters!"
+#define A00002 "A00002: Password cannot be blank or longer than 20 characters!"
+#define A00003 "A00003: Failed to login!"
+#define A00004 "A00004: Failed to register!"
+#define A00005 "A00005: Already logged in!"
+#define A00006 "A00006: Could not recognize the specified command."
 
-#define H00007 "H00007: Failed to create wallet."
+// wallet error codes
+#define W00001 "W00001: Failed to create wallet."
 
 #endif //HUGIN_ERROR_CODE_H
