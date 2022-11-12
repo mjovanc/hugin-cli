@@ -59,6 +59,8 @@ int main(int argc, char *argv[])
 
         if (strcmp(input, "/login") == 0)
         {
+            // here check if we already are logged in first
+
             if (account_login_prompt() != 0)
             {
                 printf("%s\n", H00003);
@@ -75,6 +77,7 @@ int main(int argc, char *argv[])
         }
         else if (strcmp(input, "/quit") == 0)
         {
+            account_logout(); // only logout if we are logged in
             printf("Good bye!\n");
         }
     } while (strcmp(input, "/quit") != 0);
