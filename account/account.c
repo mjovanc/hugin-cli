@@ -112,23 +112,33 @@ int account_register_prompt()
 
 int account_login(char *username, char *password)
 {
-    printf("Logging in\n");
+    printf("Logging in...\n");
 
     return 0;
 }
 
 int account_register(char *username, char *password)
 {
-    printf("Register an account\n");
+    printf("Register an account...\n");
 
     // char *username[20];
     // char *password[50];
     // account_login(username, password);
 
     // create wallet with the wallet name of the username
+    // should we save into DB?
     wallet_create(username);
 
     // then login here
+
+    return 0;
+}
+
+int account_logout()
+{
+    // check if we are logged in first before logging out
+
+    printf("Logging out...\n");
 
     return 0;
 }
