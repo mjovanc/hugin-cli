@@ -34,6 +34,7 @@
 
 #include "account/account.h"
 #include "config/cli_header.h"
+#include "config/hugin_config.h"
 #include "common/error_code.h"
 
 int main(int argc, char *argv[])
@@ -89,6 +90,10 @@ int main(int argc, char *argv[])
         {
             account_logout(&logged_in); // only logout if we are logged in
             printf("Good bye!\n");
+        }
+        else
+        {
+            printf("%s\n", H00006);
         }
     } while (strcmp(input, "/quit") != 0);
     {
