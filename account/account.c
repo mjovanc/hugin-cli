@@ -29,11 +29,13 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <stdio.h>
+#include <string.h>
 
 #include "account.h"
 #include "wallet/wallet.h"
+#include "common/error_code.h"
 
-void account_login_prompt()
+int account_login_prompt()
 {
     char username_input[20];
     char password_input[50];
@@ -41,36 +43,36 @@ void account_login_prompt()
     do
     {
         printf("Enter username: ");
-        scanf("%19s", username_input);
+        scanf(" %19s", username_input);
 
         // check for blank
-        if (sizeof(username_input) > 49)
+        if (strlen(username_input) > 49)
         {
-            printf("Username cannot be blank or longer than 50 characters!\n");
-            continue;
+            printf("%s\n", H00001);
+            return 1;
         }
 
         printf("Enter password: ");
-        scanf("%49s", password_input);
+        scanf(" %49s", password_input);
 
-        if (sizeof(password_input) > 19)
+        if (strlen(password_input) > 19)
         {
-            printf("Password cannot be blank or longer than 20 characters!\n");
-            continue;
+            printf("%s\n", H00002);
+            return 1;
         }
 
         // check for blank input
     } while (
-        (sizeof(username_input) > 49) &&
-        (sizeof(password_input) > 19));
+        (strlen(username_input) > 49) &&
+        (strlen(password_input) > 19));
     {
         getchar();
     }
 
-    account_login(username_input, password_input);
+    return account_login(username_input, password_input);
 }
 
-void account_register_prompt()
+int account_register_prompt()
 {
     char username_input[20];
     char password_input[50];
@@ -78,32 +80,34 @@ void account_register_prompt()
     do
     {
         printf("Enter username: ");
-        scanf("%19s", username_input);
+        scanf(" %19s", username_input);
 
         printf("Enter password: ");
-        scanf("%49s", password_input);
+        scanf(" %49s", password_input);
 
         // check for blank input
-        if (sizeof(username_input) > 49)
+        if (strlen(username_input) > 49)
         {
-            printf("The desired username contains more characters that is allowed!");
+            printf("%s\n", H00001);
+            return 1;
         }
 
         // check for blank input
-        if (sizeof(password_input) > 19)
+        if (strlen(password_input) > 19)
         {
-            printf("The desired password contains less or more characters that is allowed!");
+            printf("%s\n", H00002);
+            return 1;
         }
 
         // check for blank input
     } while (
-        (sizeof(username_input) > 49) &&
-        (sizeof(password_input) > 19));
+        (strlen(username_input) > 49) &&
+        (strlen(password_input) > 19));
     {
         getchar();
     }
 
-    account_register(username_input, password_input);
+    return account_register(username_input, password_input);
 }
 
 int account_login(char *username, char *password)
@@ -123,6 +127,8 @@ int account_register(char *username, char *password)
 
     // create wallet with the wallet name of the username
     wallet_create(username);
+
+    // then login here
 
     return 0;
 }
