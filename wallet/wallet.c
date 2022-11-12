@@ -29,6 +29,15 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <stdio.h>
+#include <sqlite3.h>
+
+#ifdef WIN32
+#include <io.h>
+#define F_OK 0
+#define access _access
+#else
+#include <unistd.h>
+#endif
 
 #include "wallet.h"
 
@@ -37,6 +46,25 @@ int wallet_create(char *wallet_name, char *wallet_password)
     printf("Creating wallet...\n");
 
     // if the wallet name exists append _n (n as in number) to the name
+    if (access(wallet_name, F_OK) == 0) {
+        printf("File exists.\n");
+    } else {
+        printf("File does not exists.\n");
+    }
+
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+
+    rc = sqlite3_open("test.db", &db);
+
+    if (rc) {
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+        return 1;
+    } else {
+        printf("Opened database successfully\n");
+    }
+    sqlite3_close(db);
 
     return 0;
 }
