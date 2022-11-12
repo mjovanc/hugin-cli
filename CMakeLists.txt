@@ -85,6 +85,7 @@ target_link_libraries(${PROJECT_NAME}
         db
         account
         wallet
+        sqlite3
     PRIVATE
         sodium
 )
