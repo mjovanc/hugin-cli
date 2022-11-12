@@ -63,13 +63,13 @@ int main(int argc, char *argv[])
         {
             if (logged_in == true)
             {
-                printf("%s\n", H00005);
+                printf("%s\n", A00005);
                 continue;
             }
 
             if (account_login_prompt() != 0)
             {
-                printf("%s\n", H00003);
+                printf("%s\n", A00003);
                 continue;
             }
 
@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
         {
             if (account_register_prompt() != 0)
             {
-                printf("%s\n", H00004);
+                printf("%s\n", A00004);
                 continue;
             }
 
@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            printf("%s\n", H00006);
+            printf("%s\n", A00006);
         }
     } while (strcmp(input, "/quit") != 0);
     {
