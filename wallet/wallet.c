@@ -1,6 +1,6 @@
 // Copyright (c) 2022-2022, The Kryptokrona Project
 //
-// Created by jo7an
+// Created by Marcus Cvjeticanin
 //
 // All rights reserved.
 //
@@ -28,7 +28,20 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef WALLET_H
-#define WALLET_H
+#include <stdio.h>
 
-#endif
+#include "wallet.h"
+
+int wallet_create(char *wallet_name)
+{
+    printf("Creating wallet...\n");
+
+    // if the wallet name exists append _n (n as in number) to the name
+
+    return 0;
+}
+
+int wallet_open()
+{
+    return 0;
+}
