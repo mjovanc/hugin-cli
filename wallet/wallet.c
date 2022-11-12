@@ -30,7 +30,6 @@
 
 #include <stdio.h>
 
-
 #ifdef WIN32
 #include <io.h>
 #define F_OK 0
@@ -50,12 +49,18 @@ int wallet_create(char *wallet_name, char *wallet_password)
     if (access(wallet_name, F_OK) == 0)
     {
         printf("File exists.\n");
-    } else
+        // get the current name of file
+            // if ending with _NUMBER
+                // get the number
+                // increment with 1
+                // replace number in original name
+
+    }
+    else
     {
         printf("File does not exists.\n");
+        database_create(wallet_name);
     }
-
-
 
     return 0;
 }

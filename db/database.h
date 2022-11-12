@@ -32,5 +32,6 @@
 #define DATABASE_H
 
 int database_create(char *database_name);
+int database_delete(char *database_name);
 
 #endif
