@@ -4,6 +4,7 @@ env:
   GITHUB_REGISTRY: 'ghcr.io'
   GITHUB_OWNER: 'kryptokrona'
   GITHUB_DOCKER_IMAGE: 'hugin-cli'
+  BUILD_TYPE: Release
 
 on:
   push:
@@ -26,6 +27,12 @@ jobs:
             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
           }
           - {
+            name: "Windows Latest MinGW / x64",
+            artifact: "Windows-MinGW-x64.7z",
+            os: windows-latest,
+            cc: "gcc"
+          }
+          - {
             name: "Ubuntu Latest GCC / x64",
             artifact: "Linux-x64",
             os: ubuntu-22.04,
@@ -40,97 +47,101 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Windows MSVC
+      # Windows Latest MSVC
       - name: Install Dependencies
-        if: matrix.config.os == 'windows-latest'
+        if: matrix.config.name == 'Windows Latest MSVC / x64'
         uses: microsoft/setup-msbuild@v1.1
         with:
           msbuild-architecture: x64
 
       - name: mkdir build
-        if: matrix.config.os == 'windows-latest'
+        if: matrix.config.name == 'Windows Latest MSVC / x64'
         run: mkdir build
 
       - name: Build Windows Target using Visual C++
-        if: matrix.config.os == 'windows-latest'
+        if: matrix.config.name == 'Windows Latest MSVC / x64'
         working-directory: build
         run: |
           cmake -G "Visual Studio 17 2022" ..
           MSBuild.exe Hugin.sln
 
       - name: Upload MSVC Artifact
-        if: matrix.config.artifact == 'Windows-MSVC-x64'
+        if: matrix.config.name == 'Windows Latest MSVC / x64'
         uses: actions/upload-artifact@v3
         with:
           name: msvc-x64
           path: |
             build/Debug/Hugin.exe
+
+      # Windows Latest MinGW
+      - name: Set up MinGW
+        if: matrix.config.name == 'Windows Latest MinGW / x64'
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
+
+      - name: mkdir build
+        if: matrix.config.name == 'Windows Latest MinGW / x64'
+        run: mkdir build
+
+      - name: Build Windows Target using MinGW (GCC)
+        if: matrix.config.name == 'Windows Latest MinGW / x64'
+        working-directory: build
+        run: |
+          cmake -G "MinGW Makefiles" ..
+          make
+
+      - name: Upload MinGW Artifact
+        if: matrix.config.name == 'Windows Latest MinGW / x64'
+        uses: actions/upload-artifact@v3
+        with:
+          name: mingw-x64
+          path: |
+            build/Debug/Hugin.exe
       
       # Ubuntu 22.04
       - name: mkdir build
-        if: matrix.config.os == 'ubuntu-22.04'
+        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
         run: mkdir build
 
       - name: Build Ubuntu Target
-        if: matrix.config.os == 'ubuntu-22.04'
+        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
         run: |
-          cmake  ..
+          cmake ..
           make
         working-directory: build
 
       - name: Upload Ubuntu Artifact
-        if: matrix.config.artifact == 'Linux-x64'
+        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
         uses: actions/upload-artifact@v3
         with:
           name: linux-x64
           path: |
             build/Hugin
 
-      # macOS
+      # macOS Latest Clang
       - name: Install dependencies on macOS
-        if: matrix.config.os == 'macos-latest'
+        if: matrix.config.name == 'macOS Latest Clang / x64'
         run: |
           brew install cmake ninja
           ninja --version
           cmake --version
 
       - name: mkdir build
-        if: matrix.config.os == 'macos-latest'
+        if: matrix.config.name == 'macOS Latest Clang / x64'
         run: mkdir build
 
       - name: Build macOS Target
-        if: matrix.config.os == 'macos-latest'
+        if: matrix.config.name == 'macOS Latest Clang / x64'
         run: |
-          cmake  ..
+          cmake ..
           make
         working-directory: build
 
       - name: Upload macOS Artifact
-        if: matrix.config.artifact == 'macOS-x64'
+        if: matrix.config.name == 'macOS Latest Clang / x64'
         uses: actions/upload-artifact@v3
         with:
           name: macos-x64
           path: |
             build/Hugin
-
-  docker:
-    name: Build and Publish Docker Image
-    runs-on: ubuntu-22.04
-    needs: [ build ]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: benjlevesque/short-sha@v1.2
-
-      - name: Log into registry ghcr.io
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
-
-      - name: Build Docker
-        run: |
-          docker build -t $GITHUB_REGISTRY/$GITHUB_OWNER/$GITHUB_DOCKER_IMAGE:${{ env.SHA }} .
-      - name: Publish Docker
-        run: |
-          docker push $GITHUB_REGISTRY/$GITHUB_OWNER/$GITHUB_DOCKER_IMAGE:${{ env.SHA }}
