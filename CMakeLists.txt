@@ -63,18 +63,18 @@ add_subdirectory(wallet)
 # include directories
 target_include_directories(${PROJECT_NAME}
     PUBLIC
-    crypto
-    daemon
-    db
-    account
-    wallet
+        crypto
+        daemon
+        db
+        account
+        wallet
 )
 
 # link libraries
 target_link_directories(${PROJECT_NAME}
     PRIVATE
-    crypto
-    daemon
+        crypto
+        daemon
 )
 
 target_link_libraries(${PROJECT_NAME}
