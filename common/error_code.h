@@ -38,4 +38,6 @@
 #define H00005 "H00005: Already logged in!"
 #define H00006 "H00006: Could not recognize the specified command."
 
+#define H00007 "H00007: Failed to create wallet."
+
 #endif //HUGIN_ERROR_CODE_H
