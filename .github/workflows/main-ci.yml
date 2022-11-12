@@ -27,12 +27,6 @@ jobs:
             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
           }
           - {
-            name: "Windows Latest MinGW / x64",
-            artifact: "Windows-MinGW-x64.7z",
-            os: windows-latest,
-            cc: "gcc"
-          }
-          - {
             name: "Ubuntu Latest GCC / x64",
             artifact: "Linux-x64",
             os: ubuntu-22.04,
@@ -70,32 +64,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: msvc-x64
-          path: |
-            build/Debug/Hugin.exe
-
-      # Windows Latest MinGW
-      - name: Set up MinGW
-        if: matrix.config.name == 'Windows Latest MinGW / x64'
-        uses: egor-tensin/setup-mingw@v2
-        with:
-          platform: x64
-
-      - name: mkdir build
-        if: matrix.config.name == 'Windows Latest MinGW / x64'
-        run: mkdir build
-
-      - name: Build Windows Target using MinGW (GCC)
-        if: matrix.config.name == 'Windows Latest MinGW / x64'
-        working-directory: build
-        run: |
-          cmake -G "MinGW Makefiles" ..
-          make
-
-      - name: Upload MinGW Artifact
-        if: matrix.config.name == 'Windows Latest MinGW / x64'
-        uses: actions/upload-artifact@v3
-        with:
-          name: mingw-x64
           path: |
             build/Debug/Hugin.exe
       
