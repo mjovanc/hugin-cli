@@ -37,6 +37,16 @@ project(Hugin)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
+include(FetchContent)
+
+# Update the commit to point to whatever libsodium-cmake-commit you want to target.
+FetchContent_Declare(Sodium
+        GIT_REPOSITORY https://github.com/robinlinden/libsodium-cmake.git
+        GIT_TAG 99f14233eab1d4f7f49c2af4ec836f2e701c445e # HEAD as of 2022-05-28
+        )
+set(SODIUM_DISABLE_TESTS ON)
+FetchContent_MakeAvailable(Sodium)
+
 # directories to be included
 include_directories(${PROJECT_SOURCE_DIR})
 
@@ -51,8 +61,7 @@ add_subdirectory(account)
 add_subdirectory(wallet)
 
 # include directories
-target_include_directories(
-    ${PROJECT_NAME}
+target_include_directories(${PROJECT_NAME}
     PUBLIC
     crypto
     daemon
@@ -62,18 +71,19 @@ target_include_directories(
 )
 
 # link libraries
-target_link_directories(
-    ${PROJECT_NAME}
+target_link_directories(${PROJECT_NAME}
     PRIVATE
     crypto
     daemon
 )
 
-target_link_libraries(
-    ${PROJECT_NAME}
-    crypto
-    daemon
-    db
-    account
-    wallet
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC
+        crypto
+        daemon
+        db
+        account
+        wallet
+    PRIVATE
+        sodium
 )
