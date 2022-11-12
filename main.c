@@ -30,6 +30,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 #include "account/account.h"
 #include "config/cli_header.h"
@@ -51,6 +52,7 @@ int main(int argc, char *argv[])
     print_header();
 
     char input[10];
+    bool logged_in = false;
 
     do
     {
@@ -59,13 +61,19 @@ int main(int argc, char *argv[])
 
         if (strcmp(input, "/login") == 0)
         {
-            // here check if we already are logged in first
+            if (logged_in == true)
+            {
+                printf("%s\n", H00005);
+                continue;
+            }
 
             if (account_login_prompt() != 0)
             {
                 printf("%s\n", H00003);
                 continue;
             }
+
+            logged_in = true;
         }
         else if (strcmp(input, "/register") == 0)
         {
@@ -74,10 +82,12 @@ int main(int argc, char *argv[])
                 printf("%s\n", H00004);
                 continue;
             }
+
+            logged_in = true;
         }
         else if (strcmp(input, "/quit") == 0)
         {
-            account_logout(); // only logout if we are logged in
+            account_logout(&logged_in); // only logout if we are logged in
             printf("Good bye!\n");
         }
     } while (strcmp(input, "/quit") != 0);
