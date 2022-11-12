@@ -34,7 +34,6 @@
 
 #include "account/account.h"
 #include "config/cli_header.h"
-#include "config/hugin_config.h"
 #include "common/error_code.h"
 
 int main(int argc, char *argv[])

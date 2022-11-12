@@ -130,11 +130,15 @@ int account_register(char *username, char *password)
 
     // create wallet with the wallet name of the username
     // should we save into DB?
-    wallet_create(username, password);
+    int wallet_created = wallet_create(username, password);
 
-    account_login(username, password);
+    if (wallet_created != 0)
+    {
+        printf("%s\n", H00007);
+        return 1;
+    }
 
-    return 0;
+    return account_login(username, password);
 }
 
 int account_logout(bool *logged_in)
