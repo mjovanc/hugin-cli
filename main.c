@@ -33,6 +33,7 @@
 
 #include "account/account.h"
 #include "config/cli_header.h"
+#include "common/error_code.h"
 
 int main(int argc, char *argv[])
 {
@@ -54,15 +55,23 @@ int main(int argc, char *argv[])
     do
     {
         printf("> ");
-        scanf("%9s", input);
+        scanf(" %9s", input);
 
         if (strcmp(input, "/login") == 0)
         {
-            account_login_prompt();
+            if (account_login_prompt() != 0)
+            {
+                printf("%s\n", H00003);
+                continue;
+            }
         }
         else if (strcmp(input, "/register") == 0)
         {
-            account_register_prompt();
+            if (account_register_prompt() != 0)
+            {
+                printf("%s\n", H00004);
+                continue;
+            }
         }
         else if (strcmp(input, "/quit") == 0)
         {

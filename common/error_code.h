@@ -28,12 +28,12 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef ACCOUNT_H
-#define ACCOUNT_H
+#ifndef HUGIN_ERROR_CODE_H
+#define HUGIN_ERROR_CODE_H
 
-int account_login_prompt();
-int account_register_prompt();
-int account_login(char *username, char *password);
-int account_register(char *username, char *password);
+#define H00001 "H00001: Username cannot be blank or longer than 50 characters!"
+#define H00002 "H00002: Password cannot be blank or longer than 20 characters!"
+#define H00003 "H00003: Failed to login!"
+#define H00004 "H00004: Failed to register!"
 
-#endif
+#endif //HUGIN_ERROR_CODE_H
