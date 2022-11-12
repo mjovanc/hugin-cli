@@ -1,6 +1,6 @@
 // Copyright (c) 2022-2022, The Kryptokrona Project
 //
-// Created by jo7an
+// Created by Marcus Cvjeticanin
 //
 // All rights reserved.
 //
@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "account/account.h"
 #include "config/cli_header.h"
 
 int main(int argc, char *argv[])
@@ -57,15 +58,15 @@ int main(int argc, char *argv[])
 
         if (strcmp(input, "/login") == 0)
         {
-            printf("Selected login\n");
+            account_login_prompt();
         }
         else if (strcmp(input, "/register") == 0)
         {
-            printf("Selected register\n");
+            account_register_prompt();
         }
         else if (strcmp(input, "/quit") == 0)
         {
-            printf("Selected quit\n");
+            printf("Good bye!\n");
         }
     } while (strcmp(input, "/quit") != 0);
     {

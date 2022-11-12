@@ -1,6 +1,6 @@
 # Copyright (c) 2022-2022, The Kryptokrona Project
 #
-# Created by jo7an
+# Created by Marcus Cvjeticanin
 #
 # All rights reserved.
 #
@@ -29,6 +29,6 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 add_library(
-    boards
-    boards.c
+    wallet
+    wallet.c
 )
