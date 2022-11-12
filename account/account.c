@@ -124,10 +124,6 @@ int account_register(char *username, char *password)
 {
     printf("Register an account...\n");
 
-    // char *username[20];
-    // char *password[50];
-    // account_login(username, password);
-
     // create wallet with the wallet name of the username
     // should we save into DB?
     int wallet_created = wallet_create(username, password);
