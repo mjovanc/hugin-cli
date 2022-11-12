@@ -36,5 +36,6 @@
 #define H00003 "H00003: Failed to login!"
 #define H00004 "H00004: Failed to register!"
 #define H00005 "H00005: Already logged in!"
+#define H00006 "H00006: Could not recognize the specified command."
 
 #endif //HUGIN_ERROR_CODE_H
