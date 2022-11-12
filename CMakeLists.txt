@@ -1,6 +1,6 @@
 # Copyright (c) 2022-2022, The Kryptokrona Project
 #
-# Created by jo7an
+# Created by Marcus Cvjeticanin
 #
 # All rights reserved.
 #
@@ -47,8 +47,8 @@ add_executable(${PROJECT_NAME} main.c)
 add_subdirectory(crypto)
 add_subdirectory(daemon)
 add_subdirectory(db)
-add_subdirectory(boards)
-add_subdirectory(service)
+add_subdirectory(account)
+add_subdirectory(wallet)
 
 # include directories
 target_include_directories(
@@ -57,8 +57,8 @@ target_include_directories(
     crypto
     daemon
     db
-    boards
-    service
+    account
+    wallet
 )
 
 # link libraries
@@ -74,6 +74,6 @@ target_link_libraries(
     crypto
     daemon
     db
-    boards
-    service
+    account
+    wallet
 )
