@@ -1,6 +1,6 @@
 // Copyright (c) 2022-2022, The Kryptokrona Project
 //
-// Created by jo7an
+// Created by Marcus Cvjeticanin
 //
 // All rights reserved.
 //
@@ -27,3 +27,13 @@
 // INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
+
+void account_login_prompt();
+void account_register_prompt();
+int account_login(char *username, char *password);
+int account_register(char *username, char *password);
+
+#endif
