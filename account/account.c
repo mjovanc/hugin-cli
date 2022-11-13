@@ -113,8 +113,6 @@ int account_register_prompt()
 
 int account_login(char *username, char *password)
 {
-    printf("Logging in...\n");
-
     bool exists = wallet_exists(username);
 
     if (!exists)
@@ -130,10 +128,6 @@ int account_login(char *username, char *password)
 
 int account_register(char *username, char *password)
 {
-    printf("Register an account...\n");
-
-    // create wallet with the wallet name of the username
-    // should we save into DB?
     int wallet_created = wallet_create(username, password);
 
     if (wallet_created != 0)

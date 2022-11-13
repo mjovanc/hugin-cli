@@ -37,7 +37,9 @@
 #define A00003 "A00003: Failed to login!"
 #define A00004 "A00004: Failed to register!"
 #define A00005 "A00005: Already logged in!"
-#define A00006 "A00006: Could not recognize the specified command."
+
+// command error codes
+#define C00006 "C00006: Could not recognize the specified command."
 
 // wallet error codes
 #define W00001 "W00001: Failed to create wallet. Wallet already exists."
