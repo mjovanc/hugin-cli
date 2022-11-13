@@ -57,24 +57,25 @@ bool wallet_exists(char *wallet_name)
     // wallet already exists
     if (access(tmp_wallet_name, F_OK) == 0)
     {
-        return 1;
+        return true;
     }
 
     free(tmp_wallet_name);
 
-    return 0;
+    return false;
 }
 
 int wallet_create(char *wallet_name, char *wallet_password)
 {
-    if(!wallet_exists(wallet_name))
+    if (wallet_exists(wallet_name))
     {
-        printf("Creating wallet...\n");
-        database_create(wallet_name);
-        return 0;
+        return 1;
     }
 
-    return 1;
+    printf("Creating wallet...\n");
+    database_create(wallet_name);
+
+    return 0;
 }
 
 int wallet_open(char *wallet_name, char *wallet_password)
