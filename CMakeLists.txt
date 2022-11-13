@@ -66,9 +66,11 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC
         crypto
         daemon
-        db
         account
         wallet
+        db
+        common
+        config
 )
 
 # link libraries
@@ -76,9 +78,9 @@ target_link_libraries(${PROJECT_NAME}
     PUBLIC
         crypto
         daemon
-        db
         account
         wallet
+        db
         sqlite3
     PRIVATE
         sodium
