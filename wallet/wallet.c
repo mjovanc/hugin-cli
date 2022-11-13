@@ -36,6 +36,8 @@
 #define access _access
 #else
 #include <unistd.h>
+#include <string.h>
+
 #endif
 
 #include "wallet.h"
@@ -43,24 +45,20 @@
 
 int wallet_create(char *wallet_name, char *wallet_password)
 {
+    char *extension = ".db";
+    size_t tmp_wallet_size = sizeof(wallet_name) + strlen(extension);
+    char tmp_wallet_name[tmp_wallet_size];
+    strncpy(tmp_wallet_name, wallet_name, tmp_wallet_size);
+    strcat(tmp_wallet_name, extension);
+
+    // wallet already exists
+    if (access(tmp_wallet_name, F_OK) == 0)
+    {
+        return 1;
+    }
+
     printf("Creating wallet...\n");
-
-    // if the wallet name exists append _n (n as in number) to the name
-    if (access(wallet_name, F_OK) == 0)
-    {
-        printf("File exists.\n");
-        // get the current name of file
-            // if ending with _NUMBER
-                // get the number
-                // increment with 1
-                // replace number in original name
-
-    }
-    else
-    {
-        printf("File does not exists.\n");
-        database_create(wallet_name);
-    }
+    database_create(wallet_name);
 
     return 0;
 }
