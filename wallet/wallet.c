@@ -65,20 +65,20 @@ bool wallet_exists(char *wallet_name)
     return false;
 }
 
-int wallet_create(char *wallet_name, char *wallet_password)
+bool wallet_create(char *wallet_name, char *wallet_password)
 {
     if (wallet_exists(wallet_name))
     {
-        return 1;
+        return false;
     }
 
     printf("Creating wallet...\n");
     database_create(wallet_name);
 
-    return 0;
+    return true;
 }
 
-int wallet_open(char *wallet_name, char *wallet_password)
+bool wallet_open(char *wallet_name, char *wallet_password)
 {
-    return 0;
+    return false;
 }
