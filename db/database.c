@@ -66,6 +66,9 @@ int database_open(char *database_name)
     char *extension = ".db";
     char *full_db_name = strcat(database_name, extension);
 
+    //TODO: need to save this DB on user/local or similar OS systems not in the same place where executable is
+    //TODO: and encrypt
+
     rc = sqlite3_open(full_db_name, &db);
 
     if (rc)
