@@ -44,30 +44,6 @@
 #include "wallet.h"
 #include "db/database.h"
 
-int wallet_create(char *wallet_name, char *wallet_password)
-{
-    char *extension = ".db";
-    size_t tmp_wallet_size = strlen(wallet_name) + strlen(extension);
-    char *tmp_wallet_name;
-    tmp_wallet_name = malloc(sizeof(*tmp_wallet_name) * tmp_wallet_size + 1);
-
-    strncpy(tmp_wallet_name, wallet_name, tmp_wallet_size);
-    strcat(tmp_wallet_name, extension);
-
-    // wallet already exists
-    if (access(tmp_wallet_name, F_OK) == 0)
-    {
-        return 1;
-    }
-
-    free(tmp_wallet_name);
-
-    printf("Creating wallet...\n");
-    database_create(wallet_name);
-
-    return 0;
-}
-
 bool wallet_exists(char *wallet_name)
 {
     char *extension = ".db";
@@ -85,7 +61,20 @@ bool wallet_exists(char *wallet_name)
     }
 
     free(tmp_wallet_name);
+
     return 0;
+}
+
+int wallet_create(char *wallet_name, char *wallet_password)
+{
+    if(!wallet_exists(wallet_name))
+    {
+        printf("Creating wallet...\n");
+        database_create(wallet_name);
+        return 0;
+    }
+
+    return 1;
 }
 
 int wallet_open(char *wallet_name, char *wallet_password)
