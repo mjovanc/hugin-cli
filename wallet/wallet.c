@@ -68,7 +68,27 @@ int wallet_create(char *wallet_name, char *wallet_password)
     return 0;
 }
 
-int wallet_open()
+bool wallet_exists(char *wallet_name)
+{
+    char *extension = ".db";
+    size_t tmp_wallet_size = strlen(wallet_name) + strlen(extension);
+    char *tmp_wallet_name;
+    tmp_wallet_name = malloc(sizeof(*tmp_wallet_name) * tmp_wallet_size + 1);
+
+    strncpy(tmp_wallet_name, wallet_name, tmp_wallet_size);
+    strcat(tmp_wallet_name, extension);
+
+    // wallet already exists
+    if (access(tmp_wallet_name, F_OK) == 0)
+    {
+        return 1;
+    }
+
+    free(tmp_wallet_name);
+    return 0;
+}
+
+int wallet_open(char *wallet_name, char *wallet_password)
 {
     return 0;
 }

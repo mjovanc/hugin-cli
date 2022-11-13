@@ -41,5 +41,6 @@
 
 // wallet error codes
 #define W00001 "W00001: Failed to create wallet. Wallet already exists."
+#define W00002 "W00002: Failed to login. Wallet does not exist."
 
 #endif //HUGIN_ERROR_CODE_H

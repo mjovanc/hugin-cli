@@ -115,6 +115,14 @@ int account_login(char *username, char *password)
 {
     printf("Logging in...\n");
 
+    bool exists = wallet_exists(username);
+
+    if (!exists)
+    {
+        printf("%s\n", W00002);
+        return 1;
+    }
+
     printf("Logged in...\n");
 
     return 0;

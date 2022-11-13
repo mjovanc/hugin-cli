@@ -31,7 +31,10 @@
 #ifndef WALLET_H
 #define WALLET_H
 
+#include <stdbool.h>
+
 int wallet_create(char *wallet_name, char *wallet_password);
-int wallet_open();
+bool wallet_exists(char *wallet_name);
+int wallet_open(char *wallet_name, char *wallet_password);
 
 #endif

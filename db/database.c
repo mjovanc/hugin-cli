@@ -58,6 +58,30 @@ int database_create(char *database_name)
     return 0;
 }
 
+int database_open(char *database_name)
+{
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+    char *extension = ".db";
+    char *full_db_name = strcat(database_name, extension);
+
+    rc = sqlite3_open(full_db_name, &db);
+
+    if (rc)
+    {
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+        return 1;
+    }
+    else
+    {
+        printf("Opened database successfully\n");
+    }
+    sqlite3_close(db);
+
+    return 0;
+}
+
 int database_delete(char *database_name)
 {
     return 0;
