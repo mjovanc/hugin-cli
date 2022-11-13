@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            printf("%s\n", A00006);
+            printf("%s\n", C00006);
         }
     } while (strcmp(input, "/quit") != 0);
     {
