@@ -129,7 +129,6 @@ int account_login(char *username, char *password)
 int account_register(char *username, char *password)
 {
     int wallet_created = wallet_create(username, password);
-
     if (wallet_created != 0)
     {
         printf("%s\n", W00001);
