@@ -61,7 +61,7 @@ add_subdirectory(db)
 add_subdirectory(account)
 add_subdirectory(wallet)
 
-# include directories
+# include directories (order is important)
 target_include_directories(${PROJECT_NAME}
     PUBLIC
         crypto
@@ -73,7 +73,7 @@ target_include_directories(${PROJECT_NAME}
         config
 )
 
-# link libraries
+# link libraries (order is important)
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
         crypto
