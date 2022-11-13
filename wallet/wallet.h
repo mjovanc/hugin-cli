@@ -33,8 +33,8 @@
 
 #include <stdbool.h>
 
-int wallet_create(char *wallet_name, char *wallet_password);
 bool wallet_exists(char *wallet_name);
+int wallet_create(char *wallet_name, char *wallet_password);
 int wallet_open(char *wallet_name, char *wallet_password);
 
 #endif
