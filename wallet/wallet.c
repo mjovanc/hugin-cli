@@ -48,6 +48,7 @@ int wallet_create(char *wallet_name, char *wallet_password)
     char *extension = ".db";
     size_t tmp_wallet_size = sizeof(wallet_name) + strlen(extension);
     char tmp_wallet_name[tmp_wallet_size];
+
     strncpy(tmp_wallet_name, wallet_name, tmp_wallet_size);
     strcat(tmp_wallet_name, extension);
 
