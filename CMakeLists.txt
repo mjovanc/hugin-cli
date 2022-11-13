@@ -80,7 +80,6 @@ target_link_libraries(${PROJECT_NAME}
         daemon
         account
         wallet
-        sqlite3
         db
     PRIVATE
         sodium
