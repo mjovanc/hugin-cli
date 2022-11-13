@@ -57,6 +57,7 @@ bool wallet_exists(char *wallet_name)
     // wallet already exists
     if (access(tmp_wallet_name, F_OK) == 0)
     {
+        free(tmp_wallet_name);
         return true;
     }
 
@@ -80,5 +81,5 @@ bool wallet_create(char *wallet_name, char *wallet_password)
 
 bool wallet_open(char *wallet_name, char *wallet_password)
 {
-    return false;
+    return true;
 }
