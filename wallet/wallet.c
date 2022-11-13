@@ -37,6 +37,7 @@
 #else
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 
 #endif
 
@@ -47,7 +48,8 @@ int wallet_create(char *wallet_name, char *wallet_password)
 {
     char *extension = ".db";
     size_t tmp_wallet_size = strlen(wallet_name) + strlen(extension);
-    char tmp_wallet_name[tmp_wallet_size];
+    char *tmp_wallet_name;
+    tmp_wallet_name = malloc(sizeof(*tmp_wallet_name) * tmp_wallet_size + 1);
 
     strncpy(tmp_wallet_name, wallet_name, tmp_wallet_size);
     strcat(tmp_wallet_name, extension);
