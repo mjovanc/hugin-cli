@@ -113,6 +113,7 @@ int account_register_prompt()
 
 int account_login(char *username, char *password)
 {
+    // TODO: this does not work since the file is created after exeuction of program exists
     bool exists = wallet_exists(username);
 
     if (!exists)
@@ -128,8 +129,8 @@ int account_login(char *username, char *password)
 
 int account_register(char *username, char *password)
 {
-    int wallet_created = wallet_create(username, password);
-    if (wallet_created != 0)
+    bool wallet_created = wallet_create(username, password);
+    if (!wallet_created)
     {
         printf("%s\n", W00001);
         return 1;
