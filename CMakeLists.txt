@@ -76,6 +76,9 @@ target_link_directories(${PROJECT_NAME}
     PRIVATE
         crypto
         daemon
+        db
+        account
+        wallet
 )
 
 target_link_libraries(${PROJECT_NAME}
