@@ -40,6 +40,6 @@
 #define A00006 "A00006: Could not recognize the specified command."
 
 // wallet error codes
-#define W00001 "W00001: Failed to create wallet."
+#define W00001 "W00001: Failed to create wallet. Wallet already exists."
 
 #endif //HUGIN_ERROR_CODE_H

@@ -39,9 +39,10 @@ int database_create(char *database_name)
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
-
     char *extension = ".db";
-    rc = sqlite3_open(strcat(database_name, extension), &db);
+    char *full_db_name = strcat(database_name, extension);
+
+    rc = sqlite3_open(full_db_name, &db);
 
     if (rc)
     {
