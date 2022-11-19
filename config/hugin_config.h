@@ -32,4 +32,6 @@
 #ifndef HUGIN_HUGIN_CONFIG_H
 #define HUGIN_HUGIN_CONFIG_H
 
+#define CONFIG_NODE_DEFAULT "swepool.org:11898"
+
 #endif //HUGIN_HUGIN_CONFIG_H
