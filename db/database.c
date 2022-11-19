@@ -54,7 +54,18 @@ int database_create(char *database_name)
         printf("Opened database successfully\n");
     }
 
-    // initializing the tables
+    // initializing setting table
+    database_create_table_setting(db, zErrMsg, rc);
+
+    // initializing post table
+
+    sqlite3_close(db);
+
+    return 0;
+}
+
+int database_create_table_setting(sqlite3 *db, char *zErrMsg, int rc)
+{
     char *sql = "DROP TABLE IF EXISTS main.setting;"
                 "CREATE TABLE main.setting(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, value TEXT);"
                 "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
@@ -71,7 +82,26 @@ int database_create(char *database_name)
         return 1;
     }
 
-    sqlite3_close(db);
+    return 0;
+}
+
+int database_create_table_post(sqlite3 *db, char *zErrMsg, int rc)
+{
+    char *sql = "DROP TABLE IF EXISTS main.post;"
+                "CREATE TABLE main.post(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, value TEXT);"
+                "INSERT INTO main.post VALUES(1, 'node', 'swepool.org:11898');";
+
+    rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+    {
+        fprintf(stderr, "SQL error: %s\n", zErrMsg);
+
+        sqlite3_free(zErrMsg);
+        sqlite3_close(db);
+
+        return 1;
+    }
 
     return 0;
 }
