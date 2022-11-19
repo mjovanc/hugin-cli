@@ -54,10 +54,9 @@ int database_create(char *database_name)
         printf("Opened database successfully\n");
     }
 
-    // initializing setting table
+    // initializing tables
     database_create_table_setting(db, zErrMsg, rc);
-
-    // initializing post table
+    database_create_table_post(db, zErrMsg, rc);
 
     sqlite3_close(db);
 
@@ -88,8 +87,8 @@ int database_create_table_setting(sqlite3 *db, char *zErrMsg, int rc)
 int database_create_table_post(sqlite3 *db, char *zErrMsg, int rc)
 {
     char *sql = "DROP TABLE IF EXISTS main.post;"
-                "CREATE TABLE main.post(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, value TEXT);"
-                "INSERT INTO main.post VALUES(1, 'node', 'swepool.org:11898');";
+                "CREATE TABLE main.post(id INT PRIMARY KEY, message TEXT NOT NULL, nickname TEXT,"
+                " time INT NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
 
     rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
 
