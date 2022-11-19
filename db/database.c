@@ -44,7 +44,7 @@ int database_create(char *database_name)
 
     rc = sqlite3_open(full_db_name, &db);
 
-    if (rc)
+    if (rc != SQLITE_OK)
     {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         return 1;
@@ -53,6 +53,24 @@ int database_create(char *database_name)
     {
         printf("Opened database successfully\n");
     }
+
+    // initializing the tables
+    char *sql = "DROP TABLE IF EXISTS main.setting;"
+                "CREATE TABLE main.setting(id INT, name TEXT, value TEXT);"
+                "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
+
+    rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+    {
+        fprintf(stderr, "SQL error: %s\n", zErrMsg);
+
+        sqlite3_free(zErrMsg);
+        sqlite3_close(db);
+
+        return 1;
+    }
+
     sqlite3_close(db);
 
     return 0;
@@ -71,7 +89,7 @@ int database_open(char *database_name)
 
     rc = sqlite3_open(full_db_name, &db);
 
-    if (rc)
+    if (rc != SQLITE_OK)
     {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         return 1;
