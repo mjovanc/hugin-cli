@@ -56,7 +56,7 @@ int database_create(char *database_name)
 
     // initializing the tables
     char *sql = "DROP TABLE IF EXISTS main.setting;"
-                "CREATE TABLE main.setting(id INT, name TEXT, value TEXT);"
+                "CREATE TABLE main.setting(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, value TEXT);"
                 "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
 
     rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
