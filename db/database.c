@@ -43,7 +43,6 @@ int database_create(char *database_name)
     char *full_db_name = strcat(database_name, extension);
 
     rc = sqlite3_open(full_db_name, &db);
-
     if (rc != SQLITE_OK)
     {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
@@ -70,11 +69,9 @@ int database_create_table_setting(sqlite3 *db, char *zErrMsg, int rc)
                 "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
 
     rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
-
     if (rc != SQLITE_OK)
     {
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
-
         sqlite3_free(zErrMsg);
         sqlite3_close(db);
 
@@ -91,11 +88,9 @@ int database_create_table_post(sqlite3 *db, char *zErrMsg, int rc)
                 " time INT NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
 
     rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
-
     if (rc != SQLITE_OK)
     {
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
-
         sqlite3_free(zErrMsg);
         sqlite3_close(db);
 
@@ -117,7 +112,6 @@ int database_open(char *database_name)
     //TODO: and encrypt
 
     rc = sqlite3_open(full_db_name, &db);
-
     if (rc != SQLITE_OK)
     {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));

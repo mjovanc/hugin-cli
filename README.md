@@ -25,6 +25,12 @@ Hugin CLI - A Hugin Messenger client built with C11.
 - Hugin: hugincli board on Hugin Messenger (currently only GUI version). It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
 - Twitter: @mjovanc
 
+# Releases
+
+| NAME | VERSION                                                            | RELEASED | DESCRIPTION    |
+|------|--------------------------------------------------------------------|----------|----------------|
+| Tor  | 0.1.0 | No       | Alpha release. |
+
 # Setup and run
 
 1. Clone the repository
@@ -84,6 +90,7 @@ code, are actively maintaining it (including documentation), or in other ways
 being awesome contributors to this project. **We'd like to take a moment to recognize them.**
 
 [<img src="https://github.com/mjovanc.png?size=72" alt="mjovanc" width="72">](https://github.com/mjovanc)
+[<img src="https://github.com/softx01.png?size=72" alt="softx01" width="72">](https://github.com/softx01)
 
 # License
 
