@@ -22,7 +22,8 @@ Hugin CLI - A Hugin Messenger client built with C11.
 - Web: https://kryptokrona.org
 - Docs: https://docs.kryptokrona.org
 - GitHub: https://github.com/kryptokrona/hugin-cli
-- Hugin: hugincli board on Hugin Messenger (currently only GUI version). It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
+- Hugin: hugin group on Hugin Messenger (currently only GUI version): `20b4821b90b2ea7355cb7ed7fa60823016eedef0e3541376888f8adc55df75f8` \
+  It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
 - Twitter: @mjovanc
 
 # Releases
