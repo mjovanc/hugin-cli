@@ -45,9 +45,10 @@ Hugin CLI - A Hugin Messenger client built with C11.
 - /register (you will be prompted to enter more information)
 - /login (you will be prompted to enter password)
 - /join `<board name>`
-- /pm `<wallet address here>` (not implemented yet)
-- /pgm `<group key>` (not implemented yet)
+- /pm `<wallet address>` (not implemented)
+- /pgm `<group key>` (not implemented)
 - /info (not implemented yet)
+- /tip `<wallet address` or `<saved username>` (not implemented)
 
 ## Clean
 
