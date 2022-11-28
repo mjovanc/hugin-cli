@@ -28,9 +28,16 @@ jobs:
             architecture: x64
           }
           - {
+            name: "Ubuntu 20.04 GCC / x64",
+            artifact: "ubuntu-20-x64",
+            os: ubuntu-20.04,
+            cc: "gcc",
+            architecture: x64
+          }
+          - {
             name: "Ubuntu Latest GCC / x64",
-            artifact: "Linux-x64",
-            os: ubuntu-22.04,
+            artifact: "ubuntu-latest-x64",
+            os: ubuntu-latest,
             cc: "gcc",
             architecture: x64
           }
@@ -75,7 +82,27 @@ jobs:
           name: msvc-x64
           path: |
             build/Debug/Hugin.exe
-      
+
+      # Ubuntu 20.04
+      - name: mkdir build
+        if: matrix.config.name == 'Ubuntu 20.04 GCC / x64'
+        run: mkdir build
+
+      - name: Build Ubuntu Target
+        if: matrix.config.name == 'Ubuntu 20.04 GCC / x64'
+        run: |
+          cmake ..
+          make
+        working-directory: build
+
+      - name: Upload Ubuntu Artifact
+        if: matrix.config.name == 'Ubuntu 20.04 GCC / x64'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ubuntu-20-x64
+          path: |
+            build/Hugin
+
       # Ubuntu 22.04
       - name: mkdir build
         if: matrix.config.name == 'Ubuntu Latest GCC / x64'
@@ -92,7 +119,7 @@ jobs:
         if: matrix.config.name == 'Ubuntu Latest GCC / x64'
         uses: actions/upload-artifact@v3
         with:
-          name: linux-x64
+          name: ubuntu-latest-x64
           path: |
             build/Hugin
 
