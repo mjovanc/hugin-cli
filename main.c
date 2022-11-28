@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
         printf("> ");
         scanf(" %9s", input);
 
-        if (strcmp(input, "/login") == 0)
+        if (strcmp(input, "/l") == 0)
         {
             if (logged_in == true)
             {
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 
             logged_in = true;
         }
-        else if (strcmp(input, "/register") == 0)
+        else if (strcmp(input, "/r") == 0)
         {
             if (account_register_prompt() != 0)
             {
@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 
             logged_in = true;
         }
-        else if (strcmp(input, "/quit") == 0)
+        else if (strcmp(input, "/q") == 0)
         {
             account_logout(&logged_in); // only logout if we are logged in
             printf("Good bye!\n");
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
         {
             printf("%s\n", C00006);
         }
-    } while (strcmp(input, "/quit") != 0);
+    } while (strcmp(input, "/q") != 0);
     {
         getchar();
     }
