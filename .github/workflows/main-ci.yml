@@ -45,7 +45,7 @@ jobs:
             name: "macOS Latest Clang / arm64",
             artifact: "macOS-arm64",
             os: macos-latest,
-            cc: "clang"
+            cc: "clang",
           }
     steps:
       - uses: actions/checkout@v2
@@ -96,29 +96,56 @@ jobs:
           path: |
             build/Hugin
 
-      # macOS Latest Clang
-      - name: Install dependencies on macOS
-        if: matrix.config.name == 'macOS Latest Clang / x64'
+      # macOS-11 Clang
+      - name: Install dependencies on macOS-11
+        if: matrix.config.name == 'macOS-11 Clang / x64'
         run: |
           brew install cmake ninja
           ninja --version
           cmake --version
 
       - name: mkdir build
-        if: matrix.config.name == 'macOS Latest Clang / x64'
+        if: matrix.config.name == 'macOS-11 Clang / x64'
+        run: mkdir build
+
+      - name: Build macOS-11 Target
+        if: matrix.config.name == 'macOS-11 Clang / x64'
+        run: |
+          cmake ..
+          make
+        working-directory: build
+
+      - name: Upload macOS-11 Artifact
+        if: matrix.config.name == 'macOS-11 Clang / x64'
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-x64
+          path: |
+            build/Hugin
+
+      # macOS Latest Clang
+      - name: Install dependencies on macOS
+        if: matrix.config.name == 'macOS Latest Clang / arm64'
+        run: |
+          brew install cmake ninja
+          ninja --version
+          cmake --version
+
+      - name: mkdir build
+        if: matrix.config.name == 'macOS Latest Clang / arm64'
         run: mkdir build
 
       - name: Build macOS Target
-        if: matrix.config.name == 'macOS Latest Clang / x64'
+        if: matrix.config.name == 'macOS Latest Clang / arm64'
         run: |
           cmake ..
           make
         working-directory: build
 
       - name: Upload macOS Artifact
-        if: matrix.config.name == 'macOS Latest Clang / x64'
+        if: matrix.config.name == 'macOS Latest Clang / arm64'
         uses: actions/upload-artifact@v3
         with:
-          name: macos-x64
+          name: macos-arm64
           path: |
             build/Hugin
