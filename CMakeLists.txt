@@ -36,6 +36,7 @@ project(Hugin)
 # specify the C standard (17 or higher does not work yet)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ldl")
 
 include(FetchContent)
 
