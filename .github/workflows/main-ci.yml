@@ -24,17 +24,26 @@ jobs:
             artifact: "Windows-MSVC-x64",
             os: windows-latest,
             cc: "cl",
-            environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+            environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+            architecture: x64
           }
           - {
             name: "Ubuntu Latest GCC / x64",
             artifact: "Linux-x64",
             os: ubuntu-22.04,
-            cc: "gcc"
+            cc: "gcc",
+            architecture: x64
           }
           - {
-            name: "macOS Latest Clang / x64",
+            name: "macOS-11 Clang / x64",
             artifact: "macOS-x64",
+            os: macos-11,
+            cc: "clang",
+            architecture: x64
+          }
+          - {
+            name: "macOS Latest Clang / arm64",
+            artifact: "macOS-arm64",
             os: macos-latest,
             cc: "clang"
           }
