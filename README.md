@@ -42,13 +42,24 @@ Hugin CLI - A Hugin Messenger client built with C11.
 
 ## Commands
 
-- /register (you will be prompted to enter more information)
-- /login (you will be prompted to enter password)
-- /join `<board name>`
-- /pm `<wallet address>` (not implemented)
-- /pgm `<group key>` (not implemented)
-- /info (not implemented yet)
-- /tip `<wallet address` or `<saved username>` (not implemented)
+### Auth
+- `/r` - Register an account.
+- `/l` - Login
+- `/q` - Quit and logout.
+
+### Chat
+
+- `/b` or `/b <board-name>` - Join a board or list currently joined boards.
+- `/pm` or `/pm <hugin-address>` (not implemented) - Join a private message or list currently joined private messages.
+- `/pgm` or `/pgm <group-key>` (not implemented) - Join a private group or list currently joined private groups.
+
+### Other
+- `/i` (not implemented) - Get regular information such as wallet address, Hugin address, key, current node, node status, funds ratio, balance and so forth.
+- `/t` or `/tip <wallet-address|saved-username>` (not implemented) - Tip an amount to a user by wallet address or saved username.
+- `/c` or `/c <wallet-address|hugin-address|key|mnemonic-seed|private-keys>` (not implemented) - Copy wallet address, Hugin address, key, mnemonic seed or private keys. Need to authenticate again to access it. If only `/c` it copies everything to clipboard.
+- `/s` (not implemented) - Set which node to connect to, username, new password, check for updates and so forth.
+- `/lt` (not implemented) - List all transactions made.
+- `/lc` (not implemented) - List all contacts with their Hugin addresses and username.
 
 ## Clean
 
