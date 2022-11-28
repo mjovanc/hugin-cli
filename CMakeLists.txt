@@ -91,5 +91,4 @@ target_link_libraries(${PROJECT_NAME}
         db
     PRIVATE
         sodium
-    ${CMAKE_DL_LIBS}
 )
