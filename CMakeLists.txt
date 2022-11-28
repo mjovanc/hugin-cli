@@ -36,7 +36,14 @@ project(Hugin)
 # specify the C standard (17 or higher does not work yet)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ldl")
+
+if (NOT CMAKE_BUILD_TYPE)
+    message(STATUS "No build type selected, default to Release")
+    set(CMAKE_BUILD_TYPE "Release")
+endif()
+
+message(STATUS "Building in ${CMAKE_BUILD_TYPE} mode")
+message(STATUS "Building with ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION} on ${CMAKE_SYSTEM}")
 
 include(FetchContent)
 
@@ -84,4 +91,5 @@ target_link_libraries(${PROJECT_NAME}
         db
     PRIVATE
         sodium
+    ${CMAKE_DL_LIBS}
 )
