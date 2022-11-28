@@ -57,9 +57,10 @@ Hugin CLI - A Hugin Messenger client built with C11.
 - `/i` (not implemented) - Get regular information such as wallet address, Hugin address, key, current node, node status, funds ratio, balance and so forth.
 - `/t` or `/tip <wallet-address|saved-username>` (not implemented) - Tip an amount to a user by wallet address or saved username.
 - `/c` or `/c <wallet-address|hugin-address|key|mnemonic-seed|private-keys>` (not implemented) - Copy wallet address, Hugin address, key, mnemonic seed or private keys. Need to authenticate again to access it. If only `/c` it copies everything to clipboard.
-- `/s` (not implemented) - Set which node to connect to, username, new password, check for updates and so forth.
+- `/s` (not implemented) - Settings to change which node to connect to, username, new password, check for updates and so forth.
 - `/lt` (not implemented) - List all transactions made.
 - `/lc` (not implemented) - List all contacts with their Hugin addresses and username.
+- `/sf <path> <hugin-address|saved-username>` (not implemented) - Send file.
 
 # Clean
 
