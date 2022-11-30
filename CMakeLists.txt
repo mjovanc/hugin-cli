@@ -68,6 +68,7 @@ add_subdirectory(daemon)
 add_subdirectory(db)
 add_subdirectory(account)
 add_subdirectory(wallet)
+add_subdirectory(external)
 
 # include directories (order is important)
 target_include_directories(${PROJECT_NAME}
