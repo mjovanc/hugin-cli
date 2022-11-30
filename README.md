@@ -5,6 +5,7 @@ Hugin CLI - A Hugin Messenger client built with C11.
 # Table of Contents
 
 - [Development Resources](#development-resources)
+- [Releases](#releases)
 - [Setup and run](#setup-and-run)
   - [Dependencies](#dependencies)
   - [Commands](#commands)
