@@ -92,4 +92,5 @@ target_link_libraries(${PROJECT_NAME}
         db
     PRIVATE
         sodium
+        # put sqlcipher files
 )

@@ -28,3 +28,20 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+if (APPLE)
+    message("Building sqlcipher for macOS")
+    execute_process(
+            WORKING_DIRECTORY sqlcipher
+            COMMAND bash -c "./configure
+                --enable-tempstore=yes
+                CFLAGS='-DSQLITE_HAS_CODEC -I$(brew --prefix openssl)/include'
+                LDFLAGS='-L$(brew --prefix openssl)/lib'"
+    )
+    execute_process(
+            WORKING_DIRECTORY sqlcipher
+            COMMAND bash -c "make"
+    )
+
+    # target_link_libraries(libsqlcipher sqlcipher/.libs/libsqlcipher.dylib)
+endif()
+

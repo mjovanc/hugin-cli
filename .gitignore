@@ -85,3 +85,6 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
+
+# Log files
+*.log
