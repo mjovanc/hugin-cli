@@ -45,7 +45,7 @@ jobs:
             name: "macOS Latest Clang / arm64",
             artifact: "macOS-arm64",
             os: macos-latest,
-            cc: "clang",
+            cc: "clang", # it chooses xcode instead?
           }
     steps:
       - uses: actions/checkout@v2
@@ -100,7 +100,7 @@ jobs:
       - name: Install dependencies on macOS-11
         if: matrix.config.name == 'macOS-11 Clang / x64'
         run: |
-          brew install cmake ninja
+          brew install cmake ninja openssl
           ninja --version
           cmake --version
 
@@ -127,7 +127,7 @@ jobs:
       - name: Install dependencies on macOS
         if: matrix.config.name == 'macOS Latest Clang / arm64'
         run: |
-          brew install cmake ninja
+          brew install cmake ninja openssl
           ninja --version
           cmake --version
 
