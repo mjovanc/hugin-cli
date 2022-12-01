@@ -1,6 +1,8 @@
-# Hugin CLI [![Hugin CLI Main Pipeline](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml/badge.svg)](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml)
+# ![Hugin CLI](resources/hugin-cli-logo-github.png)
 
-Hugin CLI - A Hugin Messenger client built with C11.
+[![Hugin CLI Main Pipeline](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml/badge.svg)](https://github.com/kryptokrona/hugin-cli/actions/workflows/main-ci.yml)
+
+A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockchain.
 
 # Table of Contents
 
@@ -46,12 +48,13 @@ Hugin CLI - A Hugin Messenger client built with C11.
 
 The following table summarizes the tools and libraries required to build.
 
-| Dep   | Min. version | Optional | Purpose         |
-|-------|--------------|----------| --------------- |
-| GCC   | 11           | YES      |                 |
-| MSVC  | 2019         | YES      |                 |
-| Clang | 14           | YES      |                 |
-| CMake | 3.18         | NO       |                 |
+| Dep     | Min. version | Optional | Purpose |
+|---------|--------------|----------|---------|
+| GCC     | 11           | YES      |         |
+| MSVC    | 2019         | YES      |         |
+| Clang   | 14           | YES      |         |
+| CMake   | 3.18         | NO       |         |
+| OpenSSL | -            | NO       |         |
 
 ## Commands
 
