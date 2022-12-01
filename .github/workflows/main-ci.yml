@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.config.name }}
+    name: "Build: ${{ matrix.config.name }}"
     runs-on: ${{ matrix.config.os }}
     strategy:
       fail-fast: false
@@ -133,6 +133,7 @@ jobs:
         if: matrix.config.name == 'macOS Latest Clang / arm64'
         run: |
           brew install cmake ninja openssl
+          export CC=/usr/bin/clang
           ninja --version
           cmake --version
 

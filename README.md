@@ -15,7 +15,6 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 - [Testing](#testing)
   - [Unit testing](#unit-testing)
 - [CI/CD](#cicd)
-- [Screenshots](#screenshots)
 - [Contribute](#contribute)
   - [Pull request](#pull-request)
 - [Contributors](#contributors)
@@ -26,7 +25,7 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 - Web: https://kryptokrona.org
 - Docs: https://docs.kryptokrona.org
 - GitHub: https://github.com/kryptokrona/hugin-cli
-- Hugin: hugin group on Hugin Messenger (currently only GUI version): `20b4821b90b2ea7355cb7ed7fa60823016eedef0e3541376888f8adc55df75f8` \
+- Hugin: Hugin Development group on Hugin Messenger (currently only GUI version): `4820de8e26d21981afe6de2ff7b62fa6aa01126482ca0faeff151886c73619e5` \
   It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
 - Twitter: @mjovanc
 
