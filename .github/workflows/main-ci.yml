@@ -24,6 +24,7 @@ jobs:
             artifact: "Windows-MSVC-x64",
             os: windows-latest,
             cc: "cl",
+            build_type: "Release",
             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             architecture: x64
           }
@@ -32,6 +33,7 @@ jobs:
             artifact: "ubuntu-latest-x64",
             os: ubuntu-22.04,
             cc: "gcc",
+            build_type: "Release",
             architecture: x64
           }
           - {
@@ -39,6 +41,7 @@ jobs:
             artifact: "macOS-x64",
             os: macos-11,
             cc: "clang",
+            build_type: "Release",
             architecture: x64
           }
           - {
@@ -46,6 +49,8 @@ jobs:
             artifact: "macOS-arm64",
             os: macos-latest,
             cc: "clang", # it chooses xcode instead?
+            build_type: "Release",
+            architecture: arm
           }
     steps:
       - uses: actions/checkout@v2
