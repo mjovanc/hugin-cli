@@ -28,22 +28,18 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+# if the below doesn't work we need to be more specific such as:
+# CMAKE_HOST_SYSTEM_NAME MATCHES "Darwin"
 if (APPLE)
     message("-- Building sqlcipher for macOS")
-
     set(macos_args
             "--enable-tempstore=yes"
-            "CFLAGS='-DSQLITE_HAS_CODEC -I$(brew --prefix openssl)/include"
-            "LDFLAGS='-L$(brew --prefix openssl)/lib"
     )
-
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
-            COMMAND bash -c "./configure ${macos_args}"
+            COMMAND bash -c "./configure ${macos_args} CFLAGS='-DSQLITE_HAS_CODEC -I$(brew --prefix openssl)/include' LDFLAGS='-L$(brew --prefix openssl)/lib'"
             RESULT_VARIABLE CMD_ERROR
     )
-    MESSAGE(STATUS "CMD_ERROR:" ${CMD_ERROR})
-    MESSAGE(STATUS "CMD_OUTPUT:" ${CMD_OUTPUT})
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
             COMMAND bash -c "make"
