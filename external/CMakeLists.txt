@@ -29,16 +29,23 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 if (APPLE)
-    message("Building sqlcipher for macOS")
-    execute_process(
-            WORKING_DIRECTORY sqlcipher
-            COMMAND bash -c "./configure
-                --enable-tempstore=yes
-                CFLAGS='-DSQLITE_HAS_CODEC -I$(brew --prefix openssl)/include'
-                LDFLAGS='-L$(brew --prefix openssl)/lib'"
+    message("-- Building sqlcipher for macOS")
+
+    set(macos_args
+            "--enable-tempstore=yes"
+            "CFLAGS='-DSQLITE_HAS_CODEC -I$(brew --prefix openssl)/include"
+            "LDFLAGS='-L$(brew --prefix openssl)/lib"
     )
+
     execute_process(
-            WORKING_DIRECTORY sqlcipher
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
+            COMMAND bash -c "./configure ${macos_args}"
+            RESULT_VARIABLE CMD_ERROR
+    )
+    MESSAGE(STATUS "CMD_ERROR:" ${CMD_ERROR})
+    MESSAGE(STATUS "CMD_OUTPUT:" ${CMD_OUTPUT})
+    execute_process(
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
             COMMAND bash -c "make"
     )
 
