@@ -28,22 +28,7 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# APPLE does not work on GitHub Actions atm
-if(APPLE)
-    message("-- Building sqlcipher for macOS")
-    set(macos_args
-            "--enable-tempstore=yes"
-    )
-    execute_process(
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
-            COMMAND bash -c "./configure ${macos_args} CFLAGS='-DSQLITE_HAS_CODEC -I$(brew --prefix openssl)/include' LDFLAGS='-L$(brew --prefix openssl)/lib'"
-            RESULT_VARIABLE CMD_ERROR
-    )
-    execute_process(
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
-            COMMAND bash -c "make"
-    )
-elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     message("-- Building sqlcipher for Linux")
     set(linux_args
             "--enable-tempstore=yes"

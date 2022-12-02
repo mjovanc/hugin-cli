@@ -34,20 +34,6 @@ jobs:
             cc: "gcc",
             architecture: x64
           }
-          - {
-            name: "macOS-11 Clang / x64",
-            artifact: "macOS-x64",
-            os: macos-11,
-            cc: "clang",
-            architecture: x64
-          }
-          - {
-            name: "macOS Latest Clang / arm64",
-            artifact: "macOS-arm64",
-            os: macos-12,
-            cc: "clang", # it chooses xcode instead?
-            architecture: ARM64
-          }
     steps:
       - uses: actions/checkout@v2
 
@@ -100,58 +86,3 @@ jobs:
           name: ubuntu-latest-x64
           path: |
             build/Hugin
-
-      # macOS-11 Clang
-      - name: Install dependencies on macOS-11
-        if: matrix.config.name == 'macOS-11 Clang / x64'
-        run: |
-          brew install cmake ninja openssl
-          ninja --version
-          cmake --version
-
-      - name: mkdir build
-        if: matrix.config.name == 'macOS-11 Clang / x64'
-        run: mkdir build
-
-      - name: Build macOS-11 Target
-        if: matrix.config.name == 'macOS-11 Clang / x64'
-        run: |
-          cmake ..
-          make
-        working-directory: build
-
-      - name: Upload macOS-11 Artifact
-        if: matrix.config.name == 'macOS-11 Clang / x64'
-        uses: actions/upload-artifact@v3
-        with:
-          name: macos-11-x64
-          path: |
-            build/Hugin
-
-      # macOS Latest Clang
-      - name: Install dependencies on macOS
-        if: matrix.config.name == 'macOS Latest Clang / arm64'
-        run: |
-          brew install cmake ninja openssl
-          ninja --version
-          cmake --version
-
-      - name: mkdir build
-        if: matrix.config.name == 'macOS Latest Clang / arm64'
-        run: mkdir build
-
-      - name: Build macOS Target
-        if: matrix.config.name == 'macOS Latest Clang / arm64'
-        run: |
-          cmake ..
-          make
-        working-directory: build
-
-      - name: Upload macOS Artifact
-        if: matrix.config.name == 'macOS Latest Clang / arm64'
-        uses: actions/upload-artifact@v3
-        with:
-          name: macos-latest-arm64
-          path: |
-            build/Hugin
-            external/sqlcipher/config.log
