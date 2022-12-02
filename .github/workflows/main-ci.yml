@@ -20,14 +20,6 @@ jobs:
       matrix:
         config:
           - {
-            name: "Windows Latest MSVC / x64",
-            artifact: "Windows-MSVC-x64",
-            os: windows-latest,
-            cc: "cl",
-            environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
-            architecture: x64
-          }
-          - {
             name: "Ubuntu Latest GCC / x64",
             artifact: "ubuntu-latest-x64",
             os: ubuntu-22.04,
@@ -36,32 +28,6 @@ jobs:
           }
     steps:
       - uses: actions/checkout@v2
-
-      # Windows Latest MSVC
-      - name: Install Dependencies
-        if: matrix.config.name == 'Windows Latest MSVC / x64'
-        uses: microsoft/setup-msbuild@v1.1
-        with:
-          msbuild-architecture: x64
-
-      - name: mkdir build
-        if: matrix.config.name == 'Windows Latest MSVC / x64'
-        run: mkdir build
-
-      - name: Build Windows Target using Visual C++
-        if: matrix.config.name == 'Windows Latest MSVC / x64'
-        working-directory: build
-        run: |
-          cmake -G "Visual Studio 17 2022" ..
-          MSBuild.exe Hugin.sln
-
-      - name: Upload MSVC Artifact
-        if: matrix.config.name == 'Windows Latest MSVC / x64'
-        uses: actions/upload-artifact@v3
-        with:
-          name: msvc-x64
-          path: |
-            build/Debug/Hugin.exe
 
       # Ubuntu 22.04
       - name: Install dependencies
