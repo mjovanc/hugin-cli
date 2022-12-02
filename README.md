@@ -49,9 +49,7 @@ The following table summarizes the tools and libraries required to build.
 
 | Dep     | Min. version | Optional | Purpose |
 |---------|--------------|----------|---------|
-| GCC     | 11           | YES      |         |
-| MSVC    | 2019         | YES      |         |
-| Clang   | 14           | YES      |         |
+| GCC     | 11           | NO       |         |
 | CMake   | 3.18         | NO       |         |
 | OpenSSL | -            | NO       |         |
 
