@@ -37,14 +37,12 @@ if (APPLE)
     )
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
-            COMMAND bash -c "./configure ${macos_args} CFLAGS='-DSQLITE_HAS_CODEC -I$(brew --prefix openssl)/include' LDFLAGS='-L$(brew --prefix openssl)/lib -arch arm64'"
+            COMMAND bash -c "./configure ${macos_args} CFLAGS='-DSQLITE_HAS_CODEC -I$(brew --prefix openssl)/include' LDFLAGS='-L$(brew --prefix openssl)/lib'"
             RESULT_VARIABLE CMD_ERROR
     )
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
             COMMAND bash -c "make"
     )
-
-    # target_link_libraries(libsqlcipher sqlcipher/.libs/libsqlcipher.dylib)
 endif()
 
