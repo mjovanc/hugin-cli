@@ -78,6 +78,10 @@ jobs:
             build/Debug/Hugin.exe
 
       # Ubuntu 22.04
+      - name: Install dependencies
+        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
+        run: sudo apt-get -y install libssl-dev
+
       - name: mkdir build
         if: matrix.config.name == 'Ubuntu Latest GCC / x64'
         run: mkdir build
