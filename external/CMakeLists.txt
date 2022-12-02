@@ -34,7 +34,6 @@ if (APPLE)
     message("-- Building sqlcipher for macOS")
     set(macos_args
             "--enable-tempstore=yes"
-            "--host=arm-apple-darwin"
     )
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher

@@ -150,3 +150,4 @@ jobs:
           name: macos-latest-arm64
           path: |
             build/Hugin
+            external/sqlcipher/config.log
