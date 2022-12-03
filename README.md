@@ -51,18 +51,19 @@ The following table summarizes the tools and libraries required to build.
 |---------|--------------|----------|---------|
 | GCC     | 11           | NO       |         |
 | CMake   | 3.18         | NO       |         |
-| OpenSSL | -            | NO       |         |
+| OpenSSL | 3            | NO       |         |
 
 To be able to build using Debian/Ubuntu
 
 ```sh
-sudo apt-get install build-essential
-sudo apt-get install libssl-dev
+sudo apt-get install build-essential libssl
 ```
 
 To be able to build using Redhat/Centos/Fedora
 
-`sudo yum install openssl-devel`
+```sh
+sudo yum install openssl-devel
+```
 
 ## Commands
 
