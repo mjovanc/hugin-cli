@@ -31,7 +31,7 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#include "sqlite3.h"
+#include "external/sqlcipher/sqlite3.h"
 
 int database_create(char *database_name);
 int database_create_table_setting(sqlite3 *db, char *zErrMsg, int rc);
