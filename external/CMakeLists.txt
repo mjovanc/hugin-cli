@@ -44,5 +44,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
             COMMAND bash -c "make"
     )
+
+    #TODO: move .libs to build?
 endif()
 

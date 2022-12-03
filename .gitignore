@@ -88,3 +88,15 @@ tags
 
 # Log files
 *.log
+
+# sqlcipher
+external/sqlcipher/.libs/
+external/sqlcipher/config.h
+external/sqlcipher/config.status
+external/sqlcipher/lemon
+external/sqlcipher/libtool
+external/sqlcipher/mkkeywordhash
+external/sqlcipher/mksourceid
+external/sqlcipher/sqlcipher
+external/sqlcipher/sqlcipher.pc
+external/sqlcipher/tsrc/config.h
