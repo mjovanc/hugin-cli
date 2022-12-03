@@ -31,6 +31,4 @@
 add_library(
     db
     database.c
-    sqlite3.c
-    shell.c
 )

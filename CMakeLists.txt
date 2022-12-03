@@ -70,6 +70,9 @@ add_subdirectory(account)
 add_subdirectory(wallet)
 add_subdirectory(external)
 
+# get the sqlcipher lib
+find_library(libsqlcipher sqlcipher ${CMAKE_SOURCE_DIR}/external/sqlcipher/.libs)
+
 # include directories (order is important)
 target_include_directories(${PROJECT_NAME}
     PUBLIC
@@ -90,7 +93,7 @@ target_link_libraries(${PROJECT_NAME}
         account
         wallet
         db
+        ${libsqlcipher}
     PRIVATE
         sodium
-        # put sqlcipher files
 )
