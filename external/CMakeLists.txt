@@ -33,7 +33,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     set(linux_args
             "--enable-tempstore=yes"
             "CFLAGS='-DSQLITE_HAS_CODEC'"
-            "LDFLAGS='/opt/local/lib/libcrypto.a'"
+            "LDFLAGS='-lcrypto'"
     )
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
