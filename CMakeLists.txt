@@ -47,7 +47,7 @@ message(STATUS "Building with ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION}
 
 include(FetchContent)
 
-# Update the commit to point to whatever libsodium-cmake-commit you want to target.
+# update the commit to point to whatever libsodium-cmake-commit you want to target.
 # if this repo stops being maintained - make a fork and change url
 FetchContent_Declare(Sodium
         GIT_REPOSITORY https://github.com/robinlinden/libsodium-cmake.git
@@ -62,7 +62,7 @@ include_directories(${PROJECT_SOURCE_DIR})
 # add the executable
 add_executable(${PROJECT_NAME} main.c)
 
-# add the subdirectories
+# add the subdirectories to look for cmake files
 add_subdirectory(crypto)
 add_subdirectory(daemon)
 add_subdirectory(db)
