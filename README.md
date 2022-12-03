@@ -10,6 +10,7 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 - [Releases](#releases)
 - [Setup and run](#setup-and-run)
   - [Dependencies](#dependencies)
+  - [Program arguments](#program-arguments)
   - [Commands](#commands)
   - [Clean](#clean)
 - [Testing](#testing)
@@ -64,6 +65,31 @@ To be able to build using Redhat/Centos/Fedora
 ```sh
 sudo yum install openssl-devel
 ```
+
+### Program arguments
+
+Here is a list of available/future implementations of program arguments to use before starting the application.
+
+- `-v`, `--version` - Get the current version.
+- `-u`, `--username` (not implemented) - Pass the username to use to login.
+- `-p`, `--password` (not implemented) - Pass the password to use to login.
+- `-b`, `--batch-file` (not implemented) - Pass a batch file to import. Fileformats could be XML or JSON with a defined structure of what board, group or DM to send to.
+
+Example of usage:
+
+Login directly without going through menu options:
+
+```shell
+./Hugin --username=mjovanc --password=mysecretpwd
+```
+
+Login and pass a batch file:
+
+```shell
+./Hugin --username=mjovanc --password=mysecretpwd --batch-file=messages.json
+```
+
+More program arguments will come.
 
 ## Commands
 
