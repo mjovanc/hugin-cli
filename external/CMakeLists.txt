@@ -38,13 +38,14 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
             COMMAND bash -c "./configure ${linux_args}"
-            RESULT_VARIABLE CMD_ERROR
     )
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
             COMMAND bash -c "make"
     )
-
-    #TODO: move .libs to build?
+    execute_process(
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            COMMAND bash -c "cp -r ${CMAKE_SOURCE_DIR}/external/sqlcipher/.libs ${CMAKE_BINARY_DIR}/external/sqlcipher"
+    )
 endif()
 

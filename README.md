@@ -57,13 +57,7 @@ The following table summarizes the tools and libraries required to build.
 To be able to build using Debian/Ubuntu
 
 ```sh
-sudo apt-get install build-essential libssl-dev
-```
-
-To be able to build using Redhat/Centos/Fedora
-
-```sh
-sudo yum install openssl-devel
+sudo apt-get -y install build-essential libssl-dev
 ```
 
 ### Program arguments
