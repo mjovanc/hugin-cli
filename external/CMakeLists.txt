@@ -45,7 +45,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     )
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-            COMMAND bash -c "cp -r ${CMAKE_SOURCE_DIR}/external/sqlcipher/.libs ${CMAKE_BINARY_DIR}/external/sqlcipher"
+            COMMAND bash -c "cp -a ${CMAKE_SOURCE_DIR}/external/sqlcipher/.libs/. ${CMAKE_BINARY_DIR}/external/sqlcipher/"
     )
 endif()
 
