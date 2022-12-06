@@ -30,10 +30,22 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+APP_NAME=HuginCLI
+APP_BINARY=Hugin
+
+# create app dir
+echo "Creating application directory..."
+sudo mkdir -p /opt/hugin-cli
+
 # place icon and binary
+echo "Placing icon in application directory..."
+sudo cp icon.png /opt/hugin-cli/icon.png
+echo "Placing binary in application directory..."
+sudo cp Hugin /opt/hugin-cli/$APP_BINARY
 
-# Place your application and the icon in a separate folder and place it to your needs e.g. “/opt/[MyJavaApplication]”
+echo "Placing desktop icon..."
+cp $APP_NAME.desktop $HOME/.local/share/applications/$APP_NAME.desktop
 
-# Go to go to /home/[your username]/.local/share/applications, create a “[MyJavaApplication].desktop“-file and paste the following content to it:
+echo "${APP_NAME} is now installed..."
 
 
