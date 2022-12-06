@@ -1,8 +1,8 @@
 [Desktop Entry]
-Encoding=UTF8
-Version=0.1.0
+Encoding=UTF-8
+Version=1.0
 Type=Application
-Name=HuginCLI
+Name=Hugin CLI
 Icon=/opt/hugin-cli/icon.png
 Path=/opt/hugin-cli
 Exec=/opt/hugin-cli/Hugin

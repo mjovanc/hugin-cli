@@ -56,5 +56,5 @@ jobs:
             build/Hugin
             resources/icon.png
             resources/readme.html
-            resources/HuginCLI.desktop
+            resources/hugin-cli.desktop
             install.sh

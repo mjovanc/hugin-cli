@@ -30,22 +30,34 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-APP_NAME=HuginCLI
+# constants
+APP_NAME=hugin-cli
 APP_BINARY=Hugin
+APP_INSTALLATION_PATH=/opt/$APP_NAME
 
 # create app dir
 echo "Creating application directory..."
-sudo mkdir -p /opt/hugin-cli
+sudo mkdir -p $APP_INSTALLATION_PATH
 
 # place icon and binary
 echo "Placing icon in application directory..."
-sudo cp resources/icon.png /opt/hugin-cli/icon.png
+sudo cp resources/icon.png $APP_INSTALLATION_PATH/icon.png
+
+echo "Setting permission for ${APP_INSTALLATION_PATH}/icon.png..."
+chmod 644 $APP_INSTALLATION_PATH/icon.png
+
 echo "Placing binary in application directory..."
-sudo cp build/Hugin /opt/hugin-cli/$APP_BINARY
+sudo cp build/Hugin $APP_INSTALLATION_PATH/$APP_BINARY
+
+echo "Setting executable permission for ${APP_BINARY}..."
+sudo chmod +x $APP_INSTALLATION_PATH/$APP_BINARY
 
 echo "Placing desktop icon..."
 cp resources/$APP_NAME.desktop $HOME/.local/share/applications/$APP_NAME.desktop
 
-echo "${APP_NAME} is now installed..."
+echo "Setting executable permission for ${APP_NAME}.desktop..."
+chmod +x $HOME/.local/share/applications/$APP_NAME.desktop
+
+echo "${APP_BINARY} is now installed..."
 
 
