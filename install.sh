@@ -44,7 +44,7 @@ echo "Placing binary in application directory..."
 sudo cp build/Hugin /opt/hugin-cli/$APP_BINARY
 
 echo "Placing desktop icon..."
-cp $APP_NAME.desktop $HOME/.local/share/applications/$APP_NAME.desktop
+cp resources/$APP_NAME.desktop $HOME/.local/share/applications/$APP_NAME.desktop
 
 echo "${APP_NAME} is now installed..."
 
