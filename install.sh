@@ -39,9 +39,9 @@ sudo mkdir -p /opt/hugin-cli
 
 # place icon and binary
 echo "Placing icon in application directory..."
-sudo cp icon.png /opt/hugin-cli/icon.png
+sudo cp resources/icon.png /opt/hugin-cli/icon.png
 echo "Placing binary in application directory..."
-sudo cp Hugin /opt/hugin-cli/$APP_BINARY
+sudo cp build/Hugin /opt/hugin-cli/$APP_BINARY
 
 echo "Placing desktop icon..."
 cp $APP_NAME.desktop $HOME/.local/share/applications/$APP_NAME.desktop

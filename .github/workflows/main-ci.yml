@@ -51,9 +51,10 @@ jobs:
         if: matrix.config.name == 'Ubuntu Latest GCC / x64'
         uses: actions/upload-artifact@v3
         with:
-          name: ubuntu-latest-x64
+          name: hugin-ubuntu-latest-x64
           path: |
             build/Hugin
             resources/icon.png
             resources/readme.html
+            resources/HuginCLI.desktop
             install.sh
