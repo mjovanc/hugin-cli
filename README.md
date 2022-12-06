@@ -38,26 +38,29 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 
 # Setup and run
 
-1. Clone the repository
+1. Clone the repository and all its submodules `git clone --recurse-submodules git@github.com:kryptokrona/hugin-cli.git`
 2. Run `cmake .` to initialize CMake project
 3. Run `cmake -B ./build -S .`
 4. Go to build directory and run `make`
 5. Run executable `./Hugin`
 
+Note to be able to run these commands above, install the dependencies in the next section first.
+
 ## Dependencies
 
 The following table summarizes the tools and libraries required to build.
 
-| Dep     | Min. version | Optional | Purpose |
-|---------|--------------|----------|---------|
-| GCC     | 11           | NO       |         |
-| CMake   | 3.18         | NO       |         |
-| OpenSSL | 3            | NO       |         |
+| Dep       | Min. version | Optional | Purpose                                               |
+|-----------|-------------|----------|-------------------------------------------------------|
+| GCC       | 11          | NO       | Compiler.                                             |
+| CMake     | 3.18        | NO       | Build generation tool for this project.               |
+| OpenSSL   | 3           | NO       |                                                       |
+| SQLCipher | 3.39.2      | NO       | Database (forked from Sqlite3) with encryption tools. |
 
 To be able to build using Debian/Ubuntu
 
 ```sh
-sudo apt-get -y install build-essential libssl-dev
+sudo apt-get -y install build-essential libssl-dev cmake git
 ```
 
 ### Program arguments
@@ -117,11 +120,10 @@ If we want to do a cleanup of generated files during build we can run:
 
 ## Unit testing
 
-To run the test cases in **daemon_test.cpp** that comes along we need (after we have built) to run:
+We use CUnit for the unit testing of this project. The unit tests are located in dir `test` with the same structure as the file being tested
+includes in. To run all the tests:
 
-`./build/daemon_test`
-
-We need in the future to link all test files so we can run all unit tests at once.
+TODO...
 
 # CI/CD
 
@@ -133,7 +135,7 @@ This project is automatically built, tested and deployed using GitHub Actions. W
 
 The Main Pipeline do everything the Pull Request Pipeline does in addition to building and publishing a Docker Image to
 the project tagged by the project name, owner, repository and short form of commit SHA value. We also setup continuous
-deployment so if all the steps succeed it will upload a new Docker image to GitHub Packages.
+deployment so if all the steps succeed and if tagged with a release it will publish to various package managers such as APT, Snapcraft etc.
 
 # Contribute
 
