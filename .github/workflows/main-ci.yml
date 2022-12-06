@@ -54,3 +54,6 @@ jobs:
           name: ubuntu-latest-x64
           path: |
             build/Hugin
+            resources/icon.png
+            resources/readme.html
+            install.sh
