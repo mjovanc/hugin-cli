@@ -29,7 +29,7 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-    message("-- Building sqlcipher for Linux")
+    message("-- Building SQLCipher for Linux") # TODO: add version here from the VERSION file
     set(linux_args
             "--enable-tempstore=yes"
             "CFLAGS='-DSQLITE_HAS_CODEC'"
