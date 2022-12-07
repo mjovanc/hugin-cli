@@ -16,6 +16,7 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 - [Testing](#testing)
   - [Unit testing](#unit-testing)
 - [CI/CD](#cicd)
+- [Checklist before release](#checklist-before-release)
 - [Contribute](#contribute)
   - [Pull request](#pull-request)
 - [Contributors](#contributors)
@@ -137,6 +138,15 @@ This project is automatically built, tested and deployed using GitHub Actions. W
 The Main Pipeline do everything the Pull Request Pipeline does in addition to building and publishing a Docker Image to
 the project tagged by the project name, owner, repository and short form of commit SHA value. We also setup continuous
 deployment so if all the steps succeed and if tagged with a release it will publish to various package managers such as APT, Snapcraft etc.
+
+# Checklist before release
+
+1. Edit the file in `config/version.h` and bump up the version.
+2. Update the release in this README in the [Releases](#releases) section and set YES on "Released", add the release if it doesn't
+exists in the table.
+3. Create PR and wait for review + merge.
+4. Create a tag on master `git tag v*.*.*`
+5. Push the changes `git push origin <tag_name>` to trigger a new build and to publish to various package managers.
 
 # Contribute
 
