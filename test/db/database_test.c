@@ -10,7 +10,7 @@ int clean_suite_failure(void) { return -1; }
 
 void test_success1(void)
 {
-  CU_ASSERT(TRUE);
+  CU_ASSERT(1==1);
 }
 
 void test_success2(void)
@@ -30,7 +30,7 @@ void test_success4(void)
 
 void test_failure1(void)
 {
-  CU_ASSERT(FALSE);
+  CU_ASSERT(1==2);
 }
 
 void test_failure2(void)

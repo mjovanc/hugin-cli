@@ -100,5 +100,4 @@ target_link_libraries(${PROJECT_NAME}
         ${libsqlcipher}
     PRIVATE
         sodium
-        cunit
 )
