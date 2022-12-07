@@ -71,7 +71,9 @@ add_subdirectory(wallet)
 add_subdirectory(external)
 
 # get the sqlcipher lib
-find_library(libsqlcipher sqlcipher ${CMAKE_BINARY_DIR}/external/sqlcipher) #TODO: loads this as a shared library when it should be statically linked
+# TODO: loads this as a shared library when it should be statically linked
+# TODO: currently this gives the error "./Hugin: error while loading shared libraries: libsqlcipher.so.0: cannot open shared object file: No such file or directory"
+find_library(libsqlcipher sqlcipher ${CMAKE_BINARY_DIR}/external/sqlcipher)
 include_directories(${libsqlcipher})
 
 # include directories (order is important)
