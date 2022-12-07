@@ -51,11 +51,12 @@ Note to be able to run these commands above, install the dependencies in the nex
 The following table summarizes the tools and libraries required to build.
 
 | Dep       | Min. version | Optional | Purpose                                               |
-|-----------|-------------|----------|-------------------------------------------------------|
-| GCC       | 11          | NO       | Compiler.                                             |
-| CMake     | 3.18        | NO       | Build generation tool for this project.               |
-| OpenSSL   | 3           | NO       |                                                       |
-| SQLCipher | 3.39.2      | NO       | Database (forked from Sqlite3) with encryption tools. |
+|-----------|--------------|----------|-------------------------------------------------------|
+| GCC       | 11           | NO       | Compiler.                                             |
+| CMake     | 3.18         | NO       | Build generation tool for this project.               |
+| OpenSSL   | 3            | NO       |                                                       |
+| SQLCipher | 3.39.2       | NO       | Database (forked from Sqlite3) with encryption tools. |
+| CUnit     | 3.2.7        | NO       | Unit testing framework written in C.                  |
 
 To be able to build using Debian/Ubuntu
 
