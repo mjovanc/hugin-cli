@@ -69,6 +69,7 @@ add_subdirectory(db)
 add_subdirectory(account)
 add_subdirectory(wallet)
 add_subdirectory(external)
+add_subdirectory(external/cunit/CUnit)
 
 # get the sqlcipher lib
 # TODO: loads this as a shared library when it should be statically linked
@@ -99,4 +100,5 @@ target_link_libraries(${PROJECT_NAME}
         ${libsqlcipher}
     PRIVATE
         sodium
+        cunit
 )
