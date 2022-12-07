@@ -71,7 +71,8 @@ add_subdirectory(wallet)
 add_subdirectory(external)
 
 # get the sqlcipher lib
-find_library(libsqlcipher sqlcipher ${CMAKE_BINARY_DIR}/external/sqlcipher)
+find_library(libsqlcipher sqlcipher ${CMAKE_BINARY_DIR}/external/sqlcipher) #TODO: loads this as a shared library when it should be statically linked
+include_directories(${libsqlcipher})
 
 # include directories (order is important)
 target_include_directories(${PROJECT_NAME}
