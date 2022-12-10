@@ -62,6 +62,12 @@ include_directories(${PROJECT_SOURCE_DIR})
 # add the executable
 add_executable(${PROJECT_NAME} main.c)
 
+# install the executable in /usr/local/bin
+# uncomment this later
+# make install (instead of only make)
+# now we can run it with only Hugin instead of writing the whole path
+#install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+
 # add the subdirectories to look for cmake files
 add_subdirectory(crypto)
 add_subdirectory(daemon)
@@ -72,9 +78,7 @@ add_subdirectory(external)
 add_subdirectory(external/cunit/CUnit)
 
 # get the sqlcipher lib
-# TODO: loads this as a shared library when it should be statically linked
-# TODO: currently this gives the error "./Hugin: error while loading shared libraries: libsqlcipher.so.0: cannot open shared object file: No such file or directory"
-find_library(libsqlcipher sqlcipher ${CMAKE_BINARY_DIR}/external/sqlcipher)
+add_library(libsqlcipher STATIC IMPORTED ${CMAKE_BINARY_DIR}/external/sqlcipher)
 include_directories(${libsqlcipher})
 
 # include directories (order is important)
