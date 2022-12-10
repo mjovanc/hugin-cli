@@ -28,27 +28,8 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-    message("-- Building SQLCipher for Linux") # TODO: add version here from the VERSION file
-    set(linux_args
-            "--enable-tempstore=yes"
-            "CFLAGS='-DSQLITE_HAS_CODEC'"
-            "LDFLAGS='-lcrypto'"
-    )
-    execute_process(
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
-            COMMAND bash -c "./configure ${linux_args}"
-    )
-    execute_process(
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/external/sqlcipher
-            COMMAND bash -c "make"
-    )
-    execute_process(
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-            COMMAND bash -c "mkdir -p ${CMAKE_BINARY_DIR}/external/sqlcipher/lib && cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/.libs/libsqlcipher.a ${CMAKE_BINARY_DIR}/external/sqlcipher/lib/libsqlcipher.a"
-    )
-    execute_process(
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-            COMMAND bash -c "mkdir -p ${CMAKE_BINARY_DIR}/external/sqlcipher/include && cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/sqlite3.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/sqlite3.h"
-    )
-endif()
+set(FIND_SQLCIPHER_PATHS ${CMAKE_BINARY_DIR}/external/sqlcipher)
+
+find_path(SQLCIPHER_INCLUDE_DIR sqlite3.h PATH_SUFFIXES include PATHS ${FIND_SQLCIPHER_PATHS})
+
+find_library(SQLCIPHER_LIBRARY NAMES Sqlcipher PATH_SUFFIXES lib PATHS ${FIND_SQLCIPHER_PATHS})

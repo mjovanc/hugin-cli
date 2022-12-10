@@ -77,9 +77,11 @@ add_subdirectory(wallet)
 add_subdirectory(external)
 add_subdirectory(external/cunit/CUnit)
 
-# get the sqlcipher lib
-add_library(libsqlcipher STATIC IMPORTED ${CMAKE_BINARY_DIR}/external/sqlcipher)
-include_directories(${libsqlcipher})
+# sqlcipher
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+include(FindPkgConfig)
+find_package(Sqlcipher REQUIRED)
+include_directories(${SQLCIPHER_INCLUDE_DIR})
 
 # include directories (order is important)
 target_include_directories(${PROJECT_NAME}
@@ -96,12 +98,12 @@ target_include_directories(${PROJECT_NAME}
 # link libraries (order is important)
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
+        ${SQLCIPHER_LIBRARY}
         crypto
         daemon
         account
         wallet
         db
-        ${libsqlcipher}
     PRIVATE
         sodium
 )

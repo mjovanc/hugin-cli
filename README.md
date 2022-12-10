@@ -62,7 +62,7 @@ The following table summarizes the tools and libraries required to build.
 To be able to build using Debian/Ubuntu
 
 ```sh
-sudo apt-get -y install build-essential libssl-dev cmake git
+sudo apt-get -y install build-essential libssl-dev cmake git pkg-config
 ```
 
 ### Program arguments
@@ -72,7 +72,7 @@ Here is a list of available/future implementations of program arguments to use b
 - `-v`, `--version` - Get the current version.
 - `-u`, `--username` (not implemented) - Pass the username to use to login.
 - `-p`, `--password` (not implemented) - Pass the password to use to login.
-- `-b`, `--batch-file` (not implemented) - Pass a batch file to import. Fileformats could be XML or JSON with a defined structure of what board, group or DM to send to.
+- `-b`, `--batch-file` (not implemented) - Pass a batch file to import. File formats could be XML or JSON with a defined structure of what board, group or DM to send to.
 
 Example of usage:
 
