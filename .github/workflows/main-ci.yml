@@ -1,9 +1,9 @@
 name: Hugin CLI Main Pipeline
 
 env:
-  GITHUB_REGISTRY: 'ghcr.io'
-  GITHUB_OWNER: 'kryptokrona'
-  GITHUB_DOCKER_IMAGE: 'hugin-cli'
+  GITHUB_REGISTRY: "ghcr.io"
+  GITHUB_OWNER: "kryptokrona"
+  GITHUB_DOCKER_IMAGE: "hugin-cli"
   BUILD_TYPE: Release
 
 on:
@@ -20,12 +20,12 @@ jobs:
       matrix:
         config:
           - {
-            name: "Ubuntu Latest GCC / x64",
-            artifact: "ubuntu-latest-x64",
-            os: ubuntu-22.04,
-            cc: "gcc",
-            architecture: x64
-          }
+              name: "Ubuntu Latest GCC / x64",
+              artifact: "ubuntu-latest-x64",
+              os: ubuntu-22.04,
+              cc: "gcc",
+              architecture: x64,
+            }
     steps:
       - uses: actions/checkout@v2
         with:
@@ -35,26 +35,3 @@ jobs:
       - name: Install dependencies
         if: matrix.config.name == 'Ubuntu Latest GCC / x64'
         run: sudo apt-get -y install libssl-dev
-
-      - name: mkdir build
-        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
-        run: mkdir build
-
-      - name: Build Ubuntu Target
-        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
-        run: |
-          cmake ..
-          make
-        working-directory: build
-
-      - name: Upload Ubuntu Artifact
-        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
-        uses: actions/upload-artifact@v3
-        with:
-          name: hugin-ubuntu-latest-x64
-          path: |
-            build/Hugin
-            resources/icon.png
-            resources/readme.html
-            resources/hugin-cli.desktop
-            install.sh

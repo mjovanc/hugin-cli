@@ -29,14 +29,3 @@ jobs:
       - name: Install dependencies
         if: matrix.config.name == 'Ubuntu Latest GCC / x64'
         run: sudo apt-get -y install libssl-dev
-
-      - name: mkdir build
-        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
-        run: mkdir build
-
-      - name: Build Ubuntu Target
-        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
-        run: |
-          cmake ..
-          make
-        working-directory: build
