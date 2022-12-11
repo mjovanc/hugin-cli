@@ -3,6 +3,7 @@ all: main
 
 CC=cc
 CFLAGS=-std=c11
+COMPILER = gcc
 #CFLAGS+=-W -Wall
 #CFLAGS+=-O0 -g -ggdb
 #LDLIBS=
