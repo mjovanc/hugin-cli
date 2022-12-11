@@ -7,3 +7,7 @@ CFLAGS+=-O0 -g -ggdb
 
 SRCS=main.c
 TARGETS=main #libfoo.a libbar.a
+
+main: build/main.o
+
+all: $(TARGETS)
