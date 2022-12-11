@@ -66,7 +66,7 @@ The following table summarizes the tools and libraries required to build.
 To be able to build using Debian/Ubuntu
 
 ```sh
-sudo apt-get -y install build-essential libssl-dev cmake git pkg-config
+sudo apt-get -y install build-essential libssl-dev git
 ```
 
 ### Program arguments
@@ -171,6 +171,3 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 # License
 
 The license is BSD-3 License.
-
-
-[def]: #
