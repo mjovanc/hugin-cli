@@ -1,25 +1,25 @@
-.PHONY: all
 all: main
 
 CC=cc
-CFLAGS=-std=c11
 COMPILER = gcc
+CFLAGS=-std=c11
 #CFLAGS+=-W -Wall
 #CFLAGS+=-O0 -g -ggdb
 #LDLIBS=
 #LDFLAGS=
 
-#SRCS=main.c
-#TARGETS=main
+CFILES=main.c
+OBJECTS=main.o
 
-#all: $(TARGETS)
+BINARY=bin
 
-main: main.o
-	gcc -o $@ $^
+all: $(BINARY)
+
+$(BINARY): $(OBJECTS)
+		$(CC) -o $@ $^
 
 %.o: %.c
-	gcc -c $< -o $@
+	$(CC) -c -o $@ $^
 
-.PHONY: clean
 clean:
-	rm -rf *.o main
+	rm -rf $(BINARY) $(OBJECTS)
