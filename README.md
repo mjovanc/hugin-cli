@@ -59,7 +59,6 @@ The following table summarizes the tools and libraries required to build.
 | Dep       | Min. version | Optional | Purpose                                               |
 | --------- | ------------ | -------- | ----------------------------------------------------- |
 | GCC       | 11           | NO       | Compiler.                                             |
-| CMake     | 3.18         | NO       | Build generation tool for this project.               |
 | OpenSSL   | 3            | NO       |                                                       |
 | SQLCipher | 3.39.2       | NO       | Database (forked from Sqlite3) with encryption tools. |
 | CUnit     | 3.2.7        | NO       | Unit testing framework written in C.                  |
@@ -172,3 +171,6 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 # License
 
 The license is BSD-3 License.
+
+
+[def]: #
