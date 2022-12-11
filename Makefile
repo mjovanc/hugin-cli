@@ -16,7 +16,7 @@ CFLAGS=-std=c11
 main: main.o
 	gcc -o $@ $^
 
-main.o: main.c
+%.o: %.c
 	gcc -c $< -o $@
 
 .PHONY: clean

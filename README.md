@@ -6,12 +6,17 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 
 # Table of Contents
 
+- [](#)
+- [Table of Contents](#table-of-contents)
 - [Development Resources](#development-resources)
 - [Releases](#releases)
 - [Setup and run](#setup-and-run)
   - [Dependencies](#dependencies)
-  - [Program arguments](#program-arguments)
+    - [Program arguments](#program-arguments)
   - [Commands](#commands)
+    - [Auth](#auth)
+    - [Chat](#chat)
+    - [Other](#other)
   - [Clean](#clean)
 - [Testing](#testing)
   - [Unit testing](#unit-testing)
@@ -33,9 +38,9 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 
 # Releases
 
-| NAME | VERSION                                                            | RELEASED | DESCRIPTION    |
-|------|--------------------------------------------------------------------|----------|----------------|
-| Tor  | 0.1.0 | No       | Alpha release. |
+| NAME | VERSION | RELEASED | DESCRIPTION    |
+| ---- | ------- | -------- | -------------- |
+| Tor  | 0.1.0   | No       | Alpha release. |
 
 # Setup and run
 
@@ -52,7 +57,7 @@ Note to be able to run these commands above, install the dependencies in the nex
 The following table summarizes the tools and libraries required to build.
 
 | Dep       | Min. version | Optional | Purpose                                               |
-|-----------|--------------|----------|-------------------------------------------------------|
+| --------- | ------------ | -------- | ----------------------------------------------------- |
 | GCC       | 11           | NO       | Compiler.                                             |
 | CMake     | 3.18         | NO       | Build generation tool for this project.               |
 | OpenSSL   | 3            | NO       |                                                       |
