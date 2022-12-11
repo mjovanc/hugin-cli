@@ -30,6 +30,12 @@
 
 set(FIND_SQLCIPHER_PATHS ${CMAKE_BINARY_DIR}/external/sqlcipher)
 
-find_path(SQLCIPHER_INCLUDE_DIR sqlite3.h PATH_SUFFIXES include PATHS ${FIND_SQLCIPHER_PATHS})
+find_path(SQLCIPHER_INCLUDE_DIR
+        sqlite3.h
+        PATH_SUFFIXES include
+        PATHS ${FIND_SQLCIPHER_PATHS})
 
-find_library(SQLCIPHER_LIBRARY NAMES sqlcipher PATH_SUFFIXES lib PATHS ${FIND_SQLCIPHER_PATHS})
+find_library(SQLCIPHER_LIBRARY
+        NAMES sqlcipher
+        PATH_SUFFIXES lib
+        PATHS ${FIND_SQLCIPHER_PATHS})

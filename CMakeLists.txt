@@ -81,7 +81,6 @@ add_subdirectory(external/cunit/CUnit)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 include(FindPkgConfig)
 find_package(Sqlcipher REQUIRED)
-include_directories(${SQLCIPHER_INCLUDE_DIR})
 
 # include directories (order is important)
 target_include_directories(${PROJECT_NAME}
@@ -93,17 +92,18 @@ target_include_directories(${PROJECT_NAME}
         db
         common
         config
+        ${SQLCIPHER_INCLUDE_DIR}
 )
 
 # link libraries (order is important)
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
-        ${SQLCIPHER_LIBRARY}
         crypto
         daemon
         account
         wallet
         db
+        ${SQLCIPHER_LIBRARY}
     PRIVATE
         sodium
 )

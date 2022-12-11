@@ -50,5 +50,13 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     execute_process(
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             COMMAND bash -c "mkdir -p ${CMAKE_BINARY_DIR}/external/sqlcipher/include && cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/sqlite3.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/sqlite3.h"
+            COMMAND bash -c "cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/sqlite3ext.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/sqlite3ext.h"
+            COMMAND bash -c "cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/sqlite3session.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/sqlite3session.h"
+            COMMAND bash -c "cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/parse.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/parse.h"
+            COMMAND bash -c "cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/opcodes.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/opcodes.h"
+            COMMAND bash -c "cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/keywordhash.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/keywordhash.h"
+            COMMAND bash -c "cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/fts5parse.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/fts5parse.h"
+            COMMAND bash -c "cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/fts5.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/fts5.h"
+            COMMAND bash -c "cp ${CMAKE_SOURCE_DIR}/external/sqlcipher/config.h ${CMAKE_BINARY_DIR}/external/sqlcipher/include/config.h"
     )
 endif()
