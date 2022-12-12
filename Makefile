@@ -28,16 +28,25 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+# target
 BINARY=Hugin
+
+# directories
 CODEDIRS=. account wallet db crypto daemon
 INCDIRS=. account wallet db common config crypto daemon
 BUILDDIR = build
+EXTERNALDIR = external
 
+# compiler
 CC=gcc
 OPT=-00
+
+# flags
 DEPFLAGS=-MP -MD
 CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
+SQLCIPHER_FLAGS=--enable-tempstore=yes CFLAGS='-DSQLITE_HAS_CODEC' LDFLAGS='-lcrypto'
 
+# files
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
 OBJECTS=$(patsubst %.c,$(BUILDDIR)/%.o,$(CFILES))
 DEPFILES=$(patsubst %.c,$(BUILDDIR)/%.d,$(CFILES))
@@ -52,6 +61,10 @@ $(BUILDDIR)/%.o: %.c
 	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"
 	@mkdir -p ${dir $@}
 	$(CC) $(CFLAGS) -c -o $@ $<
+
+sqlcipher:
+	@echo "-- COMPILING SQLCIPHER"
+	@sudo ./$(EXTERNALDIR)/sqlcipher/configure $(SQLCIPHER_FLAGS)
 
 clean:
 	@echo "-- CLEANING PROJECT"
