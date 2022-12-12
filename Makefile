@@ -31,7 +31,7 @@
 BINARY=Hugin
 CODEDIRS=. ./account ./wallet ./db
 INCDIRS=. ./account ./wallet ./db
-OBJDIR = ./obj
+BUILDDIR = ./build
 
 CC=gcc
 OPT=-00
@@ -45,18 +45,20 @@ DEPFILES=$(patsubst %.c,%.d,$(CFILES))
 all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
-	@echo "GENERATING HUGIN TARGET"
+	@echo "-- GENERATING HUGIN TARGET"
 	$(CC) -o $@ $^
 
-$(OBJDIR)/%.o: %.c
-	@echo "COMPILING SOURCE $< INTO OBJECT $@"
+%.o: %.c
+	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"
 	@mkdir -p '$(@D)'
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
+	@echo "-- CLEANING PROJECT"
 	rm -rf $(BINARY) $(OBJECTS) $(DEPFILES)
 
 distribute: clean
+	@echo "-- DISTRIBUTE PROJECT"
 	tar zcvf dist.tgz *
 
 diff:
