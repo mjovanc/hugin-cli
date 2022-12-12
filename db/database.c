@@ -32,7 +32,7 @@
 #include <string.h>
 
 #include "database.h"
-#include "external/sqlcipher/sqlite3.h"
+#include "sqlcipher/sqlite3.h"
 
 int database_create(char *database_name)
 {

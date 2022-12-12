@@ -45,7 +45,7 @@ DEPFILES=$(patsubst %.c,$(BUILDDIR)/%.d,$(CFILES))
 all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
-	@echo "-- GENERATING HUGIN TARGET"
+	@echo "-- BUILDING HUGIN TARGET"
 	$(CC) -o $@ $^
 
 $(BUILDDIR)/%.o: %.c

@@ -29,17 +29,9 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <stdio.h>
-
-#ifdef WIN32
-#include <io.h>
-#define F_OK 0
-#define access _access
-#else
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-
-#endif
 
 #include "wallet.h"
 #include "db/database.h"
