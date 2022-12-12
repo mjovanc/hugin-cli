@@ -63,8 +63,10 @@ $(BUILDDIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 sqlcipher:
-	@echo "-- COMPILING SQLCIPHER"
-	@sudo ./$(EXTERNALDIR)/sqlcipher/configure $(SQLCIPHER_FLAGS)
+	@echo "-- BUILDING SQLCIPHER"
+	@(cd $(EXTERNALDIR)/sqlcipher && ./configure $(SQLCIPHER_FLAGS))
+	@(cd $(EXTERNALDIR)/sqlcipher && make)
+	@(cd $(EXTERNALDIR)/sqlcipher && sudo make install)
 
 clean:
 	@echo "-- CLEANING PROJECT"
