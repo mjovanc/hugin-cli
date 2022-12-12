@@ -37,4 +37,4 @@ bool wallet_exists(char *wallet_name);
 bool wallet_create(char *wallet_name, char *wallet_password);
 bool wallet_open(char *wallet_name, char *wallet_password);
 
-#endif
+#endif //WALLET_H

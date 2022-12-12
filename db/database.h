@@ -39,4 +39,4 @@ int database_create_table_post(sqlite3 *db, char *zErrMsg, int rc);
 int database_open(char *database_name);
 int database_delete(char *database_name);
 
-#endif
+#endif //DATABASE_H

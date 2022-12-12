@@ -37,4 +37,4 @@ int account_login(char *username, char *password);
 int account_register(char *username, char *password);
 int account_logout(bool *logged_in);
 
-#endif
+#endif //ACCOUNT_H

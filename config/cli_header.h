@@ -28,6 +28,9 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#ifndef HUGIN_CLI_HEADER_H
+#define HUGIN_CLI_HEADER_H
+
 #include <stdio.h>
 
 #include "version.h"
@@ -42,3 +45,5 @@ void print_header()
     printf("  If you did not receive a copy of the LICENSE, please visit:\n");
     printf("  %s\n\n", PROJECT_LICENSE_URL);
 }
+
+#endif //HUGIN_CLI_HEADER_H
