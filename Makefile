@@ -29,8 +29,8 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 BINARY=Hugin
-CODEDIRS=.
-INCDIRS=.
+CODEDIRS=. ./account ./wallet ./db
+INCDIRS=. ./account ./wallet ./db
 
 CC=gcc
 OPT=-00
