@@ -29,9 +29,9 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 BINARY=Hugin
-CODEDIRS=. ./account ./wallet ./db
-INCDIRS=. ./account ./wallet ./db
-BUILDDIR = ./build
+CODEDIRS=. account wallet db crypto daemon
+INCDIRS=. account wallet db common config crypto daemon
+BUILDDIR = build
 
 CC=gcc
 OPT=-00
@@ -39,8 +39,8 @@ DEPFLAGS=-MP -MD
 CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
 
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
-OBJECTS=$(patsubst %.c,%.o,$(CFILES))
-DEPFILES=$(patsubst %.c,%.d,$(CFILES))
+OBJECTS=$(patsubst %.c,$(BUILDDIR)/%.o,$(CFILES))
+DEPFILES=$(patsubst %.c,$(BUILDDIR)/%.d,$(CFILES))
 
 all: $(BINARY)
 
@@ -48,14 +48,15 @@ $(BINARY): $(OBJECTS)
 	@echo "-- GENERATING HUGIN TARGET"
 	$(CC) -o $@ $^
 
-%.o: %.c
+$(BUILDDIR)/%.o: %.c
 	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"
-	@mkdir -p '$(@D)'
+	@mkdir -p ${dir $@}
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	@echo "-- CLEANING PROJECT"
 	rm -rf $(BINARY) $(OBJECTS) $(DEPFILES)
+	rm -rf $(BUILDDIR)
 
 distribute: clean
 	@echo "-- DISTRIBUTE PROJECT"
