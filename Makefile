@@ -1,17 +1,15 @@
-all: main
+BINARY=Hugin
+CODEDIRS=.
+INCDIRS=.
 
-CC=cc
-COMPILER = gcc
-CFLAGS=-std=c11
-#CFLAGS+=-W -Wall
-#CFLAGS+=-O0 -g -ggdb
-#LDLIBS=
-#LDFLAGS=
+CC=gcc
+OPT=-00
+DEPFLAGS=-MP -MD
+CFLAGS=-std=c11 -Wall -Wextra -g $(foreach D, $(INCDIRS), -I$(D)) $(OPT) $(DEPFLAGS)
 
-CFILES=main.c
-OBJECTS=main.o
-
-BINARY=bin
+CFILES=$(foreach D, $(CODEDIRS), $(wildcard $(D)/*.c))
+OBJECTS=$(patsubst %.c, %.o, $(CFILES))
+DEPFILES=$(patsubst %.c, %.d, $(CFILES))
 
 all: $(BINARY)
 
