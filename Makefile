@@ -31,6 +31,7 @@
 BINARY=Hugin
 CODEDIRS=. ./account ./wallet ./db
 INCDIRS=. ./account ./wallet ./db
+OBJDIR = ./obj
 
 CC=gcc
 OPT=-00
@@ -44,9 +45,12 @@ DEPFILES=$(patsubst %.c,%.d,$(CFILES))
 all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
+	@echo "GENERATING HUGIN TARGET"
 	$(CC) -o $@ $^
 
-%.o: %.c
+$(OBJDIR)/%.o: %.c
+	@echo "COMPILING SOURCE $< INTO OBJECT $@"
+	@mkdir -p '$(@D)'
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
