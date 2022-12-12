@@ -1,0 +1,16 @@
+Hugin CLI
+============
+
+There are several guides/instructions for Hugin CLI developers and users. These guides/instructions
+can be found on the official Kryptokrona Documentation.
+
+The documentation for developers can be read online at:
+
+    https://docs.kryptokrona.org/developer/hugin-cli
+
+There is also documentation for regular users to be found at the official Kryptokrona Documentation:
+
+    https://docs.kryptokrona.org/guides/hugin-cli
+
+Please read the documentation as it contains the requirements for building and
+running the Hugin CLI, and information about the problems which may result by upgrading your Hugin CLI.
