@@ -5,7 +5,7 @@ Type=Application
 Name=Hugin CLI
 Icon=/opt/hugin-cli/icon.png
 Path=/opt/hugin-cli
-Exec=x-terminal-emulator --title "Hugin CLI" --geometry 130x40 --icon /opt/hugin-cli/icon.png --title Hugin CLI --borderless -e "bash -c '/opt/hugin-cli/Hugin;$SHELL'"
+Exec=x-terminal-emulator --title=Hugin CLI --geometry=130x40 --icon=/opt/hugin-cli/icon.png --borderless -e "bash -c '/opt/hugin-cli/Hugin;$SHELL'"
 StartupNotify=false
 Terminal=false
 Categories=Utility

@@ -59,8 +59,8 @@ echo "Setting executable permission for ${APP_NAME}.desktop..."
 chmod +x $HOME/.local/share/applications/$APP_NAME.desktop
 
 echo "Adding alias for Hugin..."
-sudo sed -i -e "alias hugin='./$($APP_INSTALLATION_PATH/$APP_BINARY)'" /etc/bash.bashrc
-source /etc/bash.bashrc
+echo -e "\nalias hugin='./opt/hugin-cli/Hugin'" >> $HOME/.bashrc
+source $HOME/.bashrc
 
 echo "${APP_BINARY} is now installed..."
 
