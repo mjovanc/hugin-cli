@@ -7,7 +7,7 @@ on: [ pull_request ]
 
 jobs:
   build:
-    name: "Build: ${{ matrix.config.name }}"
+    name: "Build: ${{ matrix.config.name }} / ${{ matrix.config.architecture }}"
     runs-on: ${{ matrix.config.os }}
     strategy:
       fail-fast: true
@@ -18,7 +18,7 @@ jobs:
             artifact: "ubuntu-latest-x64",
             os: ubuntu-22.04,
             cc: "gcc",
-            architecture: x64
+            architecture: x64,
           }
     steps:
       - uses: actions/checkout@v2
@@ -28,4 +28,8 @@ jobs:
       # Ubuntu 22.04
       - name: Install dependencies
         if: matrix.config.name == 'Ubuntu Latest GCC / x64'
-        run: sudo apt-get -y install libssl-dev
+        run: sudo apt-get -y install libssl-dev libsqlcipher-dev
+
+      - name: Build Ubuntu Target
+        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
+        run: make

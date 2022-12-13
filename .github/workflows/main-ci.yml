@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: "Build: ${{ matrix.config.name }}"
+    name: "Build: ${{ matrix.config.name }} / ${{ matrix.config.architecture }}"
     runs-on: ${{ matrix.config.os }}
     strategy:
       fail-fast: true
@@ -34,4 +34,20 @@ jobs:
       # Ubuntu 22.04
       - name: Install dependencies
         if: matrix.config.name == 'Ubuntu Latest GCC / x64'
-        run: sudo apt-get -y install libssl-dev
+        run: sudo apt-get -y install libssl-dev libsqlcipher-dev
+
+      - name: Build Ubuntu Target
+        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
+        run: make
+
+      - name: Upload Ubuntu Artifact
+        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
+        uses: actions/upload-artifact@v3
+        with:
+          name: hugin-ubuntu-x64
+          path: |
+            build/Hugin
+            resources/icon.png
+            resources/readme.html
+            resources/hugin-cli.desktop
+            install.sh
