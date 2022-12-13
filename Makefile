@@ -44,7 +44,7 @@ OPT=-00
 # flags
 DEPFLAGS=-MP -MD
 CFLAGS=-Wall -Wextra -lsqlcipher -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
-SQLCIPHER_FLAGS=--enable-tempstore=yes CFLAGS='-DSQLITE_HAS_CODEC' LDFLAGS='-lcrypto'
+SQLCIPHER_FLAGS=--enable-tempstore=yes CFLAGS='-DSQLITE_HAS_CODEC' LDFLAGS='-lcrypto' --prefix=$(HOME)/.local
 
 # files
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
@@ -66,7 +66,7 @@ sqlcipher:
 	@echo "-- BUILDING SQLCIPHER"
 	@(cd $(EXTERNALDIR)/sqlcipher && ./configure $(SQLCIPHER_FLAGS))
 	@(cd $(EXTERNALDIR)/sqlcipher && make)
-	@(cd $(EXTERNALDIR)/sqlcipher && sudo make install)
+	@(cd $(EXTERNALDIR)/sqlcipher && make install)
 
 clean:
 	@echo "-- CLEANING PROJECT"
