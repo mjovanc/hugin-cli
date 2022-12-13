@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ncurses.h> // TODO: need to implement this later
 
 #include "account/account.h"
 #include "config/cli_header.h"

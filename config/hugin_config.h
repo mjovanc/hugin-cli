@@ -28,10 +28,21 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 #ifndef HUGIN_CONFIG_H
 #define HUGIN_CONFIG_H
 
-#define CONFIG_NODE_DEFAULT "swepool.org:11898"
+#include <stdbool.h>
+#include <stdint.h>
+
+typedef struct node_list_t {
+  char				name[30];
+  char        		domain[255];
+  uint16_t        	port;
+  bool				ssl;
+  bool				cache;
+  char				version[5];
+  float				fee;
+  char				proxy_url[50];
+} node_list_t;
 
 #endif //HUGIN_CONFIG_H
