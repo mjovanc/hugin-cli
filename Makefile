@@ -43,8 +43,7 @@ OPT=-00
 
 # flags
 DEPFLAGS=-MP -MD
-CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
-SQLCIPHER_FLAGS=--enable-tempstore=yes CFLAGS='-DSQLITE_HAS_CODEC' LDFLAGS='-lcrypto' --prefix=$(HOME)/.local
+CFLAGS=-Wall -Wextra -lsqlcipher -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
 
 # files
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
