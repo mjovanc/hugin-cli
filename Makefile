@@ -43,7 +43,7 @@ OPT=-00
 
 # flags
 DEPFLAGS=-MP -MD
-CFLAGS=-Wall -Wextra -lsqlcipher -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
+CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
 SQLCIPHER_FLAGS=--enable-tempstore=yes CFLAGS='-DSQLITE_HAS_CODEC' LDFLAGS='-lcrypto' --prefix=$(HOME)/.local
 
 # files
@@ -57,16 +57,10 @@ $(BINARY): $(OBJECTS)
 	@echo "-- BUILDING HUGIN TARGET"
 	$(CC) -o $@ $^
 
-$(BUILDDIR)/%.o: %.c | sqlcipher
+$(BUILDDIR)/%.o: %.c
 	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"
 	@mkdir -p ${dir $@}
 	$(CC) $(CFLAGS) -c -o $@ $<
-
-sqlcipher:
-	@echo "-- BUILDING SQLCIPHER"
-	@(cd $(EXTERNALDIR)/sqlcipher && ./configure $(SQLCIPHER_FLAGS))
-	@(cd $(EXTERNALDIR)/sqlcipher && make)
-	@(cd $(EXTERNALDIR)/sqlcipher && make install)
 
 clean:
 	@echo "-- CLEANING PROJECT"
