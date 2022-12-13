@@ -20,8 +20,8 @@ jobs:
       matrix:
         config:
           - {
-              name: "Ubuntu Latest GCC / x64",
-              artifact: "ubuntu-latest-x64",
+              name: "Ubuntu Latest GCC",
+              artifact: "hugin-ubuntu-x64",
               os: ubuntu-22.04,
               cc: "gcc",
               architecture: x64,
@@ -33,15 +33,15 @@ jobs:
 
       # Ubuntu 22.04
       - name: Install dependencies
-        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
+        if: matrix.config.name == 'Ubuntu Latest GCC'
         run: sudo apt-get -y install libssl-dev libsqlcipher-dev
 
       - name: Build Ubuntu Target
-        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
+        if: matrix.config.name == 'Ubuntu Latest GCC'
         run: make
 
       - name: Upload Ubuntu Artifact
-        if: matrix.config.name == 'Ubuntu Latest GCC / x64'
+        if: matrix.config.name == 'Ubuntu Latest GCC'
         uses: actions/upload-artifact@v3
         with:
           name: hugin-ubuntu-x64
