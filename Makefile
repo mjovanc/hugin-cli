@@ -44,6 +44,7 @@ OPT=-00
 # flags
 DEPFLAGS=-MP -MD
 CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
+DYNAMIC_LINK_FLAGS=-lsqlcipher -lncurses
 
 # files
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
@@ -54,7 +55,7 @@ all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
 	@echo "-- BUILDING HUGIN TARGET"
-	$(CC) -o $(BUILDDIR)/$@ $^ -lsqlcipher
+	$(CC) -o $(BUILDDIR)/$@ $^ $(DYNAMIC_LINK_FLAGS)
 
 $(BUILDDIR)/%.o: %.c
 	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"

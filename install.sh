@@ -58,6 +58,7 @@ cp resources/$APP_NAME.desktop $HOME/.local/share/applications/$APP_NAME.desktop
 echo "Setting executable permission for ${APP_NAME}.desktop..."
 chmod +x $HOME/.local/share/applications/$APP_NAME.desktop
 
+# TODO: avoid adding this twice if we run this shell script more than once
 echo "Adding alias for Hugin..."
 echo -e "\nalias hugin='./opt/hugin-cli/Hugin'" >> $HOME/.bashrc
 source $HOME/.bashrc
