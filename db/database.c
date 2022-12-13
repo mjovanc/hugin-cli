@@ -67,8 +67,14 @@ int database_create_table_setting(sqlite3 *db, char *zErrMsg, int rc)
 {
 	node_list_t node_list[1] = {
 		{
+			"Swepool",
 			"swepool.org",
 			11898,
+			false,
+			false,
+			"0.0.1",
+			0.00,
+			"swepool"
 		}
 	};
 

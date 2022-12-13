@@ -41,7 +41,7 @@ typedef struct node_list_t {
   bool				ssl;
   bool				cache;
   char				version[5];
-  float				fee;
+  double			fee;
   char				proxy_url[50];
 } node_list_t;
 
