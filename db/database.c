@@ -79,8 +79,8 @@ int database_create_table_setting(sqlite3 *db, char *zErrMsg, int rc)
 	};
 
     char *sql = "DROP TABLE IF EXISTS main.setting;"
-                "CREATE TABLE main.setting(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, value TEXT);"
-                "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
+                "CREATE TABLE main.setting(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, domain TEXT, port INT, ssl INT, cache INT, version TEXT, fee REAL, proxy_url TEXT);";
+ 	// "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');"
 
     rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
     if (rc != SQLITE_OK)
