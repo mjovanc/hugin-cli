@@ -54,7 +54,7 @@ all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
 	@echo "-- BUILDING HUGIN TARGET"
-	$(CC) -o $@ $^ -lsqlcipher
+	$(CC) -o $(BUILDDIR)/$@ $^ -lsqlcipher
 
 $(BUILDDIR)/%.o: %.c
 	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"
