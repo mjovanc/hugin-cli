@@ -44,7 +44,7 @@ echo "Placing icon in application directory..."
 sudo cp resources/icon.png $APP_INSTALLATION_PATH/icon.png
 
 echo "Setting permission for ${APP_INSTALLATION_PATH}/icon.png..."
-chmod 644 $APP_INSTALLATION_PATH/icon.png
+sudo chmod 644 $APP_INSTALLATION_PATH/icon.png
 
 echo "Placing binary in application directory..."
 sudo cp build/Hugin $APP_INSTALLATION_PATH/$APP_BINARY
@@ -57,6 +57,10 @@ cp resources/$APP_NAME.desktop $HOME/.local/share/applications/$APP_NAME.desktop
 
 echo "Setting executable permission for ${APP_NAME}.desktop..."
 chmod +x $HOME/.local/share/applications/$APP_NAME.desktop
+
+echo "Adding alias for Hugin..."
+sudo sed -i -e "alias hugin='./$($APP_INSTALLATION_PATH/$APP_BINARY)'" /etc/bash.bashrc
+source /etc/bash.bashrc
 
 echo "${APP_BINARY} is now installed..."
 
