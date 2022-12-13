@@ -43,7 +43,7 @@ OPT=-00
 
 # flags
 DEPFLAGS=-MP -MD
-CFLAGS=-Wall -Wextra -lsqlcipher -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
+CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
 
 # files
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
@@ -54,7 +54,7 @@ all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
 	@echo "-- BUILDING HUGIN TARGET"
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ -lsqlcipher
 
 $(BUILDDIR)/%.o: %.c
 	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"
