@@ -35,12 +35,14 @@
 #include "config/hugin_config.h"
 #include "sqlcipher/sqlite3.h"
 
-int database_create(char *database_name)
+int database_create(char *database_name, const char *database_password)
 {
     sqlite3 *db;
     int rc;
     char *extension = ".db";
     char *full_db_name = strcat(database_name, extension);
+	const char *pragma_sql = "PRAGMA key = 'passphrase'";
+
 
     rc = sqlite3_open(full_db_name, &db);
     if (rc != SQLITE_OK)
@@ -101,6 +103,8 @@ int database_create(char *database_name)
 		},
 	};
 
+	// loop through the node_list struct array and make inserts
+
 	// char *setting_table_insert_sql = "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
 
 	// database_transaction(db, zErrMsg, rc, setting_table_sql);
@@ -108,7 +112,7 @@ int database_create(char *database_name)
     return 0;
 }
 
-int database_transaction(char **database_name, char *sql)
+int database_transaction(const char **database_name, const char *sql)
 {
 	sqlite3 *db;
 	char *zErrMsg = 0;
@@ -140,7 +144,7 @@ int database_transaction(char **database_name, char *sql)
 	return 0;
 }
 
-int database_open(char *database_name)
+int database_open(const char *database_name)
 {
     sqlite3 *db;
     char *zErrMsg = 0;
@@ -166,7 +170,7 @@ int database_open(char *database_name)
     return 0;
 }
 
-int database_delete(char *database_name)
+int database_delete(const char *database_name)
 {
     return 0;
 }
