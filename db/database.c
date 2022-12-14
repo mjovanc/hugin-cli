@@ -68,7 +68,7 @@ int database_create(char *database_name)
 	database_transaction(&full_db_name, post_table_sql);
 
 	// populate data
-	node_list_t node_list[1] = {
+	node_list_t node_list[3] = {
 		{
 			"Swepool",
 			"swepool.org",
@@ -78,7 +78,27 @@ int database_create(char *database_name)
 			"0.0.1",
 			0.00,
 			"swepool"
-		}
+		},
+		{
+			"Göta Pool",
+			"gota.kryptokrona.se",
+			11898,
+			false,
+			false,
+			"0.0.1",
+			0.00,
+			"gota"
+		},
+		{
+			"Blocksum",
+			"blocksum.or",
+			11898,
+			false,
+			false,
+			"0.1.0",
+			0.00,
+			"blocksum"
+		},
 	};
 
 	// char *setting_table_insert_sql = "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
