@@ -30,6 +30,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "database.h"
 #include "config/hugin_config.h"
@@ -39,10 +40,18 @@ int database_create(char *database_name, const char *database_password)
 {
     sqlite3 *db;
     int rc;
-    char *extension = ".db";
+    const char *extension = ".db";
     char *full_db_name = strcat(database_name, extension);
-	const char *pragma_sql = "PRAGMA key = 'passphrase'";
+	char *pragma_str1 = "PRAGMA key = '";
+	char *pragma_str2 = "';";
+	size_t pragma_size = strlen(pragma_str1) + strlen(pragma_str2);
+	char *pragma_sql = malloc(sizeof(database_password) * pragma_size + 1);
 
+	strncpy(pragma_sql, pragma_str1, pragma_size);
+	strcat(pragma_sql, database_password);
+	strcat(pragma_sql, pragma_str2);
+
+	printf("PRAGMA KEY IS %s\n", pragma_sql);
 
     rc = sqlite3_open(full_db_name, &db);
     if (rc != SQLITE_OK)
@@ -109,6 +118,8 @@ int database_create(char *database_name, const char *database_password)
 
 	// database_transaction(db, zErrMsg, rc, setting_table_sql);
 
+	free(pragma_sql);
+
     return 0;
 }
 
@@ -144,12 +155,12 @@ int database_transaction(const char **database_name, const char *sql)
 	return 0;
 }
 
-int database_open(const char *database_name)
+int database_open(char *database_name)
 {
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
-    char *extension = ".db";
+    const char *extension = ".db";
     char *full_db_name = strcat(database_name, extension);
 
     //TODO: need to save this DB on user/local or similar OS systems not in the same place where executable is
@@ -170,7 +181,7 @@ int database_open(const char *database_name)
     return 0;
 }
 
-int database_delete(const char *database_name)
+int database_delete(char *database_name)
 {
     return 0;
 }

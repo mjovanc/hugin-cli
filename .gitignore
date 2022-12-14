@@ -88,3 +88,7 @@ tags
 # Log files
 *.log
 
+# sqlite files
+*.sqlite
+*.sqlite3
+*.db
