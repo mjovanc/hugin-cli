@@ -34,7 +34,7 @@
 #include "sqlcipher/sqlite3.h"
 
 int database_create(char *database_name);
-int database_transaction(sqlite3 *db, char *zErrMsg, int rc, char *sql);
+int database_transaction(char **database_name, char *sql);
 
 int database_open(char *database_name);
 int database_delete(char *database_name);

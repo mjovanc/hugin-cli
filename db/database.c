@@ -38,7 +38,6 @@
 int database_create(char *database_name)
 {
     sqlite3 *db;
-    char *zErrMsg = 0;
     int rc;
     char *extension = ".db";
     char *full_db_name = strcat(database_name, extension);
@@ -54,6 +53,7 @@ int database_create(char *database_name)
         printf("Opened database successfully\n");
     }
 
+	// closing to save the database to file system
 	sqlite3_close(db);
 
 	char *setting_table_sql = "DROP TABLE IF EXISTS main.setting;"
@@ -64,8 +64,8 @@ int database_create(char *database_name)
 				" time INT NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
 
     // initializing tables
-	database_transaction(db, zErrMsg, rc, setting_table_sql);
-	database_transaction(db, zErrMsg, rc, post_table_sql);
+	database_transaction(&full_db_name, setting_table_sql);
+	database_transaction(&full_db_name, post_table_sql);
 
 	// populate data
 	node_list_t node_list[1] = {
@@ -81,13 +81,30 @@ int database_create(char *database_name)
 		}
 	};
 
+	// char *setting_table_insert_sql = "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
+
 	// database_transaction(db, zErrMsg, rc, setting_table_sql);
 
     return 0;
 }
 
-int database_transaction(sqlite3 *db, char *zErrMsg, int rc, char *sql)
+int database_transaction(char **database_name, char *sql)
 {
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+
+	rc = sqlite3_open(*database_name, &db);
+	if (rc != SQLITE_OK)
+	{
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		return 1;
+	}
+	else
+	{
+		printf("Opened database successfully\n");
+	}
+
 	rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
 	if (rc != SQLITE_OK)
 	{
@@ -97,6 +114,8 @@ int database_transaction(sqlite3 *db, char *zErrMsg, int rc, char *sql)
 
 		return 1;
 	}
+
+	sqlite3_close(db);
 
 	return 0;
 }
