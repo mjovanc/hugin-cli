@@ -54,17 +54,20 @@ int database_create(char *database_name)
         printf("Opened database successfully\n");
     }
 
+	sqlite3_close(db);
+
+	char *setting_table_sql = "DROP TABLE IF EXISTS main.setting;"
+				"CREATE TABLE main.setting(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, domain TEXT, port INT, ssl INT, cache INT, version TEXT, fee REAL, proxy_url TEXT);";
+
+	char *post_table_sql = "DROP TABLE IF EXISTS main.post;"
+				"CREATE TABLE main.post(id INT PRIMARY KEY, message TEXT NOT NULL, nickname TEXT,"
+				" time INT NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
+
     // initializing tables
-    database_create_table_setting(db, zErrMsg, rc);
-    database_create_table_post(db, zErrMsg, rc);
+	database_transaction(db, zErrMsg, rc, setting_table_sql);
+	database_transaction(db, zErrMsg, rc, post_table_sql);
 
-    sqlite3_close(db);
-
-    return 0;
-}
-
-int database_create_table_setting(sqlite3 *db, char *zErrMsg, int rc)
-{
+	// populate data
 	node_list_t node_list[1] = {
 		{
 			"Swepool",
@@ -78,40 +81,24 @@ int database_create_table_setting(sqlite3 *db, char *zErrMsg, int rc)
 		}
 	};
 
-    char *sql = "DROP TABLE IF EXISTS main.setting;"
-                "CREATE TABLE main.setting(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, domain TEXT, port INT, ssl INT, cache INT, version TEXT, fee REAL, proxy_url TEXT);";
- 	// "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');"
-
-    rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
-    if (rc != SQLITE_OK)
-    {
-        fprintf(stderr, "SQL error: %s\n", zErrMsg);
-        sqlite3_free(zErrMsg);
-        sqlite3_close(db);
-
-        return 1;
-    }
+	// database_transaction(db, zErrMsg, rc, setting_table_sql);
 
     return 0;
 }
 
-int database_create_table_post(sqlite3 *db, char *zErrMsg, int rc)
+int database_transaction(sqlite3 *db, char *zErrMsg, int rc, char *sql)
 {
-    char *sql = "DROP TABLE IF EXISTS main.post;"
-                "CREATE TABLE main.post(id INT PRIMARY KEY, message TEXT NOT NULL, nickname TEXT,"
-                " time INT NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
+	rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
+	if (rc != SQLITE_OK)
+	{
+		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+		sqlite3_close(db);
 
-    rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
-    if (rc != SQLITE_OK)
-    {
-        fprintf(stderr, "SQL error: %s\n", zErrMsg);
-        sqlite3_free(zErrMsg);
-        sqlite3_close(db);
+		return 1;
+	}
 
-        return 1;
-    }
-
-    return 0;
+	return 0;
 }
 
 int database_open(char *database_name)
