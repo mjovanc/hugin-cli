@@ -32,8 +32,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "core/core.h"
 #include "database.h"
-#include "core/node.h"
 #include "sqlcipher/sqlite3.h"
 
 int database_create(char *database_name, const char *database_password)

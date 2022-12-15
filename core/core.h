@@ -28,8 +28,8 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef CORE_NODE_H
-#define CORE_NODE_H
+#ifndef CORE_CORE_H
+#define CORE_CORE_H
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -45,4 +45,9 @@ typedef struct {
   char				proxy_url[50];
 } node_t;
 
-#endif//CORE_NODE_H
+typedef struct {
+  int				id;
+  int        		node_id;
+} setting_t;
+
+#endif//CORE_CORE_H
