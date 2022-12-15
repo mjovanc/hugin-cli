@@ -38,6 +38,7 @@
 
 bool wallet_exists(char *wallet_name)
 {
+  	//TODO: improve this concatenation with https://stackoverflow.com/questions/74811161/how-to-create-efficient-function-in-c-for-handling-multiple-arguments-to-be-form
     char *extension = ".db";
     size_t tmp_wallet_size = strlen(wallet_name) + strlen(extension);
     char *tmp_wallet_name;

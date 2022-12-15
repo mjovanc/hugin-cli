@@ -34,6 +34,7 @@
 #include "sqlcipher/sqlite3.h"
 #include "database.h"
 #include "transaction.h"
+#include "node.h"
 
 
 int db_create(char *db_name, const char *db_password)
@@ -83,7 +84,7 @@ int db_create(char *db_name, const char *db_password)
 	db_transaction(&full_db_name, transaction_table_sql, db_password);
 
 	// populate node table data
-	// db_add_node_initial_data(&full_db_name, db_password);
+	db_add_node_initial_data(&full_db_name, db_password);
 
     return 0;
 }

@@ -36,7 +36,7 @@
 
 #include "core/core.h"
 
-int db_add_node(const char **db_name, node_t node, const char **db_password);
+int db_add_node(const char **db_name, node_t node, const char *db_password);
 int db_add_node_initial_data(const char **db_name, const char **db_password);
 int db_edit_node(const char **db_name, int node_id, const char *db_password);
 int db_delete_node(const char **db_name, int node_id, const char *db_password);
