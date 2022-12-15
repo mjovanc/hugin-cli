@@ -36,7 +36,7 @@ int db_transaction(const char **db_name, const char *sql, const char *db_passwor
 {
 	sqlite3 *db;
 	sqlite3_stmt* stmt;
-	char *zErrMsg;
+	char *zErrMsg = 0;
 	int rc;
 
 	//TODO: should open the database with password

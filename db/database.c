@@ -61,21 +61,24 @@ int db_create(char *db_name, const char *db_password)
 	// closing to save the database to file system
 	sqlite3_close(db);
 
-	char *node_table_sql = "DROP TABLE IF EXISTS main.node;"
-						   "CREATE TABLE main.node(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL UNIQUE, domain TEXT, port INTEGER, ssl INTEGER, cache INTEGER, version TEXT, fee REAL, proxy_url TEXT);";
+	const char *node_table_sql = "DROP TABLE IF EXISTS main.node;"
+								 "CREATE TABLE main.node(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL UNIQUE, domain TEXT, port INTEGER,"
+								 " ssl INTEGER, cache INTEGER, version TEXT, fee REAL, proxy_url TEXT);";
 
-	char *post_table_sql = "DROP TABLE IF EXISTS main.post;"
-						   "CREATE TABLE main.post(id INTEGER PRIMARY KEY AUTOINCREMENT, message TEXT NOT NULL, nickname TEXT,"
-						   " time INTEGER NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
+	const char *post_table_sql = "DROP TABLE IF EXISTS main.post;"
+								 "CREATE TABLE main.post(id INTEGER PRIMARY KEY AUTOINCREMENT, message TEXT NOT NULL, nickname TEXT,"
+								 " time INTEGER NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
 
-	char *setting_table_sql = "DROP TABLE IF EXISTS main.setting;"
-							  "CREATE TABLE main.setting(id INTEGER PRIMARY KEY AUTOINCREMENT, node_id INTEGER, FOREIGN KEY(node_id) REFERENCES node(id));";
+	const char *setting_table_sql = "DROP TABLE IF EXISTS main.setting;"
+									"CREATE TABLE main.setting(id INTEGER PRIMARY KEY AUTOINCREMENT, node_id INTEGER, FOREIGN KEY(node_id) REFERENCES node(id));";
 
-	char *wallet_table_sql = "DROP TABLE IF EXISTS main.wallet;"
-							 "CREATE TABLE main.wallet(id INTEGER PRIMARY KEY AUTOINCREMENT, balance REAL, balance_locked REAL, mnemonic_seed TEXT NOT NULL, spend_key TEXT NOT NULL, view_key TEXT NOT NULL);";
+	const char *wallet_table_sql = "DROP TABLE IF EXISTS main.wallet;"
+								   "CREATE TABLE main.wallet(id INTEGER PRIMARY KEY AUTOINCREMENT, balance REAL, balance_locked REAL, mnemonic_seed TEXT NOT NULL,"
+								   " spend_key TEXT NOT NULL, view_key TEXT NOT NULL);";
 
-	char *transaction_table_sql = "DROP TABLE IF EXISTS main.transaction;"
-								  "CREATE TABLE main.transaction(id INTEGER PRIMARY KEY AUTOINCREMENT, hash TEXT, amount REAL, fee REAL);";
+	const char *transaction_table_sql = "DROP TABLE IF EXISTS main.txn;"
+								  		"CREATE TABLE main.txn(id INTEGER PRIMARY KEY AUTOINCREMENT, hash TEXT, amount REAL, fee REAL);";
+
 
     // creating tables
 	db_transaction(&full_db_name, node_table_sql, db_password);
