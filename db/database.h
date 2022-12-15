@@ -36,12 +36,12 @@
 
 #include "core/core.h"
 
-int database_create(char *database_name, const char *database_password);
-int database_transaction(const char **database_name, const char *sql, const char *database_password);
+int db_create(char *db_name, const char *db_password);
+int db_transaction(const char **db_name, const char *sql, const char *db_password);
 
-int database_edit_password(char *database_name, const char *database_new_password);
-int database_edit_setting(char *database_name, const char *database_password);
+int db_edit_password(char *db_name, const char *db_new_password);
+int db_edit_setting(char *db_name, const char *db_password);
 
-int database_delete(char *database_name);
+int db_delete(char *db_name);
 
 #endif //DATABASE_DATABASE_H

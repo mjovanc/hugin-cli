@@ -36,19 +36,19 @@
 #include "database.h"
 #include "sqlcipher/sqlite3.h"
 
-int database_create(char *database_name, const char *database_password)
+int db_create(char *db_name, const char *db_password)
 {
     sqlite3 *db;
     int rc;
     const char *extension = ".db";
-    char *full_db_name = strcat(database_name, extension);
+    char *full_db_name = strcat(db_name, extension);
 	char *pragma_str1 = "PRAGMA key = '";
 	char *pragma_str2 = "';";
 	size_t pragma_size = strlen(pragma_str1) + strlen(pragma_str2);
-	char *pragma_sql = malloc(sizeof(database_password) * pragma_size + 1);
+	char *pragma_sql = malloc(sizeof(db_password) * pragma_size + 1);
 
 	strncpy(pragma_sql, pragma_str1, pragma_size);
-	strcat(pragma_sql, database_password);
+	strcat(pragma_sql, db_password);
 	strcat(pragma_sql, pragma_str2);
 
 	printf("PRAGMA KEY IS %s\n", pragma_sql);
@@ -82,9 +82,9 @@ int database_create(char *database_name, const char *database_password)
 						   "CREATE TABLE main.setting(id INTEGER PRIMARY KEY, node_id INTEGER, FOREIGN KEY(node_id) REFERENCES node(id));";
 
     // initializing tables
-	database_transaction(&full_db_name, node_table_sql, database_password);
-	database_transaction(&full_db_name, post_table_sql, database_password);
-	database_transaction(&full_db_name, setting_table_sql, database_password);
+	db_transaction(&full_db_name, node_table_sql, db_password);
+	db_transaction(&full_db_name, post_table_sql, db_password);
+	db_transaction(&full_db_name, setting_table_sql, db_password);
 
 	// populate data
 	node_t node_list[3] = {
@@ -124,20 +124,20 @@ int database_create(char *database_name, const char *database_password)
 
 	// char *setting_table_insert_sql = "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
 
-	// database_transaction(db, zErrMsg, rc, setting_table_sql);
+	// db_transaction(db, zErrMsg, rc, setting_table_sql);
 
 	free(pragma_sql);
 
     return 0;
 }
 
-int database_transaction(const char **database_name, const char *sql, const char *database_password)
+int db_transaction(const char **db_name, const char *sql, const char *db_password)
 {
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
 
-	rc = sqlite3_open(*database_name, &db);
+	rc = sqlite3_open(*db_name, &db);
 	if (rc != SQLITE_OK)
 	{
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
@@ -163,7 +163,7 @@ int database_transaction(const char **database_name, const char *sql, const char
 	return 0;
 }
 
-int database_delete(char *database_name)
+int db_delete(char *db_name)
 {
     return 0;
 }

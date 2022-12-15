@@ -66,7 +66,7 @@ bool wallet_create(char *wallet_name, char *wallet_password)
     }
 
     printf("Creating wallet...\n");
-    database_create(wallet_name, wallet_password);
+	db_create(wallet_name, wallet_password);
 
     return true;
 }

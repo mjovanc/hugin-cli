@@ -37,8 +37,8 @@
 #include "database.h"
 #include "core/core.h"
 
-int database_add_post(const char *database_name, post_t post, const char *database_password);
-int database_delete_post(char *database_name, int post_id, const char *database_password);
-int database_delete_post_all(char *database_name, const char *database_password);
+int db_add_post(const char *db_name, post_t post, const char *db_password);
+int db_delete_post(char *db_name, int post_id, const char *db_password);
+int db_delete_post_all(char *db_name, const char *db_password);
 
 #endif//DB_POST_H
