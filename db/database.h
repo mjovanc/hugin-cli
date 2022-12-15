@@ -45,10 +45,21 @@ int database_add_node(const char *database_name, node_t node, const char *databa
 int database_edit_node(const char *database_name, int node_id, const char *database_password);
 int database_delete_node(const char *database_name, int node_id, const char *database_password);
 
+// post table
+int database_add_post(const char *database_name, post_t post, const char *database_password);
+int database_delete_post(char *database_name, const char *database_password);
+
+// post_encrypted table
+int database_add_post_encrypted();
+int database_delete_post_encrypted();
+
+// post_encrypted_group table
+int database_add_post_encrypted_group();
+int database_delete_post_encrypted_group();
+
 int database_edit_password(char *database_name, const char *database_new_password);
 int database_edit_setting(char *database_name, const char *database_password);
 
-int database_delete_post(char *database_name, const char *database_password);
 int database_delete(char *database_name);
 
 #endif //DATABASE_DATABASE_H
