@@ -31,15 +31,21 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
+#include <stdbool.h>
+#include <stdint.h>
+
 #include "sqlcipher/sqlite3.h"
+#include "core/node.h"
 
 int database_create(char *database_name, const char *database_password);
 int database_transaction(const char **database_name, const char *sql, const char *database_password);
 
-int database_add_node(const char *database_name, const char *sql, const char *database_password);
+int database_add_node(const char *database_name, node_t node, const char *database_password);
+int database_edit_node();
+int database_delete_node();
 
-int database_change_password(char *database_name, const char *database_new_password);
-int database_change_setting_node(char *database_name, const char *database_password);
+int database_edit_password(char *database_name, const char *database_new_password);
+int database_edit_setting(char *database_name, const char *database_password);
 
 int database_delete_posts(char *database_name, const char *database_password);
 int database_delete(char *database_name);

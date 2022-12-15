@@ -33,7 +33,7 @@
 #include <stdlib.h>
 
 #include "database.h"
-#include "config/hugin_config.h"
+#include "core/node.h"
 #include "sqlcipher/sqlite3.h"
 
 int database_create(char *database_name, const char *database_password)
@@ -87,7 +87,7 @@ int database_create(char *database_name, const char *database_password)
 	database_transaction(&full_db_name, setting_table_sql, database_password);
 
 	// populate data
-	node_list_t node_list[3] = {
+	node_t node_list[3] = {
 		{
 			"Swepool",
 			"swepool.org",

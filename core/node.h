@@ -28,7 +28,21 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef HUGIN_CONFIG_H
-#define HUGIN_CONFIG_H
+#ifndef HUGIN_CLI_CORE_NODE_H_
+#define HUGIN_CLI_CORE_NODE_H_
 
-#endif //HUGIN_CONFIG_H
+#include <stdbool.h>
+#include <stdint.h>
+
+typedef struct {
+  char				name[30];
+  char        		domain[255];
+  uint16_t        	port;
+  bool				ssl;
+  bool				cache;
+  char				version[5];
+  double			fee;
+  char				proxy_url[50];
+} node_t;
+
+#endif//HUGIN_CLI_CORE_NODE_H_
