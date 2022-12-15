@@ -40,7 +40,6 @@ int db_transaction(const char **db_name, const char *sql, const char *db_passwor
 	int rc;
 
 	//TODO: should open the database with password
-
 	rc = sqlite3_open(*db_name, &db);
 	if (rc != SQLITE_OK)
 	{
@@ -71,7 +70,6 @@ int db_transaction_prepared(const char **db_name, const char *sql, const char *d
 	int rc;
 
 	//TODO: should open the database with password
-
 	rc = sqlite3_open(*db_name, &db);
 	if (rc != SQLITE_OK)
 	{
@@ -79,20 +77,14 @@ int db_transaction_prepared(const char **db_name, const char *sql, const char *d
 		return 1;
 	}
 
-	printf("SQL STATEMMENT: %s\n", sql);
+	int prepared_stmt = sqlite3_prepare_v2(db,sql,-1,&stmt,NULL);
+	if (prepared_stmt != 0)
+	{
+		fprintf(stderr, "Can't execute prepared database transaction: %s\n", sqlite3_errmsg(db));
+		return 1;
+	}
 
-	int temp = sqlite3_prepare_v2(
-		db,            // the handle to your (opened and ready) database
-		sql,    // the sql statement, utf-8 encoded
-		-1,   // max length of sql statement
-		&stmt,          // this is an "out" parameter, the compiled statement goes here
-		NULL);       // pointer to the tail end of sql statement (when there are
-					// multiple statements inside the string; can be null)
-
-	if (temp != 0) fprintf(stderr, "Can't execute prepared statement: %s\n", sqlite3_errmsg(db));
-
-	rc = sqlite3_step(stmt); // you'll want to check the return value, read on...
-
+	rc = sqlite3_step(stmt);
 	if (rc != SQLITE_DONE)
 	{
 		fprintf(stderr, "Can't run SQL statement: %s\n", sqlite3_errmsg(db));

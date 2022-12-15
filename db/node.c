@@ -67,7 +67,7 @@ int db_add_node_initial_data(const char **db_name, const char *db_password)
 
 	for (int n = 0; n < 3; n++)
 	{
-	  db_add_node(db_name, node_list[n], db_password);
+	  	db_add_node(db_name, node_list[n], db_password);
 	}
 
 	return 0;
