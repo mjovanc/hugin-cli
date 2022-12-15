@@ -36,8 +36,8 @@
 
 #include "core/core.h"
 
-int database_add_post_encrypted();
-int database_delete_post_encrypted();
-int database_delete_post_encrypted_all();
+int database_add_post_encrypted(const char *database_name, post_encrypted_t post_encrypted, const char *database_password);
+int database_delete_post_encrypted(char *database_name, int post_encrypted_id, const char *database_password);
+int database_delete_post_encrypted_all(char *database_name, const char *database_password);
 
 #endif//DB_POST_ENCRYPTED_H

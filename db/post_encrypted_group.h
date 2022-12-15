@@ -36,8 +36,8 @@
 
 #include "core/core.h"
 
-int database_add_post_encrypted_group();
-int database_delete_post_encrypted_group();
-int database_delete_post_encrypted_group_all();
+int database_add_post_encrypted_group(const char *database_name, post_encrypted_group_t post_encrypted_group, const char *database_password);
+int database_delete_post_encrypted_group(char *database_name, int post_encrypted_group_id, const char *database_password);
+int database_delete_post_encrypted_group_all(char *database_name, const char *database_password);
 
 #endif//DB_POST_ENCRYPTED_GROUP_H
