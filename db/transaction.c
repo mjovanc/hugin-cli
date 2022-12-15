@@ -84,7 +84,7 @@ int db_transaction_prepared(const char **db_name, const char *sql, const char *d
 	int temp = sqlite3_prepare_v2(
 		db,            // the handle to your (opened and ready) database
 		sql,    // the sql statement, utf-8 encoded
-		sizeof(sql),   // max length of sql statement
+		-1,   // max length of sql statement
 		&stmt,          // this is an "out" parameter, the compiled statement goes here
 		NULL);       // pointer to the tail end of sql statement (when there are
 					// multiple statements inside the string; can be null)

@@ -42,7 +42,7 @@ int db_add_node(const char **db_name, node_t node, const char *db_password)
 	char sql[1024];
 	int ssl = node.ssl ? 0 : 1;
 	int cache = node.cache ? 0 : 1;
-	snprintf(sql, sizeof(sql), "INSERT INTO main.node VALUES('%s', '%s', %d, %d, %d, '%s', %.6f, '%s');",
+	snprintf(sql, sizeof(sql), "INSERT INTO main.node VALUES(null, '%s', '%s', %d, %d, %d, '%s', %.6f, '%s');",
 			 node.name, node.domain, node.port, ssl, cache, node.version, node.fee, node.proxy_url);
 
 	int txn_prepared = db_transaction_prepared(db_name, sql, db_password);
