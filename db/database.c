@@ -88,23 +88,20 @@ int db_create(char *db_name, const char *db_password)
 	char *transaction_table_sql = "DROP TABLE IF EXISTS main.transaction;"
 								  "CREATE TABLE main.transaction(id INTEGER PRIMARY KEY, hash TEXT, amount REAL, fee REAL);";
 
-
-    // initializing tables
+    // creating tables
 	db_transaction(&full_db_name, node_table_sql, db_password);
 	db_transaction(&full_db_name, post_table_sql, db_password);
 	db_transaction(&full_db_name, setting_table_sql, db_password);
 	db_transaction(&full_db_name, wallet_table_sql, db_password);
 	db_transaction(&full_db_name, transaction_table_sql, db_password);
 
-	// populate data
+	// populate node table data
 	db_add_node_initial_data(&full_db_name, db_password);
 
 	free(pragma_sql);
 
     return 0;
 }
-
-
 
 int db_delete(char *db_name)
 {

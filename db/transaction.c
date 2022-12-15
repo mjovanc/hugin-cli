@@ -32,34 +32,46 @@
 
 #include "sqlcipher/sqlite3.h"
 
+int db_transaction_validate_query(const char *sql)
+{
+  	return 0;
+}
+
 int db_transaction(const char **db_name, const char *sql, const char *db_password)
 {
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
 
+	if (db_transaction_validate_query(sql) != 0)
+	{
+	  	return 1;
+	}
+
 	rc = sqlite3_open(*db_name, &db);
 	if (rc != SQLITE_OK)
 	{
-	  fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-	  return 1;
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		return 1;
 	}
 	else
 	{
-	  printf("Opened database successfully\n");
+	  	printf("Opened database successfully\n");
 	}
 
 	rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
 	if (rc != SQLITE_OK)
 	{
-	  fprintf(stderr, "SQL error: %s\n", zErrMsg);
-	  sqlite3_free(zErrMsg);
-	  sqlite3_close(db);
+		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+		sqlite3_close(db);
 
-	  return 1;
+		return 1;
 	}
 
 	sqlite3_close(db);
 
 	return 0;
 }
+
+
