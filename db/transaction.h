@@ -34,5 +34,4 @@
 int db_transaction(const char **db_name, const char *sql, const char *db_password);
 int db_transaction_prepared(const char **db_name, const char *sql, const char *db_password);
 
-
 #endif//DB_TRANSACTION_H

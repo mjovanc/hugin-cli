@@ -75,7 +75,7 @@ int db_add_node_initial_data(const char **db_name, const char *db_password)
 		{ "Tifo",				"tifo.info",			11898,false,false,"1.1.0",0.00,"blocksum" },
 	};
 
-	for (int n = 0; n < 3; n++)
+	for (int n = 0; n < 13; n++)
 	{
 	  	db_add_node(db_name, node_list[n], db_password);
 	}

@@ -36,7 +36,6 @@
 #include "transaction.h"
 #include "node.h"
 
-
 int db_create(char *db_name, const char *db_password)
 {
     sqlite3 *db;
