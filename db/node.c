@@ -29,6 +29,7 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "sqlcipher/sqlite3.h"
@@ -36,6 +37,10 @@
 
 int db_add_node_initial_data(const char *db_name, const char *db_password)
 {
+	sqlite3 *db;
+	sqlite3_stmt* stmt = 0;
+	int rc;
+
 	node_t node_list[3] = {
 		{
 			"Swepool",
@@ -69,23 +74,28 @@ int db_add_node_initial_data(const char *db_name, const char *db_password)
 		},
 	};
 
-	for (int n = 0; n < 3; n++)
+	rc = sqlite3_open(db_name, &db);
+	if (rc != SQLITE_OK)
+	{
+	  fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+	  return 1;
+	}
+	else
+	{
+	  printf("Opened database successfully\n");
+	}
+
+	rc = sqlite3_prepare_v2(db, "INSERT INTO main.setting VALUES('?', '?', ?, ?, ?, '?', ?, ?);", -1, &stmt, 0);
+
+	rc = sqlite3_exec(db, "BEGIN TRANSACTION", 0, 0, 0);
+
+	/*for (int n = 0; n < 3; n++)
 	{
 	  // populate db
 
-	  char *pragma_str1 = "INSERT INTO main.node VALUES(";
-	  char *pragma_str2 = "';";
-	  size_t pragma_size = strlen(pragma_str1) + strlen(pragma_str2);
-	  char *pragma_sql = malloc(sizeof(db_password) * pragma_size + 1);
-
-	  strncpy(pragma_sql, pragma_str1, pragma_size);
-	  strcat(pragma_sql, db_password);
-	  strcat(pragma_sql, pragma_str2);
 
 	  // db_add_node();
-	}
-
-	// char *setting_table_insert_sql = "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
+	}*/
 
 	return 0;
 }

@@ -43,6 +43,8 @@ int db_create(char *db_name, const char *db_password)
     int rc;
     const char *extension = ".db";
     const char *full_db_name = strcat(db_name, extension);
+
+	// TODO: should use prepared statements instead
 	char *pragma_str1 = "PRAGMA key = '";
 	char *pragma_str2 = "';";
 	size_t pragma_size = strlen(pragma_str1) + strlen(pragma_str2);
@@ -72,21 +74,22 @@ int db_create(char *db_name, const char *db_password)
 	// closing to save the database to file system
 	sqlite3_close(db);
 
+	//TODO: should use prepared statements instead
 	char *node_table_sql = "DROP TABLE IF EXISTS main.node;"
-						   "CREATE TABLE main.node(id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE, domain TEXT, port INTEGER, ssl INTEGER, cache INTEGER, version TEXT, fee REAL, proxy_url TEXT);";
+						   "CREATE TABLE main.node(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL UNIQUE, domain TEXT, port INTEGER, ssl INTEGER, cache INTEGER, version TEXT, fee REAL, proxy_url TEXT);";
 
 	char *post_table_sql = "DROP TABLE IF EXISTS main.post;"
-						   "CREATE TABLE main.post(id INTEGER PRIMARY KEY, message TEXT NOT NULL, nickname TEXT,"
+						   "CREATE TABLE main.post(id INTEGER PRIMARY KEY AUTOINCREMENT, message TEXT NOT NULL, nickname TEXT,"
 						   " time INTEGER NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
 
 	char *setting_table_sql = "DROP TABLE IF EXISTS main.setting;"
-							  "CREATE TABLE main.setting(id INTEGER PRIMARY KEY, node_id INTEGER, FOREIGN KEY(node_id) REFERENCES node(id));";
+							  "CREATE TABLE main.setting(id INTEGER PRIMARY KEY AUTOINCREMENT, node_id INTEGER, FOREIGN KEY(node_id) REFERENCES node(id));";
 
 	char *wallet_table_sql = "DROP TABLE IF EXISTS main.wallet;"
-							 "CREATE TABLE main.wallet(id INTEGER PRIMARY KEY, balance REAL, balance_locked REAL, mnemonic_seed TEXT NOT NULL, spend_key TEXT NOT NULL, view_key TEXT NOT NULL);";
+							 "CREATE TABLE main.wallet(id INTEGER PRIMARY KEY AUTOINCREMENT, balance REAL, balance_locked REAL, mnemonic_seed TEXT NOT NULL, spend_key TEXT NOT NULL, view_key TEXT NOT NULL);";
 
 	char *transaction_table_sql = "DROP TABLE IF EXISTS main.transaction;"
-								  "CREATE TABLE main.transaction(id INTEGER PRIMARY KEY, hash TEXT, amount REAL, fee REAL);";
+								  "CREATE TABLE main.transaction(id INTEGER PRIMARY KEY AUTOINCREMENT, hash TEXT, amount REAL, fee REAL);";
 
     // creating tables
 	db_transaction(&full_db_name, node_table_sql, db_password);
