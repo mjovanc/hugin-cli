@@ -35,12 +35,14 @@
 #include "sqlcipher/sqlite3.h"
 #include "core/core.h"
 
-int db_add_node_initial_data(const char *db_name, const char *db_password)
+int db_add_node(const char **db_name, node_t node, const char **db_password)
 {
-	sqlite3 *db;
-	sqlite3_stmt* stmt = 0;
-	int rc;
+  // db_transaction_prepared();
+  return 0;
+}
 
+int db_add_node_initial_data(const char **db_name, const char **db_password)
+{
 	node_t node_list[3] = {
 		{
 			"Swepool",
@@ -74,33 +76,10 @@ int db_add_node_initial_data(const char *db_name, const char *db_password)
 		},
 	};
 
-	rc = sqlite3_open(db_name, &db);
-	if (rc != SQLITE_OK)
+	for (int n = 0; n < 3; n++)
 	{
-	  fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-	  return 1;
-	}
-	else
-	{
-	  printf("Opened database successfully\n");
+	  db_add_node(db_name, node_list[n], db_password);
 	}
 
-	rc = sqlite3_prepare_v2(db, "INSERT INTO main.setting VALUES('?', '?', ?, ?, ?, '?', ?, ?);", -1, &stmt, 0);
-
-	rc = sqlite3_exec(db, "BEGIN TRANSACTION", 0, 0, 0);
-
-	/*for (int n = 0; n < 3; n++)
-	{
-	  // populate db
-
-
-	  // db_add_node();
-	}*/
-
-	return 0;
-}
-
-int db_add_node(const char *db_name, node_t node, const char *db_password)
-{
 	return 0;
 }

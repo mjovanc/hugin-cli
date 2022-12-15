@@ -32,21 +32,14 @@
 
 #include "sqlcipher/sqlite3.h"
 
-int db_transaction_validate_query(const char *sql)
-{
-  	return 0;
-}
-
 int db_transaction(const char **db_name, const char *sql, const char *db_password)
 {
 	sqlite3 *db;
-	char *zErrMsg = 0;
+	sqlite3_stmt* stmt;
+	char *zErrMsg;
 	int rc;
 
-	if (db_transaction_validate_query(sql) != 0)
-	{
-	  	return 1;
-	}
+	//TODO: should open the database with password
 
 	rc = sqlite3_open(*db_name, &db);
 	if (rc != SQLITE_OK)
@@ -74,4 +67,62 @@ int db_transaction(const char **db_name, const char *sql, const char *db_passwor
 	return 0;
 }
 
+int db_transaction_prepared(const char **db_name, const char *sql, const char *db_password)
+{
+	sqlite3 *db;
+	sqlite3_stmt* stmt;
+	char *zErrMsg = 0;
+	int rc;
+
+	//TODO: should open the database with password
+
+	rc = sqlite3_open(*db_name, &db);
+	if (rc != SQLITE_OK)
+	{
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		return 1;
+	}
+	else
+	{
+		printf("Opened database successfully\n");
+	}
+
+	sqlite3_prepare_v2(
+		db,            // the handle to your (opened and ready) database
+		sql,    // the sql statement, utf-8 encoded
+		sizeof(sql),   // max length of sql statement
+		&stmt,          // this is an "out" parameter, the compiled statement goes here
+		NULL);       // pointer to the tail end of sql statement (when there are
+					// multiple statements inside the string; can be null)
+
+	rc = sqlite3_step(stmt); // you'll want to check the return value, read on...
+
+
+	if (rc != SQLITE_DONE)
+	{
+		fprintf(stderr, "Can't run SQL statement: %s\n", sqlite3_errmsg(db));
+		return 1;
+	}
+	else
+	{
+		printf("SQL statement successfully made\n");
+	}
+
+
+
+	/*rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
+	if (rc != SQLITE_OK)
+	{
+		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+		sqlite3_close(db);
+
+		return 1;
+	}*/
+
+	sqlite3_finalize(stmt);
+	sqlite3_close(db);
+
+	return 0;
+}
 

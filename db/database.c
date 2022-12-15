@@ -30,11 +30,10 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
 #include "sqlcipher/sqlite3.h"
 #include "database.h"
-#include "node.h"
+#include "transaction.h"
 
 
 int db_create(char *db_name, const char *db_password)
@@ -43,18 +42,6 @@ int db_create(char *db_name, const char *db_password)
     int rc;
     const char *extension = ".db";
     const char *full_db_name = strcat(db_name, extension);
-
-	// TODO: should use prepared statements instead
-	char *pragma_str1 = "PRAGMA key = '";
-	char *pragma_str2 = "';";
-	size_t pragma_size = strlen(pragma_str1) + strlen(pragma_str2);
-	char *pragma_sql = malloc(sizeof(db_password) * pragma_size + 1);
-
-	strncpy(pragma_sql, pragma_str1, pragma_size);
-	strcat(pragma_sql, db_password);
-	strcat(pragma_sql, pragma_str2);
-
-	printf("PRAGMA KEY IS %s\n", pragma_sql);
 
     rc = sqlite3_open(full_db_name, &db);
     if (rc != SQLITE_OK)
@@ -74,7 +61,6 @@ int db_create(char *db_name, const char *db_password)
 	// closing to save the database to file system
 	sqlite3_close(db);
 
-	//TODO: should use prepared statements instead
 	char *node_table_sql = "DROP TABLE IF EXISTS main.node;"
 						   "CREATE TABLE main.node(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL UNIQUE, domain TEXT, port INTEGER, ssl INTEGER, cache INTEGER, version TEXT, fee REAL, proxy_url TEXT);";
 
@@ -99,9 +85,7 @@ int db_create(char *db_name, const char *db_password)
 	db_transaction(&full_db_name, transaction_table_sql, db_password);
 
 	// populate node table data
-	db_add_node_initial_data(&full_db_name, db_password);
-
-	free(pragma_sql);
+	// db_add_node_initial_data(&full_db_name, db_password);
 
     return 0;
 }

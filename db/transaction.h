@@ -31,8 +31,8 @@
 #ifndef DB_TRANSACTION_H
 #define DB_TRANSACTION_H
 
-int db_transaction_validate_query(const char *sql);
 int db_transaction(const char **db_name, const char *sql, const char *db_password);
+int db_transaction_prepared(const char **db_name, const char *sql, const char *db_password);
 
 
 #endif//DB_TRANSACTION_H

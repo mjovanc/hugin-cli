@@ -37,7 +37,6 @@
 #include "core/core.h"
 
 int db_create(char *db_name, const char *db_password);
-int db_transaction(const char **db_name, const char *sql, const char *db_password);
 
 int db_edit_password(char *db_name, const char *db_new_password);
 int db_edit_setting(char *db_name, const char *db_password);
