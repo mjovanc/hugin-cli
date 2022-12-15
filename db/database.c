@@ -64,6 +64,10 @@ int database_create(char *database_name, const char *database_password)
         printf("Opened database successfully\n");
     }
 
+	// not possible yet since the libsqlcipher does not have SQLITE_HAS_CODEC and SQLITE_TEMP_STORE in the CFLAGS
+	// need probably to build it myself...
+	// sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
+
 	// closing to save the database to file system
 	sqlite3_close(db);
 
@@ -75,8 +79,8 @@ int database_create(char *database_name, const char *database_password)
 				" time INT NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
 
     // initializing tables
-	database_transaction(&full_db_name, setting_table_sql);
-	database_transaction(&full_db_name, post_table_sql);
+	database_transaction(&full_db_name, setting_table_sql, database_password);
+	database_transaction(&full_db_name, post_table_sql, database_password);
 
 	// populate data
 	node_list_t node_list[3] = {
@@ -123,7 +127,7 @@ int database_create(char *database_name, const char *database_password)
     return 0;
 }
 
-int database_transaction(const char **database_name, const char *sql)
+int database_transaction(const char **database_name, const char *sql, const char *database_password)
 {
 	sqlite3 *db;
 	char *zErrMsg = 0;
@@ -155,7 +159,7 @@ int database_transaction(const char **database_name, const char *sql)
 	return 0;
 }
 
-int database_open(char *database_name)
+int database_open(char *database_name, const char *database_password)
 {
     sqlite3 *db;
     char *zErrMsg = 0;

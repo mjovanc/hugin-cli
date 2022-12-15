@@ -34,7 +34,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-typedef struct node_list_t {
+typedef struct {
   char				name[30];
   char        		domain[255];
   uint16_t        	port;
