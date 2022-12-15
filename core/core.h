@@ -61,4 +61,18 @@ typedef struct {
   char				tx_hash[100];
 } post_t;
 
+typedef struct {
+  int				id;
+  char        		tx_hash[100];
+  char        		tx_box[5000];
+  long				tx_timestamp;
+} post_encrypted_t;
+
+typedef struct {
+  int				id;
+  char        		tx_hash[100];
+  char        		tx_sb[5000];
+  long				tx_timestamp;
+} post_encrypted_group_t;
+
 #endif//CORE_CORE_H
