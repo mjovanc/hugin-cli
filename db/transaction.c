@@ -28,69 +28,38 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
 
 #include "sqlcipher/sqlite3.h"
-#include "core/core.h"
 
-int db_add_node_initial_data(const char *db_name, const char *db_password)
+int db_transaction(const char **db_name, const char *sql, const char *db_password)
 {
-	node_t node_list[3] = {
-		{
-			"Swepool",
-			"swepool.org",
-			11898,
-			false,
-			false,
-			"0.0.1",
-			0.00,
-			"swepool"
-		},
-		{
-			"Göta Pool",
-			"gota.kryptokrona.se",
-			11898,
-			false,
-			false,
-			"0.0.1",
-			0.00,
-			"gota"
-		},
-		{
-			"Blocksum",
-			"blocksum.or",
-			11898,
-			false,
-			false,
-			"0.1.0",
-			0.00,
-			"blocksum"
-		},
-	};
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
 
-	for (int n = 0; n < 3; n++)
+	rc = sqlite3_open(*db_name, &db);
+	if (rc != SQLITE_OK)
 	{
-	  // populate db
-
-	  char *pragma_str1 = "INSERT INTO main.node VALUES(";
-	  char *pragma_str2 = "';";
-	  size_t pragma_size = strlen(pragma_str1) + strlen(pragma_str2);
-	  char *pragma_sql = malloc(sizeof(db_password) * pragma_size + 1);
-
-	  strncpy(pragma_sql, pragma_str1, pragma_size);
-	  strcat(pragma_sql, db_password);
-	  strcat(pragma_sql, pragma_str2);
-
-	  // db_add_node();
+	  fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+	  return 1;
+	}
+	else
+	{
+	  printf("Opened database successfully\n");
 	}
 
-	// char *setting_table_insert_sql = "INSERT INTO main.setting VALUES(1, 'node', 'swepool.org:11898');";
+	rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
+	if (rc != SQLITE_OK)
+	{
+	  fprintf(stderr, "SQL error: %s\n", zErrMsg);
+	  sqlite3_free(zErrMsg);
+	  sqlite3_close(db);
 
-	return 0;
-}
+	  return 1;
+	}
 
-int db_add_node(const char *db_name, node_t node, const char *db_password)
-{
+	sqlite3_close(db);
+
 	return 0;
 }
