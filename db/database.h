@@ -37,6 +37,9 @@
 #include "core/core.h"
 #include "sqlcipher/sqlite3.h"
 
+//TODO: should we perhaps split the table operations to a different .c/.h file?
+//  example would be database_post.h / database_post_encrypted.h or post.h / post_encrypted.h etc
+
 int database_create(char *database_name, const char *database_password);
 int database_transaction(const char **database_name, const char *sql, const char *database_password);
 
@@ -47,15 +50,18 @@ int database_delete_node(const char *database_name, int node_id, const char *dat
 
 // post table
 int database_add_post(const char *database_name, post_t post, const char *database_password);
-int database_delete_post(char *database_name, const char *database_password);
+int database_delete_post(char *database_name, int post_id, const char *database_password);
+int database_delete_post_all(char *database_name, const char *database_password);
 
 // post_encrypted table
 int database_add_post_encrypted();
 int database_delete_post_encrypted();
+int database_delete_post_encrypted_all();
 
 // post_encrypted_group table
 int database_add_post_encrypted_group();
 int database_delete_post_encrypted_group();
+int database_delete_post_encrypted_group_all();
 
 int database_edit_password(char *database_name, const char *database_new_password);
 int database_edit_setting(char *database_name, const char *database_password);
