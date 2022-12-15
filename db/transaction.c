@@ -79,7 +79,9 @@ int db_transaction_prepared(const char **db_name, const char *sql, const char *d
 		return 1;
 	}
 
-	sqlite3_prepare_v2(
+	printf("SQL STATEMMENT: %s\n", sql);
+
+	int temp = sqlite3_prepare_v2(
 		db,            // the handle to your (opened and ready) database
 		sql,    // the sql statement, utf-8 encoded
 		sizeof(sql),   // max length of sql statement
@@ -87,30 +89,15 @@ int db_transaction_prepared(const char **db_name, const char *sql, const char *d
 		NULL);       // pointer to the tail end of sql statement (when there are
 					// multiple statements inside the string; can be null)
 
-	rc = sqlite3_step(stmt); // you'll want to check the return value, read on...
+	if (temp != 0) fprintf(stderr, "Can't execute prepared statement: %s\n", sqlite3_errmsg(db));
 
+	rc = sqlite3_step(stmt); // you'll want to check the return value, read on...
 
 	if (rc != SQLITE_DONE)
 	{
 		fprintf(stderr, "Can't run SQL statement: %s\n", sqlite3_errmsg(db));
 		return 1;
 	}
-	else
-	{
-		printf("SQL statement successfully made\n");
-	}
-
-
-
-	/*rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
-	if (rc != SQLITE_OK)
-	{
-		fprintf(stderr, "SQL error: %s\n", zErrMsg);
-		sqlite3_free(zErrMsg);
-		sqlite3_close(db);
-
-		return 1;
-	}*/
 
 	sqlite3_finalize(stmt);
 	sqlite3_close(db);

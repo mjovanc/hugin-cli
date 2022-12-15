@@ -38,10 +38,10 @@
 
 int db_add_node(const char **db_name, node_t node, const char *db_password)
 {
+  	// prepare prepared transaction char array to pass to db_transaction_prepared below
 	char sql[1024];
 	int ssl = node.ssl ? 0 : 1;
 	int cache = node.cache ? 0 : 1;
-
 	snprintf(sql, sizeof(sql), "INSERT INTO main.node VALUES('%s', '%s', %d, %d, %d, '%s', %.6f, '%s');",
 			 node.name, node.domain, node.port, ssl, cache, node.version, node.fee, node.proxy_url);
 
@@ -49,7 +49,8 @@ int db_add_node(const char **db_name, node_t node, const char *db_password)
 
 	if (txn_prepared != 0)
 	{
-	  	printf("Could not execute prepared statement!\n");
+	  	//TODO: remove print statement later or switch to logging framework
+	  	printf("Could add node!\n");
 	  	return 1;
 	}
 
