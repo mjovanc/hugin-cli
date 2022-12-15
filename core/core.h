@@ -50,4 +50,15 @@ typedef struct {
   int        		node_id;
 } setting_t;
 
+typedef struct {
+  int				id;
+  char        		message[5000]; //TODO: need to check how long this can be and the rest of the fields
+  char        		nickname[50];
+  long				time;
+  char				board[50];
+  char				key[100];
+  char				signature[50];
+  char				tx_hash[100];
+} post_t;
+
 #endif//CORE_CORE_H
