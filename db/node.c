@@ -59,10 +59,20 @@ int db_add_node(const char **db_name, node_t node, const char *db_password)
 
 int db_add_node_initial_data(const char **db_name, const char *db_password)
 {
-	node_t node_list[3] = {
-		{ "Swepool", 		"swepool.org",			11898,false,false,"0.0.1",0.00,"swepool" },
-		{ "Göta Pool",	"gota.kryptokrona.se",	11898,false,false,"0.0.1",0.00,"gota" },
-		{ "Blocksum",		"blocksum.or",			11898,false,false,"0.1.0",0.00,"blocksum" },
+	node_t node_list[13] = {
+		{ "Swepool", 				"swepool.org",			11898,false,false,"0.0.1",0.00,"swepool" },
+		{ "Göta Pool",			"gota.kryptokrona.se",	11898,false,false,"0.0.1",0.00,"gota" },
+		{ "Blocksum",				"blocksum.org",			11898,false,false,"0.1.0",0.00,"blocksum" },
+		{ "Gamersnest",			"pool.gamersnest.org",	11898,true, false,"0.1.0",0.00,"gamersnest" },
+		{ "Norpool",				"norpool.org",			11898,false,false,"0.1.0",0.00,"norpool" },
+		{ "Privacy Mine",			"privacymine.net",		11898,false,false,"0.1.0",0.00,"privacymine" },
+		{ "Privacy Mine SSL",		"privacymine.net",		21898,true, false,"0.1.0",0.00,"privacymine" },
+		{ "KuKoHumoR",			"kukohumor.se",			11898,false,false,"0.1.0",0.00,"KuKoHumoR" },
+		{ "Spider Pig",			"spider-pig.hopto.org",	11898,false,false,"0.1.0",0.00,"spider-pig" },
+		{ "TechyNode",			"129.153.157.185",		11898,false,false,"0.1.0",0.00,"TechyNode" },
+		{ "TechyNode-Backup",	"techy.ddns.net",		11898,false,false,"0.1.0",0.00,"TechyNode-Backup" },
+		{ "Wasa",				"wasa.kryptokrona.se",	11898,false,false,"0.1.0",0.00,"wasa" },
+		{ "Tifo",				"tifo.info",			11898,false,false,"0.1.0",0.00,"blocksum" },
 	};
 
 	for (int n = 0; n < 3; n++)
