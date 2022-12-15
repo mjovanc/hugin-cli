@@ -28,8 +28,8 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef WALLET_H
-#define WALLET_H
+#ifndef WALLET_WALLET_H
+#define WALLET_WALLET_H
 
 #include <stdbool.h>
 
@@ -38,4 +38,4 @@ bool wallet_exists(char *wallet_name);
 bool wallet_create(char *wallet_name, char *wallet_password);
 bool wallet_open(char *wallet_name, char *wallet_password);
 
-#endif //WALLET_H
+#endif //WALLET_WALLET_H

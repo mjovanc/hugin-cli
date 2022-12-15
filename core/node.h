@@ -28,8 +28,8 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef HUGIN_CLI_CORE_NODE_H_
-#define HUGIN_CLI_CORE_NODE_H_
+#ifndef CORE_NODE_H
+#define CORE_NODE_H
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -45,4 +45,4 @@ typedef struct {
   char				proxy_url[50];
 } node_t;
 
-#endif//HUGIN_CLI_CORE_NODE_H_
+#endif//CORE_NODE_H

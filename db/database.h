@@ -28,8 +28,8 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef DATABASE_DATABASE_H
+#define DATABASE_DATABASE_H
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -50,4 +50,4 @@ int database_edit_setting(char *database_name, const char *database_password);
 int database_delete_posts(char *database_name, const char *database_password);
 int database_delete(char *database_name);
 
-#endif //DATABASE_H
+#endif //DATABASE_DATABASE_H
