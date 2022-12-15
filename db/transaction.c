@@ -47,10 +47,6 @@ int db_transaction(const char **db_name, const char *sql, const char *db_passwor
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		return 1;
 	}
-	else
-	{
-	  	printf("Opened database successfully\n");
-	}
 
 	rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
 	if (rc != SQLITE_OK)
@@ -81,10 +77,6 @@ int db_transaction_prepared(const char **db_name, const char *sql, const char *d
 	{
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		return 1;
-	}
-	else
-	{
-		printf("Opened database successfully\n");
 	}
 
 	sqlite3_prepare_v2(

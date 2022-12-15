@@ -49,10 +49,6 @@ int db_create(char *db_name, const char *db_password)
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         return 1;
     }
-    else
-    {
-        printf("Opened database successfully\n");
-    }
 
 	// not possible yet since the libsqlcipher does not have SQLITE_HAS_CODEC and SQLITE_TEMP_STORE in the CFLAGS
 	// need probably to build it myself...
@@ -78,7 +74,6 @@ int db_create(char *db_name, const char *db_password)
 
 	const char *transaction_table_sql = "DROP TABLE IF EXISTS main.txn;"
 								  		"CREATE TABLE main.txn(id INTEGER PRIMARY KEY AUTOINCREMENT, hash TEXT, amount REAL, fee REAL);";
-
 
     // creating tables
 	db_transaction(&full_db_name, node_table_sql, db_password);
