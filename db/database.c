@@ -71,16 +71,20 @@ int database_create(char *database_name, const char *database_password)
 	// closing to save the database to file system
 	sqlite3_close(db);
 
-	char *setting_table_sql = "DROP TABLE IF EXISTS main.setting;"
-				"CREATE TABLE main.setting(id INT PRIMARY KEY, name TEXT NOT NULL UNIQUE, domain TEXT, port INT, ssl INT, cache INT, version TEXT, fee REAL, proxy_url TEXT);";
+	char *node_table_sql = "DROP TABLE IF EXISTS main.node;"
+				"CREATE TABLE main.node(id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE, domain TEXT, port INTEGER, ssl INTEGER, cache INTEGER, version TEXT, fee REAL, proxy_url TEXT);";
 
 	char *post_table_sql = "DROP TABLE IF EXISTS main.post;"
-				"CREATE TABLE main.post(id INT PRIMARY KEY, message TEXT NOT NULL, nickname TEXT,"
-				" time INT NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
+				"CREATE TABLE main.post(id INTEGER PRIMARY KEY, message TEXT NOT NULL, nickname TEXT,"
+				" time INTEGER NOT NULL, board TEXT NOT NULL, key TEXT NOT NULL, signature TEXT NOT NULL, tx_hash TEXT NOT NULL);";
+
+	char *setting_table_sql = "DROP TABLE IF EXISTS main.setting;"
+						   "CREATE TABLE main.setting(id INTEGER PRIMARY KEY, node_id INTEGER, FOREIGN KEY(node_id) REFERENCES node(id));";
 
     // initializing tables
-	database_transaction(&full_db_name, setting_table_sql, database_password);
+	database_transaction(&full_db_name, node_table_sql, database_password);
 	database_transaction(&full_db_name, post_table_sql, database_password);
+	database_transaction(&full_db_name, setting_table_sql, database_password);
 
 	// populate data
 	node_list_t node_list[3] = {
@@ -157,32 +161,6 @@ int database_transaction(const char **database_name, const char *sql, const char
 	sqlite3_close(db);
 
 	return 0;
-}
-
-int database_open(char *database_name, const char *database_password)
-{
-    sqlite3 *db;
-    char *zErrMsg = 0;
-    int rc;
-    const char *extension = ".db";
-    char *full_db_name = strcat(database_name, extension);
-
-    //TODO: need to save this DB on user/local or similar OS systems not in the same place where executable is
-    //TODO: and encrypt
-
-    rc = sqlite3_open(full_db_name, &db);
-    if (rc != SQLITE_OK)
-    {
-        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-        return 1;
-    }
-    else
-    {
-        printf("Opened database successfully\n");
-    }
-    sqlite3_close(db);
-
-    return 0;
 }
 
 int database_delete(char *database_name)

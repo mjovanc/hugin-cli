@@ -36,8 +36,12 @@
 int database_create(char *database_name, const char *database_password);
 int database_transaction(const char **database_name, const char *sql, const char *database_password);
 
-int database_open(char *database_name, const char *database_password);
+int database_add_node(const char *database_name, const char *sql, const char *database_password);
+
 int database_change_password(char *database_name, const char *database_new_password);
+int database_change_setting_node(char *database_name, const char *database_password);
+
+int database_delete_posts(char *database_name, const char *database_password);
 int database_delete(char *database_name);
 
 #endif //DATABASE_H
