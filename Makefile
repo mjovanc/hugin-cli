@@ -43,7 +43,7 @@ OPT=-00
 
 # flags
 DEPFLAGS=-MP -MD
-CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
+CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -DSQLITE_HAS_CODEC -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
 DYNAMIC_LINK_FLAGS=-lsqlcipher -lncurses
 
 # files

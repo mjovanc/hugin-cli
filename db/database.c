@@ -40,6 +40,7 @@
 int db_create(char *db_name, const char *db_password)
 {
     sqlite3 *db;
+	sqlite3_stmt* stmt;
     int rc;
 	//TODO: change this concatenation to sprintf later as on node.c
     const char *extension = ".db";
@@ -52,12 +53,23 @@ int db_create(char *db_name, const char *db_password)
         return 1;
     }
 
+	// setting the pragma key
+	char pragma_sql[1024];
+	snprintf(pragma_sql, sizeof(pragma_sql), "PRAGMA KEY='%s';", db_password);
+
+	sqlite3_prepare_v2(db, pragma_sql, -1, &stmt, NULL);
+	rc = sqlite3_step(stmt);
+	if (rc != SQLITE_DONE)
+	{
+		log_error("Can't run SQL statement: %s", sqlite3_errmsg(db));
+		return 1;
+	}
+	sqlite3_finalize(stmt);
+	sqlite3_close(db); // closing to save the database to file system
+
 	// not possible yet since the libsqlcipher does not have SQLITE_HAS_CODEC and SQLITE_TEMP_STORE in the CFLAGS
 	// need probably to build it myself...
 	// sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
-
-	// closing to save the database to file system
-	sqlite3_close(db);
 
 	const char *node_table_sql = "DROP TABLE IF EXISTS main.node;"
 								 "CREATE TABLE main.node(id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE, domain TEXT, port INTEGER,"
