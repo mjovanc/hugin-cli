@@ -40,6 +40,7 @@ int db_create(char *db_name, const char *db_password)
 {
     sqlite3 *db;
     int rc;
+	//TODO: change this concatenation to sprintf later as on node.c
     const char *extension = ".db";
     const char *full_db_name = strcat(db_name, extension);
 
