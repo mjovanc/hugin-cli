@@ -28,18 +28,14 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 
-#include "sqlcipher/sqlite3.h"
 #include "core/core.h"
 #include "core/log.h"
 #include "transaction.h"
 
 int db_add_node(const char **db_name, node_t node, const char *db_password)
 {
-  	// prepare prepared transaction char array to pass to db_transaction_prepared below
 	char sql[1024];
 	int ssl = node.ssl ? 0 : 1;
 	int cache = node.cache ? 0 : 1;
@@ -50,7 +46,6 @@ int db_add_node(const char **db_name, node_t node, const char *db_password)
 
 	if (txn_prepared != 0)
 	{
-	  	//TODO: remove print statement later or switch to logging framework
 		log_error("Add node failed!");
 	  	return 1;
 	}

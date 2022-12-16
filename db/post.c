@@ -28,4 +28,25 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#include <stdio.h>
+
 #include "database.h"
+#include "transaction.h"
+#include "core/log.h"
+
+int db_add_post(const char *db_name, post_t post, const char *db_password)
+{
+	char sql[1024];
+	snprintf(sql, sizeof(sql), "INSERT INTO main.post VALUES(null, '%s', '%s', %ld, %s, %s, '%s', '%s');",
+			 post.message, post.nickname, post.time, post.board, post.key, post.signature, post.tx_hash);
+
+	int txn_prepared = db_transaction_prepared(&db_name, sql, db_password);
+
+	if (txn_prepared != 0)
+	{
+		log_error("Add post failed!");
+		return 1;
+	}
+
+  	return 0;
+}

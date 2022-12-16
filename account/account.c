@@ -35,6 +35,7 @@
 #include "account.h"
 #include "common/error_code.h"
 #include "wallet/wallet.h"
+#include "core/log.h"
 
 int account_login_prompt() {
   char username_input[20];
@@ -69,66 +70,66 @@ int account_login_prompt() {
 }
 
 int account_register_prompt() {
-  char username_input[20];
-  char password_input[50];
+	char username_input[20];
+	char password_input[50];
 
-  do {
-	printf("Enter username: ");
-	scanf(" %19s", username_input);
+	do {
+	  printf("Enter username: ");
+	  scanf(" %19s", username_input);
 
-	printf("Enter password: ");
-	scanf(" %49s", password_input);
+	  printf("Enter password: ");
+	  scanf(" %49s", password_input);
 
-	// check for blank input
-	if (strlen(username_input) > 49) {
-	  printf("%s\n", A00001);
-	  return 1;
+	  // check for blank input
+	  if (strlen(username_input) > 49) {
+		printf("%s\n", A00001);
+		return 1;
+	  }
+
+	  // check for blank input
+	  if (strlen(password_input) > 19) {
+		printf("%s\n", A00002);
+		return 1;
+	  }
+
+	  // check for blank input
+	} while (
+		(strlen(username_input) > 49) && (strlen(password_input) > 19));
+	{
+	  getchar();
 	}
 
-	// check for blank input
-	if (strlen(password_input) > 19) {
-	  printf("%s\n", A00002);
-	  return 1;
-	}
-
-	// check for blank input
-  } while (
-	  (strlen(username_input) > 49) && (strlen(password_input) > 19));
-  {
-	getchar();
-  }
-
-  return account_register(username_input, password_input);
+	return account_register(username_input, password_input);
 }
 
 int account_login(char *username, char *password) {
-  // TODO: this does not work since the file is created after exeuction of program exists
-  bool exists = wallet_exists(username);
+	// TODO: this does not work since the file is created after exeuction of program exists
+	bool exists = wallet_exists(username);
 
-  if (!exists) {
-	printf("%s\n", W00002);
-	return 1;
-  }
+	if (!exists) {
+	  printf("%s\n", W00002);
+	  return 1;
+	}
 
-  printf("Logged in...\n");
+	log_info("Logged in...");
 
-  return 0;
+	return 0;
 }
 
 int account_register(char *username, char *password) {
-  bool wallet_created = wallet_create(username, password);
-  if (!wallet_created) {
-	printf("%s\n", W00001);
-	return 1;
-  }
+	bool wallet_created = wallet_create(username, password);
+	if (!wallet_created) {
+	  printf("%s\n", W00001);
+	  return 1;
+	}
 
-  return account_login(username, password);
+	return account_login(username, password);
 }
 
 int account_logout(bool *logged_in) {
-  // check if we are logged in first before logging out
+	// check if we are logged in first before logging out
 
-  printf("Logging out...\n");
+	log_info("Logging out...");
 
-  return 0;
+	return 0;
 }

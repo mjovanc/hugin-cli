@@ -39,8 +39,8 @@
 
 int db_add_post(const char *db_name, post_t post, const char *db_password);
 
-post_t *db_get_post(const char *db_name, int post_id, const char *db_password);
-post_t db_get_post_all(const char *db_name, const char *db_password);
+post_t db_get_post(const char *db_name, int post_id, const char *db_password);
+post_t *db_get_post_all(const char *db_name, const char *db_password);
 
 int db_delete_post(char *db_name, int post_id, const char *db_password);
 int db_delete_post_all(char *db_name, const char *db_password);

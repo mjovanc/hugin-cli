@@ -35,6 +35,7 @@
 
 #include "wallet.h"
 #include "db/database.h"
+#include "core/log.h"
 
 bool wallet_exists(char *wallet_name)
 {
@@ -50,6 +51,7 @@ bool wallet_exists(char *wallet_name)
     // wallet already exists
     if (access(tmp_wallet_name, F_OK) == 0)
     {
+	  	log_info("Wallet already exists...");
         free(tmp_wallet_name);
         return true;
     }
@@ -66,7 +68,7 @@ bool wallet_create(char *wallet_name, char *wallet_password)
         return false;
     }
 
-    printf("Creating wallet and database...\n");
+	log_info("Creating wallet and database...");
 	db_create(wallet_name, wallet_password);
 
     return true;
