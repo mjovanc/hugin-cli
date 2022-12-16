@@ -32,7 +32,7 @@
 BINARY=Hugin
 
 # directories
-CODEDIRS=. account wallet db crypto daemon
+CODEDIRS=. account wallet db core crypto daemon
 INCDIRS=. account wallet db common config core crypto daemon
 BUILDDIR = build
 EXTERNALDIR = external
@@ -43,7 +43,7 @@ OPT=-00
 
 # flags
 DEPFLAGS=-MP -MD
-CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
+CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
 DYNAMIC_LINK_FLAGS=-lsqlcipher -lncurses
 
 # files

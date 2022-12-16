@@ -35,6 +35,7 @@
 #include "database.h"
 #include "transaction.h"
 #include "node.h"
+#include "log.h"
 
 int db_create(char *db_name, const char *db_password)
 {
@@ -47,7 +48,7 @@ int db_create(char *db_name, const char *db_password)
     rc = sqlite3_open(full_db_name, &db);
     if (rc != SQLITE_OK)
     {
-        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		log_error("Can't open database: %s", sqlite3_errmsg(db));
         return 1;
     }
 

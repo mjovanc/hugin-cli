@@ -34,6 +34,7 @@
 
 #include "sqlcipher/sqlite3.h"
 #include "core/core.h"
+#include "core/log.h"
 #include "transaction.h"
 
 int db_add_node(const char **db_name, node_t node, const char *db_password)
@@ -50,7 +51,7 @@ int db_add_node(const char **db_name, node_t node, const char *db_password)
 	if (txn_prepared != 0)
 	{
 	  	//TODO: remove print statement later or switch to logging framework
-	  	printf("Could add node!\n");
+		log_error("Add node failed!");
 	  	return 1;
 	}
 
