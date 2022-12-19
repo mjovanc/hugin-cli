@@ -37,6 +37,7 @@
 
 void print_header()
 {
+  	attron(COLOR_PAIR(2));
   	printw("      __  __            _          ________    ____\n"
 		 "     / / / __  ______ _(_____     / ____/ /   /  _/\n"
 		 "    / /_/ / / / / __ `/ / __ \\   / /   / /    / /\n"
@@ -44,6 +45,7 @@ void print_header()
 		 "  /_/ /_/\\__,_/\\__, /_/_/ /_/   \\____/_____/___/\n"
 		 "              /____/\n\n");
 
+    attron(COLOR_PAIR(1));
     printw("  %s v%s\n", PROJECT_NAME, PROJECT_VERSION);
 	printw("  This software is licensed under BSD-3 License.\n\n");
 	printw("  %s\n", PROJECT_COPYRIGHT);

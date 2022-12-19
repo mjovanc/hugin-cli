@@ -49,20 +49,40 @@ int main(int argc, char *argv[])
 	noecho();
 	cbreak();
 
+	// check if the terminal don't have support for colors
+	if (!has_colors())
+	{
+		return -1;
+	}
+	start_color();
+
+	init_pair(1, COLOR_WHITE, COLOR_BLACK);
+	init_pair(2, COLOR_GREEN, COLOR_BLACK);
+	wbkgd(stdscr, COLOR_PAIR(1));
+
 	print_header();
 
 	// get screen size
 	int y_max, x_max;
 	getmaxyx(stdscr, y_max, x_max);
 
-	WINDOW *menu_win = newwin(10, 10, 17, 2);
+	WINDOW *menu_win = newwin(10, 93, 17, 2);
 	box(menu_win, 0, 0);
 	refresh();
 	wrefresh(menu_win);
 
 	keypad(menu_win, true);
 
-	const char *MENU_CHOICES[3] = {"Login", "Register", "Quit"};
+	const char *MENU_CHOICES[3] = {
+		"Login",
+		"Register",
+		"Quit"
+	};
+	const char *MENU_CHOICES_DESC[3] = {
+		"Login with your account.",
+		"Register a new account.",
+		"Quit the application."
+	};
 	int choice;
 	int hightlight = 0;
 
@@ -73,7 +93,7 @@ int main(int argc, char *argv[])
 			if (i == hightlight)
 				wattron(menu_win, A_REVERSE);
 
-			mvwprintw(menu_win, i + 1, 1, "%s", MENU_CHOICES[i]);
+			mvwprintw(menu_win, i + 1, 1, "%-25s%-20s", MENU_CHOICES[i], MENU_CHOICES_DESC[i]);
 			wattroff(menu_win, A_REVERSE);
 		}
 		choice = wgetch(menu_win);
