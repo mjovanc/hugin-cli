@@ -31,7 +31,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include <ncurses.h> // TODO: need to implement this later
+#include <ncurses.h>
 
 #include "account/account.h"
 #include "config/cli_header.h"
@@ -39,18 +39,14 @@
 
 int main(int argc, char *argv[])
 {
-    int logo = puts(
-        "      __  __            _          ________    ____\n"
-        "     / / / __  ______ _(_____     / ____/ /   /  _/\n"
-        "    / /_/ / / / / __ `/ / __ \\   / /   / /    / /\n"
-        "   / __  / /_/ / /_/ / / / / /  / /___/ /____/ /\n"
-        "  /_/ /_/\\__,_/\\__, /_/_/ /_/   \\____/_____/___/\n"
-        "              /____/\n");
+	initscr();
 
-    if (logo == EOF)
-        perror("puts()"); // required by POSIX that errno is set
+	print_header();
 
-    print_header();
+    refresh();
+
+	getch();
+
 
     char input[10];
     bool logged_in = false;
@@ -64,13 +60,13 @@ int main(int argc, char *argv[])
         {
             if (logged_in == true)
             {
-                printf("%s\n", A00005);
+			  printw("%s\n", A00005);
                 continue;
             }
 
             if (account_login_prompt() != 0)
             {
-                printf("%s\n", A00003);
+				printw("%s\n", A00003);
                 continue;
             }
 
@@ -80,7 +76,7 @@ int main(int argc, char *argv[])
         {
             if (account_register_prompt() != 0)
             {
-                printf("%s\n", A00004);
+				printw("%s\n", A00004);
                 continue;
             }
 
@@ -89,7 +85,7 @@ int main(int argc, char *argv[])
         else if (strcmp(input, "/q") == 0)
         {
             account_logout(&logged_in); // only logout if we are logged in
-            printf("Good bye!\n");
+			printw("Good bye!\n");
         }
         else
         {
@@ -97,8 +93,10 @@ int main(int argc, char *argv[])
         }
     } while (strcmp(input, "/q") != 0);
     {
-        getchar();
+        getch();
     }
+
+	endwin();
 
     return 0;
 }

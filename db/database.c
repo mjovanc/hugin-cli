@@ -53,6 +53,7 @@ int db_create(char *db_name, const char *db_password)
         return 1;
     }
 
+	//TODO: does not work currently
 	// setting the pragma key
 	char pragma_sql[1024];
 	snprintf(pragma_sql, sizeof(pragma_sql), "PRAGMA KEY='%s';", db_password);

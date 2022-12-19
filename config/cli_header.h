@@ -37,13 +37,20 @@
 
 void print_header()
 {
-    printf("  %s v%s\n", PROJECT_NAME, PROJECT_VERSION);
-    printf("  This software is licensed under BSD-3 License.\n\n");
-    printf("  %s\n", PROJECT_COPYRIGHT);
-    printf("  Created by %s\n\n", PROJECT_AUTHOR);
-    printf("  Additional Copyright(s) may apply, please see the included LICENSE file for more information.\n");
-    printf("  If you did not receive a copy of the LICENSE, please visit:\n");
-    printf("  %s\n\n", PROJECT_LICENSE_URL);
+  	printw("      __  __            _          ________    ____\n"
+		 "     / / / __  ______ _(_____     / ____/ /   /  _/\n"
+		 "    / /_/ / / / / __ `/ / __ \\   / /   / /    / /\n"
+		 "   / __  / /_/ / /_/ / / / / /  / /___/ /____/ /\n"
+		 "  /_/ /_/\\__,_/\\__, /_/_/ /_/   \\____/_____/___/\n"
+		 "              /____/\n\n");
+
+    printw("  %s v%s\n", PROJECT_NAME, PROJECT_VERSION);
+	printw("  This software is licensed under BSD-3 License.\n\n");
+	printw("  %s\n", PROJECT_COPYRIGHT);
+	printw("  Created by %s\n\n", PROJECT_AUTHOR);
+	printw("  Additional Copyright(s) may apply, please see the included LICENSE file for more information.\n");
+	printw("  If you did not receive a copy of the LICENSE, please visit:\n");
+	printw("  %s\n\n", PROJECT_LICENSE_URL);
 }
 
 #endif //CONFIG_CLI_HEADER_H
