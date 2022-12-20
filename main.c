@@ -107,8 +107,8 @@ int main(int argc, char *argv[])
 
 			case KEY_DOWN:
 				hightlight++;
-				if (hightlight > (int)sizeof(MENU_CHOICES))
-					hightlight = (int)sizeof(MENU_CHOICES);
+				if (hightlight > 2)
+					hightlight = 2;
 				break;
 
 			default:
