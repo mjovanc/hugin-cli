@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
 	}
 	start_color();
 
-	init_pair(1, COLOR_WHITE, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_BLACK);
+	init_pair(1, 251, 233); // LIGHT GREY + DARK GREY
+	init_pair(2, 22, 233); // GREEN + DARK GREY
 	wbkgd(stdscr, COLOR_PAIR(1));
 
 	print_header();
@@ -65,12 +65,11 @@ int main(int argc, char *argv[])
 	// get screen size
 	int y_max, x_max;
 	getmaxyx(stdscr, y_max, x_max);
-
 	WINDOW *menu_win = newwin(10, 93, 17, 2);
+	wbkgd(menu_win, COLOR_PAIR(1));
 	box(menu_win, 0, 0);
 	refresh();
 	wrefresh(menu_win);
-
 	keypad(menu_win, true);
 
 	const char *MENU_CHOICES[3] = {
@@ -112,7 +111,8 @@ int main(int argc, char *argv[])
 					hightlight = (int)sizeof(MENU_CHOICES);
 				break;
 
-			default:break;
+			default:
+				break;
 		}
 
 		if (choice == 10)
