@@ -87,11 +87,15 @@ int main(int argc, char *argv[])
 		window_delete(header_win);
 		window_delete(win_main);
 		go_back = window_login_init();
+		if (go_back)
+			window_main_init();
 		break;
 	case 1:
 		window_delete(header_win);
 		window_delete(win_main);
 		go_back = window_register_init();
+		if (go_back)
+			window_main_init();
 		break;
 	case 2:
 		window_delete(header_win);
