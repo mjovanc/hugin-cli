@@ -62,10 +62,14 @@ void window_register_init()
 	field_opts_off(field[0], O_AUTOSKIP);  	/* Don't go to next field when this */
 	/* Field is filled up 		*/
 	set_field_back(field[1], A_UNDERLINE);
+	field_opts_off(field[1], O_PUBLIC);
 	field_opts_off(field[1], O_AUTOSKIP);
 
 	set_field_back(field[2], A_UNDERLINE);
+	field_opts_off(field[2], O_PUBLIC);
 	field_opts_off(field[2], O_AUTOSKIP);
+
+	//TODO: https://www.mkssoftware.com/docs/man3/form_field_validation.3.asp ?
 
 	/* Create the form and post it */
 	my_form = new_form(field);
