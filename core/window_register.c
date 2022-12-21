@@ -47,6 +47,8 @@ void window_register_init()
 	FIELD *field[4];
 	FORM  *my_form;
 	int ch;
+	char *username;
+	char *password;
 
 	/* Initialize curses */
 	keypad(stdscr, TRUE);
@@ -108,7 +110,8 @@ void window_register_init()
 		}
 	}
 
-	mvprintw(1,10, "%s\n", field_buffer(field[0], 0));
+	username = field_buffer(field[0], 0);
+	password = field_buffer(field[1], 0);
 
 	getch();
 

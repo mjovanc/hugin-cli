@@ -32,3 +32,16 @@
 // CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
+
+#include "window.h"
+
+void window_chat_init()
+{
+	WINDOW *win_chat = window_create(0, 0, 0, 0);
+	wbkgd(win_chat, COLOR_PAIR(1));
+	box(win_chat, 0, 0);
+	wrefresh(win_chat);
+
+	getch();
+}
+

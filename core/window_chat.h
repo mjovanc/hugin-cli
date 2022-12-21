@@ -36,4 +36,6 @@
 #ifndef CORE_WINDOW_CHAT_H
 #define CORE_WINDOW_CHAT_H
 
+void window_chat_init();
+
 #endif //CORE_WINDOW_CHAT_H
