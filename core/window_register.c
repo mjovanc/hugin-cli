@@ -62,11 +62,11 @@ void window_register_init()
 	field_opts_off(field[0], O_AUTOSKIP);  	/* Don't go to next field when this */
 	/* Field is filled up 		*/
 	set_field_back(field[1], A_UNDERLINE);
-	field_opts_off(field[1], O_PUBLIC);
+	// field_opts_off(field[1], O_PUBLIC); // makes the field input hidden
 	field_opts_off(field[1], O_AUTOSKIP);
 
 	set_field_back(field[2], A_UNDERLINE);
-	field_opts_off(field[2], O_PUBLIC);
+	// field_opts_off(field[2], O_PUBLIC); // makes the field input hidden
 	field_opts_off(field[2], O_AUTOSKIP);
 
 	//TODO: https://www.mkssoftware.com/docs/man3/form_field_validation.3.asp ?
@@ -84,9 +84,11 @@ void window_register_init()
 	move(4, 35);
 
 	/* Loop through to get user requests */
-	while((ch = getch()) != KEY_F(1))
-	{	switch(ch)
-		{	case KEY_DOWN:
+	while ((ch = getch()) != 10)
+	{
+		switch(ch)
+		{
+		case KEY_DOWN:
 			/* Go to next field */
 			form_driver(my_form, REQ_NEXT_FIELD);
 			/* Go to the end of the present buffer */
@@ -105,6 +107,16 @@ void window_register_init()
 			break;
 		}
 	}
+
+	mvprintw(1,10, "%s\n", field_buffer(field[0], 0));
+
+	getch();
+
+	/*if (form_driver(my_form, REQ_VALIDATION) != E_OK) {
+		// do something
+	}*/
+
+
 
 	/* Un post form and free the memory */
 	unpost_form(my_form);
