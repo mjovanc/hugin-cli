@@ -81,6 +81,8 @@ void window_register_init()
 	mvprintw(8, 10, "Password (again):");
 	refresh();
 
+	move(4, 35);
+
 	/* Loop through to get user requests */
 	while((ch = getch()) != KEY_F(1))
 	{	switch(ch)
