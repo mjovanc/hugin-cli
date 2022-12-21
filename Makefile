@@ -44,7 +44,7 @@ OPT=-00
 # flags
 DEPFLAGS=-MP -MD
 CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -DSQLITE_HAS_CODEC -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
-DYNAMIC_LINK_FLAGS=-lsqlcipher -lncurses
+DYNAMIC_LINK_FLAGS=-lsqlcipher -lncurses -lform
 
 # files
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
