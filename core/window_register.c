@@ -52,9 +52,9 @@ void window_register_init()
 	keypad(stdscr, TRUE);
 
 	/* Initialize the fields */
-	field[0] = new_field(1, 25, 4, 18, 0, 10);
-	field[1] = new_field(1, 25, 6, 18, 0, 10);
-	field[2] = new_field(1, 25, 8, 18, 0, 10);
+	field[0] = new_field(1, 40, 4, 35, 0, 0);
+	field[1] = new_field(1, 40, 6, 35, 0, 0);
+	field[2] = new_field(1, 40, 8, 35, 0, 0);
 	field[3] = NULL;
 
 	/* Set field options */
