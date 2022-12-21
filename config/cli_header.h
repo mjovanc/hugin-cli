@@ -35,24 +35,25 @@
 
 #include "version.h"
 
-void print_header()
+void print_header(WINDOW* header_win)
 {
   	attron(COLOR_PAIR(2));
-  	printw("      __  __            _          ________    ____\n"
-		 "     / / / __  ______ _(_____     / ____/ /   /  _/\n"
-		 "    / /_/ / / / / __ `/ / __ \\   / /   / /    / /\n"
-		 "   / __  / /_/ / /_/ / / / / /  / /___/ /____/ /\n"
-		 "  /_/ /_/\\__,_/\\__, /_/_/ /_/   \\____/_____/___/\n"
-		 "              /____/\n\n");
+	mvwprintw(header_win, 0, 0,
+		 "     __  __            _          ________    ____\n"
+		 "    / / / __  ______ _(_____     / ____/ /   /  _/\n"
+		 "   / /_/ / / / / __ `/ / __ \\   / /   / /    / /\n"
+		 "  / __  / /_/ / /_/ / / / / /  / /___/ /____/ /\n"
+		 " /_/ /_/\\__,_/\\__, /_/_/ /_/   \\____/_____/___/\n"
+		 "             /____/\n\n");
 
     attron(COLOR_PAIR(1));
-    printw("  %s v%s\n", PROJECT_NAME, PROJECT_VERSION);
-	printw("  This software is licensed under BSD-3 License.\n\n");
-	printw("  %s\n", PROJECT_COPYRIGHT);
-	printw("  Created by %s\n\n", PROJECT_AUTHOR);
-	printw("  Additional Copyright(s) may apply, please see the included LICENSE file for more information.\n");
-	printw("  If you did not receive a copy of the LICENSE, please visit:\n");
-	printw("  %s\n\n", PROJECT_LICENSE_URL);
+	mvwprintw(header_win, 7, 0, " %s v%s\n", PROJECT_NAME, PROJECT_VERSION);
+	mvwprintw(header_win, 8, 0, " This software is licensed under BSD-3 License.\n\n");
+	mvwprintw(header_win, 10, 0, " %s\n", PROJECT_COPYRIGHT);
+	mvwprintw(header_win, 11, 0, " Created by %s\n\n", PROJECT_AUTHOR);
+	mvwprintw(header_win, 13, 0, " Additional Copyright(s) may apply, please see the included LICENSE file for more information.\n");
+	mvwprintw(header_win, 14, 0, " If you did not receive a copy of the LICENSE, please visit:\n");
+	mvwprintw(header_win, 15, 0, " %s\n\n", PROJECT_LICENSE_URL);
 }
 
 #endif //CONFIG_CLI_HEADER_H

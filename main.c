@@ -38,6 +38,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "core/window.h"
 #include "account/account.h"
 #include "common/error_code.h"
 #include "config/cli_header.h"
@@ -59,16 +60,28 @@ int main(int argc, char *argv[])
 	init_pair(1, 251, 233); // LIGHT GREY + DARK GREY
 	init_pair(2, 22, 233); // GREEN + DARK GREY
 	wbkgd(stdscr, COLOR_PAIR(1));
+	refresh();
 
-	print_header();
+	/*WINDOW *header_win = newwin(17, 93, 0, 93);
+	wbkgd(header_win, COLOR_PAIR(1));
+	box(header_win, 0, 0);
+	wrefresh(header_win);
+	print_header();*/
+
+	WINDOW *header_win = create_window(17, 95, 1, 2);
+	print_header(header_win);
+	wrefresh(header_win);
 
 	// get screen size
 	int y_max, x_max;
 	getmaxyx(stdscr, y_max, x_max);
-	WINDOW *menu_win = newwin(10, 93, 17, 2);
+
+	// main menu
+	//TODO: should probably make a function for this since we want to create multiple menus
+	WINDOW *menu_win = create_window(10, 95, 18, 2);
 	wbkgd(menu_win, COLOR_PAIR(1));
 	box(menu_win, 0, 0);
-	refresh();
+
 	wrefresh(menu_win);
 	keypad(menu_win, true);
 
@@ -83,13 +96,13 @@ int main(int argc, char *argv[])
 		"Quit the application."
 	};
 	int choice;
-	int hightlight = 0;
+	int highlight = 0;
 
 	while (1)
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			if (i == hightlight)
+			if (i == highlight)
 				wattron(menu_win, A_REVERSE);
 
 			mvwprintw(menu_win, i + 1, 1, "%-25s%-20s", MENU_CHOICES[i], MENU_CHOICES_DESC[i]);
@@ -100,26 +113,38 @@ int main(int argc, char *argv[])
 		switch (choice)
 		{
 			case KEY_UP:
-				hightlight--;
-				if (hightlight == -1)
-					hightlight = 0;
+				highlight--;
+				if (highlight == -1)
+					highlight = 0;
 				break;
 
 			case KEY_DOWN:
-				hightlight++;
-				if (hightlight > 2)
-					hightlight = 2;
+				highlight++;
+				if (highlight > 2)
+					highlight = 2;
 				break;
 
 			default:
 				break;
 		}
 
+		// 10 is the enter key
 		if (choice == 10)
 			break;
 	}
 
-	printw("Your choice was: %s", MENU_CHOICES[choice]);
+	// new switch here with highlight option and do different things with it
+
+	// remove windows
+	delete_window(header_win);
+	delete_window(menu_win);
+
+
+	// create new window
+
+	// initialize window
+
+	// printw("Your choice was: %s", MENU_CHOICES[highlight]);
 
 	// refresh();
 
