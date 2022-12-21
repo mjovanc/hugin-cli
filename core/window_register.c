@@ -36,6 +36,7 @@
 #include <form.h>
 
 #include "window.h"
+#include "account/account.h"
 
 void window_register_init()
 {
@@ -112,6 +113,8 @@ void window_register_init()
 
 	username = field_buffer(field[0], 0);
 	password = field_buffer(field[1], 0);
+
+	account_register(username, password);
 
 	getch();
 

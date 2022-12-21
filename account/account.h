@@ -31,8 +31,6 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
-int account_login_prompt();
-int account_register_prompt();
 int account_login(char *username, char *password);
 int account_register(char *username, char *password);
 int account_logout(bool *logged_in);

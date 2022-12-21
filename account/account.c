@@ -30,77 +30,11 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-#include <string.h>
 
 #include "account.h"
 #include "common/error_code.h"
 #include "wallet/wallet.h"
 #include "core/log.h"
-
-int account_login_prompt() {
-  char username_input[20];
-  char password_input[50];
-
-  do {
-	printf("Enter username: ");
-	scanf(" %19s", username_input);
-
-	// check for blank
-	if (strlen(username_input) > 49) {
-	  printf("%s\n", A00001);
-	  return 1;
-	}
-
-	printf("Enter password: ");
-	scanf(" %49s", password_input);
-
-	if (strlen(password_input) > 19) {
-	  printf("%s\n", A00002);
-	  return 1;
-	}
-
-	// check for blank input
-  } while (
-	  (strlen(username_input) > 49) && (strlen(password_input) > 19));
-  {
-	getchar();
-  }
-
-  return account_login(username_input, password_input);
-}
-
-int account_register_prompt() {
-	char username_input[20];
-	char password_input[50];
-
-	do {
-	  printf("Enter username: ");
-	  scanf(" %19s", username_input);
-
-	  printf("Enter password: ");
-	  scanf(" %49s", password_input);
-
-	  // check for blank input
-	  if (strlen(username_input) > 49) {
-		printf("%s\n", A00001);
-		return 1;
-	  }
-
-	  // check for blank input
-	  if (strlen(password_input) > 19) {
-		printf("%s\n", A00002);
-		return 1;
-	  }
-
-	  // check for blank input
-	} while (
-		(strlen(username_input) > 49) && (strlen(password_input) > 19));
-	{
-	  getchar();
-	}
-
-	return account_register(username_input, password_input);
-}
 
 int account_login(char *username, char *password) {
 	// TODO: this does not work since the file is created after exeuction of program exists
