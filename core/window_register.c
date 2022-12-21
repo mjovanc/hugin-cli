@@ -35,9 +35,8 @@
 
 #include "window.h"
 
-bool window_register_init()
+void window_register_init()
 {
-	bool exit = false;
 	WINDOW *win_login = window_create(0, 0, 0, 0);
 	wbkgd(win_login, COLOR_PAIR(1));
 	box(win_login, 0, 0);
@@ -63,7 +62,6 @@ bool window_register_init()
 		/* if CTRL + B is pressed, exit the loop */
 		if (0x2 == ch)
 		{
-			exit = true;
 			break;
 		}
 
@@ -73,6 +71,4 @@ bool window_register_init()
 		/* and some refresh can be useful*/
 		refresh();
 	}
-
-	return exit;
 }

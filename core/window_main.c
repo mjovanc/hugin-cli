@@ -116,7 +116,7 @@ int window_main_menu_get_choices(WINDOW *win_main_menu)
 
 void window_main_exec(WINDOW *win_header, WINDOW *win_main_menu)
 {
-	bool go_back;
+	int go_back;
 	int choice = window_main_menu_get_choices(win_main_menu);
 
 	switch (choice)
@@ -124,22 +124,12 @@ void window_main_exec(WINDOW *win_header, WINDOW *win_main_menu)
 	case 0:
 		window_delete(win_header);
 		window_delete(win_main_menu);
-		go_back = window_login_init();
-		if (go_back)
-		{
-			window_main_header_init();
-			window_main_menu_init();
-		}
+		window_login_init();
 		break;
 	case 1:
 		window_delete(win_header);
 		window_delete(win_main_menu);
-		go_back = window_register_init();
-		if (go_back)
-		{
-			window_main_header_init();
-			window_main_menu_init();
-		}
+		window_register_init();
 		break;
 	case 2:
 		window_delete(win_header);

@@ -37,7 +37,7 @@
 
 #include "window.h"
 
-bool window_login_init()
+void window_login_init()
 {
 	// while loop? when pressing some KEY return true so switch case can pick it up and render the main menu again
 	WINDOW *win_login = window_create(0, 0, 0, 0);
@@ -46,6 +46,4 @@ bool window_login_init()
 	wrefresh(win_login);
 
 	getch();
-
-	return false;
 }

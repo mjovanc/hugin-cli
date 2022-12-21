@@ -36,8 +36,6 @@
 #ifndef CORE_WINDOW_REGISTER_H
 #define CORE_WINDOW_REGISTER_H
 
-#include <stdbool.h>
-
-bool window_register_init();
+void window_register_init();
 
 #endif //CORE_WINDOW_REGISTER_H

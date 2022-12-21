@@ -38,6 +38,6 @@
 
 #include <stdbool.h>
 
-bool window_login_init();
+void window_login_init();
 
 #endif //CORE_WINDOW_LOGIN_H
