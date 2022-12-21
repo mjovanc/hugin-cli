@@ -35,7 +35,7 @@
 
 #include "ncurses.h"
 
-WINDOW *create_window(int lines, int columns, int y, int x)
+WINDOW *window_create(int lines, int columns, int y, int x)
 {
 	WINDOW *win = newwin(lines, columns, y, x);
 	wbkgd(win, COLOR_PAIR(1));
@@ -43,7 +43,7 @@ WINDOW *create_window(int lines, int columns, int y, int x)
 	return win;
 }
 
-void delete_window(WINDOW *win)
+void window_delete(WINDOW *win)
 {
 	wborder(win, ' ', ' ', ' ',' ',' ',' ',' ',' ');
 	wclear(win);

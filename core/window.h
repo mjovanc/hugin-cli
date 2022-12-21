@@ -38,8 +38,8 @@
 
 #include "ncurses.h"
 
-WINDOW *create_window(int lines, int columns, int y, int x);
+WINDOW *window_create(int lines, int columns, int y, int x);
 
-void delete_window(WINDOW *win);
+void window_delete(WINDOW *win);
 
 #endif //CORE_WINDOW_H

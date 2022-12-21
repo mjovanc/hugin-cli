@@ -39,6 +39,7 @@
 #include <string.h>
 
 #include "core/window.h"
+#include "core/window_login.h"
 #include "account/account.h"
 #include "common/error_code.h"
 #include "config/cli_header.h"
@@ -64,7 +65,7 @@ int main(int argc, char *argv[])
 	refresh();
 
 	// header window
-	WINDOW *header_win = create_window(17, 95, 1, 2);
+	WINDOW *header_win = window_create(17, 95, 1, 2);
 	print_header(header_win);
 	wrefresh(header_win);
 
@@ -73,7 +74,7 @@ int main(int argc, char *argv[])
 	getmaxyx(stdscr, y_max, x_max);
 
 	// main menu window
-	WINDOW *menu_win = create_window(10, 95, 18, 2);
+	WINDOW *menu_win = window_create(10, 95, 18, 2);
 	wbkgd(menu_win, COLOR_PAIR(1));
 	box(menu_win, 0, 0);
 
@@ -133,16 +134,17 @@ int main(int argc, char *argv[])
 	switch (highlight)
 	{
 	case 0:
-		delete_window(header_win);
-		delete_window(menu_win);
+		window_delete(header_win);
+		window_delete(menu_win);
+		window_login_init();
 		break;
 	case 1:
-		delete_window(header_win);
-		delete_window(menu_win);
+		window_delete(header_win);
+		window_delete(menu_win);
 		break;
 	case 2:
-		delete_window(header_win);
-		delete_window(menu_win);
+		window_delete(header_win);
+		window_delete(menu_win);
 		endwin();
 		return 0;
 	default:

@@ -33,12 +33,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#include "window.h"
+#ifndef CORE_WINDOW_REGISTER_H
+#define CORE_WINDOW_REGISTER_H
 
-void window_login_init()
-{
-	WINDOW *win_login = window_create(0, 0, 0, 0);
-	wbkgd(win_login, COLOR_PAIR(1));
-	box(win_login, 0, 0);
-	wrefresh(win_login);
-}
+#endif //CORE_WINDOW_REGISTER_H
