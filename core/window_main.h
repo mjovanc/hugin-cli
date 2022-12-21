@@ -39,6 +39,6 @@
 WINDOW *window_main_header_init();
 WINDOW *window_main_menu_init();
 int window_main_menu_get_choices(WINDOW *win_main_menu);
-void window_main_menu_exec(WINDOW *win_header, WINDOW *win_main_menu);
+void window_main_exec(WINDOW *win_header, WINDOW *win_main_menu);
 
 #endif //CORE_WINDOW_MAIN_H

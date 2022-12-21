@@ -52,6 +52,7 @@ int main(int argc, char *argv[])
 	}
 	start_color();
 
+	// setting up colors
 	init_pair(1, 251, 233); // LIGHT GREY + DARK GREY
 	init_pair(2, 22, 233); // GREEN + DARK GREY
 	wbkgd(stdscr, COLOR_PAIR(1));
@@ -61,12 +62,10 @@ int main(int argc, char *argv[])
 	WINDOW *win_header = window_main_header_init();
 	WINDOW *win_main_menu = window_main_menu_init();
 
+	// start main based on user choice
+	window_main_exec(win_header, win_main_menu);
 
-	// remove this later and uncomment below
-	window_main_menu_exec(win_header, win_main_menu);
-	/*if (window_main_menu_exec(win_header, win_main_menu) == 0)
-		return 0;*/
-
+	// end standard screen
 	endwin();
 
 	return 0;

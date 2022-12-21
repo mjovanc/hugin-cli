@@ -114,7 +114,7 @@ int window_main_menu_get_choices(WINDOW *win_main_menu)
 	return highlight;
 }
 
-void window_main_menu_exec(WINDOW *win_header, WINDOW *win_main_menu)
+void window_main_exec(WINDOW *win_header, WINDOW *win_main_menu)
 {
 	bool go_back;
 	int choice = window_main_menu_get_choices(win_main_menu);
