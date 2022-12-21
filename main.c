@@ -39,9 +39,9 @@
 #include <string.h>
 
 #include "core/window.h"
+#include "core/window_main.h"
 #include "core/window_login.h"
-#include "account/account.h"
-#include "common/error_code.h"
+#include "window_register.h"
 #include "config/cli_header.h"
 
 int main(int argc, char *argv[])
@@ -74,77 +74,28 @@ int main(int argc, char *argv[])
 	getmaxyx(stdscr, y_max, x_max);
 
 	// main menu window
-	WINDOW *menu_win = window_create(10, 95, 18, 2);
-	wbkgd(menu_win, COLOR_PAIR(1));
-	box(menu_win, 0, 0);
-
-	wrefresh(menu_win);
-	keypad(menu_win, true);
-
-	const char *MENU_CHOICES[3] = {
-		"Login",
-		"Register",
-		"Quit"
-	};
-	const char *MENU_CHOICES_DESC[3] = {
-		"Login with your account.",
-		"Register a new account.",
-		"Quit the application."
-	};
-	int choice;
-	int highlight = 0;
-
-	while (1)
-	{
-		for (int i = 0; i < 3; i++)
-		{
-			if (i == highlight)
-				wattron(menu_win, A_REVERSE);
-
-			mvwprintw(menu_win, i + 1, 1, "%-25s%-20s", MENU_CHOICES[i], MENU_CHOICES_DESC[i]);
-			wattroff(menu_win, A_REVERSE);
-		}
-		choice = wgetch(menu_win);
-
-		switch (choice)
-		{
-			case KEY_UP:
-				highlight--;
-				if (highlight == -1)
-					highlight = 0;
-				break;
-
-			case KEY_DOWN:
-				highlight++;
-				if (highlight > 2)
-					highlight = 2;
-				break;
-
-			default:
-				break;
-		}
-
-		// 10 is the enter key
-		if (choice == 10)
-			break;
-	}
+	WINDOW *win_main = window_main_init();
+	int choice = window_main_selected_choice(win_main);
 
 	// new switch here with highlight option and do different things with it
 
-	switch (highlight)
+	bool go_back;
+
+	switch (choice)
 	{
 	case 0:
 		window_delete(header_win);
-		window_delete(menu_win);
-		window_login_init();
+		window_delete(win_main);
+		go_back = window_login_init();
 		break;
 	case 1:
 		window_delete(header_win);
-		window_delete(menu_win);
+		window_delete(win_main);
+		go_back = window_register_init();
 		break;
 	case 2:
 		window_delete(header_win);
-		window_delete(menu_win);
+		window_delete(win_main);
 		endwin();
 		return 0;
 	default:

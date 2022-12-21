@@ -33,11 +33,71 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef CORE_WINDOW_REGISTER_H
-#define CORE_WINDOW_REGISTER_H
+#include "ncurses.h"
 
-#include <stdbool.h>
+#include "window.h"
 
-bool window_register_init();
+WINDOW *window_main_init()
+{
+	WINDOW *menu_win = window_create(10, 95, 18, 2);
+	wbkgd(menu_win, COLOR_PAIR(1));
+	box(menu_win, 0, 0);
 
-#endif //CORE_WINDOW_REGISTER_H
+	wrefresh(menu_win);
+	keypad(menu_win, true);
+
+	return menu_win;
+}
+
+int window_main_selected_choice(WINDOW *win_main)
+{
+	const char *MENU_CHOICES[3] = {
+		"Login",
+		"Register",
+		"Quit"
+	};
+	const char *MENU_CHOICES_DESC[3] = {
+		"Login with your account.",
+		"Register a new account.",
+		"Quit the application."
+	};
+	int choice;
+	int highlight = 0;
+
+	while (1)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			if (i == highlight)
+				wattron(win_main, A_REVERSE);
+
+			mvwprintw(win_main, i + 1, 1, "%-25s%-20s", MENU_CHOICES[i], MENU_CHOICES_DESC[i]);
+			wattroff(win_main, A_REVERSE);
+		}
+		choice = wgetch(win_main);
+
+		switch (choice)
+		{
+		case KEY_UP:
+			highlight--;
+			if (highlight == -1)
+				highlight = 0;
+			break;
+
+		case KEY_DOWN:
+			highlight++;
+			if (highlight > 2)
+				highlight = 2;
+			break;
+
+		default:
+			break;
+		}
+
+		// 10 is the enter key
+		if (choice == 10)
+			break;
+	}
+
+	return highlight;
+}

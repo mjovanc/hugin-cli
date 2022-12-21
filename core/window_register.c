@@ -32,3 +32,18 @@
 // CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
+
+#include <stdbool.h>
+
+#include "window.h"
+
+bool window_register_init()
+{
+	// while loop? when pressing some KEY return true so switch case can pick it up and render the main menu again
+	WINDOW *win_login = window_create(0, 0, 0, 0);
+	wbkgd(win_login, COLOR_PAIR(1));
+	box(win_login, 0, 0);
+	wrefresh(win_login);
+
+	return false;
+}

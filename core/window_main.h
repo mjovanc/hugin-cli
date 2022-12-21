@@ -33,11 +33,10 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef CORE_WINDOW_REGISTER_H
-#define CORE_WINDOW_REGISTER_H
+#ifndef CORE_WINDOW_MAIN_H
+#define CORE_WINDOW_MAIN_H
 
-#include <stdbool.h>
+WINDOW *window_main_init();
+int window_main_selected_choice(WINDOW *win_main);
 
-bool window_register_init();
-
-#endif //CORE_WINDOW_REGISTER_H
+#endif //CORE_WINDOW_MAIN_H

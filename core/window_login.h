@@ -36,6 +36,8 @@
 #ifndef CORE_WINDOW_LOGIN_H
 #define CORE_WINDOW_LOGIN_H
 
-void window_login_init();
+#include <stdbool.h>
+
+bool window_login_init();
 
 #endif //CORE_WINDOW_LOGIN_H
