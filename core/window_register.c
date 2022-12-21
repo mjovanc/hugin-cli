@@ -106,35 +106,4 @@ void window_register_init()
 	free_field(field[0]);
 	free_field(field[1]);
 	free_field(field[2]);
-
-
-	while (1)
-	{
-		/* read last pressed key */
-		int ch = getch();
-
-		/* if no key was waiting, ignore */
-		if (ERR == ch)
-			continue;
-
-		/* if UP is pressed... */
-		if (KEY_UP == ch)
-		{
-			/* ...do something with that key */
-			/* and wait next key pressed */
-			continue;
-		}
-
-		/* if CTRL + B is pressed, exit the loop */
-		if (0x2 == ch)
-		{
-			break;
-		}
-
-		/* else, display the key code */
-		mvprintw(2,2,"code get: 0x%x\n", ch);
-
-		/* and some refresh can be useful*/
-		refresh();
-	}
 }
