@@ -34,15 +34,8 @@
 // POSSIBILITY OF SUCH DAMAGE.
 
 #include <ncurses.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
 
-#include "core/window.h"
 #include "core/window_main.h"
-#include "core/window_login.h"
-#include "window_register.h"
-#include "config/cli_header.h"
 
 int main(int argc, char *argv[])
 {

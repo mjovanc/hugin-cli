@@ -35,6 +35,7 @@
 
 #include "ncurses.h"
 
+#include "config/cli_header.h"
 #include "window.h"
 #include "window_login.h"
 #include "window_register.h"

@@ -33,8 +33,6 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdbool.h>
-
 #include "window.h"
 
 bool window_register_init()
