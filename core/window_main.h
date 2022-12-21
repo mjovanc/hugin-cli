@@ -36,7 +36,8 @@
 #ifndef CORE_WINDOW_MAIN_H
 #define CORE_WINDOW_MAIN_H
 
-WINDOW *window_main_init();
+WINDOW *window_main_header_init();
+WINDOW *window_main_menu_init();
 int window_main_selected_choice(WINDOW *win_main);
 
 #endif //CORE_WINDOW_MAIN_H

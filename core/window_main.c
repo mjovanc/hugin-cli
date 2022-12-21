@@ -37,7 +37,16 @@
 
 #include "window.h"
 
-WINDOW *window_main_init()
+WINDOW *window_main_header_init()
+{
+	WINDOW *header_win = window_create(17, 95, 1, 2);
+	print_header(header_win);
+	wrefresh(header_win);
+
+	return header_win;
+}
+
+WINDOW *window_main_menu_init()
 {
 	WINDOW *menu_win = window_create(10, 95, 18, 2);
 	wbkgd(menu_win, COLOR_PAIR(1));

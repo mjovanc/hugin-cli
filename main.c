@@ -64,41 +64,33 @@ int main(int argc, char *argv[])
 	wbkgd(stdscr, COLOR_PAIR(1));
 	refresh();
 
-	// header window
-	WINDOW *header_win = window_create(17, 95, 1, 2);
-	print_header(header_win);
-	wrefresh(header_win);
+	// init windows
+	WINDOW *win_header = window_main_header_init();
+	WINDOW *win_main = window_main_menu_init();
 
-	// get screen size
-	int y_max, x_max;
-	getmaxyx(stdscr, y_max, x_max);
 
-	// main menu window
-	WINDOW *win_main = window_main_init();
 	int choice = window_main_selected_choice(win_main);
-
-	// new switch here with highlight option and do different things with it
 
 	bool go_back;
 
 	switch (choice)
 	{
 	case 0:
-		window_delete(header_win);
+		window_delete(win_header);
 		window_delete(win_main);
 		go_back = window_login_init();
 		if (go_back)
-			window_main_init();
+			window_main_menu_init();
 		break;
 	case 1:
-		window_delete(header_win);
+		window_delete(win_header);
 		window_delete(win_main);
 		go_back = window_register_init();
 		if (go_back)
-			window_main_init();
+			window_main_menu_init();
 		break;
 	case 2:
-		window_delete(header_win);
+		window_delete(win_header);
 		window_delete(win_main);
 		endwin();
 		return 0;
@@ -106,63 +98,7 @@ int main(int argc, char *argv[])
 		break;
 	}
 
-	// create new window
-
-	// initialize window
-
-	// printw("Your choice was: %s", MENU_CHOICES[highlight]);
-
-	// refresh();
-
 	getch();
-
-	/*char input[10];
-	  bool logged_in = false;
-
-	  do
-	  {
-		  printf("> ");
-		  scanf(" %9s", input);
-
-		  if (strcmp(input, "/l") == 0)
-		  {
-			  if (logged_in == true)
-			  {
-							printw("%s\n", A00005);
-				  continue;
-			  }
-
-			  if (account_login_prompt() != 0)
-			  {
-								  printw("%s\n", A00003);
-				  continue;
-			  }
-
-			  logged_in = true;
-		  }
-		  else if (strcmp(input, "/r") == 0)
-		  {
-			  if (account_register_prompt() != 0)
-			  {
-								  printw("%s\n", A00004);
-				  continue;
-			  }
-
-			  logged_in = true;
-		  }
-		  else if (strcmp(input, "/q") == 0)
-		  {
-			  account_logout(&logged_in); // only logout if we are logged in
-						  printw("Good bye!\n");
-		  }
-		  else
-		  {
-			  printf("%s\n", C00006);
-		  }
-	  } while (strcmp(input, "/q") != 0);
-	  {
-		  getch();
-	  }*/
 
 	endwin();
 
