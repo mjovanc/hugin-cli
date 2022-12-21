@@ -39,11 +39,42 @@
 
 bool window_register_init()
 {
-	// while loop? when pressing some KEY return true so switch case can pick it up and render the main menu again
+	bool exit = false;
 	WINDOW *win_login = window_create(0, 0, 0, 0);
 	wbkgd(win_login, COLOR_PAIR(1));
 	box(win_login, 0, 0);
 	wrefresh(win_login);
 
-	return false;
+	while (1)
+	{
+		/* read last pressed key */
+		int ch = getch();
+
+		/* if no key was waiting, ignore */
+		if (ERR == ch)
+			continue;
+
+		/* if UP is pressed... */
+		if (KEY_UP == ch)
+		{
+			/* ...do something with that key */
+			/* and wait next key pressed */
+			continue;
+		}
+
+		/* if CTRL + B is pressed, exit the loop */
+		if (0x2 == ch)
+		{
+			exit = true;
+			break;
+		}
+
+		/* else, display the key code */
+		mvprintw(2,2,"code get: 0x%x\n", ch);
+
+		/* and some refresh can be useful*/
+		refresh();
+	}
+
+	return exit;
 }

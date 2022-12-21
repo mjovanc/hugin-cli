@@ -45,5 +45,7 @@ bool window_login_init()
 	box(win_login, 0, 0);
 	wrefresh(win_login);
 
+	getch();
+
 	return false;
 }

@@ -36,6 +36,8 @@
 #include "ncurses.h"
 
 #include "window.h"
+#include "window_login.h"
+#include "window_register.h"
 
 WINDOW *window_main_header_init()
 {
@@ -58,7 +60,7 @@ WINDOW *window_main_menu_init()
 	return menu_win;
 }
 
-int window_main_selected_choice(WINDOW *win_main)
+int window_main_menu_get_choices(WINDOW *win_main_menu)
 {
 	const char *MENU_CHOICES[3] = {
 		"Login",
@@ -78,12 +80,12 @@ int window_main_selected_choice(WINDOW *win_main)
 		for (int i = 0; i < 3; i++)
 		{
 			if (i == highlight)
-				wattron(win_main, A_REVERSE);
+				wattron(win_main_menu, A_REVERSE);
 
-			mvwprintw(win_main, i + 1, 1, "%-25s%-20s", MENU_CHOICES[i], MENU_CHOICES_DESC[i]);
-			wattroff(win_main, A_REVERSE);
+			mvwprintw(win_main_menu, i + 1, 1, "%-25s%-20s", MENU_CHOICES[i], MENU_CHOICES_DESC[i]);
+			wattroff(win_main_menu, A_REVERSE);
 		}
-		choice = wgetch(win_main);
+		choice = wgetch(win_main_menu);
 
 		switch (choice)
 		{
@@ -109,4 +111,39 @@ int window_main_selected_choice(WINDOW *win_main)
 	}
 
 	return highlight;
+}
+
+void window_main_menu_exec(WINDOW *win_header, WINDOW *win_main_menu)
+{
+	bool go_back;
+	int choice = window_main_menu_get_choices(win_main_menu);
+
+	switch (choice)
+	{
+	case 0:
+		window_delete(win_header);
+		window_delete(win_main_menu);
+		go_back = window_login_init();
+		if (go_back)
+		{
+			window_main_header_init();
+			window_main_menu_init();
+		}
+		break;
+	case 1:
+		window_delete(win_header);
+		window_delete(win_main_menu);
+		go_back = window_register_init();
+		if (go_back)
+		{
+			window_main_header_init();
+			window_main_menu_init();
+		}
+		break;
+	case 2:
+		window_delete(win_header);
+		window_delete(win_main_menu);
+	default:
+		break;
+	}
 }

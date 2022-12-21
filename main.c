@@ -66,39 +66,13 @@ int main(int argc, char *argv[])
 
 	// init windows
 	WINDOW *win_header = window_main_header_init();
-	WINDOW *win_main = window_main_menu_init();
+	WINDOW *win_main_menu = window_main_menu_init();
 
 
-	int choice = window_main_selected_choice(win_main);
-
-	bool go_back;
-
-	switch (choice)
-	{
-	case 0:
-		window_delete(win_header);
-		window_delete(win_main);
-		go_back = window_login_init();
-		if (go_back)
-			window_main_menu_init();
-		break;
-	case 1:
-		window_delete(win_header);
-		window_delete(win_main);
-		go_back = window_register_init();
-		if (go_back)
-			window_main_menu_init();
-		break;
-	case 2:
-		window_delete(win_header);
-		window_delete(win_main);
-		endwin();
-		return 0;
-	default:
-		break;
-	}
-
-	getch();
+	// remove this later and uncomment below
+	window_main_menu_exec(win_header, win_main_menu);
+	/*if (window_main_menu_exec(win_header, win_main_menu) == 0)
+		return 0;*/
 
 	endwin();
 
