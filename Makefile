@@ -32,8 +32,8 @@
 BINARY=Hugin
 
 # directories
-CODEDIRS=. account wallet db core crypto daemon
-INCDIRS=. account wallet db common config core crypto daemon
+CODEDIRS=. account wallet db core crypto daemon http
+INCDIRS=. account wallet db common config core crypto daemon http
 BUILDDIR = build
 EXTERNALDIR = external
 
