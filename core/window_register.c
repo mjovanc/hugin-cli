@@ -36,15 +36,16 @@
 #include <form.h>
 
 #include "window.h"
+#include "window_chat.h"
 #include "account/account.h"
 #include "util/string_util.h"
 
 void window_register_init()
 {
-	WINDOW *win_login = window_create(0, 0, 0, 0);
-	wbkgd(win_login, COLOR_PAIR(1));
-	box(win_login, 0, 0);
-	wrefresh(win_login);
+	WINDOW *win_register = window_create(0, 0, 0, 0);
+	wbkgd(win_register, COLOR_PAIR(1));
+	box(win_register, 0, 0);
+	wrefresh(win_register);
 
 	FIELD *field[4];
 	FORM  *my_form;
@@ -123,12 +124,13 @@ void window_register_init()
 		// do something
 	}*/
 
-
-
 	/* Un post form and free the memory */
 	unpost_form(my_form);
 	free_form(my_form);
 	free_field(field[0]);
 	free_field(field[1]);
 	free_field(field[2]);
+
+	window_delete(win_register);
+	window_chat_init();
 }
