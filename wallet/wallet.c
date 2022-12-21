@@ -51,7 +51,8 @@ bool wallet_exists(char *wallet_name)
     // wallet already exists
     if (access(tmp_wallet_name, F_OK) == 0)
     {
-	  	log_info("Wallet already exists...");
+		//TODO: print to file instead
+	  	// log_info("Wallet already exists...");
         free(tmp_wallet_name);
         return true;
     }
@@ -68,7 +69,8 @@ bool wallet_create(char *wallet_name, char *wallet_password)
         return false;
     }
 
-	log_info("Creating wallet and database...");
+	//TODO: print to file instead
+	// log_info("Creating wallet and database...");
 	db_create(wallet_name, wallet_password);
 
     return true;

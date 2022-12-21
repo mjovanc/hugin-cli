@@ -49,7 +49,8 @@ int db_create(char *db_name, const char *db_password)
     rc = sqlite3_open(full_db_name, &db);
     if (rc != SQLITE_OK)
     {
-		log_error("Can't open database: %s", sqlite3_errmsg(db));
+		//TODO: print to file instead
+		// log_error("Can't open database: %s", sqlite3_errmsg(db));
         return 1;
     }
 
@@ -62,7 +63,8 @@ int db_create(char *db_name, const char *db_password)
 	rc = sqlite3_step(stmt);
 	if (rc != SQLITE_DONE)
 	{
-		log_error("Can't run SQL statement: %s", sqlite3_errmsg(db));
+		//TODO: print to file instead
+		// log_error("Can't run SQL statement: %s", sqlite3_errmsg(db));
 		return 1;
 	}
 	sqlite3_finalize(stmt);

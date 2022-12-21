@@ -28,46 +28,9 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdbool.h>
-#include <stdio.h>
+#ifndef UTIL_STRING_UTIL_H
+#define UTIL_STRING_UTIL_H
 
-#include "account.h"
-#include "common/error_code.h"
-#include "wallet/wallet.h"
-#include "core/log.h"
+char *trim(char *c);
 
-int account_login(char *username, char *password) {
-	// TODO: this does not work since the file is created after exeuction of program exists
-	bool exists = wallet_exists(username);
-
-	if (!exists) {
-		//TODO: print to file instead
-		// printf("%s\n", W00002);
-		return 1;
-	}
-
-	//TODO: print to file instead
-	// log_info("Logged in...");
-
-	return 0;
-}
-
-int account_register(char *username, char *password) {
-	bool wallet_created = wallet_create(username, password);
-	if (!wallet_created) {
-		//TODO: print to file instead
-		// printf("%s\n", W00001);
-		return 1;
-	}
-
-	return account_login(username, password);
-}
-
-int account_logout(bool *logged_in) {
-	// check if we are logged in first before logging out
-
-	//TODO: print to file instead
-	// log_info("Logging out...");
-
-	return 0;
-}
+#endif //UTIL_STRING_UTIL_H

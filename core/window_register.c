@@ -37,6 +37,7 @@
 
 #include "window.h"
 #include "account/account.h"
+#include "util/string_util.h"
 
 void window_register_init()
 {
@@ -111,12 +112,12 @@ void window_register_init()
 		}
 	}
 
-	username = field_buffer(field[0], 0);
-	password = field_buffer(field[1], 0);
+	username = trim(field_buffer(field[0], 0));
+	password = trim(field_buffer(field[1], 0));
 
 	account_register(username, password);
 
-	getch();
+	// getch();
 
 	/*if (form_driver(my_form, REQ_VALIDATION) != E_OK) {
 		// do something
