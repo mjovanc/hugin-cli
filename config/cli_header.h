@@ -37,7 +37,7 @@
 
 void print_header(WINDOW* header_win)
 {
-  	attron(COLOR_PAIR(2));
+  	wattron(header_win, COLOR_PAIR(2));
 	mvwprintw(header_win, 0, 0,
 		 "     __  __            _          ________    ____\n"
 		 "    / / / __  ______ _(_____     / ____/ /   /  _/\n"
@@ -46,7 +46,7 @@ void print_header(WINDOW* header_win)
 		 " /_/ /_/\\__,_/\\__, /_/_/ /_/   \\____/_____/___/\n"
 		 "             /____/\n\n");
 
-    attron(COLOR_PAIR(1));
+	wattron(header_win, COLOR_PAIR(1));
 	mvwprintw(header_win, 7, 0, " %s v%s\n", PROJECT_NAME, PROJECT_VERSION);
 	mvwprintw(header_win, 8, 0, " This software is licensed under BSD-3 License.\n\n");
 	mvwprintw(header_win, 10, 0, " %s\n", PROJECT_COPYRIGHT);

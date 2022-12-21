@@ -39,8 +39,6 @@ WINDOW *create_window(int lines, int columns, int y, int x)
 {
 	WINDOW *win = newwin(lines, columns, y, x);
 	wbkgd(win, COLOR_PAIR(1));
-	// box(win, 0, 0); // remove this later
-	wrefresh(win);
 
 	return win;
 }

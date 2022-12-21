@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
 	// check if the terminal don't have support for colors
 	if (!has_colors())
 	{
+		// we probably do not want to exit the program, but perhaps disable init colors
 		return -1;
 	}
 	start_color();
@@ -62,12 +63,7 @@ int main(int argc, char *argv[])
 	wbkgd(stdscr, COLOR_PAIR(1));
 	refresh();
 
-	/*WINDOW *header_win = newwin(17, 93, 0, 93);
-	wbkgd(header_win, COLOR_PAIR(1));
-	box(header_win, 0, 0);
-	wrefresh(header_win);
-	print_header();*/
-
+	// header window
 	WINDOW *header_win = create_window(17, 95, 1, 2);
 	print_header(header_win);
 	wrefresh(header_win);
@@ -76,8 +72,7 @@ int main(int argc, char *argv[])
 	int y_max, x_max;
 	getmaxyx(stdscr, y_max, x_max);
 
-	// main menu
-	//TODO: should probably make a function for this since we want to create multiple menus
+	// main menu window
 	WINDOW *menu_win = create_window(10, 95, 18, 2);
 	wbkgd(menu_win, COLOR_PAIR(1));
 	box(menu_win, 0, 0);
@@ -135,10 +130,24 @@ int main(int argc, char *argv[])
 
 	// new switch here with highlight option and do different things with it
 
-	// remove windows
-	delete_window(header_win);
-	delete_window(menu_win);
-
+	switch (highlight)
+	{
+	case 0:
+		delete_window(header_win);
+		delete_window(menu_win);
+		break;
+	case 1:
+		delete_window(header_win);
+		delete_window(menu_win);
+		break;
+	case 2:
+		delete_window(header_win);
+		delete_window(menu_win);
+		endwin();
+		return 0;
+	default:
+		break;
+	}
 
 	// create new window
 
