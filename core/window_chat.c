@@ -40,9 +40,9 @@ void window_chat_init()
 	int max_y, max_x;
 	getmaxyx(stdscr, max_y, max_x);
 
-	WINDOW *win_chat_sb = window_create(max_y-5, max_x/4, 0, 0);
-	WINDOW *win_chat_area = window_create(max_y-5, max_x/2, 0, max_x/2);
-	WINDOW *win_chat_text = window_create(5, max_x, max_y-5, 0);
+	WINDOW *win_chat_sb = window_create(max_y-3, max_x/6, 0, 0);
+	WINDOW *win_chat_area = window_create(max_y-3, max_x - (max_x/6) - 1, 0, (max_x/6) + 1);
+	WINDOW *win_chat_text = window_create(3, max_x, max_y-3, 0);
 	refresh();
 
 	// set background
