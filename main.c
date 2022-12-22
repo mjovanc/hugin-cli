@@ -52,10 +52,16 @@ int main(int argc, char *argv[])
 	}
 	start_color();
 
+	const short DARK_GREY = 233;
+	const short LIGHT_GREY = 251;
+	const short GREEN = 22;
+	const short GREEN_DEEP_SEA = 74;
+
 	// setting up colors
-	init_pair(1, 251, 233); // LIGHT GREY + DARK GREY
-	init_pair(2, 22, 233); // GREEN + DARK GREY
-	init_pair(3, 251, 22); // GREEN + DARK GREY
+	init_pair(1, LIGHT_GREY, DARK_GREY); // LIGHT GREY + DARK GREY
+	init_pair(2, GREEN, DARK_GREY); // GREEN + DARK GREY
+	init_pair(3, LIGHT_GREY, GREEN); // LIGHT GREY + GREEN
+	init_pair(4, GREEN_DEEP_SEA, DARK_GREY);
 	wbkgd(stdscr, COLOR_PAIR(1));
 	refresh();
 

@@ -48,7 +48,7 @@ void window_chat_init()
 	refresh();
 
 	// set window colors
-	wbkgd(win_chat_sb,   		COLOR_PAIR(1));
+	wbkgd(win_chat_sb,   		COLOR_PAIR(4));
 	wbkgd(win_chat_headline, 	COLOR_PAIR(3));
 	wbkgd(win_chat_area, 		COLOR_PAIR(1));
 	wbkgd(win_chat_status, 		COLOR_PAIR(3));
