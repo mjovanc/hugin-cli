@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
 	// setting up colors
 	init_pair(1, 251, 233); // LIGHT GREY + DARK GREY
 	init_pair(2, 22, 233); // GREEN + DARK GREY
+	init_pair(3, 251, 22); // GREEN + DARK GREY
 	wbkgd(stdscr, COLOR_PAIR(1));
 	refresh();
 
