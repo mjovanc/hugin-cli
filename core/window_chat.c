@@ -37,10 +37,28 @@
 
 void window_chat_init()
 {
-	WINDOW *win_chat = window_create(0, 0, 0, 0);
-	wbkgd(win_chat, COLOR_PAIR(1));
-	box(win_chat, 0, 0);
-	wrefresh(win_chat);
+	int max_y, max_x;
+	getmaxyx(stdscr, max_y, max_x);
+
+	WINDOW *win_chat_sb = window_create(max_y-5, max_x/4, 0, 0);
+	WINDOW *win_chat_area = window_create(max_y-5, max_x/2, 0, max_x/2);
+	WINDOW *win_chat_text = window_create(5, max_x, max_y-5, 0);
+	refresh();
+
+	// set background
+	wbkgd(win_chat_sb, COLOR_PAIR(1));
+	wbkgd(win_chat_area, COLOR_PAIR(1));
+	wbkgd(win_chat_text, COLOR_PAIR(1));
+
+	// create box
+	box(win_chat_sb, 0, 0);
+	box(win_chat_area, 0, 0);
+	box(win_chat_text, 0, 0);
+
+	// refresh windows
+	wrefresh(win_chat_sb);
+	wrefresh(win_chat_area);
+	wrefresh(win_chat_text);
 
 	getch();
 }

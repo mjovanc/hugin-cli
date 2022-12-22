@@ -43,7 +43,7 @@
 void window_register_init()
 {
 	WINDOW *win_register = window_create(0, 0, 0, 0);
-	wbkgd(win_register, COLOR_PAIR(1));
+	refresh();
 	box(win_register, 0, 0);
 	wrefresh(win_register);
 
@@ -113,16 +113,16 @@ void window_register_init()
 		}
 	}
 
-	username = trim(field_buffer(field[0], 0));
-	password = trim(field_buffer(field[1], 0));
-
-	account_register(username, password);
-
-	// getch();
-
 	/*if (form_driver(my_form, REQ_VALIDATION) != E_OK) {
 		// do something
 	}*/
+
+	// trim whitespaces
+	username = trim(field_buffer(field[0], 0));
+	password = trim(field_buffer(field[1], 0));
+
+	// register an account
+	account_register(username, password);
 
 	/* Un post form and free the memory */
 	unpost_form(my_form);
@@ -131,6 +131,7 @@ void window_register_init()
 	free_field(field[1]);
 	free_field(field[2]);
 
+	// delete current window and initilize chat window
 	window_delete(win_register);
 	window_chat_init();
 }

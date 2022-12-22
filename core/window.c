@@ -35,9 +35,9 @@
 
 #include "ncurses.h"
 
-WINDOW *window_create(int lines, int columns, int y, int x)
+WINDOW *window_create(int lines, int columns, int pos_y, int pos_x)
 {
-	WINDOW *win = newwin(lines, columns, y, x);
+	WINDOW *win = newwin(lines, columns, pos_y, pos_x);
 	wbkgd(win, COLOR_PAIR(1));
 
 	return win;
