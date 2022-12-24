@@ -31,7 +31,7 @@
 #ifndef DB_TRANSACTION_H
 #define DB_TRANSACTION_H
 
-int db_transaction(const char **db_name, const char *sql, const char *db_password);
-int db_transaction_prepared(const char **db_name, const char *sql, const char *db_password);
+int db_transaction(const std::string db_name, const std::string sql, const std::string db_password);
+int db_transaction_prepared(const std::string db_name, const std::string sql, const std::string db_password);
 
 #endif//DB_TRANSACTION_H

@@ -36,14 +36,14 @@
 
 #include "core/core.h"
 
-int db_add_node(const char **db_name, node_t node, const char *db_password);
-int db_add_node_initial_data(const char **db_name, const char *db_password);
+int db_add_node(const std::string db_name, node_t node, const std::string db_password);
+int db_add_node_initial_data(const std::string db_name, const std::string db_password);
 
-node_t db_get_node(const char **db_name, int node_id, const char *db_password);
-node_t *db_get_node_all(const char **db_name, const char *db_password);
+node_t db_get_node(const std::string db_name, int node_id, const std::string db_password);
+node_t *db_get_node_all(const std::string db_name, const std::string db_password);
 
-int db_edit_node(const char **db_name, int node_id, const char *db_password);
+int db_edit_node(const std::string db_name, int node_id, const std::string db_password);
 
-int db_delete_node(const char **db_name, int node_id, const char *db_password);
+int db_delete_node(const std::string db_name, int node_id, const std::string db_password);
 
 #endif//DB_NODE_H

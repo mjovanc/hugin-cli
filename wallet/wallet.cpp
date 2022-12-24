@@ -29,54 +29,52 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-#include "wallet.h"
-#include "db/database.h"
 #include "core/log.h"
+#include "db/database.h"
+#include "wallet.h"
 
-bool wallet_exists(char *wallet_name)
+bool wallet_exists(const std::string wallet_name)
 {
-  	//TODO: improve this concatenation with https://stackoverflow.com/questions/74811161/how-to-create-efficient-function-in-c-for-handling-multiple-arguments-to-be-form
-    char *extension = ".db";
-    size_t tmp_wallet_size = strlen(wallet_name) + strlen(extension);
-    char *tmp_wallet_name;
-    tmp_wallet_name = malloc(sizeof(*tmp_wallet_name) * tmp_wallet_size + 1);
+	//TODO: improve this concatenation with https://stackoverflow.com/questions/74811161/how-to-create-efficient-function-in-c-for-handling-multiple-arguments-to-be-form
+	char *extension = ".db";
+	size_t tmp_wallet_size = strlen(wallet_name) + strlen(extension);
+	char *tmp_wallet_name;
+	tmp_wallet_name = malloc(sizeof(*tmp_wallet_name) * tmp_wallet_size + 1);
 
-    strncpy(tmp_wallet_name, wallet_name, tmp_wallet_size);
-    strcat(tmp_wallet_name, extension);
+	strncpy(tmp_wallet_name, wallet_name, tmp_wallet_size);
+	strcat(tmp_wallet_name, extension);
 
-    // wallet already exists
-    if (access(tmp_wallet_name, F_OK) == 0)
-    {
+	// wallet already exists
+	if (access(tmp_wallet_name, F_OK) == 0) {
 		//TODO: print to file instead
-	  	// log_info("Wallet already exists...");
-        free(tmp_wallet_name);
-        return true;
-    }
+		// log_info("Wallet already exists...");
+		free(tmp_wallet_name);
+		return true;
+	}
 
-    free(tmp_wallet_name);
+	free(tmp_wallet_name);
 
-    return false;
+	return false;
 }
 
-bool wallet_create(char *wallet_name, char *wallet_password)
+bool wallet_create(const std::string wallet_name, const std::string wallet_password)
 {
-    if (wallet_exists(wallet_name))
-    {
-        return false;
-    }
+	if (wallet_exists(wallet_name)) {
+		return false;
+	}
 
 	//TODO: print to file instead
 	// log_info("Creating wallet and database...");
 	db_create(wallet_name, wallet_password);
 
-    return true;
+	return true;
 }
 
-bool wallet_open(char *wallet_name, char *wallet_password)
+bool wallet_open(const std::string wallet_name, const std::string wallet_password)
 {
-    return true;
+	return true;
 }

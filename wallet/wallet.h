@@ -34,8 +34,8 @@
 #include <stdbool.h>
 
 // TODO: should look into if we are going to be using const here
-bool wallet_exists(char *wallet_name);
-bool wallet_create(char *wallet_name, char *wallet_password);
-bool wallet_open(char *wallet_name, char *wallet_password);
+bool wallet_exists(const std::string wallet_name);
+bool wallet_create(const std::string wallet_name, const std::string wallet_password);
+bool wallet_open(const std::string wallet_name, const std::string wallet_password);
 
-#endif //WALLET_WALLET_H
+#endif//WALLET_WALLET_H

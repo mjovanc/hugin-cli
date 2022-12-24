@@ -36,14 +36,14 @@
 
 #include "core/core.h"
 
-int db_create(char *db_name, const char *db_password);
+int db_create(const std::string db_name, const std::string db_password);
 
-setting_t db_get_setting(char *db_name, const char *db_new_password);
-node_t db_get_setting_node(char *db_name, const char *db_new_password); // join setting table with node
+setting_t db_get_setting(const std::string db_name, const std::string db_new_password);
+node_t db_get_setting_node(const std::string db_name, const std::string db_new_password);// join setting table with node
 
-int db_edit_password(char *db_name, const char *db_new_password);
-int db_edit_setting(char *db_name, const char *db_password);
+int db_edit_password(const std::string db_name, const std::string db_new_password);
+int db_edit_setting(const std::string db_name, const std::string db_password);
 
-int db_delete(char *db_name);
+int db_delete(const std::string db_name);
 
-#endif //DATABASE_DATABASE_H
+#endif//DATABASE_DATABASE_H

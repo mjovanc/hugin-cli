@@ -30,11 +30,11 @@
 
 #include <stdio.h>
 
+#include "core/log.h"
 #include "database.h"
 #include "transaction.h"
-#include "core/log.h"
 
-int db_add_post(const char *db_name, post_t post, const char *db_password)
+int db_add_post(const std::string db_name, post_t post, const std::string db_password)
 {
 	char sql[1024];
 	snprintf(sql, sizeof(sql), "INSERT INTO main.post VALUES(null, '%s', '%s', %ld, %s, %s, '%s', '%s');",
@@ -42,11 +42,10 @@ int db_add_post(const char *db_name, post_t post, const char *db_password)
 
 	int txn_prepared = db_transaction_prepared(&db_name, sql, db_password);
 
-	if (txn_prepared != 0)
-	{
+	if (txn_prepared != 0) {
 		log_error("Add post failed!");
 		return 1;
 	}
 
-  	return 0;
+	return 0;
 }

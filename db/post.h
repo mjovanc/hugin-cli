@@ -34,15 +34,15 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "database.h"
 #include "core/core.h"
+#include "database.h"
 
-int db_add_post(const char *db_name, post_t post, const char *db_password);
+int db_add_post(const std::string db_name, post_t post, const std::string db_password);
 
-post_t db_get_post(const char *db_name, int post_id, const char *db_password);
-post_t *db_get_post_all(const char *db_name, const char *db_password);
+post_t db_get_post(const std::string db_name, int post_id, const std::string db_password);
+post_t *db_get_post_all(const std::string db_name, const std::string db_password);
 
-int db_delete_post(char *db_name, int post_id, const char *db_password);
-int db_delete_post_all(char *db_name, const char *db_password);
+int db_delete_post(std::string db_name, int post_id, const std::string db_password);
+int db_delete_post_all(std::stringdb_name, const std::string db_password);
 
 #endif//DB_POST_H

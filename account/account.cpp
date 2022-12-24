@@ -28,15 +28,13 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdbool.h>
-#include <stdio.h>
-
 #include "account.h"
 #include "common/error_code.h"
-#include "wallet/wallet.h"
 #include "core/log.h"
+#include "wallet/wallet.h"
 
-int account_login(char *username, char *password) {
+int account_login(std::string username, std::string password)
+{
 	// TODO: this does not work since the file is created after exeuction of program exists
 	bool exists = wallet_exists(username);
 
@@ -52,7 +50,8 @@ int account_login(char *username, char *password) {
 	return 0;
 }
 
-int account_register(char *username, char *password) {
+int account_register(std::string username, std::string password)
+{
 	bool wallet_created = wallet_create(username, password);
 	if (!wallet_created) {
 		//TODO: print to file instead
@@ -63,7 +62,8 @@ int account_register(char *username, char *password) {
 	return account_login(username, password);
 }
 
-int account_logout(bool *logged_in) {
+int account_logout(bool &logged_in)
+{
 	// check if we are logged in first before logging out
 
 	//TODO: print to file instead

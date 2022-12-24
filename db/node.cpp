@@ -34,7 +34,7 @@
 #include "core/log.h"
 #include "transaction.h"
 
-int db_add_node(const char **db_name, node_t node, const char *db_password)
+int db_add_node(const std::string db_name, node_t node, const std::string db_password)
 {
 	char sql[1024];
 	int ssl = node.ssl ? 0 : 1;
@@ -44,36 +44,35 @@ int db_add_node(const char **db_name, node_t node, const char *db_password)
 
 	int txn_prepared = db_transaction_prepared(db_name, sql, db_password);
 
-	if (txn_prepared != 0)
-	{
+	if (txn_prepared != 0) {
 		log_error("Add node failed!");
-	  	return 1;
+		return 1;
 	}
 
 	return 0;
 }
 
-int db_add_node_initial_data(const char **db_name, const char *db_password)
+int db_add_node_initial_data(const std::string db_name, const std::string db_password)
 {
+	// create a vector here instead
 	node_t node_list[13] = {
-		{ "Swepool", 				"swepool.org",			11898,false,false,"1.1.0",0.00,"swepool" },
-		{ "Göta Pool",			"gota.kryptokrona.se",	11898,false,false,"1.1.0",0.00,"gota" },
-		{ "Blocksum",				"blocksum.org",			11898,false,false,"1.1.0",0.00,"blocksum" },
-		{ "Gamersnest",			"pool.gamersnest.org",	11898,true, false,"1.1.0",0.00,"gamersnest" },
-		{ "Norpool",				"norpool.org",			11898,false,false,"1.1.0",0.00,"norpool" },
-		{ "Privacy Mine",			"privacymine.net",		11898,false,false,"1.1.0",0.00,"privacymine" },
-		{ "Privacy Mine SSL",		"privacymine.net",		21898,true, false,"1.1.0",0.00,"privacymine" },
-		{ "KuKoHumoR",			"kukohumor.se",			11898,false,false,"1.1.0",0.00,"KuKoHumoR" },
-		{ "Spider Pig",			"spider-pig.hopto.org",	11898,false,false,"1.1.0",0.00,"spider-pig" },
-		{ "TechyNode",			"129.153.157.185",		11898,false,false,"1.1.0",0.00,"TechyNode" },
-		{ "TechyNode-Backup",	"techy.ddns.net",		11898,false,false,"1.1.0",0.00,"TechyNode-Backup" },
-		{ "Wasa",				"wasa.kryptokrona.se",	11898,false,false,"1.1.0",0.00,"wasa" },
-		{ "Tifo",				"tifo.info",			11898,false,false,"1.1.0",0.00,"blocksum" },
+		{"Swepool", "swepool.org", 11898, false, false, "1.1.0", 0.00, "swepool"},
+		{"Göta Pool", "gota.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "gota"},
+		{"Blocksum", "blocksum.org", 11898, false, false, "1.1.0", 0.00, "blocksum"},
+		{"Gamersnest", "pool.gamersnest.org", 11898, true, false, "1.1.0", 0.00, "gamersnest"},
+		{"Norpool", "norpool.org", 11898, false, false, "1.1.0", 0.00, "norpool"},
+		{"Privacy Mine", "privacymine.net", 11898, false, false, "1.1.0", 0.00, "privacymine"},
+		{"Privacy Mine SSL", "privacymine.net", 21898, true, false, "1.1.0", 0.00, "privacymine"},
+		{"KuKoHumoR", "kukohumor.se", 11898, false, false, "1.1.0", 0.00, "KuKoHumoR"},
+		{"Spider Pig", "spider-pig.hopto.org", 11898, false, false, "1.1.0", 0.00, "spider-pig"},
+		{"TechyNode", "129.153.157.185", 11898, false, false, "1.1.0", 0.00, "TechyNode"},
+		{"TechyNode-Backup", "techy.ddns.net", 11898, false, false, "1.1.0", 0.00, "TechyNode-Backup"},
+		{"Wasa", "wasa.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "wasa"},
+		{"Tifo", "tifo.info", 11898, false, false, "1.1.0", 0.00, "blocksum"},
 	};
 
-	for (int n = 0; n < 13; n++)
-	{
-	  	db_add_node(db_name, node_list[n], db_password);
+	for (int n = 0; n < 13; n++) {
+		db_add_node(db_name, node_list[n], db_password);
 	}
 
 	return 0;
