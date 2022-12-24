@@ -23,7 +23,7 @@ jobs:
               name: "Ubuntu Latest GCC",
               artifact: "hugin-ubuntu-x64",
               os: ubuntu-22.04,
-              cc: "gcc",
+              cc: "g++",
               architecture: x64,
             }
     steps:

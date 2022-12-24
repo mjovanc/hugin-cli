@@ -38,7 +38,7 @@ BUILDDIR = build
 EXTERNALDIR = external
 
 # compiler
-CC=gcc
+CC=g++
 OPT=-00
 
 # flags

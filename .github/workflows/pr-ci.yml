@@ -3,7 +3,7 @@ name: Hugin CLI Pull Request Pipeline
 env:
   BUILD_TYPE: Debug
 
-on: [ pull_request ]
+on: [pull_request]
 
 jobs:
   build:
@@ -14,11 +14,11 @@ jobs:
       matrix:
         config:
           - {
-            name: "Ubuntu Latest GCC",
-            os: ubuntu-22.04,
-            cc: "gcc",
-            architecture: x64,
-          }
+              name: "Ubuntu Latest GCC",
+              os: ubuntu-22.04,
+              cc: "g++",
+              architecture: x64,
+            }
     steps:
       - uses: actions/checkout@v2
         with:
