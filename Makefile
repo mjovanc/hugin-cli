@@ -47,9 +47,9 @@ CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -DSQLITE_HAS_CODEC -g $(foreach D,$(INCDIRS
 DYNAMIC_LINK_FLAGS=-lsqlcipher -lncurses -lform
 
 # files
-CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
-OBJECTS=$(patsubst %.c,$(BUILDDIR)/%.o,$(CFILES))
-DEPFILES=$(patsubst %.c,$(BUILDDIR)/%.d,$(CFILES))
+CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.cpp))
+OBJECTS=$(patsubst %.cpp,$(BUILDDIR)/%.o,$(CFILES))
+DEPFILES=$(patsubst %.cpp,$(BUILDDIR)/%.d,$(CFILES))
 
 all: $(BINARY)
 
@@ -57,7 +57,7 @@ $(BINARY): $(OBJECTS)
 	@echo "-- BUILDING HUGIN TARGET"
 	$(CC) -o $(BUILDDIR)/$@ $^ $(DYNAMIC_LINK_FLAGS)
 
-$(BUILDDIR)/%.o: %.c
+$(BUILDDIR)/%.o: %.cpp
 	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"
 	@mkdir -p ${dir $@}
 	$(CC) $(CFLAGS) -c -o $@ $<

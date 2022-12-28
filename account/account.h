@@ -31,6 +31,8 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
+#include <string>
+
 int account_login(std::string username, std::string password);
 int account_register(std::string username, std::string password);
 int account_logout(bool &logged_in);

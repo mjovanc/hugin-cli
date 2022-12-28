@@ -31,7 +31,7 @@
 #ifndef WALLET_WALLET_H
 #define WALLET_WALLET_H
 
-#include <stdbool.h>
+#include <string>
 
 // TODO: should look into if we are going to be using const here
 bool wallet_exists(const std::string wallet_name);
