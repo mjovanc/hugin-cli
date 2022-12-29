@@ -36,6 +36,8 @@
 #include "ncurses.h"
 #include "version.h"
 
+namespace config
+{
 void print_header(WINDOW *header_win)
 {
 	wattron(header_win, COLOR_PAIR(2));
@@ -56,5 +58,6 @@ void print_header(WINDOW *header_win)
 	mvwprintw(header_win, 14, 0, " If you did not receive a copy of the LICENSE, please visit:\n");
 	mvwprintw(header_win, 15, 0, " %s\n\n", PROJECT_LICENSE_URL);
 }
+}// namespace config
 
 #endif//CONFIG_CLI_HEADER_H

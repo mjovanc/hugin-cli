@@ -43,7 +43,7 @@
 WINDOW *window_main_header_init()
 {
 	WINDOW *header_win = window_create(17, 95, 1, 2);
-	print_header(header_win);
+	config::print_header(header_win);
 	wrefresh(header_win);
 
 	return header_win;
@@ -66,20 +66,16 @@ int window_main_menu_get_choices(WINDOW *win_main_menu)
 	const char *MENU_CHOICES[3] = {
 		"Login",
 		"Register",
-		"Quit"
-	};
+		"Quit"};
 	const char *MENU_CHOICES_DESC[3] = {
 		"Login with your account.",
 		"Register a new account.",
-		"Quit the application."
-	};
+		"Quit the application."};
 	int choice;
 	int highlight = 0;
 
-	while (1)
-	{
-		for (int i = 0; i < 3; i++)
-		{
+	while (1) {
+		for (int i = 0; i < 3; i++) {
 			if (i == highlight)
 				wattron(win_main_menu, A_REVERSE);
 
@@ -88,8 +84,7 @@ int window_main_menu_get_choices(WINDOW *win_main_menu)
 		}
 		choice = wgetch(win_main_menu);
 
-		switch (choice)
-		{
+		switch (choice) {
 		case KEY_UP:
 			highlight--;
 			if (highlight == -1)
@@ -119,8 +114,7 @@ void window_main_exec(WINDOW *win_header, WINDOW *win_main_menu)
 	int go_back;
 	int choice = window_main_menu_get_choices(win_main_menu);
 
-	switch (choice)
-	{
+	switch (choice) {
 	case 0:
 		window_delete(win_header);
 		window_delete(win_main_menu);
