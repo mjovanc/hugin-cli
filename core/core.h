@@ -35,11 +35,6 @@
 
 typedef struct {
 	int id;
-	int node_id;
-} setting_t;
-
-typedef struct {
-	int id;
 	std::string message;
 	std::string nickname;
 	long time;

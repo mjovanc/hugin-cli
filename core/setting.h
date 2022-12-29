@@ -28,41 +28,24 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <string>
+#ifndef CORE_SETTING_H
+#define CORE_SETTING_H
 
-#include "core/log.h"
-#include "db/database.h"
-#include "wallet.h"
+#include <cstdint>
+#include <iostream>
 
-bool wallet_exists(const std::string wallet_name)
+class Setting
 {
-	std::string extension = ".db";
-	std::string tmp_wallet_name = wallet_name + extension;
+public:
+	Setting(unsigned int id,
+			unsigned int node_id);
 
-	// wallet already exists
-	if (access(tmp_wallet_name.c_str(), F_OK) == 0) {
-		//TODO: print to file instead
-		// log_info("Wallet already exists...");
-		return true;
-	}
+	unsigned int get_id();
+	unsigned int get_node_id();
 
-	return false;
-}
+private:
+	unsigned int m_id;
+	unsigned int m_node_id;
+};
 
-bool wallet_create(const std::string wallet_name, const std::string wallet_password)
-{
-	if (wallet_exists(wallet_name)) {
-		return false;
-	}
-
-	//TODO: print to file instead
-	// log_info("Creating wallet and database...");
-	db_create(wallet_name, wallet_password);
-
-	return true;
-}
-
-bool wallet_open(const std::string wallet_name, const std::string wallet_password)
-{
-	return true;
-}
+#endif
