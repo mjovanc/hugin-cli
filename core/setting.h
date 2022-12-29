@@ -34,6 +34,8 @@
 #include <cstdint>
 #include <iostream>
 
+namespace core
+{
 class Setting
 {
 public:
@@ -47,5 +49,6 @@ private:
 	unsigned int m_id;
 	unsigned int m_node_id;
 };
+}// namespace core
 
 #endif

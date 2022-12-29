@@ -31,7 +31,8 @@
 #include "setting.h"
 
 #include <sstream>
-
+namespace core
+{
 Setting::Setting(unsigned int id,
 				 unsigned int node_id)
 {
@@ -47,4 +48,5 @@ unsigned int Setting::get_id()
 unsigned int Setting::get_node_id()
 {
 	return m_node_id;
+}
 }
