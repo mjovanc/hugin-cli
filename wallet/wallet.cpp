@@ -41,24 +41,15 @@
 
 bool wallet_exists(const std::string wallet_name)
 {
-	//TODO: improve this concatenation with https://stackoverflow.com/questions/74811161/how-to-create-efficient-function-in-c-for-handling-multiple-arguments-to-be-form
-	char *extension = ".db";
-	size_t tmp_wallet_size = strlen(wallet_name) + strlen(extension);
-	char *tmp_wallet_name;
-	tmp_wallet_name = malloc(sizeof(*tmp_wallet_name) * tmp_wallet_size + 1);
-
-	strncpy(tmp_wallet_name, wallet_name, tmp_wallet_size);
-	strcat(tmp_wallet_name, extension);
+	std::string extension = ".db";
+	std::string tmp_wallet_name = wallet_name + extension;
 
 	// wallet already exists
-	if (access(tmp_wallet_name, F_OK) == 0) {
+	if (access(tmp_wallet_name.c_str(), F_OK) == 0) {
 		//TODO: print to file instead
 		// log_info("Wallet already exists...");
-		free(tmp_wallet_name);
 		return true;
 	}
-
-	free(tmp_wallet_name);
 
 	return false;
 }
