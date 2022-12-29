@@ -33,6 +33,9 @@
 
 #include <string>
 
+//TODO: create this as a base class
+// then inherit from this to a new "PostBoard class"
+// inherit also to "PostEncrypted" and "PostEncryptedGroup" class
 typedef struct {
 	int id;
 	std::string message;
