@@ -37,7 +37,7 @@
 #include "core/node.h"
 #include "transaction.h"
 
-int db_add_node(const std::string db_name, Node node, const std::string db_password)
+int db_add_node(const std::string db_name, core::Node node, const std::string db_password)
 {
 	std::stringstream sql;
 	sql << "INSERT INTO main.node VALUES(null, "
@@ -69,20 +69,20 @@ int db_add_node(const std::string db_name, Node node, const std::string db_passw
 
 int db_add_node_initial_data(const std::string db_name, const std::string db_password)
 {
-	std::vector<Node> nodes = {
-		Node("Swepool", "swepool.org", 11898, false, false, "1.1.0", 0.00, "swepool"),
-		Node("Göta Pool", "gota.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "gota"),
-		Node("Blocksum", "blocksum.org", 11898, false, false, "1.1.0", 0.00, "blocksum"),
-		Node("Gamersnest", "pool.gamersnest.org", 11898, true, false, "1.1.0", 0.00, "gamersnest"),
-		Node("Norpool", "norpool.org", 11898, false, false, "1.1.0", 0.00, "norpool"),
-		Node("Privacy Mine", "privacymine.net", 11898, false, false, "1.1.0", 0.00, "privacymine"),
-		Node("Privacy Mine SSL", "privacymine.net", 21898, true, false, "1.1.0", 0.00, "privacymine"),
-		Node("KuKoHumoR", "kukohumor.se", 11898, false, false, "1.1.0", 0.00, "KuKoHumoR"),
-		Node("Spider Pig", "spider-pig.hopto.org", 11898, false, false, "1.1.0", 0.00, "spider-pig"),
-		Node("TechyNode", "129.153.157.185", 11898, false, false, "1.1.0", 0.00, "TechyNode"),
-		Node("TechyNode-Backup", "techy.ddns.net", 11898, false, false, "1.1.0", 0.00, "TechyNode-Backup"),
-		Node("Wasa", "wasa.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "wasa"),
-		Node("Tifo", "tifo.info", 11898, false, false, "1.1.0", 0.00, "blocksum"),
+	std::vector<core::Node> nodes = {
+		core::Node("Swepool", "swepool.org", 11898, false, false, "1.1.0", 0.00, "swepool"),
+		core::Node("Göta Pool", "gota.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "gota"),
+		core::Node("Blocksum", "blocksum.org", 11898, false, false, "1.1.0", 0.00, "blocksum"),
+		core::Node("Gamersnest", "pool.gamersnest.org", 11898, true, false, "1.1.0", 0.00, "gamersnest"),
+		core::Node("Norpool", "norpool.org", 11898, false, false, "1.1.0", 0.00, "norpool"),
+		core::Node("Privacy Mine", "privacymine.net", 11898, false, false, "1.1.0", 0.00, "privacymine"),
+		core::Node("Privacy Mine SSL", "privacymine.net", 21898, true, false, "1.1.0", 0.00, "privacymine"),
+		core::Node("KuKoHumoR", "kukohumor.se", 11898, false, false, "1.1.0", 0.00, "KuKoHumoR"),
+		core::Node("Spider Pig", "spider-pig.hopto.org", 11898, false, false, "1.1.0", 0.00, "spider-pig"),
+		core::Node("TechyNode", "129.153.157.185", 11898, false, false, "1.1.0", 0.00, "TechyNode"),
+		core::Node("TechyNode-Backup", "techy.ddns.net", 11898, false, false, "1.1.0", 0.00, "TechyNode-Backup"),
+		core::Node("Wasa", "wasa.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "wasa"),
+		core::Node("Tifo", "tifo.info", 11898, false, false, "1.1.0", 0.00, "blocksum"),
 	};
 
 	for (unsigned int n = 0; n < nodes.size(); n++) {

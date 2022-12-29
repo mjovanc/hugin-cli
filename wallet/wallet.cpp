@@ -30,6 +30,8 @@
 
 #include <string>
 
+#include <unistd.h>
+
 #include "core/log.h"
 #include "db/database.h"
 #include "wallet.h"

@@ -34,11 +34,11 @@
 #include "core/core.h"
 #include "core/node.h"
 
-int db_add_node(const std::string db_name, Node node, const std::string db_password);
+int db_add_node(const std::string db_name, core::Node node, const std::string db_password);
 int db_add_node_initial_data(const std::string db_name, const std::string db_password);
 
-Node db_get_node(const std::string db_name, int node_id, const std::string db_password);
-Node *db_get_node_all(const std::string db_name, const std::string db_password);
+core::Node db_get_node(const std::string db_name, int node_id, const std::string db_password);
+core::Node *db_get_node_all(const std::string db_name, const std::string db_password);
 
 int db_edit_node(const std::string db_name, int node_id, const std::string db_password);
 
