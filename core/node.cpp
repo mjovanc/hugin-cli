@@ -28,67 +28,25 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "sqlite3.h"
-#include <string>
+#include "node.h"
 
-#include "core/log.h"
+#include <sstream>
 
-int db_transaction(const std::string db_name, const std::string sql, const std::string db_password)
+Node::Node(std::string name,
+		   std::string domain,
+		   uint16_t port,
+		   bool ssl,
+		   bool cache,
+		   std::string version,
+		   double fee,
+		   std::string proxy_url)
 {
-	sqlite3 *db;
-	sqlite3_stmt *stmt;
-	char *zErrMsg = 0;
-	int rc;
-
-	//TODO: should open the database with password
-	rc = sqlite3_open(db_name.c_str(), &db);
-	if (rc != SQLITE_OK) {
-		log_error("Can't open database: %s", sqlite3_errmsg(db));
-		return 1;
-	}
-
-	rc = sqlite3_exec(db, sql.c_str(), 0, 0, &zErrMsg);
-	if (rc != SQLITE_OK) {
-		log_error("SQL error: %s", sqlite3_errmsg(db));
-		sqlite3_free(zErrMsg);
-		sqlite3_close(db);
-
-		return 1;
-	}
-
-	sqlite3_close(db);
-
-	return 0;
-}
-
-int db_transaction_prepared(const std::string db_name, const std::string sql, const std::string db_password)
-{
-	sqlite3 *db;
-	sqlite3_stmt *stmt;
-	char *zErrMsg = 0;
-	int rc;
-
-	//TODO: should open the database with password
-	rc = sqlite3_open(db_name.c_str(), &db);
-	if (rc != SQLITE_OK) {
-		log_error("Can't open database: %s", sqlite3_errmsg(db));
-		return 1;
-	}
-
-	int prepared_stmt = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, NULL);
-	if (prepared_stmt != 0) {
-		log_error("Can't execute prepared database transaction: %s", sqlite3_errmsg(db));
-		return 1;
-	}
-
-	rc = sqlite3_step(stmt);
-	if (rc != SQLITE_DONE) {
-		log_error("Can't run SQL statement: %s", sqlite3_errmsg(db));
-		return 1;
-	}
-
-	sqlite3_finalize(stmt);
-	sqlite3_close(db);
-
-	return 0;
+	m_name = name;
+	m_domain = domain;
+	m_port = port;
+	m_ssl = ssl;
+	m_cache = cache;
+	m_version = version;
+	m_fee = fee;
+	m_proxy_url = proxy_url;
 }

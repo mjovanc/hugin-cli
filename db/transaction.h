@@ -31,6 +31,8 @@
 #ifndef DB_TRANSACTION_H
 #define DB_TRANSACTION_H
 
+#include <string>
+
 int db_transaction(const std::string db_name, const std::string sql, const std::string db_password);
 int db_transaction_prepared(const std::string db_name, const std::string sql, const std::string db_password);
 

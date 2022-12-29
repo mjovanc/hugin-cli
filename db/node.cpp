@@ -28,10 +28,12 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdio.h>
+#include <string>
+#include <vector>
 
 #include "core/core.h"
 #include "core/log.h"
+#include "core/node.h"
 #include "transaction.h"
 
 int db_add_node(const std::string db_name, node_t node, const std::string db_password)
@@ -55,7 +57,11 @@ int db_add_node(const std::string db_name, node_t node, const std::string db_pas
 int db_add_node_initial_data(const std::string db_name, const std::string db_password)
 {
 	// create a vector here instead
-	node_t node_list[13] = {
+	std::vector<Node> nodes = {
+		Node("Swepool", "swepool.org", 11898, false, false, "1.1.0", 0.00, "swepool"),
+	};
+
+	/* ode_t node_list[13] = {
 		{"Swepool", "swepool.org", 11898, false, false, "1.1.0", 0.00, "swepool"},
 		{"Göta Pool", "gota.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "gota"},
 		{"Blocksum", "blocksum.org", 11898, false, false, "1.1.0", 0.00, "blocksum"},
@@ -69,11 +75,11 @@ int db_add_node_initial_data(const std::string db_name, const std::string db_pas
 		{"TechyNode-Backup", "techy.ddns.net", 11898, false, false, "1.1.0", 0.00, "TechyNode-Backup"},
 		{"Wasa", "wasa.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "wasa"},
 		{"Tifo", "tifo.info", 11898, false, false, "1.1.0", 0.00, "blocksum"},
-	};
+	}; */
 
-	for (int n = 0; n < 13; n++) {
+	/* for (int n = 0; n < 13; n++) {
 		db_add_node(db_name, node_list[n], db_password);
-	}
+	} */
 
 	return 0;
 }

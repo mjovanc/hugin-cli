@@ -52,7 +52,7 @@ int db_create(std::string db_name, const std::string db_password)
 		return 1;
 	}
 
-	//TODO: does not work currently
+	//TODO: replace with c++
 	// setting the pragma key
 	char pragma_sql[1024];
 	snprintf(pragma_sql, sizeof(pragma_sql), "PRAGMA KEY='%s';", db_password);

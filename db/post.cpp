@@ -28,7 +28,7 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdio.h>
+#include <string>
 
 #include "core/log.h"
 #include "database.h"
@@ -40,7 +40,7 @@ int db_add_post(const std::string db_name, post_t post, const std::string db_pas
 	snprintf(sql, sizeof(sql), "INSERT INTO main.post VALUES(null, '%s', '%s', %ld, %s, %s, '%s', '%s');",
 			 post.message, post.nickname, post.time, post.board, post.key, post.signature, post.tx_hash);
 
-	int txn_prepared = db_transaction_prepared(&db_name, sql, db_password);
+	int txn_prepared = db_transaction_prepared(db_name.c_str(), sql, db_password.c_str());
 
 	if (txn_prepared != 0) {
 		log_error("Add post failed!");
