@@ -34,7 +34,7 @@
 #include "database.h"
 #include "log.h"
 #include "node.h"
-#include "sqlcipher/sqlite3.h"
+#include "sqlite3.h"
 #include "transaction.h"
 
 int db_create(char *db_name, const char *db_password)

@@ -33,7 +33,7 @@ BINARY=Hugin
 
 # directories
 CODEDIRS=. account wallet db core crypto daemon http util
-INCDIRS=. account wallet db common config core crypto daemon http util
+INCDIRS=. $(HOME)/.local/include/sqlcipher account wallet db common config core crypto daemon http util
 BUILDDIR = build
 EXTERNALDIR = external
 
@@ -44,7 +44,8 @@ OPT=-00
 # flags
 DEPFLAGS=-MP -MD
 CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -DSQLITE_HAS_CODEC -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
-DYNAMIC_LINK_FLAGS=-lsqlcipher -lncurses -lform
+DYNAMIC_LINK_FLAGS=-lncurses -lform
+SQLCIPHER_FLAGS=--enable-tempstore=yes CFLAGS='-DSQLITE_HAS_CODEC' LDFLAGS='-lcrypto' --prefix=$(HOME)/.local
 
 # files
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.cpp))
@@ -57,10 +58,16 @@ $(BINARY): $(OBJECTS)
 	@echo "-- BUILDING HUGIN TARGET"
 	$(CC) -o $(BUILDDIR)/$@ $^ $(DYNAMIC_LINK_FLAGS)
 
-$(BUILDDIR)/%.o: %.cpp
+$(BUILDDIR)/%.o: %.cpp | sqlcipher
 	@echo "-- COMPILING SOURCE $< INTO OBJECT $@"
 	@mkdir -p ${dir $@}
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $< $(HOME)/.local/lib/libsqlcipher.a
+
+sqlcipher:
+	@echo "-- BUILDING SQLCIPHER"
+	@(cd $(EXTERNALDIR)/sqlcipher && ./configure $(SQLCIPHER_FLAGS))
+	@(cd $(EXTERNALDIR)/sqlcipher && make)
+	@(cd $(EXTERNALDIR)/sqlcipher && make install)
 
 clean:
 	@echo "-- CLEANING PROJECT"
