@@ -33,6 +33,8 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
+#include <string>
+
 #include "ncurses.h"
 
 #include "config/cli_header.h"
@@ -63,11 +65,11 @@ WINDOW *window_main_menu_init()
 
 int window_main_menu_get_choices(WINDOW *win_main_menu)
 {
-	const char *MENU_CHOICES[3] = {
+	const std::string MENU_CHOICES[3] = {
 		"Login",
 		"Register",
 		"Quit"};
-	const char *MENU_CHOICES_DESC[3] = {
+	const std::string MENU_CHOICES_DESC[3] = {
 		"Login with your account.",
 		"Register a new account.",
 		"Quit the application."};
@@ -79,7 +81,7 @@ int window_main_menu_get_choices(WINDOW *win_main_menu)
 			if (i == highlight)
 				wattron(win_main_menu, A_REVERSE);
 
-			mvwprintw(win_main_menu, i + 1, 1, "%-25s%-20s", MENU_CHOICES[i], MENU_CHOICES_DESC[i]);
+			mvwprintw(win_main_menu, i + 1, 1, "%-25s%-20s", MENU_CHOICES[i].c_str(), MENU_CHOICES_DESC[i].c_str());
 			wattroff(win_main_menu, A_REVERSE);
 		}
 		choice = wgetch(win_main_menu);

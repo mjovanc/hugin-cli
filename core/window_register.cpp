@@ -35,10 +35,10 @@
 
 #include <form.h>
 
-#include "window.h"
-#include "window_chat.h"
 #include "account/account.h"
 #include "util/string_util.h"
+#include "window.h"
+#include "window_chat.h"
 
 void window_register_init()
 {
@@ -48,7 +48,7 @@ void window_register_init()
 	wrefresh(win_register);
 
 	FIELD *field[4];
-	FORM  *my_form;
+	FORM *my_form;
 	int ch;
 	char *username;
 	char *password;
@@ -63,8 +63,8 @@ void window_register_init()
 	field[3] = NULL;
 
 	/* Set field options */
-	set_field_back(field[0], A_UNDERLINE); 	/* Print a line for the option 	*/
-	field_opts_off(field[0], O_AUTOSKIP);  	/* Don't go to next field when this */
+	set_field_back(field[0], A_UNDERLINE); /* Print a line for the option 	*/
+	field_opts_off(field[0], O_AUTOSKIP);  /* Don't go to next field when this */
 	/* Field is filled up 		*/
 	set_field_back(field[1], A_UNDERLINE);
 	// field_opts_off(field[1], O_PUBLIC); // makes the field input hidden
@@ -89,10 +89,8 @@ void window_register_init()
 	move(4, 35);
 
 	/* Loop through to get user requests */
-	while ((ch = getch()) != 10)
-	{
-		switch(ch)
-		{
+	while ((ch = getch()) != 10) {
+		switch (ch) {
 		case KEY_DOWN:
 			/* Go to next field */
 			form_driver(my_form, REQ_NEXT_FIELD);
@@ -118,11 +116,11 @@ void window_register_init()
 	}*/
 
 	// trim whitespaces
-	username = trim(field_buffer(field[0], 0));
-	password = trim(field_buffer(field[1], 0));
+	username = util::trim(field_buffer(field[0], 0));
+	password = util::trim(field_buffer(field[1], 0));
 
 	// register an account
-	account_register(username, password);
+	account::account_register(username, password);
 
 	/* Un post form and free the memory */
 	unpost_form(my_form);
