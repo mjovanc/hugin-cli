@@ -33,8 +33,11 @@
 
 #include <string>
 
+namespace account
+{
 int account_login(std::string username, std::string password);
 int account_register(std::string username, std::string password);
 int account_logout(bool &logged_in);
+}// namespace account
 
 #endif//ACCOUNT_H

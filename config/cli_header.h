@@ -33,18 +33,19 @@
 
 #include <stdio.h>
 
+#include "ncurses.h"
 #include "version.h"
 
-void print_header(WINDOW* header_win)
+void print_header(WINDOW *header_win)
 {
-  	wattron(header_win, COLOR_PAIR(2));
+	wattron(header_win, COLOR_PAIR(2));
 	mvwprintw(header_win, 0, 0,
-		 "     __  __            _          ________    ____\n"
-		 "    / / / __  ______ _(_____     / ____/ /   /  _/\n"
-		 "   / /_/ / / / / __ `/ / __ \\   / /   / /    / /\n"
-		 "  / __  / /_/ / /_/ / / / / /  / /___/ /____/ /\n"
-		 " /_/ /_/\\__,_/\\__, /_/_/ /_/   \\____/_____/___/\n"
-		 "             /____/\n\n");
+			  "     __  __            _          ________    ____\n"
+			  "    / / / __  ______ _(_____     / ____/ /   /  _/\n"
+			  "   / /_/ / / / / __ `/ / __ \\   / /   / /    / /\n"
+			  "  / __  / /_/ / /_/ / / / / /  / /___/ /____/ /\n"
+			  " /_/ /_/\\__,_/\\__, /_/_/ /_/   \\____/_____/___/\n"
+			  "             /____/\n\n");
 
 	wattron(header_win, COLOR_PAIR(1));
 	mvwprintw(header_win, 7, 0, " %s v%s\n", PROJECT_NAME, PROJECT_VERSION);
@@ -56,4 +57,4 @@ void print_header(WINDOW* header_win)
 	mvwprintw(header_win, 15, 0, " %s\n\n", PROJECT_LICENSE_URL);
 }
 
-#endif //CONFIG_CLI_HEADER_H
+#endif//CONFIG_CLI_HEADER_H

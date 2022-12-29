@@ -35,6 +35,8 @@
 #include "core/log.h"
 #include "wallet/wallet.h"
 
+namespace account
+{
 int account_login(std::string username, std::string password)
 {
 	// TODO: this does not work since the file is created after exeuction of program exists
@@ -72,4 +74,5 @@ int account_logout(bool &logged_in)
 	// log_info("Logging out...");
 
 	return 0;
+}
 }
