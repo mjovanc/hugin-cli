@@ -43,13 +43,13 @@ int db_transaction(const std::string db_name, const std::string sql, const std::
 	//TODO: should open the database with password
 	rc = sqlite3_open(db_name.c_str(), &db);
 	if (rc != SQLITE_OK) {
-		log_error("Can't open database: %s", sqlite3_errmsg(db));
+		// log_error("Can't open database: %s", sqlite3_errmsg(db));
 		return 1;
 	}
 
 	rc = sqlite3_exec(db, sql.c_str(), 0, 0, &zErrMsg);
 	if (rc != SQLITE_OK) {
-		log_error("SQL error: %s", sqlite3_errmsg(db));
+		// log_error("SQL error: %s", sqlite3_errmsg(db));
 		sqlite3_free(zErrMsg);
 		sqlite3_close(db);
 
@@ -71,13 +71,13 @@ int db_transaction_prepared(const std::string db_name, const std::string sql, co
 	//TODO: should open the database with password
 	rc = sqlite3_open(db_name.c_str(), &db);
 	if (rc != SQLITE_OK) {
-		log_error("Can't open database: %s", sqlite3_errmsg(db));
+		// log_error("Can't open database: %s", sqlite3_errmsg(db));
 		return 1;
 	}
 
 	int prepared_stmt = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, NULL);
 	if (prepared_stmt != 0) {
-		log_error("Can't execute prepared database transaction: %s", sqlite3_errmsg(db));
+		// log_error("Can't execute prepared database transaction: %s", sqlite3_errmsg(db));
 		return 1;
 	}
 
