@@ -28,8 +28,7 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <stdio.h>
-#include <string.h>
+#include <string>
 
 #include "database.h"
 #include "log.h"
@@ -37,16 +36,16 @@
 #include "sqlite3.h"
 #include "transaction.h"
 
-int db_create(char *db_name, const char *db_password)
+int db_create(std::string db_name, const std::string db_password)
 {
 	sqlite3 *db;
 	sqlite3_stmt *stmt;
 	int rc;
 	//TODO: change this concatenation to sprintf later as on node.c
-	const char *extension = ".db";
-	const char *full_db_name = strcat(db_name, extension);
+	std::string extension = ".db";
+	std::string full_db_name = db_name + extension;
 
-	rc = sqlite3_open(full_db_name, &db);
+	rc = sqlite3_open(full_db_name.c_str(), &db);
 	if (rc != SQLITE_OK) {
 		//TODO: print to file instead
 		// log_error("Can't open database: %s", sqlite3_errmsg(db));
@@ -91,14 +90,14 @@ int db_create(char *db_name, const char *db_password)
 											  "CREATE TABLE main.txn(id INTEGER PRIMARY KEY, hash TEXT, amount REAL, fee REAL);";
 
 	// creating tables
-	db_transaction(&full_db_name, node_table_sql, db_password);
-	db_transaction(&full_db_name, post_table_sql, db_password);
-	db_transaction(&full_db_name, setting_table_sql, db_password);
-	db_transaction(&full_db_name, wallet_table_sql, db_password);
-	db_transaction(&full_db_name, transaction_table_sql, db_password);
+	db_transaction(full_db_name, node_table_sql, db_password);
+	db_transaction(full_db_name, post_table_sql, db_password);
+	db_transaction(full_db_name, setting_table_sql, db_password);
+	db_transaction(full_db_name, wallet_table_sql, db_password);
+	db_transaction(full_db_name, transaction_table_sql, db_password);
 
 	// populate node table data
-	db_add_node_initial_data(&full_db_name, db_password);
+	db_add_node_initial_data(full_db_name, db_password);
 
 	return 0;
 }

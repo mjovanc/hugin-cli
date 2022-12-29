@@ -31,12 +31,11 @@
 #ifndef DATABASE_DATABASE_H
 #define DATABASE_DATABASE_H
 
-#include <stdbool.h>
-#include <stdint.h>
+#include <string>
 
 #include "core/core.h"
 
-int db_create(const std::string db_name, const std::string db_password);
+int db_create(std::string db_name, const std::string db_password);
 
 setting_t db_get_setting(const std::string db_name, const std::string db_new_password);
 node_t db_get_setting_node(const std::string db_name, const std::string db_new_password);// join setting table with node
