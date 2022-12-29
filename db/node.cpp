@@ -59,27 +59,23 @@ int db_add_node_initial_data(const std::string db_name, const std::string db_pas
 	// create a vector here instead
 	std::vector<Node> nodes = {
 		Node("Swepool", "swepool.org", 11898, false, false, "1.1.0", 0.00, "swepool"),
+		Node("Göta Pool", "gota.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "gota"),
+		Node("Blocksum", "blocksum.org", 11898, false, false, "1.1.0", 0.00, "blocksum"),
+		Node("Gamersnest", "pool.gamersnest.org", 11898, true, false, "1.1.0", 0.00, "gamersnest"),
+		Node("Norpool", "norpool.org", 11898, false, false, "1.1.0", 0.00, "norpool"),
+		Node("Privacy Mine", "privacymine.net", 11898, false, false, "1.1.0", 0.00, "privacymine"),
+		Node("Privacy Mine SSL", "privacymine.net", 21898, true, false, "1.1.0", 0.00, "privacymine"),
+		Node("KuKoHumoR", "kukohumor.se", 11898, false, false, "1.1.0", 0.00, "KuKoHumoR"),
+		Node("Spider Pig", "spider-pig.hopto.org", 11898, false, false, "1.1.0", 0.00, "spider-pig"),
+		Node("TechyNode", "129.153.157.185", 11898, false, false, "1.1.0", 0.00, "TechyNode"),
+		Node("TechyNode-Backup", "techy.ddns.net", 11898, false, false, "1.1.0", 0.00, "TechyNode-Backup"),
+		Node("Wasa", "wasa.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "wasa"),
+		Node("Tifo", "tifo.info", 11898, false, false, "1.1.0", 0.00, "blocksum"),
 	};
 
-	/* ode_t node_list[13] = {
-		{"Swepool", "swepool.org", 11898, false, false, "1.1.0", 0.00, "swepool"},
-		{"Göta Pool", "gota.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "gota"},
-		{"Blocksum", "blocksum.org", 11898, false, false, "1.1.0", 0.00, "blocksum"},
-		{"Gamersnest", "pool.gamersnest.org", 11898, true, false, "1.1.0", 0.00, "gamersnest"},
-		{"Norpool", "norpool.org", 11898, false, false, "1.1.0", 0.00, "norpool"},
-		{"Privacy Mine", "privacymine.net", 11898, false, false, "1.1.0", 0.00, "privacymine"},
-		{"Privacy Mine SSL", "privacymine.net", 21898, true, false, "1.1.0", 0.00, "privacymine"},
-		{"KuKoHumoR", "kukohumor.se", 11898, false, false, "1.1.0", 0.00, "KuKoHumoR"},
-		{"Spider Pig", "spider-pig.hopto.org", 11898, false, false, "1.1.0", 0.00, "spider-pig"},
-		{"TechyNode", "129.153.157.185", 11898, false, false, "1.1.0", 0.00, "TechyNode"},
-		{"TechyNode-Backup", "techy.ddns.net", 11898, false, false, "1.1.0", 0.00, "TechyNode-Backup"},
-		{"Wasa", "wasa.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "wasa"},
-		{"Tifo", "tifo.info", 11898, false, false, "1.1.0", 0.00, "blocksum"},
-	}; */
-
-	/* for (int n = 0; n < 13; n++) {
-		db_add_node(db_name, node_list[n], db_password);
-	} */
+	for (unsigned int n = 0; n < nodes.size(); n++) {
+		db_add_node(db_name, nodes[n], db_password);
+	}
 
 	return 0;
 }
