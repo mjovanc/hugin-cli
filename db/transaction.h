@@ -33,7 +33,10 @@
 
 #include <string>
 
+namespace db
+{
 int db_transaction(const std::string db_name, const std::string sql, const std::string db_password);
 int db_transaction_prepared(const std::string db_name, const std::string sql, const std::string db_password);
+}// namespace db
 
 #endif//DB_TRANSACTION_H

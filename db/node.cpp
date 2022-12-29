@@ -37,6 +37,8 @@
 #include "core/node.h"
 #include "transaction.h"
 
+namespace db
+{
 int db_add_node(const std::string db_name, core::Node node, const std::string db_password)
 {
 	std::stringstream sql;
@@ -90,4 +92,5 @@ int db_add_node_initial_data(const std::string db_name, const std::string db_pas
 	}
 
 	return 0;
+}
 }

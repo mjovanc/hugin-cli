@@ -37,12 +37,15 @@
 #include "core/core.h"
 #include "database.h"
 
+namespace db
+{
 int db_add_post(const std::string db_name, post_t post, const std::string db_password);
 
 post_t db_get_post(const std::string db_name, int post_id, const std::string db_password);
 post_t *db_get_post_all(const std::string db_name, const std::string db_password);
 
 int db_delete_post(std::string db_name, int post_id, const std::string db_password);
-int db_delete_post_all(std::stringdb_name, const std::string db_password);
+int db_delete_post_all(std::string db_name, const std::string db_password);
+}// namespace db
 
 #endif//DB_POST_H

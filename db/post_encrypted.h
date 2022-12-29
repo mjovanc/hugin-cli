@@ -36,8 +36,11 @@
 
 #include "core/core.h"
 
+namespace db
+{
 int db_add_post_encrypted(const char *db_name, post_encrypted_t post_encrypted, const char *db_password);
 int db_delete_post_encrypted(char *db_name, int post_encrypted_id, const char *db_password);
 int db_delete_post_encrypted_all(char *db_name, const char *db_password);
+}// namespace db
 
 #endif//DB_POST_ENCRYPTED_H

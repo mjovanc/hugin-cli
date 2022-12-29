@@ -35,18 +35,32 @@
 #include "database.h"
 #include "transaction.h"
 
-int db_add_post(const std::string db_name, post_t post, const std::string db_password)
+//TODO: need to implement Post
+/* int db_add_post(const std::string db_name, core::Post post, const std::string db_password)
 {
-	char sql[1024];
-	snprintf(sql, sizeof(sql), "INSERT INTO main.post VALUES(null, '%s', '%s', %ld, %s, %s, '%s', '%s');",
-			 post.message, post.nickname, post.time, post.board, post.key, post.signature, post.tx_hash);
+	std::stringstream sql;
+	sql << "INSERT INTO main.post VALUES(null, "
+		<< post.get_message()
+		<< ", "
+		<< post.get_nickname()
+		<< ", "
+		<< post.get_time()
+		<< ", "
+		<< post.get_board()
+		<< ", "
+		<< post.get_key()
+		<< ", "
+		<< post.get_signature()
+		<< ", "
+		<< post.get_tx_hash()
+		<< ");";
 
-	int txn_prepared = db_transaction_prepared(db_name.c_str(), sql, db_password.c_str());
+	int txn_prepared = db_transaction_prepared(db_name.c_str(), sql.str(), db_password.c_str());
 
 	if (txn_prepared != 0) {
-		log_error("Add post failed!");
+		// log_error("Add post failed!");
 		return 1;
 	}
 
 	return 0;
-}
+} */

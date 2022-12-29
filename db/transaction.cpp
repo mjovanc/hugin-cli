@@ -33,6 +33,8 @@
 
 #include "core/log.h"
 
+namespace db
+{
 int db_transaction(const std::string db_name, const std::string sql, const std::string db_password)
 {
 	sqlite3 *db;
@@ -91,4 +93,5 @@ int db_transaction_prepared(const std::string db_name, const std::string sql, co
 	sqlite3_close(db);
 
 	return 0;
+}
 }

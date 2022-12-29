@@ -37,6 +37,8 @@
 #include "core/node.h"
 #include "core/setting.h"
 
+namespace db
+{
 int db_create(std::string db_name, const std::string db_password);
 
 core::Setting db_get_setting(const std::string db_name, const std::string db_new_password);
@@ -46,5 +48,6 @@ int db_edit_password(const std::string db_name, const std::string db_new_passwor
 int db_edit_setting(const std::string db_name, const std::string db_password);
 
 int db_delete(const std::string db_name);
+}// namespace db
 
 #endif//DATABASE_DATABASE_H

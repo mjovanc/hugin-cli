@@ -34,6 +34,8 @@
 #include "core/core.h"
 #include "core/node.h"
 
+namespace db
+{
 int db_add_node(const std::string db_name, core::Node node, const std::string db_password);
 int db_add_node_initial_data(const std::string db_name, const std::string db_password);
 
@@ -43,5 +45,6 @@ core::Node *db_get_node_all(const std::string db_name, const std::string db_pass
 int db_edit_node(const std::string db_name, int node_id, const std::string db_password);
 
 int db_delete_node(const std::string db_name, int node_id, const std::string db_password);
+}// namespace db
 
 #endif//DB_NODE_H

@@ -36,6 +36,8 @@
 #include "sqlite3.h"
 #include "transaction.h"
 
+namespace db
+{
 int db_create(std::string db_name, const std::string db_password)
 {
 	sqlite3 *db;
@@ -106,3 +108,4 @@ int db_delete(char *db_name)
 {
 	return 0;
 }
+}// namespace db
