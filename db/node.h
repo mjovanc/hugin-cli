@@ -31,16 +31,14 @@
 #ifndef DB_NODE_H
 #define DB_NODE_H
 
-#include <stdbool.h>
-#include <stdint.h>
-
 #include "core/core.h"
+#include "core/node.h"
 
-int db_add_node(const std::string db_name, node_t node, const std::string db_password);
+int db_add_node(const std::string db_name, Node node, const std::string db_password);
 int db_add_node_initial_data(const std::string db_name, const std::string db_password);
 
-node_t db_get_node(const std::string db_name, int node_id, const std::string db_password);
-node_t *db_get_node_all(const std::string db_name, const std::string db_password);
+Node db_get_node(const std::string db_name, int node_id, const std::string db_password);
+Node *db_get_node_all(const std::string db_name, const std::string db_password);
 
 int db_edit_node(const std::string db_name, int node_id, const std::string db_password);
 

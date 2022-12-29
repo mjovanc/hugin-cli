@@ -46,6 +46,19 @@ public:
 		 double fee,
 		 std::string proxy_url);
 
+	std::string get_name();
+	std::string get_domain();
+	uint16_t get_port();
+
+	bool ssl();
+	bool cache();
+
+	std::string get_version();
+
+	double get_fee();
+
+	std::string get_proxy_url();
+
 private:
 	std::string m_name;
 	std::string m_domain;

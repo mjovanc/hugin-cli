@@ -34,11 +34,12 @@
 #include <string>
 
 #include "core/core.h"
+#include "core/node.h"
 
 int db_create(std::string db_name, const std::string db_password);
 
 setting_t db_get_setting(const std::string db_name, const std::string db_new_password);
-node_t db_get_setting_node(const std::string db_name, const std::string db_new_password);// join setting table with node
+Node db_get_setting_node(const std::string db_name, const std::string db_new_password);// join setting table with node
 
 int db_edit_password(const std::string db_name, const std::string db_new_password);
 int db_edit_setting(const std::string db_name, const std::string db_password);

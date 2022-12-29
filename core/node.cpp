@@ -50,3 +50,38 @@ Node::Node(std::string name,
 	m_fee = fee;
 	m_proxy_url = proxy_url;
 }
+
+std::string Node::get_name()
+{
+	return m_name;
+}
+
+uint16_t Node::get_port()
+{
+	return m_port;
+}
+
+bool Node::ssl()
+{
+	return m_ssl;
+}
+
+bool Node::cache()
+{
+	return m_cache;
+}
+
+std::string Node::get_version()
+{
+	return m_version;
+}
+
+double Node::get_fee()
+{
+	return m_fee;
+}
+
+std::string Node::get_proxy_url()
+{
+	return m_proxy_url;
+}

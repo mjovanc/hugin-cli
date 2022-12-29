@@ -28,6 +28,7 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -36,18 +37,30 @@
 #include "core/node.h"
 #include "transaction.h"
 
-int db_add_node(const std::string db_name, node_t node, const std::string db_password)
+int db_add_node(const std::string db_name, Node node, const std::string db_password)
 {
-	char sql[1024];
-	int ssl = node.ssl ? 0 : 1;
-	int cache = node.cache ? 0 : 1;
-	snprintf(sql, sizeof(sql), "INSERT INTO main.node VALUES(null, '%s', '%s', %d, %d, %d, '%s', %.6f, '%s');",
-			 node.name, node.domain, node.port, ssl, cache, node.version, node.fee, node.proxy_url);
+	std::stringstream sql;
+	sql << "INSERT INTO main.node VALUES(null, "
+		<< node.get_name()
+		<< ", "
+		<< node.get_domain()
+		<< ", "
+		<< node.get_port()
+		<< ", "
+		<< node.ssl()
+		<< ", "
+		<< node.get_version()
+		<< ", "
+		<< node.get_fee()
+		<< ", "
+		<< node.get_proxy_url()
+		<< ");";
 
-	int txn_prepared = db_transaction_prepared(db_name, sql, db_password);
+	int txn_prepared = db_transaction_prepared(db_name, sql.str(), db_password);
 
 	if (txn_prepared != 0) {
-		log_error("Add node failed!");
+		// TODO: log to file
+		// log_error("Add node failed!");
 		return 1;
 	}
 
@@ -56,7 +69,6 @@ int db_add_node(const std::string db_name, node_t node, const std::string db_pas
 
 int db_add_node_initial_data(const std::string db_name, const std::string db_password)
 {
-	// create a vector here instead
 	std::vector<Node> nodes = {
 		Node("Swepool", "swepool.org", 11898, false, false, "1.1.0", 0.00, "swepool"),
 		Node("Göta Pool", "gota.kryptokrona.se", 11898, false, false, "1.1.0", 0.00, "gota"),
