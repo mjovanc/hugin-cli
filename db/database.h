@@ -35,6 +35,7 @@
 
 #include "core/core.h"
 #include "core/node.h"
+#include "core/setting.h"
 
 int db_create(std::string db_name, const std::string db_password);
 

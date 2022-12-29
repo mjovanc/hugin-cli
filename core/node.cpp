@@ -31,7 +31,8 @@
 #include "node.h"
 
 #include <sstream>
-
+namespace core
+{
 Node::Node(std::string name,
 		   std::string domain,
 		   uint16_t port,
@@ -84,4 +85,5 @@ double Node::get_fee()
 std::string Node::get_proxy_url()
 {
 	return m_proxy_url;
+}
 }

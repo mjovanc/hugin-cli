@@ -34,6 +34,8 @@
 #include <cstdint>
 #include <iostream>
 
+namespace core
+{
 class Node
 {
 public:
@@ -69,5 +71,7 @@ private:
 	double m_fee;
 	std::string m_proxy_url;
 };
+}// namespace core
+
 
 #endif
