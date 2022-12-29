@@ -31,10 +31,13 @@
 #include <ctype.h>
 #include <string.h>
 
-char * trim(char *c)
+namespace util
+{
+char *trim(char *c)
 {
 	char *e = c + strlen(c) - 1;
-	while(*c && isspace(*c)) c++;
-	while(e > c && isspace(*e)) *e-- = '\0';
+	while (*c && isspace(*c)) c++;
+	while (e > c && isspace(*e)) *e-- = '\0';
 	return c;
+}
 }

@@ -31,6 +31,9 @@
 #ifndef UTIL_STRING_UTIL_H
 #define UTIL_STRING_UTIL_H
 
+namespace util
+{
 char *trim(char *c);
+}
 
-#endif //UTIL_STRING_UTIL_H
+#endif//UTIL_STRING_UTIL_H
