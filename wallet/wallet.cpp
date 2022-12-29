@@ -36,6 +36,8 @@
 #include "db/database.h"
 #include "wallet.h"
 
+namespace wallet
+{
 bool wallet_exists(const std::string wallet_name)
 {
 	std::string extension = ".db";
@@ -67,4 +69,5 @@ bool wallet_create(const std::string wallet_name, const std::string wallet_passw
 bool wallet_open(const std::string wallet_name, const std::string wallet_password)
 {
 	return true;
+}
 }

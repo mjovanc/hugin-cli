@@ -33,9 +33,11 @@
 
 #include <string>
 
-// TODO: should look into if we are going to be using const here
+namespace wallet
+{
 bool wallet_exists(const std::string wallet_name);
 bool wallet_create(const std::string wallet_name, const std::string wallet_password);
 bool wallet_open(const std::string wallet_name, const std::string wallet_password);
+}// namespace wallet
 
 #endif//WALLET_WALLET_H
