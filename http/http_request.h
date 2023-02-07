@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2022, The Kryptokrona Developers
+// Copyright (c) 2022-2023, The Kryptokrona Developers
 //
 // Created by Marcus Cvjeticanin
 //
@@ -36,4 +36,4 @@
 #ifndef HTTP_HTTP_REQUEST_H
 #define HTTP_HTTP_REQUEST_H
 
-#endif //HTTP_HTTP_REQUEST_H
+#endif//HTTP_HTTP_REQUEST_H

@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2022, The Kryptokrona Developers
+// Copyright (c) 2022-2023, The Kryptokrona Developers
 //
 // Created by Marcus Cvjeticanin
 //
@@ -35,44 +35,44 @@
 #include <stdint.h>
 
 typedef struct {
-  char				name[30];
-  char        		domain[255];
-  uint16_t        	port;
-  bool				ssl;
-  bool				cache;
-  char				version[5];
-  double			fee;
-  char				proxy_url[50];
+	char name[30];
+	char domain[255];
+	uint16_t port;
+	bool ssl;
+	bool cache;
+	char version[5];
+	double fee;
+	char proxy_url[50];
 } node_t;
 
 typedef struct {
-  int				id;
-  int        		node_id;
+	int id;
+	int node_id;
 } setting_t;
 
 typedef struct {
-  int				id;
-  char        		message[5000]; //TODO: need to check how long this can be and the rest of the fields
-  char        		nickname[50];
-  long				time;
-  char				board[50];
-  char				key[100];
-  char				signature[50];
-  char				tx_hash[100];
+	int id;
+	char message[5000];//TODO: need to check how long this can be and the rest of the fields
+	char nickname[50];
+	long time;
+	char board[50];
+	char key[100];
+	char signature[50];
+	char tx_hash[100];
 } post_t;
 
 typedef struct {
-  int				id;
-  char        		tx_hash[100];
-  char        		tx_box[5000];
-  long				tx_timestamp;
+	int id;
+	char tx_hash[100];
+	char tx_box[5000];
+	long tx_timestamp;
 } post_encrypted_t;
 
 typedef struct {
-  int				id;
-  char        		tx_hash[100];
-  char        		tx_sb[5000];
-  long				tx_timestamp;
+	int id;
+	char tx_hash[100];
+	char tx_sb[5000];
+	long tx_timestamp;
 } post_encrypted_group_t;
 
 #endif//CORE_CORE_H

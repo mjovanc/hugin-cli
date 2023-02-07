@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2022-2022, The Kryptokrona Developers
+# Copyright (c) 2022-2023, The Kryptokrona Developers
 #
 # Created by Marcus Cvjeticanin
 #
