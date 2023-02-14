@@ -40,10 +40,9 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 # Setup and run
 
 1. Clone the repository and all its submodules `git clone --recurse-submodules git@github.com:kryptokrona/hugin-cli.git`
-2. Run `cmake .` to initialize CMake project
-3. Run `cmake -B ./build -S .`
-4. Go to build directory and run `make`
-5. Run executable `./Hugin`
+2. Go into directory `cd hugin-cli`
+3. Run `make` to build project
+4. Go to build directory and run `./Hugin`
 
 Note to be able to run these commands above, install the dependencies in the next section first.
 
@@ -51,18 +50,17 @@ Note to be able to run these commands above, install the dependencies in the nex
 
 The following table summarizes the tools and libraries required to build.
 
-| Dep       | Min. version | Optional | Purpose                                               |
-| --------- | ------------ | -------- | ----------------------------------------------------- |
-| GCC       | 11           | NO       | Compiler.                                             |
-| CMake     | 3.18         | NO       | Build generation tool for this project.               |
-| OpenSSL   | 3            | NO       |                                                       |
-| SQLCipher | 3.39.2       | NO       | Database (forked from Sqlite3) with encryption tools. |
-| CUnit     | 3.2.7        | NO       | Unit testing framework written in C.                  |
+| Dep     | Min. version | Optional | Purpose                                 |
+| ------- | ------------ | -------- | --------------------------------------- |
+| GCC     | 11           | NO       | Compiler.                               |
+| Make    | 4.3          | NO       | Build generation tool for this project. |
+| Sqlite3 | 3.37.2       | NO       | Database.                               |
+| CUnit   | 3.2.7        | NO       | Unit testing framework written in C.    |
 
 To be able to build using Debian/Ubuntu
 
 ```sh
-sudo apt-get -y install build-essential libssl-dev cmake git pkg-config
+sudo apt-get -y install build-essential libssl-dev sqlite3 libsqlite3-dev git pkg-config
 ```
 
 ### Program arguments

@@ -31,28 +31,27 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "sqlcipher/sqlite3.h"
 #include "database.h"
-#include "transaction.h"
-#include "node.h"
 #include "log.h"
+#include "node.h"
+#include "sqlite3.h"
+#include "transaction.h"
 
 int db_create(char *db_name, const char *db_password)
 {
-    sqlite3 *db;
-	sqlite3_stmt* stmt;
-    int rc;
+	sqlite3 *db;
+	sqlite3_stmt *stmt;
+	int rc;
 	//TODO: change this concatenation to sprintf later as on node.c
-    const char *extension = ".db";
-    const char *full_db_name = strcat(db_name, extension);
+	const char *extension = ".db";
+	const char *full_db_name = strcat(db_name, extension);
 
-    rc = sqlite3_open(full_db_name, &db);
-    if (rc != SQLITE_OK)
-    {
+	rc = sqlite3_open(full_db_name, &db);
+	if (rc != SQLITE_OK) {
 		//TODO: print to file instead
 		// log_error("Can't open database: %s", sqlite3_errmsg(db));
-        return 1;
-    }
+		return 1;
+	}
 
 	//TODO: does not work currently
 	// setting the pragma key
@@ -61,14 +60,13 @@ int db_create(char *db_name, const char *db_password)
 
 	sqlite3_prepare_v2(db, pragma_sql, -1, &stmt, NULL);
 	rc = sqlite3_step(stmt);
-	if (rc != SQLITE_DONE)
-	{
+	if (rc != SQLITE_DONE) {
 		//TODO: print to file instead
 		// log_error("Can't run SQL statement: %s", sqlite3_errmsg(db));
 		return 1;
 	}
 	sqlite3_finalize(stmt);
-	sqlite3_close(db); // closing to save the database to file system
+	sqlite3_close(db);// closing to save the database to file system
 
 	// not possible yet since the libsqlcipher does not have SQLITE_HAS_CODEC and SQLITE_TEMP_STORE in the CFLAGS
 	// need probably to build it myself...
@@ -90,9 +88,9 @@ int db_create(char *db_name, const char *db_password)
 								   " spend_key TEXT NOT NULL, view_key TEXT NOT NULL);";
 
 	const char *transaction_table_sql = "DROP TABLE IF EXISTS main.txn;"
-								  		"CREATE TABLE main.txn(id INTEGER PRIMARY KEY, hash TEXT, amount REAL, fee REAL);";
+										"CREATE TABLE main.txn(id INTEGER PRIMARY KEY, hash TEXT, amount REAL, fee REAL);";
 
-    // creating tables
+	// creating tables
 	db_transaction(&full_db_name, node_table_sql, db_password);
 	db_transaction(&full_db_name, post_table_sql, db_password);
 	db_transaction(&full_db_name, setting_table_sql, db_password);
@@ -102,10 +100,10 @@ int db_create(char *db_name, const char *db_password)
 	// populate node table data
 	db_add_node_initial_data(&full_db_name, db_password);
 
-    return 0;
+	return 0;
 }
 
 int db_delete(char *db_name)
 {
-    return 0;
+	return 0;
 }
