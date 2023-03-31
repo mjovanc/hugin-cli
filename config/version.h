@@ -33,7 +33,7 @@
 
 #define PROJECT_NAME "Hugin CLI"
 #define PROJECT_SITE "https://www.kryptokrona.org"
-#define PROJECT_COPYRIGHT "Copyright 2022, Kryptokrona"
+#define PROJECT_COPYRIGHT "Copyright 2022-2023, Kryptokrona"
 #define PROJECT_AUTHOR "Marcus Cvjeticanin"
 #define PROJECT_LICENSE_URL "https://github.com/kryptokrona/hugin-cli/blob/master/LICENSE"
 #define APP_VER_MAJOR 0
