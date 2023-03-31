@@ -4,6 +4,8 @@
 
 A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockchain.
 
+# Table of Contents
+
 - [Development Resources](#development-resources)
 - [Releases](#releases)
 - [Setup and run](#setup-and-run)
