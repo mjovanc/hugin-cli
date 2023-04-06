@@ -48,7 +48,7 @@ jobs:
       # Ubuntu 22.04
       - name: Install dependencies
         if: matrix.config.name == 'Ubuntu Latest GCC'
-        run: sudo apt-get -y install libssl-dev libsqlcipher-dev
+        run: sudo apt-get -y install libssl-dev
 
       - name: Build Ubuntu Target
         if: matrix.config.name == 'Ubuntu Latest GCC'
@@ -69,7 +69,7 @@ jobs:
       # macOS M1
       - name: Install dependencies
         if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'arm64'
-        run: brew install openssl@1.1 sqlcipher
+        run: brew install openssl@1.1
 
       - name: Build macOS M1 Target
         if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'arm64'
@@ -90,7 +90,7 @@ jobs:
       # macOS 64-bit
       - name: Install dependencies
         if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'x64'
-        run: brew install openssl@1.1 sqlcipher
+        run: brew install openssl@1.1
 
       - name: Build macOS 64-bit Target
         if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'x64'

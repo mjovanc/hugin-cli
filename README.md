@@ -20,6 +20,8 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 
 - Web: https://kryptokrona.org
 - GitHub: https://github.com/mjovanc/hugin-cli
+- Wiki: https://github.com/mjovanc/hugin-cli/wiki
+- Discussions: https://github.com/mjovanc/hugin-cli/discussions
 - Hugin: Hugin Development group on Hugin Messenger (currently only GUI version): `4820de8e26d21981afe6de2ff7b62fa6aa01126482ca0faeff151886c73619e5` \
   It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
 - Twitter: https://twitter.com/mjovanc
@@ -29,9 +31,7 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 ### Unit testing
 
 We use CUnit for the unit testing of this project. The unit tests are located in dir `test` with the same structure as the file being tested
-includes in. To run all the tests:
-
-TODO...
+includes in.
 
 ## CI/CD
 

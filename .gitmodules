@@ -1,9 +1,3 @@
 [submodule "scripts"]
 	path = scripts
 	url = git@github.com:kryptokrona/scripts.git
-[submodule "external/cunit"]
-	path = external/cunit
-	url = https://gitlab.com/cunity/cunit.git
-[submodule "external/sqlcipher"]
-	path = external/sqlcipher
-	url = git@github.com:sqlcipher/sqlcipher.git
