@@ -2,7 +2,7 @@ name: Hugin CLI Main Pipeline
 
 env:
   GITHUB_REGISTRY: "ghcr.io"
-  GITHUB_OWNER: "kryptokrona"
+  GITHUB_OWNER: "mjovanc"
   GITHUB_DOCKER_IMAGE: "hugin-cli"
   BUILD_TYPE: Release
 

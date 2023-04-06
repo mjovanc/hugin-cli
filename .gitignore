@@ -92,3 +92,5 @@ tags
 *.sqlite
 *.sqlite3
 *.db
+
+.cache/
