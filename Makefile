@@ -46,18 +46,6 @@ DEPFLAGS=-MP -MD
 CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -DSQLITE_HAS_CODEC -g -march=native $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
 DYNAMIC_LINK_FLAGS=-lsqlite3 -lncurses -lform
 
-# Set architecture-specific flags based on OS and processor type
-UNAME_S := $(shell uname -s)
-UNAME_P := $(shell uname -p)
-ifeq ($(UNAME_S), Darwin)
-    ifeq ($(UNAME_P), arm64)
-        CC = /usr/bin/clang
-        CFLAGS += -arch arm64
-    else
-        CFLAGS += -m64
-    endif
-endif
-
 # files
 CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
 OBJECTS=$(patsubst %.c,$(BUILDDIR)/%.o,$(CFILES))
