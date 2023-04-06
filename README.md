@@ -22,10 +22,10 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 ## Development Resources
 
 - Web: https://kryptokrona.org
-- GitHub: https://github.com/kryptokrona/hugin-cli
+- GitHub: https://github.com/mjovanc/hugin-cli
 - Hugin: Hugin Development group on Hugin Messenger (currently only GUI version): `4820de8e26d21981afe6de2ff7b62fa6aa01126482ca0faeff151886c73619e5` \
   It is HIGHLY recommended to join our board on Hugin Messenger if you want to contribute to stay up to date on what is happening on the project.
-- Twitter: @mjovanc
+- Twitter: https://twitter.com/mjovanc
 
 ## Setup and run
 
