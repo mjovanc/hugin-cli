@@ -8,12 +8,7 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 
 - [Development Resources](#development-resources)
 - [Setup and run](#setup-and-run)
-  - [Dependencies](#dependencies)
-    - [Program arguments](#program-arguments)
   - [Commands](#commands)
-    - [Auth](#auth)
-    - [Chat](#chat)
-    - [Other](#other)
   - [Clean](#clean)
 - [Testing](#testing)
   - [Unit testing](#unit-testing)
@@ -41,17 +36,6 @@ A private messaging CLI based Hugin Messenger. Powered by the Kryptokrona Blockc
 
 Note to be able to run these commands above, install the dependencies in the next section first.
 
-### Dependencies
-
-The following table summarizes the tools and libraries required to build.
-
-| Dep     | Min. version | Optional | Purpose                                 |
-| ------- | ------------ | -------- | --------------------------------------- |
-| GCC     | 11           | NO       | Compiler.                               |
-| Make    | 4.3          | NO       | Build generation tool for this project. |
-| Sqlite3 | 3.37.2       | NO       | Database.                               |
-| CUnit   | 3.2.7        | NO       | Unit testing framework written in C.    |
-
 To be able to build using Debian/Ubuntu
 
 ```sh
@@ -65,7 +49,6 @@ Here is a list of available/future implementations of program arguments to use b
 - `-v`, `--version` - Get the current version.
 - `-u`, `--username` (not implemented) - Pass the username to use to login.
 - `-p`, `--password` (not implemented) - Pass the password to use to login.
-- `-b`, `--batch-file` (not implemented) - Pass a batch file to import. File formats could be XML or JSON with a defined structure of what board, group or DM to send to.
 
 Example of usage:
 
