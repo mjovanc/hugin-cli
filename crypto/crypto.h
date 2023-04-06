@@ -1,34 +1,65 @@
-// Copyright (c) 2022-2023, The Kryptokrona Developers
-//
-// Created by Marcus Cvjeticanin
-//
-// All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without modification, are
-// permitted provided that the following conditions are met:
-//
-// 1. Redistributions of source code must retain the above copyright notice, this list of
-//    conditions and the following disclaimer.
-//
-// 2. Redistributions in binary form must reproduce the above copyright notice, this list
-//    of conditions and the following disclaimer in the documentation and/or other
-//    materials provided with the distribution.
-//
-// 3. Neither the name of the copyright holder nor the names of its contributors may be
-//    used to endorse or promote products derived from this software without specific
-//    prior written permission.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
-// EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-// MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
-// THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
-// STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-// THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef CRYPTO_CRYPTO_H
-#define CRYPTO_CRYPTO_H
+#pragma once
 
-#endif //CRYPTO_CRYPTO_H
+#include <stdint.h>
+
+typedef struct
+{
+  uint8_t data[32];
+} elliptic_curve_point_t;
+
+typedef struct
+{
+  uint8_t data[32];
+} elliptic_curve_scalar_t;
+
+#define VARINT_WRITE(DEST, INT)            \
+  while ((INT) >= 0x80)                      \
+  {                                        \
+    *(DEST)++ = ((char)(INT)&0x7f) | 0x80; \
+    (INT) >>= 7;                           \
+  }                                        \
+  *DEST++ = (char)(INT);
+
+void random_scalar(uint8_t *res);
+void hash_to_scalar(const uint8_t *scalar, size_t length, uint8_t *hash);
+void generate_keys(uint8_t *public_key, uint8_t *secret_key);
+
+int check_key(const uint8_t *public_key);
+int secret_key_to_public_key(const uint8_t *secret_key, uint8_t *public_key);
+int generate_key_derivation(const uint8_t *public_key, const uint8_t *secret_key, uint8_t *key_derivation);
+
+int derive_public_key(const uint8_t *derivation, size_t output_index,
+                       const uint8_t *base, uint8_t *derived_key);
+int derive_public_key_suffix(const uint8_t *derivation, size_t output_index,
+                              const uint8_t *base, const uint8_t *suffix, size_t suffixLength, uint8_t *derived_key);
+
+void derive_secret_key(const uint8_t *derivation, size_t output_index, const uint8_t *base, uint8_t *derived_key);
+void derive_secret_key_suffix(const uint8_t *derivation, size_t output_index, const uint8_t *base, const uint8_t *suffix, size_t suffixLength, uint8_t *derived_key);
+
+int underive_public_key(const uint8_t *derivation, size_t output_index,
+                         const uint8_t *derived_key, uint8_t *base);
+int underive_public_key_suffix(const uint8_t *derivation, size_t output_index,
+                         const uint8_t *derived_key, const uint8_t *suffix, size_t suffixLength, uint8_t *base);
+
+int underive_public_key_and_get_scalar(const uint8_t *derivation, size_t output_index,
+                                        const uint8_t *derived_key, uint8_t *base, uint8_t *hashed_derivation);
+void hash_data_to_ec(const uint8_t *data, size_t len, uint8_t *key);
+
+void generate_signature(const uint8_t *prefix_hash, const uint8_t *pub, const uint8_t *sec, uint8_t *sig);
+int check_signature(const uint8_t *prefix_hash, const uint8_t *pub, const uint8_t *sig);
+
+void hash_to_ec(const uint8_t *key, uint8_t *res);
+void generate_key_image(const uint8_t *pub, const uint8_t *sec, uint8_t *image);
+
+void generate_ring_signature(const uint8_t *prefix_hash, const uint8_t *image,
+                             const uint8_t *const *pubs, size_t pubs_count,
+                             const uint8_t *sec, size_t sec_index,
+                             uint8_t *sig);
+int check_ring_signature(const uint8_t *prefix_hash, const uint8_t *image,
+                         const uint8_t *const *pubs, size_t pubs_count,
+                         const uint8_t *sig);
+                         
+void hash_to_point(const uint8_t *hash, uint8_t *point);
+void hash_to_ec_ex(const uint8_t *hash, uint8_t *ec);
+
