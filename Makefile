@@ -43,7 +43,7 @@ OPT=-00
 
 # flags
 DEPFLAGS=-MP -MD
-CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -DSQLITE_HAS_CODEC -g $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
+CFLAGS=-Wall -Wextra -DLOG_USE_COLOR -DSQLITE_HAS_CODEC -g -march=native $(foreach D,$(INCDIRS),-I$(D)) $(DEPFLAGS)
 DYNAMIC_LINK_FLAGS=-lsqlite3 -lncurses -lform
 
 # Set architecture-specific flags based on OS and processor type
