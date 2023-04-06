@@ -19,16 +19,46 @@ jobs:
             cc: "gcc",
             architecture: x64,
           }
+          - {
+            name: "macOS M1 Latest Clang",
+            os: macos-12.0,
+            cc: "clang",
+            architecture: arm64,
+          }
+          - {
+            name: "macOS Latest Clang",
+            os: macos-12.0,
+            cc: "clang",
+            architecture: x64,
+          }
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
 
-      # Ubuntu 22.04
+      # Ubuntu
       - name: Install dependencies
-        if: matrix.config.name == 'Ubuntu Latest GCC'
+        if: matrix.config.os == 'ubuntu-22.04'
         run: sudo apt-get -y install libssl-dev libsqlcipher-dev
 
       - name: Build Ubuntu Target
-        if: matrix.config.name == 'Ubuntu Latest GCC'
+        if: matrix.config.os == 'ubuntu-22.04'
+        run: make
+
+      # macOS M1
+      - name: Install dependencies
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'arm64'
+        run: brew install openssl@1.1 sqlcipher
+
+      - name: Build macOS M1 Target
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'arm64'
+        run: make
+
+      # macOS 64-bit
+      - name: Install dependencies
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'x64'
+        run: brew install openssl@1.1 sqlcipher
+
+      - name: Build macOS 64-bit Target
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'x64'
         run: make

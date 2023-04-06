@@ -26,6 +26,20 @@ jobs:
               cc: "gcc",
               architecture: x64,
             }
+          - {
+            name: "macOS M1 Latest Clang",
+            artifact: "hugin-macos-m1",
+            os: macos-12.0,
+            cc: "clang",
+            architecture: arm64,
+          }
+          - {
+            name: "macOS Latest Clang",
+            artifact: "hugin-macos-x64",
+            os: macos-12.0,
+            cc: "clang",
+            architecture: x64,
+          }
     steps:
       - uses: actions/checkout@v2
         with:
@@ -45,6 +59,48 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: hugin-ubuntu-x64
+          path: |
+            build/Hugin
+            resources/icon.png
+            resources/readme.html
+            resources/hugin-cli.desktop
+            install.sh
+
+      # macOS M1
+      - name: Install dependencies
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'arm64'
+        run: brew install openssl@1.1 sqlcipher
+
+      - name: Build macOS M1 Target
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'arm64'
+        run: make
+
+      - name: Upload macOS M1 Artifact
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'arm64'
+        uses: actions/upload-artifact@v3
+        with:
+          name: hugin-macos-m1
+          path: |
+            build/Hugin
+            resources/icon.png
+            resources/readme.html
+            resources/hugin-cli.desktop
+            install.sh
+
+      # macOS 64-bit
+      - name: Install dependencies
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'x64'
+        run: brew install openssl@1.1 sqlcipher
+
+      - name: Build macOS 64-bit Target
+        if: matrix.config.os == 'macos-12.0' && matrix.config.architecture == 'x64'
+        run: make
+
+      - name: Upload macOS 64-bit Artifact
+        if: matrix.config.os == 'macos-12.0'
+        uses: actions/upload-artifact@v3
+        with:
+          name: hugin-macos-x64
           path: |
             build/Hugin
             resources/icon.png
